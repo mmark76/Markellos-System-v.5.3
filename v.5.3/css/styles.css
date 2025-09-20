@@ -42,6 +42,15 @@ header h1 {
   padding: 10px 0;  /* λίγο padding για να μην κολλάει σφιχτά */
 }
 
+/* Mobile override */
+@media (max-width: 768px) {
+  .layout-container {
+    position: static;   /* όχι sticky σε κινητό */
+    top: auto;
+    z-index: auto;
+  }
+}
+
 .left-panel, .middle-panel, .right-panel {
   background: #1a1a1a;
   padding: 10px;
@@ -199,3 +208,4 @@ footer {
     height: 180px;
   }
 }
+
