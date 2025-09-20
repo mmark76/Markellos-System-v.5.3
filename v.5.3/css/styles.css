@@ -23,6 +23,19 @@ header {
   z-index: 1000;
 }
 
+.layout-container {
+  display: grid;
+  grid-template-columns: 47% 18% 35%;
+  gap: 15px;
+  margin-bottom: 20px;
+
+  position: sticky;   /* sticky μόνο στο desktop */
+  top: 63px;
+  z-index: 900;
+  background: #111;
+  padding: 10px 0;
+}
+
 header h1 {
   margin-bottom: 10px;
   font-size: 1.6em;
@@ -34,21 +47,6 @@ header h1 {
   grid-template-columns: 47% 18% 35%;
   gap: 15px;
   margin-bottom: 20px;
-
-  position: sticky;
-  top: 63px;        /* πόσο κάτω από το πάνω μέρος της σελίδας */
-  z-index: 900;     /* να κάθεται πάνω από τα tables */
-  background: #111; /* ίδιο φόντο με το body για ομοιομορφία */
-  padding: 10px 0;  /* λίγο padding για να μην κολλάει σφιχτά */
-}
-
-/* Mobile override */
-@media (max-width: 768px) {
-  .layout-container {
-    position: static;   /* όχι sticky σε κινητό */
-    top: auto;
-    z-index: auto;
-  }
 }
 
 .left-panel, .middle-panel, .right-panel {
@@ -133,8 +131,24 @@ button:hover, select:hover {
   background: #444;
 }
 
-/* Mobile: οι βιβλιοθήκες γίνονται 1 στήλη */
+/* Mobile === */
+
 @media (max-width: 768px) {
+  .layout-container {
+    position: static;   /* όχι sticky σε κινητό */
+    top: auto;
+    z-index: auto;
+    grid-template-columns: 1fr; /* μία στήλη */
+  }
+
+  .left-panel, .middle-panel, .right-panel {
+    width: 100%;
+  }
+
+  .left-panel textarea {
+    height: 180px;
+  }
+
   .libraries-group {
     grid-template-columns: 1fr;  /* μία στήλη */
   }
@@ -192,20 +206,5 @@ footer {
   font-size: 0.9em;
   position: sticky;
   bottom: 0;
-}
-
-/* === Mobile Friendly === */
-@media (max-width: 768px) {
-  .layout-container {
-    grid-template-columns: 1fr;
-  }
-
-  .left-panel, .middle-panel, .right-panel {
-    width: 100%;
-  }
-
-  .left-panel textarea {
-    height: 180px;
-  }
 }
 
