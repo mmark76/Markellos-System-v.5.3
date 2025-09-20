@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="utf-8" />
+  <title>FEN Builder Pop‑Up</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://mmark76.github.io/chessboardjs-hosting/chessboardjs-1.0.0/css/chessboard-1.0.0.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://mmark76.github.io/chessboardjs-hosting/chessboardjs-1.0.0/js/chessboard-1.0.0.min.js"></script>
+  <style>
+    /* ---------- Στιλ κουμπιών & switches ---------- */
+    .minimal-btn {
+      background: #f8f8f8;
+      border: 1px solid #ccc;
+      color: #222;
+      font-size: 14px;
+      padding: 6px 14px;
+      border-radius: 7px;
+      cursor: pointer;
+      margin-right: 2px;
+      margin-left: 2px;
+      transition: background 0.17s, border 0.17s;
+    }
+    .minimal-btn:hover {
+      background: #ececec;
+      border: 1px solid #999;
+    }
+    .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; margin-left:8px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #e2e5eb; border-radius: 20px; transition: .3s;
+    }
+    .slider:before {
+      position: absolute; content: "";
+      height: 15px; width: 15px; left: 3px; bottom: 2.3px; background-color: #fff;
+      border-radius: 50%; box-shadow:0 1px 3px 0 #aaa; transition: .3s;
+    }
+    input:checked + .slider { background-color: #3697ef; }
+    input:checked + .slider:before { transform: translateX(14px); }
+    .castle-options { margin-bottom: 0; }
+    .castle-label {
+      display:flex; justify-content:space-between; align-items:center;
+      font-size:14px; margin-bottom:7px; padding:2px 0 2px 0;
+    }
+    .side-btn {
+      background: #f6f8fa;
+      border: 1px solid #bcd3ea;
+      color: #222;
+      font-size: 15px;
+      padding: 6px 26px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.16s, border 0.16s;
+    }
+    .side-btn.selected, .side-btn:hover {
+      background: #3697ef; color: #fff; border: 1.5px solid #3697ef;
+    }
+  </style>
+</head>
+<body>
+<div style="width:370px; margin:auto; margin-top:50px; margin-bottom:40px;">
+  <!-- Επιλογές FEN -->
+  <div id="fenOptionsBox" style="background: #fafbfc; border-radius: 10px; border: 1px solid #e2e5eb; max-width:350px; margin: 0 auto 35px auto; padding: 18px 20px 13px 20px; box-shadow:0 2px 9px 0 #f6f8fa;">
+    <div style="font-size:15px; font-weight:600; margin-bottom:14px;">To Move</div>
+    <div style="display:flex; gap:14px; margin-bottom:18px;">
+      <button id="toMoveW" class="side-btn selected">White</button>
+      <button id="toMoveB" class="side-btn">Black</button>
+    </div>
+    <div style="font-size:15px; font-weight:600; margin-bottom:10px;">Castling Availability</div>
+    <div class="castle-options">
+      <div class="castle-label"><span>White King side</span><label class="switch"><input type="checkbox" id="wK" checked /><span class="slider"></span></label></div>
+      <div class="castle-label"><span>White Queen side</span><label class="switch"><input type="checkbox" id="wQ" checked /><span class="slider"></span></label></div>
+      <div class="castle-label"><span>Black King side</span><label class="switch"><input type="checkbox" id="bK" checked /><span class="slider"></span></label></div>
+      <div class="castle-label"><span>Black Queen side</span><label class="switch"><input type="checkbox" id="bQ" checked /><span class="slider"></span></label></div>
+    </div>
+  </div>
+
+ <!-- Μπάρα εισαγωγής FEN -->
+  <div style="text-align:center; margin-bottom:30px; margin-top:20px;">
+    <input id="fenImportInput" type="text" placeholder="Εισαγωγή FEN εδώ" 
+ style="width:97%; max-width:350px; font-size:15px; height:38px; padding:4px 12px; border-radius:8px; border:1px solid #ccc; box-sizing:border-box; display:block; margin:auto; margin-bottom:13px; background:#fafafa;" />
+    <button id="importFenBtn" class="minimal-btn">Εμφάνισε Θέση</button>
+  </div>
+
+  <!-- Η σκακιέρα -->
+  <div id="builderBoard" style="width:350px; margin:auto; margin-bottom:25px;"></div>
+
+  <!-- Κουμπιά σκακιέρας -->
+  <div style="text-align:center; margin:30px 0 25px 0;">
+    <button id="clearBuilderBtn" class="minimal-btn">Άδειασε σκακιέρα</button>
+    <button id="startBuilderBtn" class="minimal-btn">Αρχική θέση</button>
+  </div>
+
+  <!-- Κάτω μπάρα τρέχοντος FEN -->
+  <div style="margin:35px 0 0 0; text-align:center;">
+    <span style="font-size:14px; font-weight:500;">Τρέχον FEN:</span>
+    <input id="fenOutput" type="text" 
+ style="width:92%; max-width:340px; font-size:15px; height:38px; padding:4px 12px; margin:8px 0 0 0; border-radius:8px; border:1px solid #ccc; background:#fafafa;" 
+ readonly />
+    <button id="copyFenBtn" title="Αντιγραφή FEN" class="minimal-btn" style="font-size:19px; padding:0 7px; vertical-align:middle;">📋</button>
+  </div>
+</div>
+
+<script>
+  $(function(){
+    var pieceThemeUrl = 'https://mmark76.github.io/chessboardjs-hosting/chessboardjs-1.0.0/img/chesspieces/wikipedia/{piece}.png';
+    var builderBoard = Chessboard('builderBoard', {
+      draggable: true,
+      dropOffBoard: 'trash',
+      sparePieces: true,
+      pieceTheme: pieceThemeUrl,
+      position: 'start',
+      onDrop: function() { setTimeout(updateBuilderFEN, 10); },
+      onSnapEnd: function() { setTimeout(updateBuilderFEN, 10); }
+    });
+
+    var sideToMove = 'w';
+    $('#toMoveW').on('click', function(){
+      sideToMove = 'w';
+      $(this).addClass('selected');
+      $('#toMoveB').removeClass('selected');
+      updateBuilderFEN();
+    });
+    $('#toMoveB').on('click', function(){
+      sideToMove = 'b';
+      $(this).addClass('selected');
+      $('#toMoveW').removeClass('selected');
+      updateBuilderFEN();
+    });
+
+    function getCastlingString() {
+      var res = '';
+      if ($('#wK').prop('checked')) res += 'K';
+      if ($('#wQ').prop('checked')) res += 'Q';
+      if ($('#bK').prop('checked')) res += 'k';
+      if ($('#bQ').prop('checked')) res += 'q';
+      return res === '' ? '-' : res;
+    }
+    $('.switch input').on('change', function(){ updateBuilderFEN(); });
+
+    function updateBuilderFEN() {
+      var fen = builderBoard.fen();
+      var castling = getCastlingString();
+      var stm = sideToMove;
+      var fenFull = fen + ' ' + stm + ' ' + castling + ' - 0 1';
+      $('#fenOutput').val(fenFull);
+    }
+    $('#builderBoard').on('mouseup mouseleave', function() {
+      setTimeout(updateBuilderFEN, 20);
+    });
+    updateBuilderFEN();
+
+    $('#clearBuilderBtn').on('click', function() {
+      builderBoard.clear();
+      updateBuilderFEN();
+    });
+    $('#startBuilderBtn').on('click', function() {
+      builderBoard.start();
+      updateBuilderFEN();
+    });
+    $('#copyFenBtn').on('click', function() {
+      $('#fenOutput').select();
+      document.execCommand('copy');
+    });
+
+    $('#importFenBtn').on('click', function() {
+      var fen = $('#fenImportInput').val().trim();
+      if(!fen) return;
+      var fenParts = fen.split(' ');
+      var posPart = fenParts[0] || '';
+      var stmPart = fenParts[1] || 'w';
+      var castlingPart = fenParts[2] || '-';
+      builderBoard.position(posPart);
+      if(stmPart === 'w') { $('#toMoveW').click(); } else { $('#toMoveB').click(); }
+      $('#wK').prop('checked', castlingPart.includes('K'));
+      $('#wQ').prop('checked', castlingPart.includes('Q'));
+      $('#bK').prop('checked', castlingPart.includes('k'));
+      $('#bQ').prop('checked', castlingPart.includes('q'));
+      updateBuilderFEN();
+    });
+  });
+</script>
+</body>
+</html>

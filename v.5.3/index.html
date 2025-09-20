@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <!-- ✅ Basic Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- ✅ Title -->
+  <title>Chess Mnemonic Markellos System v.5.3</title>
+  
+  <!-- ✅ SEO Meta -->
+  <meta name="description" content="Chess Mnemonic Markellos System v.5.3 — Chess mnemonic system with SAN, Associations, PAO, and Verse tables.">
+  <meta name="author" content="Markellos Markides">
+  <meta name="keywords" content="chess, PGN, SAN, mnemonic, PAO, memory palace, chess training, chess notation">
+  
+  <!-- ✅ Social / Open Graph -->
+  <meta property="og:title" content="Chess Mnemonic Markellos System v.5.3">
+  <meta property="og:description" content="Chess mnemonic system — Parse PGN and view SAN, Associations, PAO 0–9, PAO 00–99, and Verse tables.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://markellos-markides.blogspot.com/">
+    
+  <!-- ✅ Mobile -->
+  <meta name="theme-color" content="#222222">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <!-- ✅ CSS Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- ✅ External Libraries -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+  <!-- ✅ Project Scripts -->
+  <script src="js/script.js" defer></script>
+    
+  <style>
+    .minimal-btn { background:#f8f8f8; border:1px solid #ccc; color:#222;
+      font-size:14px; padding:6px 14px; border-radius:7px; cursor:pointer; margin:2px;
+      transition:background .17s,border .17s;}
+    .minimal-btn:hover {background:#ececec; border:1px solid #999;}
+    .switch{position:relative;display:inline-block;width:34px;height:20px;vertical-align:middle;margin-left:8px;}
+    .switch input{opacity:0;width:0;height:0;}
+    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#e2e5eb;border-radius:20px;transition:.3s;}
+    .slider:before{position:absolute;content:"";height:15px;width:15px;left:3px;bottom:2.3px;background:#fff;border-radius:50%;
+      box-shadow:0 1px 3px 0 #aaa;transition:.3s;}
+    input:checked + .slider{background:#3697ef;}
+    input:checked + .slider:before{transform:translateX(14px);}
+    .side-btn{background:#f6f8fa;border:1px solid #bcd3ea;color:#222;font-size:15px;padding:6px 26px;
+      border-radius:6px;cursor:pointer;transition:background .16s,border .16s;}
+    .side-btn.selected,.side-btn:hover{background:#3697ef;color:#fff;border:1.5px solid #3697ef;}
+    .row-hover{background:#f0f8ff;}
+    .row-selected{background:#cfe2ff;}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Chess Mnemonic Markellos System v.5.3</h1>
+  </header>
+
+  <!-- 🔹 Layout με τρεις στήλες -->
+  <div class="layout-container">
+
+    <!-- Αριστερά: PGN textarea -->
+    <section class="left-panel">
+      <textarea id="pgnText" rows="12"
+        placeholder="Paste PGN/SAN εδώ και πάτα ‘Parse PGN / SAN’, ή χρησιμοποίησε ‘Import PGN / SAN’ και ‘Choose file’ για φόρτωση αρχείου."></textarea>
+    </section>
+
+    <!-- Μέση στήλη: PGN κουμπιά, file input, dropdowns -->
+    <section class="middle-panel">
+      <h4>Import PGN / SAN</h4>
+      <input type="file" id="pgnFileInput" accept=".pgn,.txt"/>
+      <div class="button-group">
+        <button id="parsePgnBtn">Parse PGN</button>
+        <button id="clearBtn">Clear</button>
+        <button id="openFenBuilderBtn">Άνοιγμα FEN Builder</button>
+      </div>
+
+      <div class="dropdown-group">
+        <label for="langSelect">Γλώσσα:</label>
+        <select id="langSelect">
+          <option value="el">Ελληνικά</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
+      <div class="dropdown-group">
+        <label for="tableSelect">Πίνακας:</label>
+        <select id="tableSelect">
+          <option value="sanSection">SAN Table</option>
+          <option value="assocSection">Associations</option>
+          <option value="paoSection">PAO 0–9</option>
+          <option value="pao99Section">PAO 00–99</option>
+          <option value="verseSection">Verse</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Δεξιά: Βιβλιοθήκες με κουμπιά -->
+    <section class="right-panel">
+      <h4>Βιβλιοθήκες</h4>
+      <div class="libraries-group">
+        <div class="library">
+          <span>Temporal:</span>
+          <button class="lib-btn" data-lib="LibraryT1">LibraryT1</button>
+          <button class="lib-btn" data-lib="LibraryT2">LibraryT2</button>
+        </div>
+        <div class="library">
+          <span>Spatial:</span>
+          <button class="lib-btn" data-lib="LibraryS1">LibraryS1</button>
+        </div>
+        <div class="library">
+          <span>Characters:</span>
+          <button class="lib-btn" data-lib="LibraryC1">LibraryC1</button>
+          <button class="lib-btn" data-lib="LibraryC2">LibraryC2</button>
+        </div>
+        <div class="library">
+          <span>PAO 0–9:</span>
+          <button class="lib-btn" data-lib="LibraryP1">LibraryP1</button>
+        </div>
+        <div class="library">
+          <span>PAO 00–99:</span>
+          <button class="lib-btn" data-lib="LibraryP2">LibraryP2</button>
+          <button class="lib-btn" data-lib="LibraryP3">LibraryP3</button>
+        </div>
+        <div class="library">
+          <span>Verses:</span>
+          <button class="lib-btn" data-lib="LibraryV1">LibraryV1</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 🔹 SAN Table -->
+  <section id="sanSection">
+    <h2>SAN Table</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Move #</th><th>SAN</th><th>Locus</th><th>Anchor</th>
+            <th>Χρώμα</th><th>Piece</th><th>Target</th><th>FEN</th>
+          </tr>
+        </thead>
+        <tbody id="sanBody"></tbody>
+      </table>
+      <select class="download-select" data-table="sanSection">
+        <option value="">Download as…</option>
+        <option value="csv">CSV</option>
+        <option value="txt">TXT</option>
+        <option value="json">JSON</option>
+        <option value="pdf">PDF</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- 🔹 Associations Table -->
+  <section id="assocSection">
+    <h2>Associations Table</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Move #</th><th>SAN</th><th>Locus</th><th>Anchor</th>
+            <th>Χρώμα</th><th>Piece Association</th><th>Target Association</th>
+          </tr>
+        </thead>
+        <tbody id="assocBody"></tbody>
+      </table>
+      <select class="download-select" data-table="assocSection">
+        <option value="">Download as…</option>
+        <option value="csv">CSV</option>
+        <option value="txt">TXT</option>
+        <option value="json">JSON</option>
+        <option value="pdf">PDF</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- 🔹 PAO 0–9 Table -->
+  <section id="paoSection">
+    <h2>PAO 0–9 Table</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Move #</th><th>SAN</th><th>Locus</th><th>Anchor</th>
+            <th>Χρώμα</th><th>PAO Code</th><th>Person / Action / Object</th>
+          </tr>
+        </thead>
+        <tbody id="paoBody"></tbody>
+      </table>
+      <select class="download-select" data-table="paoSection">
+        <option value="">Download as…</option>
+        <option value="csv">CSV</option>
+        <option value="txt">TXT</option>
+        <option value="json">JSON</option>
+        <option value="pdf">PDF</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- 🔹 PAO 00–99 Table -->
+  <section id="pao99Section">
+    <h2>PAO 00–99 Table</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Move #</th><th>SAN</th><th>Locus</th><th>Anchor</th>
+            <th>Χρώμα</th><th>PAO Code (6-digit)</th><th>Person / Action / Object</th>
+          </tr>
+        </thead>
+        <tbody id="pao99Body"></tbody>
+      </table>
+      <select class="download-select" data-table="pao99Section">
+        <option value="">Download as…</option>
+        <option value="csv">CSV</option>
+        <option value="txt">TXT</option>
+        <option value="json">JSON</option>
+        <option value="pdf">PDF</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- 🔹 Verse Table -->
+  <section id="verseSection">
+    <h2>Verse Table</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Move #</th><th>SAN</th><th>Locus</th><th>Anchor</th>
+            <th>Χρώμα</th><th>Verse (4 γραμμές)</th>
+          </tr>
+        </thead>
+        <tbody id="verseBody"></tbody>
+      </table>
+      <select class="download-select" data-table="verseSection">
+        <option value="">Download as…</option>
+        <option value="csv">CSV</option>
+        <option value="txt">TXT</option>
+        <option value="json">JSON</option>
+        <option value="pdf">PDF</option>
+      </select>
+    </div>
+  </section>
+
+  <footer>
+    <p>© Markellos Markides 2025 - Mnemonic System v.5.3</p>
+  </footer>
+</body>
+</html>
