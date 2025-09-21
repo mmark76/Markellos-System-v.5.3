@@ -7,20 +7,16 @@
 - αποθηκεύει κινήσεις με FEN αναπαράσταση,  
 - συνδέει SAN με μνημονικά στοιχεία (Temporal, Spatial, Characters, PAO, Verses),  
 - χρησιμοποιεί εργαλείο **FEN Builder** για ειδικές θέσεις,  
-- εξάγει δεδομένα σε CSV/JSON για περαιτέρω μελέτη.
+- εξάγει δεδομένα σε διάφορες μορφές για περαιτέρω μελέτη.
 
 ---
 
 ## 📂 Δομή Project
 
-- `Markellos Chess Mnemonic System v3.2.html` → Κύριο UI  
+- `Markellos Chess Mnemonic System v5.3.html` → Κύριο UI  
 - `css/styles.css` → Dark theme (κύρια εφαρμογή)  
-- `css/fen-builder.css` → Light theme (FEN Builder)  
 - `js/script.js` → Ενιαίο αρχείο με parsing PGN, Associations fix, PAO, Verses, FEN Builder integration  
-- `js/fen-builder.js` → Λογική FEN Builder (εισαγωγή/εξαγωγή FEN)  
 - `data/libraries_v3.2.json` → Όλες οι βιβλιοθήκες (Temporal, Spatial, Characters, PAO 0–9, PAO 00–99, Verses, Foundations)  
-- `fen-builder.html` → Pop-up εργαλείο FEN  
-- `kamsky_kramnik_1993.pgn` → Παράδειγμα PGN
 
 ---
 
@@ -52,23 +48,15 @@
   - Foundations  
   - All-Libraries
 
-### 4. FEN Builder (popup)
-- Σκακιέρα drag & drop με spare pieces.  
-- Επιλογές:
-  - Side-to-move (White/Black)  
-  - Castling availability  
-  - Import FEN string → εμφάνιση θέσης  
-  - Export/copy current FEN  
-  - Clear / Start position  
+---
 
-### 5. Εξαγωγή Δεδομένων
+### 4. Εξαγωγή Δεδομένων
 - Λειτουργία download (CSV, TXT, JSON, PDF) για SAN, PAO, Associations, Verse.
 
 ---
 
 ## 🎨 UI / UX
 - **Κύριο UI**: Dark theme (μαύρο φόντο, λευκά γράμματα). Sticky header/footer μόνο (βελτίωση mobile).  
-- **FEN Builder**: Light theme, λευκό background.  
 - Responsive tables (οριζόντια κύλιση).  
 - Sticky headers/footers για σταθερή προβολή.
 
@@ -83,15 +71,12 @@
 ---
 
 ## 📜 Παράδειγμα Χρήσης
-1. Εισάγετε ένα PGN (π.χ. από το `kamsky_kramnik_1993.pgn`).  
+1. Εισάγετε ένα PGN.  
 2. Πατήστε **Parse PGN** → γέμισμα του SAN Table.  
 3. Επιλέξτε βιβλιοθήκη (π.χ. Temporal) και συνδέστε loci σε κινήσεις.  
-4. Χρησιμοποιήστε το **FEN Builder** για ειδική θέση και αντιγράψτε το FEN.  
-5. Εξάγετε τα δεδομένα σας σε CSV/JSON για μελέτη.
+4. Εξάγετε τα δεδομένα σας για μελέτη.
 
 ---
-
-
 
 ## 🔑 Κανόνες v.5.3
 
@@ -131,15 +116,13 @@
 - Γλώσσα: ακολουθεί global dropdown
 
 
-
-
 ## 🖥️ UI & Buttons (v.5.3)
 
 ### Global Controls
 - **Import PGN**: Επιλογή αρχείου PGN από τοπικό δίσκο.
 - **Parse PGN**: Ανάλυση του PGN και γέμισμα όλων των πινάκων.
 - **Clear**: Καθαρισμός PGN input και πινάκων.
-- **Download**: Εξαγωγή όλων των πινάκων σε CSV (SAN, Associations, PAO 0–9, PAO 00–99, Verse).
+- **Download**: Εξαγωγή όλων των πινάκων σε διάφορες μορφές (SAN, Associations, PAO 0–9, PAO 00–99, Verse).
 
 ### Table Controls
 - Κάθε πίνακας έχει δικό του κουμπί **Download CSV** για εξαγωγή μεμονωμένου πίνακα.
@@ -149,16 +132,8 @@
 - **PAO 00–99 Table**: Dropdowns για Locus (T1), Anchor (T2), Collection (P2/P3 επιλογή).
 - **Verse Table**: Dropdowns για Locus (T1), Anchor (T2), Verses (V1 fixed).
 
-### FEN Builder (Pop‑Up)
-- Κουμπιά: **Άδειασε σκακιέρα**, **Αρχική θέση**, **Εισαγωγή FEN**, **Αντιγραφή FEN**.
-- Επιλογές: **To Move (White/Black)**, **Castling Rights** (Wk, WQ, Bk, BQ).
-- Drag & Drop κομμάτια με **Spare Pieces**.
-- Τρέχον FEN εμφανίζεται και μπορεί να αντιγραφεί.
-
 ### Footer
-- Εμφανίζει `© Markellos Markides, 2025 — Markellos Chess Mnemonic System v5`.
-
-
+- Εμφανίζει `© Markellos Markides, 2025 — Markellos Chess Mnemonic System v5.3`.
 
 
 ## 🔄 Νέα στοιχεία στην v.5.3
@@ -187,8 +162,6 @@
    - PAO 0–9 Table → αποκλειστικά LibraryP1.
    - PAO 00–99 Table → αποκλειστικά LibraryP2 ή LibraryP3 (επιλογή από dropdown).
    - Σαφής διάκριση: διαφορετικές βιβλιοθήκες για Persons / Actions / Objects ανά πίνακα.
-
-
 
 ## 📌 Έκδοση
 **Markellos Chess Mnemonic System v.5.3**  
