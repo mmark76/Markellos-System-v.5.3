@@ -23,9 +23,15 @@ header {
   z-index: 1000;
 }
 
+header h1 {
+  margin-bottom: 10px;
+  font-size: 1.6em;
+}
+
+/* === Layout (3 στήλες) === */
 .layout-container {
   display: grid;
-  grid-template-columns: 47% 18% 35%;
+  grid-template-columns: 46% 17% 35%;
   gap: 15px;
   margin-bottom: 20px;
 
@@ -36,17 +42,9 @@ header {
   padding: 10px 0;
 }
 
-header h1 {
-  margin-bottom: 10px;
-  font-size: 1.6em;
-}
-
-/* === Layout (3 στήλες) === */
-.layout-container {
-  display: grid;
-  grid-template-columns: 47% 18% 35%;
-  gap: 15px;
-  margin-bottom: 20px;
+.middle-panel {
+  min-width: 0;      /* επιτρέπει στο grid να μικρύνει */
+  overflow: hidden;  /* αναγκάζει τα παιδιά να τυλιχτούν / κοπούν */
 }
 
 .left-panel, .middle-panel, .right-panel {
@@ -106,15 +104,17 @@ button:hover, select:hover {
 }
 
 /* Βιβλιοθήκες σε 5 στήλες με scroll */
+
 .right-panel {
-  max-height: 250px;   /* περιορισμός ύψους */
-  overflow-y: auto;    /* scroll αν δεν χωράνε */
-  overflow-x: hidden;
+  height: auto;          /* αφήνει το grid να το ελέγχει */
+  max-height: none;      /* χωρίς περιορισμό */
+  overflow: visible;     /* καθόλου scroll */
+  align-self: stretch;   /* τεντώνει για να φτάσει το ύψος των άλλων */
 }
 
 .libraries-group {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);  /* 5 στήλες */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 8px;
 }
 
