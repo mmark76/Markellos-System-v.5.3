@@ -383,11 +383,16 @@ function wirePGN(){
   }
 }
 
+/* ---------- Init (ενιαίο) ---------- */
 document.addEventListener('DOMContentLoaded', async ()=>{
+  // Γλώσσα
   const langSel = document.getElementById('langSelect');
   if(langSel){
     selectedLang = (langSel.value || 'el');
-    langSel.addEventListener('change', ()=>{ selectedLang = langSel.value || 'el'; renderAll(); });
+    langSel.addEventListener('change', ()=>{
+      selectedLang = langSel.value || 'el';
+      renderAll();
+    });
   }
 
   await loadLibraries();
@@ -401,12 +406,28 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   wirePGN();
   wireTableSelect();
 
-  const ta=document.getElementById('pgnText');
-  if(ta && ta.value.trim()){ gameMoves = parsePGN(ta.value); }
+  // ✅ Refresh του PAO 00–99 όταν αλλάζει συλλογή
+  const pao99Sel = document.getElementById('pao99CollectionSelect');
+  if(pao99Sel){
+    pao99Sel.addEventListener('change', ()=>{
+      renderAll();
+      const tableSel = document.getElementById('tableSelect');
+      if(tableSel){
+        showOnlySection(tableSel.value || 'sanSection');
+      }
+    });
+  }
+
+  const ta = document.getElementById('pgnText');
+  if(ta && ta.value.trim()){
+    gameMoves = parsePGN(ta.value);
+  }
   renderAll();
 
   const fenBtn=document.getElementById('openFenBuilderBtn');
-  if(fenBtn){ fenBtn.addEventListener('click', ()=> window.open('http://chess-api.online','_blank')); }
+  if(fenBtn){
+    fenBtn.addEventListener('click', ()=> window.open('http://chess-api.online','_blank'));
+  }
 
   // Κλειδώνουμε τα dropdowns
   lockDropdown('sanLocusSelect','LibraryT1');
@@ -423,6 +444,16 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   lockDropdown('verseLocusSelect','LibraryT1');
   lockDropdown('verseAnchorSelect','LibraryT2');
   lockDropdown('verseLibrarySelect','LibraryV1');
+
+  // ✅ Export dropdowns (CSV/TXT/JSON/PDF)
+  document.querySelectorAll('.download-select').forEach(sel=>{
+    sel.addEventListener('change', ()=>{
+      if(sel.value){
+        exportTable(sel.dataset.table, sel.value);
+        sel.value = ''; // reset επιλογής
+      }
+    });
+  });
 });
 
 /* ---------- Fixed dropdown locker ---------- */
@@ -454,47 +485,35 @@ function exportTable(sectionId, format){
     blob = new Blob([txt],{type:'text/plain;charset=utf-8;'});
   }else if(format==='json'){
     blob = new Blob([JSON.stringify(rows)],{type:'application/json;charset=utf-8;'});
-  
-}else if(format === 'pdf'){
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ putOnlyUsedFonts: true });
+  }else if(format === 'pdf'){
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ putOnlyUsedFonts: true });
 
-  // δηλώνουμε τη γραμματοσειρά ΠΡΩΤΑ
-  doc.addFileToVFS("Roboto-Regular.ttf", RobotoRegular);
-  doc.addFont("Roboto-Regular.ttf", "Roboto", "normal");
-  doc.setFont("Roboto");
+    // δηλώνουμε τη γραμματοσειρά ΠΡΩΤΑ
+    doc.addFileToVFS("Roboto-Regular.ttf", RobotoRegular);
+    doc.addFont("Roboto-Regular.ttf", "Roboto", "normal");
+    doc.setFont("Roboto");
 
-  // επικεφαλίδες & σειρές
-  const headers = [...table.querySelectorAll('thead th')].map(th => th.innerText);
-  const data = rows.slice(1);
+    // επικεφαλίδες & σειρές
+    const headers = [...table.querySelectorAll('thead th')].map(th => th.innerText);
+    const data = rows.slice(1);
 
-  // κείμενο τίτλου (τώρα αποδίδεται σωστά)
-  doc.text("Chess Mnemonic System Export", 14, 15);
+    // κείμενο τίτλου
+    doc.text("Chess Mnemonic System Export", 14, 15);
 
-  // πίνακας με Roboto
-  doc.autoTable({
-    head: [headers],
-    body: data,
-    startY: 25,
-    styles: { font: 'Roboto', fontStyle: 'normal', fontSize: 8 }
-  });
+    // πίνακας με Roboto
+    doc.autoTable({
+      head: [headers],
+      body: data,
+      startY: 25,
+      styles: { font: 'Roboto', fontStyle: 'normal', fontSize: 8 }
+    });
 
-  doc.save(`${sectionId}.pdf`);
-  return;
-}else{
+    doc.save(`${sectionId}.pdf`);
+    return;
+  }else{
     return;
   }
   saveAs(blob, `${sectionId}.${format}`);
 }
 
-/* ---------- Wire dropdowns ---------- */
-document.addEventListener('DOMContentLoaded', ()=>{
-  document.querySelectorAll('.download-select').forEach(sel=>{
-    sel.addEventListener('change', ()=>{
-      if(sel.value){
-        exportTable(sel.dataset.table, sel.value);
-        sel.value = ''; // reset επιλογής
-      }
-    });
-  });
-});
