@@ -1,168 +1,140 @@
-# README — Markellos Chess Mnemonic System v.5.3
+# README v.5.3 (διορθωμένο, πλήρες)
 
-## 📌 Σκοπός
-Το **Markellos Chess Mnemonic System** είναι μια web εφαρμογή που συνδυάζει το σκάκι με μνημονικές τεχνικές (PAO, loci, anchors, verses).  
-Επιτρέπει στον χρήστη να:
-- εισάγει και αναλύει παρτίδες PGN,  
-- αποθηκεύει κινήσεις με FEN αναπαράσταση,  
-- συνδέει SAN με μνημονικά στοιχεία (Temporal, Spatial, Characters, PAO, Verses),  
-- χρησιμοποιεί εργαλείο **FEN Builder** για ειδικές θέσεις,  
-- εξάγει δεδομένα σε διάφορες μορφές για περαιτέρω μελέτη.
+> Δημιουργήθηκε με τη βοήθεια ΤΝ (ChatGPT). Ελέγξτε πριν από διανομή/δημοσίευση.
+
+## Σκοπός
+
+Εργαλείο αποτύπωσης, οργάνωσης και εξαγωγής μνημονικών συσχετίσεων για σκάκι (και συναφείς γνωστικές εργασίες). Υποστηρίζει εισαγωγή δεδομένων, κανόνες Locus/Anchor/Associations/PAO/Verses, προβολές σε πίνακες και μαζικές εξαγωγές.
 
 ---
 
-## 📂 Δομή Project
+## Γρήγορη εκκίνηση
 
-- `Markellos Chess Mnemonic System v5.3.html` → Κύριο UI  
-- `css/styles.css` → Dark theme (κύρια εφαρμογή)  
-- `js/script.js` → Ενιαίο αρχείο με parsing PGN, Associations fix, PAO, Verses, FEN Builder integration  
-- `data/libraries_v3.2.json` → Όλες οι βιβλιοθήκες (Temporal, Spatial, Characters, PAO 0–9, PAO 00–99, Verses, Foundations)  
+1. Αποσυμπίεσε/τοποθέτησε όλα τα αρχεία στον ίδιο φάκελο.
+2. Άνοιξε **`index.html`** σε σύγχρονο browser (Chrome/Edge/Firefox).
+3. (Προαιρετικά) Τρέξε το **`start_server_v.5.3.bat`** σε Windows για τοπικό server.
 
----
-
-## ⚙️ Λειτουργίες
-
-### 1. PGN / SAN Table
-- Επικόλληση ή import PGN (κουμπιά **Import PGN / Parse PGN**).  
-- Αυτόματη ανάλυση με `chess.js`.  
-- Δημιουργία **SAN Table** με στήλες:  
-  `#`, `SAN`, `Locus`, `Anchor`, `Color`, `Piece`, `Target Square`, `FEN`.
-
-### 2. Associations / PAO / Verse Tables
-- Επιλογή **Πίνακα**:  
-  - SAN  
-  - Associations  
-  - PAO 0–9  
-  - PAO 00–99  
-  - Verse  
-  - All-Tables (όλοι μαζί)
-- Συμπλήρωση μέσω βιβλιοθηκών.
-
-### 3. Libraries
-- Επιλογή **Βιβλιοθήκης**:  
-  - Temporal (LibraryT1, LibraryT2)  
-  - Spatial (LibraryS1)  
-  - Characters (LibraryC1, LibraryC2)  
-  - PAO (LibraryP1, LibraryP2, LibraryP3)  
-  - Verses (LibraryV1)  
-  - Foundations  
-  - All-Libraries
+**Σημείωση FEN Builder:** Το κουμπί «FEN Builder» ανοίγει **τον εξωτερικό ιστότοπο** `chess-api.online` σε νέο παράθυρο. Δεν απαιτούνται τοπικά αρχεία `fen-builder.html/js`.
 
 ---
 
-### 4. Εξαγωγή Δεδομένων
-- Λειτουργία download (CSV, TXT, JSON, PDF) για SAN, PAO, Associations, Verse.
+## Δομή project
+
+```
+/ (ρίζα)
+├── index.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
+├── libraries_v3.2.json   # Βιβλιοθήκες Temporal / Spatial / Characters / PAO / Verses
+├── start_server_v.5.3.bat # (προαιρετικό) helper για local server
+└── README v.5.3.md        # το παρόν έγγραφο
+```
+
+> **Σημαντικό:** Το `index.html` αναμένει τα αρχεία στυλ/λογικής **μέσα στους φακέλους** `css/` και `js/` αντίστοιχα.
 
 ---
 
-## 🎨 UI / UX
-- **Κύριο UI**: Dark theme (μαύρο φόντο, λευκά γράμματα). Sticky header/footer μόνο (βελτίωση mobile).  
-- Responsive tables (οριζόντια κύλιση).  
-- Sticky headers/footers για σταθερή προβολή.
+## Υλοποίηση & βασικές δυνατότητες
+
+* **Διάταξη 3 στηλών**: Εισαγωγή/έλεγχος, κύριος καμβάς, βοηθητικές προβολές.
+* **Σκούρο θέμα** με σύγχρονη τυπογραφία.
+* **Sticky header** και **responsive tables** για μεγάλους πίνακες.
+* **Google Translate widget** για γρήγορη μετάφραση περιεχομένου.
+* **Επιλογή ενεργού πίνακα** (Associations, PAO, Verses κ.λπ.).
+* **Κανόνες/Ροές εργασίας**: Locus → Anchor → Association, καθώς και PAO & Verses.
+* **Libraries**: «Temporal», «Spatial», «Characters», «PAO», «Verses» φορτώνονται από `libraries_v3.2.json`.
+* **PGN helpers** (όπου εφαρμόζεται) και utilities για ανάλυση κειμένων.
+* **Μαζικές εξαγωγές**: CSV, TXT, JSON, PDF.
 
 ---
 
-## 🔗 Εξαρτήσεις
-- [chess.js](https://github.com/jhlywa/chess.js)  
-- [chessboard.js](https://chessboardjs.com/)  
-- jQuery  
-- (προαιρετικά) PapaParse, FileSaver.js για exports
+## Τρόπος χρήσης (σύνοψη)
+
+1. **Εισαγωγή/φόρτωση** βιβλιοθηκών/δεδομένων.
+2. **Επιλογή κατηγορίας** (π.χ. Associations) και συμπλήρωση πεδίων.
+3. **Εφαρμογή κανόνων** (Locus/Anchor, PAO, Verses) με βάση τις οδηγίες στην οθόνη.
+4. **Έλεγχος/αναζήτηση** μέσω φίλτρων και εργαλείων ταξινόμησης.
+5. **Εξαγωγή** σε επιθυμητή μορφή (CSV/TXT/JSON/PDF).
 
 ---
 
-## 📜 Παράδειγμα Χρήσης
-1. Εισάγετε ένα PGN.  
-2. Πατήστε **Parse PGN** → γέμισμα του SAN Table.  
-3. Επιλέξτε βιβλιοθήκη (π.χ. Temporal) και συνδέστε loci σε κινήσεις.  
-4. Εξάγετε τα δεδομένα σας για μελέτη.
+## Φόρμες δεδομένων (ενδεικτικά πεδία)
+
+* **Associations**: Locus, Anchor, Association, Note, Tags, Links.
+* **PAO**: Person, Action, Object, Index/Code, Note.
+* **Verses**: Reference, Text, Notes, Links.
+* **Temporal/Spatial/Characters**: Σύμφωνα με τα αντίστοιχα σχήματα στο UI.
+
+> Τα ακριβή ονόματα/κλειδιά των πεδίων ακολουθούν αυτά που χρησιμοποιεί το `script.js` και τα headers των πινάκων.
 
 ---
 
-## 🔑 Κανόνες v.5.3
+## Εξαγωγές
 
-### Κοινά για όλους τους πίνακες
-- Move #: `1.` για λευκά, `1...` για μαύρα
-- SAN: πλήρες (με +, #, !, ?)
-- Locus: μόνο από LibraryT1, μορφή `αριθμός — περιγραφή`, μόνο στις λευκές κινήσεις
-- Anchor: μόνο από LibraryT2, μορφή `αριθμός — περιγραφή`, εμφανίζεται ΜΟΝΟ σε κινήσεις πολλαπλάσιες του 7
-- Χρώμα: «Λευκό» ή «Μαύρο» (μονογλωσσικό)
-- Όλοι οι πίνακες με σταθερό ύψος + scroll
+* **CSV**: για υπολογιστικά φύλλα.
+* **TXT**: για γρήγορο διαμοιρασμό/σημειώσεις.
+* **JSON**: για ανταλλαγή με άλλα εργαλεία ή backup.
+* **PDF**: συμπαγής αναφορά.
 
-### SAN Table
-- Piece: συνδυασμός γράμμα + όνομα (π.χ. `N — Ίππος`)
-- Target Square: μόνο τετράγωνο (π.χ. `e4`)
-- FEN: ολόκληρο FEN string
+Κάθε εξαγωγή βασίζεται στα **ορατά/φιλτραρισμένα** δεδομένα του ενεργού πίνακα.
 
-### Associations Table
-- Piece Association: μόνο από LibraryC2
-- Target Square Association: μόνο από LibraryS1 (Spatial)
+---
 
-### PAO 0–9 Table
-- PAO Code: 3ψήφιος P–F–R (π.χ. `241 (Nf3)`)
-- PAO: 1 στήλη, σε 3 γραμμές (Person, Action, Object)
-- Πηγή: μόνο LibraryP1
-- Υπολογισμός: πάντα από το to τετράγωνο
-- Γλώσσα: ακολουθεί global dropdown
+## Ενσωματωμένα βοηθήματα
 
-### PAO 00–99 Table
-- PAO Code: 6ψήφιος από πλήρη κίνηση (ζεύγος Λ/Μ), π.χ. `Nf3 Nd5 → 263245`
-- PAO: 1 στήλη, σε 3 γραμμές (Person, Action, Object)
-- Πηγή: LibraryP2 ή LibraryP3 (dropdown επιλογής)
-- Γλώσσα: ακολουθεί global dropdown
+* **Google Translate** εντός σελίδας.
+* **FEN Builder** (εξωτερικός ιστότοπος) για παραγωγή FEN όταν χρειάζεται.
 
-### Verse Table
-- Verse: 1 στήλη, σε 4 γραμμές (Piece, File, Rank, Closing)
-- Πηγή: μόνο LibraryV1 (Verses)
-- Γλώσσα: ακολουθεί global dropdown
+---
 
+## Γνωστοί περιορισμοί
 
-## 🖥️ UI & Buttons (v.5.3)
+* Τα πολύ μεγάλα σύνολα δεδομένων μπορεί να επιβραδύνουν τον browser.
+* Η δημιουργία PDF βασίζεται στη διάταξη του πίνακα· έλεγχος πριν από εκτύπωση.
+* Απαιτείται σύγχρονος browser με ενεργοποιημένη JavaScript.
 
-### Global Controls
-- **Import PGN**: Επιλογή αρχείου PGN από τοπικό δίσκο.
-- **Parse PGN**: Ανάλυση του PGN και γέμισμα όλων των πινάκων.
-- **Clear**: Καθαρισμός PGN input και πινάκων.
-- **Download**: Εξαγωγή όλων των πινάκων σε διάφορες μορφές (SAN, Associations, PAO 0–9, PAO 00–99, Verse).
+---
 
-### Table Controls
-- Κάθε πίνακας έχει δικό του κουμπί **Download CSV** για εξαγωγή μεμονωμένου πίνακα.
-- **SAN Table**: Dropdowns για Locus (LibraryT1) και Anchor (LibraryT2).
-- **Associations Table**: Dropdowns για Locus (T1), Anchor (T2), Characters (C2 fixed), Targets (S1 fixed).
-- **PAO 0–9 Table**: Dropdowns για Locus (T1), Anchor (T2), Codes (P1 fixed).
-- **PAO 00–99 Table**: Dropdowns για Locus (T1), Anchor (T2), Collection (P2/P3 επιλογή).
-- **Verse Table**: Dropdowns για Locus (T1), Anchor (T2), Verses (V1 fixed).
+## Συμβουλές
 
-### Footer
-- Εμφανίζει `© Markellos Markides, 2025 — Markellos Chess Mnemonic System v5.3`.
+* Κράτα τα **Tags** συνεπή για καλύτερη αναζήτηση.
+* Χρησιμοποίησε **σύντομα, περιγραφικά** πεδία Association/PAO/Verse για καθαρή εξαγωγή.
+* Ονόμασε εκδόσεις/backup των JSON για εύκολη επαναφορά.
 
+---
 
-## 🔄 Νέα στοιχεία στην v.5.3
+## Troubleshooting (Συνηθισμένα προβλήματα)
 
-1. **Anchor Rule**
-   - Εμφανίζεται μόνο σε λευκές κινήσεις που είναι πολλαπλάσιο του 7.
+* **Δεν φορτώνει σωστά η σελίδα:** Βεβαιώσου ότι τα `css/styles.css` και `js/script.js` βρίσκονται στους σωστούς φακέλους.
+* **Δεν εμφανίζεται το FEN Builder:** Το κουμπί ανοίγει εξωτερικό URL· αν δεν φορτώνει, έλεγξε σύνδεση στο internet.
+* **PDF εξαγωγή παραμορφωμένη:** Μείωσε τον αριθμό γραμμών που προβάλλονται ή μεγέθυνε το παράθυρο πριν την εξαγωγή.
+* **Καθυστερήσεις/κολλήματα:** Διάσπασε τα δεδομένα σε πολλαπλά JSON ή χρησιμοποίησε browser με επαρκή μνήμη.
 
-2. **Εμφάνιση Πινάκων**
-   - Όλοι οι πίνακες έχουν σταθερό ύψος + scroll.
-   - Εμφανίζεται ένας πίνακας κάθε φορά, με επιλογή από dropdown ή κουμπιά.
+---
 
-3. **Verse Table**
-   - Η στήλη Verse εμφανίζεται σε 4 κάθετες γραμμές (Piece, File, Rank, Closing).
-   - Προέρχεται αποκλειστικά από LibraryV1.
+## Mapping πεδίων σε εξαγωγές
 
-4. **Libraries UI**
-   - Προσθήκη μπάρας με κουμπιά ανά κατηγορία (Temporal, Characters, Spatial, PAO, Verses).
-   - Κάθε κουμπί έχει dropdown με τις υπο-βιβλιοθήκες (T1, T2, C2, S1, P1, P2, P3, V1).
-   - Επιλογή υπο-βιβλιοθήκης → ανοίγει pop‑up/νέο tab με JSON preview.
+* **Associations → CSV/JSON**: στήλες `locus, anchor, association, note, tags, links`.
+* **PAO → CSV/JSON**: στήλες `person, action, object, index, note`.
+* **Verses → CSV/JSON**: στήλες `reference, text, notes, links`.
+* **Temporal/Spatial/Characters**: ανάλογα με τις βιβλιοθήκες (`time, location, character, attributes`).
 
-5. **Δυναμική Ανίχνευση Βιβλιοθηκών**
-   - Το script ανιχνεύει αυτόματα όλες τις υπο-βιβλιοθήκες από το JSON.
-   - Νέες βιβλιοθήκες (π.χ. T3, C3, P4) εμφανίζονται αυτόματα στο UI.
+> Τα headers στα αρχεία εξαγωγής ταυτίζονται με τα ονόματα των πινάκων.
 
-6. **PAO Διαχωρισμός**
-   - PAO 0–9 Table → αποκλειστικά LibraryP1.
-   - PAO 00–99 Table → αποκλειστικά LibraryP2 ή LibraryP3 (επιλογή από dropdown).
-   - Σαφής διάκριση: διαφορετικές βιβλιοθήκες για Persons / Actions / Objects ανά πίνακα.
+---
 
-## 📌 Έκδοση
-**Markellos Chess Mnemonic System v.5.3**  
-© Markellos Markides, 2025
+## Αλλαγές στην 5.3 (σύνοψη)
+
+* Σταθεροποίηση «Associations fix» στη λογική σύνδεσης Locus/Anchor.
+* Βελτιώσεις UI σε πίνακες και χειρισμό βιβλιοθηκών.
+* Ενοποίηση εξαγωγών (CSV/TXT/JSON/PDF) από το ίδιο control set.
+* Διόρθωση τεκμηρίωσης: paths `css/styles.css`, `js/script.js`,
+  κατάργηση αναφοράς σε τοπικά *fen-builder* αρχεία, χρήση **sticky header**.
+
+---
+
+## Άδεια & απόδοση
+
+Προσωπικό project. Χρήση «ως έχει». Για αναφορές/παράγωγα, παρακαλώ απόδωσε «Markellos Markides».
