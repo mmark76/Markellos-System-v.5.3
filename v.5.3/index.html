@@ -84,18 +84,7 @@
         <button id="openFenBuilderBtn">Άνοιγμα FEN Builder</button>
       </div>
 
-      <div class="dropdown-group">
-        <label for="tableSelect">Πίνακας:</label>
-        <select id="tableSelect">
-          <option value="sanSection">SAN Table</option>
-          <option value="assocSection">Associations</option>
-          <option value="paoSection">PAO 0–9</option>
-          <option value="pao99Section">PAO 00–99</option>
-          <option value="verseSection">Verse</option>
-        </select>
-      </div>
-	  
-	  	<!-- 🔹 Google Translate -->
+	<!-- 🔹 Google Translate -->
       <div id="google_translate_element"></div>
 	  
     </section>
@@ -103,38 +92,57 @@
     <!-- Δεξιά: Βιβλιοθήκες με κουμπιά -->
     <section class="right-panel">
       <h4>Βιβλιοθήκες</h4>
-      <div class="libraries-group">
-        <div class="library">
-          <span>Temporal:</span>
+      
+	<div class="libraries-group">
+      <div class="library">
+        
+		<span>Temporal:</span>
           <button class="lib-btn" data-lib="LibraryT1">LibraryT1</button>
           <button class="lib-btn" data-lib="LibraryT2">LibraryT2</button>
         </div>
-        <div class="library">
-          <span>Spatial:</span>
-          <button class="lib-btn" data-lib="LibraryS1">LibraryS1</button>
-        </div>
+
         <div class="library">
           <span>Characters:</span>
           <button class="lib-btn" data-lib="LibraryC1">LibraryC1</button>
           <button class="lib-btn" data-lib="LibraryC2">LibraryC2</button>
         </div>
-        <div class="library">
-          <span>PAO 0–9:</span>
-          <button class="lib-btn" data-lib="LibraryP1">LibraryP1</button>
-        </div>
+
         <div class="library">
           <span>PAO 00–99:</span>
           <button class="lib-btn" data-lib="LibraryP2">LibraryP2</button>
           <button class="lib-btn" data-lib="LibraryP3">LibraryP3</button>
         </div>
-        <div class="library">
+        
+		<div class="library">
+          <span>Spatial:</span>
+          <button class="lib-btn" data-lib="LibraryS1">LibraryS1</button>
+        </div>
+		
+		<div class="library">
+          <span>PAO 0–9:</span>
+          <button class="lib-btn" data-lib="LibraryP1">LibraryP1</button>
+        </div>
+		
+		<div class="library">
           <span>Verses:</span>
           <button class="lib-btn" data-lib="LibraryV1">LibraryV1</button>
         </div>
-      </div>
+			  
+    </div>
     </section>
   </div>
-
+	    
+	<div class="dropdown-group">
+        <span><label for="tableSelect">Πίνακας:</label></span>
+        <select id="tableSelect">
+          <option value="sanSection">SAN Table</option>
+          <option value="assocSection">Associations</option>
+          <option value="paoSection">PAO 0–9</option>
+          <option value="pao99Section">PAO 00–99</option>
+          <option value="verseSection">Verse</option>
+        </select>
+    </div>
+		
   <!-- 🔹 SAN Table -->
   <section id="sanSection">
     <h2>SAN Table</h2>
