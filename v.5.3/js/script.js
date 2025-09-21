@@ -63,8 +63,9 @@ function v1Verse(pieceLetter, file, rank, side, moveNo){
 /* ---------- Locus / Anchor ---------- */
 function locusForMovePair(n){ const label = t1Label(n); return label?`${n} — ${label}`:''; }
 function anchorForMovePair(n){
-  const label = t2Label(n);
-  const fallback = `Αγκύρα ${Math.ceil(n/7)}`;
+  const idx = Math.floor((n - 1) / 7) + 1;   // 7→1, 14→2, 21→3...
+  const label = t2Label(idx);
+  const fallback = `Αγκύρα ${idx}`;
   return `${n} — ${label || fallback}`;
 }
 
@@ -453,13 +454,36 @@ function exportTable(sectionId, format){
     blob = new Blob([txt],{type:'text/plain;charset=utf-8;'});
   }else if(format==='json'){
     blob = new Blob([JSON.stringify(rows)],{type:'application/json;charset=utf-8;'});
-  }else if(format==='pdf'){
-    let txt = rows.map(r=>r.join(' | ')).join('\n');
-    blob = new Blob([txt],{type:'application/pdf'});
-  }else{
+  
+}else if(format === 'pdf'){
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ putOnlyUsedFonts: true });
+
+  // δηλώνουμε τη γραμματοσειρά ΠΡΩΤΑ
+  doc.addFileToVFS("Roboto-Regular.ttf", RobotoRegular);
+  doc.addFont("Roboto-Regular.ttf", "Roboto", "normal");
+  doc.setFont("Roboto");
+
+  // επικεφαλίδες & σειρές
+  const headers = [...table.querySelectorAll('thead th')].map(th => th.innerText);
+  const data = rows.slice(1);
+
+  // κείμενο τίτλου (τώρα αποδίδεται σωστά)
+  doc.text("Chess Mnemonic System Export", 14, 15);
+
+  // πίνακας με Roboto
+  doc.autoTable({
+    head: [headers],
+    body: data,
+    startY: 25,
+    styles: { font: 'Roboto', fontStyle: 'normal', fontSize: 8 }
+  });
+
+  doc.save(`${sectionId}.pdf`);
+  return;
+}else{
     return;
   }
-
   saveAs(blob, `${sectionId}.${format}`);
 }
 
