@@ -235,7 +235,7 @@ function twoDigit(str){ return String(str).padStart(2,'0'); }
 function fillPaoTable_00_99(moves){
   const body = document.getElementById('pao99Body'); if(!body) return;
   const collSel = document.getElementById('pao99CollectionSelect');
-  const collection = (collSel && collSel.value) ? collSel.value : 'LibraryP2';
+  const collection = (collSel && collSel.value) ? collSel.value : 'LibraryDefaultP1';
   body.innerHTML='';
   for(let i=0;i<moves.length;i+=2){
     const wm=moves[i], bm=moves[i+1]; if(!wm||!bm) break;
