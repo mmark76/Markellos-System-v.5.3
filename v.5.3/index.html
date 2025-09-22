@@ -113,7 +113,8 @@
 
         <div class="library">
           <span>PAO 00–99:</span>
-          <button class="lib-btn" data-lib="LibraryP2">LibraryP2</button>
+          <button class="lib-btn" data-lib="LibraryDefaultP1">LibraryDefaultP1</button>
+          <button class="lib-btn" data-lib="LibraryP2">LibraryP2</button>		  
           <button class="lib-btn" data-lib="LibraryP3">LibraryP3</button>
         </div>
         
@@ -221,13 +222,15 @@
     <h2>PAO 00–99 Table</h2>
     <!-- ✅ Dropdown επιλογής συλλογής PAO 00–99 -->
 
-<div class="dropdown-group">
-  <label for="pao99CollectionSelect">LIBRARIES PAO 00–99:</label>
-  <select id="pao99CollectionSelect">
-    <option value="LibraryP2">LibraryP2</option>
-    <option value="LibraryP3">LibraryP3</option>
-  </select>
-</div>
+    <div class="dropdown-group">
+      <label for="pao99CollectionSelect">LIBRARIES PAO 00–99:</label>
+    </div>
+
+    <select id="pao99CollectionSelect">
+      <option value="LibraryDefaultP1" selected>LibraryDefaultP1</option>
+      <option value="LibraryP2">LibraryP2</option>
+      <option value="LibraryP3">LibraryP3</option>
+    </select>
 
 	<div class="table-wrapper">
       <table>
