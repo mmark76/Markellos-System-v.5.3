@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} φτάνει στην περιοχή ${targetAssocW}, και τότε ο ${colorB} ${pieceAssocB} με την κίνηση ${sanB} φτάνει στην περιοχή ${targetAssocB}.`,
-      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} ξεκινά με την κίνηση ${sanW} και καταλαμβάνει το ${targetAssocW}, ενώ ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB}, διεκδικώντας το ${targetAssocB}.`,
-      `Στο ${locus}, ο ${colorW} ${pieceAssocW} προελαύνει με ${sanW} προς το ${targetAssocW}, μα ο ${colorB} ${pieceAssocB} υψώνεται με ${sanB} και στήνει το σημάδι του στο ${targetAssocB}.`,
-      `Στο ${locus}, ο ${colorW} ${pieceAssocW} κινείται με ${sanW} προς το ${targetAssocW}, αλλά ο ${colorB} ${pieceAssocB} απαντά με ${sanB}, φτάνοντας στο ${targetAssocB} και υψώνοντας την αντίστασή του.`
+      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} φτάνει στην περιοχή ${targetAssocW}, και τότε ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB} και αντιστέκεται μπαίνοντας στην περιοχή ${targetAssocB}.`,
+      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} καταλαμβάνει την περιοχή ${targetAssocW}, ενώ ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB}, διεκδικώντας την περιοχή ${targetAssocB}.`,
+      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} προελαύνει προς την περιοχή ${targetAssocW}, μα ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB} και αφήνοντας το σημάδι του στην περιοχή ${targetAssocB}.`,
+      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} κινείται προς την περιοχή ${targetAssocW}, αλλά ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB}, φτάνοντας στην περιοχή ${targetAssocB} και υψώνοντας την αντίστασή του.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
@@ -179,3 +179,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
