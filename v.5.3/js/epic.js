@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} φτάνει στην περιοχή ${targetAssocW}, και τότε ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB} και αντιστέκεται μπαίνοντας στην περιοχή ${targetAssocB}.`,
-      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} καταλαμβάνει την περιοχή ${targetAssocW}, ενώ ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB}, διεκδικώντας την περιοχή ${targetAssocB}.`,
-      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} προελαύνει προς την περιοχή ${targetAssocW}, μα ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB} και αφήνοντας το σημάδι του στην περιοχή ${targetAssocB}.`,
-      `Στο σημείο ${locus}, ο ${colorW} ${pieceAssocW} με την κίνηση ${sanW} κινείται προς την περιοχή ${targetAssocW}, αλλά ο ${colorB} ${pieceAssocB} απαντά με την κίνηση ${sanB}, φτάνοντας στην περιοχή ${targetAssocB} και υψώνοντας την αντίστασή του.`
+      `Στο σημείο ${locus}, ο λευκός ${pieceAssocW} με την κίνηση ${sanW} φτάνει στην περιοχή ${targetAssocW}, και τότε ο μαύρος ${pieceAssocB} απαντά με την κίνηση ${sanB} και αντιστέκεται μπαίνοντας στην περιοχή ${targetAssocB}.`,
+      `Στο σημείο ${locus}, ο λευκός ${pieceAssocW} με την κίνηση ${sanW} καταλαμβάνει την περιοχή ${targetAssocW}, ενώ ο μαύρος ${pieceAssocB} απαντά με την κίνηση ${sanB}, διεκδικώντας την περιοχή ${targetAssocB}.`,
+      `Στο σημείο ${locus}, ο λευκός ${pieceAssocW} με την κίνηση ${sanW} προελαύνει προς την περιοχή ${targetAssocW}, αλλά ο μαύρος ${pieceAssocB} απαντά με την κίνηση ${sanB} και αφήνοντας το σημάδι του στην περιοχή ${targetAssocB}.`,
+      `Στο σημείο ${locus}, ο λευκός ${pieceAssocW} με την κίνηση ${sanW} κινείται προς την περιοχή ${targetAssocW}, αλλά ο μαύρος ${pieceAssocB} απαντά με την κίνηση ${sanB}, φτάνοντας στην περιοχή ${targetAssocB} και υψώνοντας την αντίστασή του.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
@@ -179,4 +179,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
