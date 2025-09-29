@@ -343,7 +343,6 @@ function buildLibrariesBar(){
 async function loadLibraries(){
   const res = await fetch('libraries_v3.2.json');
   libs = await res.json();
-  console.log("PAO 00-99 collections:", Object.keys(libs["PAO 00-99"] || {}));
   console.log("LIBS KEYS:", Object.keys(libs));
   console.log("Temporal:", libs.Temporal);
   console.log("Characters:", libs.Characters);
