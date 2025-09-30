@@ -456,7 +456,7 @@
     "en": "in the field with the wild, dense grass"
   },
   "e6": {
-    "el": "στο σιδερένιο πέρασμα",
+    "el": "στο μαύρο σιδερένιο πέρασμα",
     "en": "on the iron passage"
   },
   "e7": {
@@ -485,11 +485,11 @@
     "en": "in the gorge with the wild river"
   },
   "f5": {
-    "el": "στο απότομο ύψωμα",
+    "el": "στο απότομο τρομακτικό ύψωμα",
     "en": "on the steep hill"
   },
   "f6": {
-    "el": "στον κρανίου τόπο",
+    "el": "στην περιοχή των πολλών κρανίων",
     "en": "in the Place of Skulls"
   },
   "f7": {
@@ -3650,6 +3650,7 @@
         }
 }
 }
+
 
 
 
