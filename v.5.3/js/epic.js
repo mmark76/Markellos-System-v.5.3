@@ -97,13 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
       stories = rows.map(row => {
         const [num, san, locus, anchor, color, piece, target] =
           [...row.children].map(td => td.innerText.trim());
-        return `Στη ${locus || 'σκηνή'}, εκεί όπου δεσπόζει το ${target}, ο ${color} ${piece} εκτελεί την κίνηση ${san}. ${anchor ? 'Εμφανίζεται η ' + anchor + '.' : ''}`;
+        return `${locus || 'σκηνή'}, εκεί όπου δεσπόζει το ${target}, ο ${color} ${piece} εκτελεί την κίνηση ${san}. ${anchor ? 'Εμφανίζεται η ' + anchor + '.' : ''}`;
       });
     } else if (choice === "paoSection") {
       stories = rows.map(row => {
         const [num, san, locus, anchor, color, code, pao] =
           [...row.children].map(td => td.innerText.trim());
-        return `Στο ${locus || 'πεδίο'}, ο ${color} προχωρά με την κίνηση ${san}. Ο κωδικός ${code} ξεκλειδώνει εικόνα: ${pao}. ${anchor ? 'Φανερώνεται η ' + anchor + '.' : ''}`;
+        return `${locus || 'πεδίο'}, ο ${color} προχωρά με την κίνηση ${san}. Ο κωδικός ${code} ξεκλειδώνει εικόνα: ${pao}. ${anchor ? 'Φανερώνεται η ' + anchor + '.' : ''}`;
       });
     } else if (choice === "pao99Section") {
       stories = rows.map(row => {
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
