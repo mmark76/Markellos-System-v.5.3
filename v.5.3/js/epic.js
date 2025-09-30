@@ -41,18 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus}, ο λευκός στρατός και ${pieceAssocW} με την κίνηση ${sanW} φτάνει στην περιοχή ${targetAssocW}, και τότε ο μαύρος στρατός και ${pieceAssocB} απαντά με την κίνηση ${sanB} και αντιστέκεται μπαίνοντας στην περιοχή ${targetAssocB}.`,
-      `${locus}, ο λευκός στρατός και ${pieceAssocW} με την κίνηση ${sanW} καταλαμβάνει την περιοχή ${targetAssocW}, ενώ ο μαύρος στρατός και ${pieceAssocB} απαντά με την κίνηση ${sanB}, διεκδικώντας την περιοχή ${targetAssocB}.`,
-      `${locus}, ο λευκός στρατός και ${pieceAssocW} με την κίνηση ${sanW} προελαύνει προς την περιοχή ${targetAssocW}, αλλά ο μαύρος στρατός και ${pieceAssocB} απαντά με την κίνηση ${sanB} και αφήνοντας το σημάδι του στην περιοχή ${targetAssocB}.`,
-      `${locus}, ο λευκός στρατός και ${pieceAssocW} με την κίνηση ${sanW} κινείται προς την περιοχή ${targetAssocW}, αλλά ο μαύρος στρατός και ${pieceAssocB} απαντά με την κίνηση ${sanB}, φτάνοντας στην περιοχή ${targetAssocB} και υψώνοντας την αντίστασή του.`
+      `${locus}, ο λευκός στρατός και ${pieceAssocW} με την κίνηση ${sanW} φτάνει προ ${targetAssocW}, και τότε ο μαύρος στρατός και ${pieceAssocB} απαντά με την κίνηση ${sanB} και αντιστέκεται μπαίνοντας προ ${targetAssocB}.`,
+      `${locus}, ο λευκός στρατός και ${pieceAssocW} με την κίνηση ${sanW} καταλαμβάνει την περιοχή ${targetAssocW}, ενώ ο μαύρος στρατός και ${pieceAssocB} απαντά με την κίνηση ${sanB}, διεκδικώντας προ ${targetAssocB}.`,
+      `${locus}, ο λευκός στρατός και ${pieceAssocW} με την κίνηση ${sanW} προελαύνει προ ${targetAssocW}, αλλά ο μαύρος στρατός και ${pieceAssocB} απαντά με την κίνηση ${sanB} και αφήνοντας το σημάδι του προ ${targetAssocB}.`,
+      `${locus}, ο λευκός στρατός και ${pieceAssocW} με την κίνηση ${sanW} κινείται προ ${targetAssocW}, αλλά ο μαύρος στρατός και ${pieceAssocB} απαντά με την κίνηση ${sanB}, φτάνοντας προ ${targetAssocB} και υψώνοντας την αντίστασή του.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
     if (anchor) {
       const verbs = [
-        "ξεπροβάλλει",
-        "εμφανίζεται",
-        "φανερώνεται",
+        "Και τότε ξεπροβάλλει",
+        "Και τότε εμφανίζεται",
+        "Και τότε φανερώνεται",
       ];
       const verb = verbs[Math.floor(Math.random() * verbs.length)];
       sentence += ` ${verb} ο ${anchor}.`;
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
