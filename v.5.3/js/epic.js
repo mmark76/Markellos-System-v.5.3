@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus}, ο λευκός στρατός με ${pieceAssocW} με την κίνηση ${sanW} φτάνει προ ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} απαντά με την κίνηση ${sanB} και αντιστέκεται μπαίνοντας προ ${targetAssocB}.`,
-      `${locus}, ο λευκός στρατός με ${pieceAssocW} με την κίνηση ${sanW} καταλαμβάνει την περιοχή ${targetAssocW}, ενώ ο μαύρος στρατός με ${pieceAssocB} απαντά με την κίνηση ${sanB}, διεκδικώντας προ ${targetAssocB}.`,
-      `${locus}, ο λευκός στρατός με ${pieceAssocW} με την κίνηση ${sanW} προελαύνει προ ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} απαντά με την κίνηση ${sanB} και αφήνοντας το σημάδι του προ ${targetAssocB}.`,
-      `${locus}, ο λευκός στρατός με ${pieceAssocW} με την κίνηση ${sanW} κινείται προ ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} απαντά με την κίνηση ${sanB}, φτάνοντας προ ${targetAssocB} και υψώνοντας την αντίστασή του.`
+      `${locus}, ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} φτάνει προ ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} και αντιστέκεται μπαίνοντας προ ${targetAssocB}.`,
+      `${locus}, ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} καταλαμβάνει την περιοχή ${targetAssocW}, ενώ ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, διεκδικώντας προ ${targetAssocB}.`,
+      `${locus}, ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} προελαύνει προ ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντάποκρίνεται, με την κίνηση ${sanB} και αφήνοντας το σημάδι του προ ${targetAssocB}.`,
+      `${locus}, ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} κινείται προ ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, φτάνοντας προ ${targetAssocB} και υψώνοντας την αντίστασή του.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
