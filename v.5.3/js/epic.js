@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Και τότε φανερώνεται",
       ];
       const verb = verbs[Math.floor(Math.random() * verbs.length)];
-      sentence += ` ${verb} ο ${anchor}.`;
+      sentence += ` ${verb} ${anchor}.`;
     }
 
     return sentence;
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
