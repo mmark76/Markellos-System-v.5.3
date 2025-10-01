@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   epicSection.innerHTML = `
     <h2>Epic Narrative</h2>
     <div class="table-toolbar">
-      <button id="openEpicBtn">Open Epic</button>
+      <button id="openEpicBtn">Show Epic history</button>
     </div>
     <div class="table-wrapper">
       <textarea id="epicText" rows="28" style="width:100%;font-size:15px;line-height:1.6;"></textarea>
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
