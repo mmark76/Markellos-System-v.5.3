@@ -65,6 +65,28 @@
   background: rgba(0,0,0,0.7);
 }
 
+/* === Customization για Game Info και Conclusion === */
+
+/* Στοιχεία παρτίδας (πάνω) */
+#gameInfo {
+  margin-bottom: 8px;   /* πιο μαζεμένο */
+  padding: 6px 8px;
+  background: #222;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Τελικό μήνυμα (κάτω) */
+#gameConclusion {
+  margin-top: 8px;      /* πιο κοντά στο κείμενο */
+  padding: 6px 8px;
+  background: #181818;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+}
+
 /* Περιεχόμενο modal (card) */
 .epic-modal-content {
   background: #1a1a1a;
