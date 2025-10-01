@@ -51,7 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
 if (anchor) {
   const verbs = ["Και τότε ξεπροβάλλει", "Και τότε εμφανίζεται", "Και τότε φανερώνεται"];
   const verb = verbs[Math.floor(Math.random() * verbs.length)];
-  sentence += `\n${verb} ${anchor}.`;
+  const cleanAnchor = anchor.replace(/^\s*\d+\s*—\s*/, "");
+
+  sentence += `\n${verb} ${cleanAnchor}.`;
 }
 
     return sentence;
@@ -176,6 +178,7 @@ if (anchor) {
     }
   });
 });
+
 
 
 
