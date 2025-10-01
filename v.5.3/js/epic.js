@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} φτάνει προ ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} και αντιστέκεται μπαίνοντας ${targetAssocB}.`,
       `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} μπαίνει ${targetAssocW}, ενώ ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, και διεκδικεί εισέρχοντας ${targetAssocB}.`,
       `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} προελαύνει προ ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντάποκρίνεται, με την κίνηση ${sanB} και αφήνει τα ίχνη του ${targetAssocB}.`,
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} κινείται προ ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, αντιδρά και μπαίνει ${targetAssocB}, .`
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW} κινείται προ ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, και μπαίνει ${targetAssocB}, .`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
@@ -173,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
