@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <br>
       <select id="epicDownloadSelect" class="download-select">
         <option value="">Download as…</option>
-        <option value="pdf">PDF</option>
         <option value="txt">TXT</option>
       </select>
     </div>
@@ -173,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
