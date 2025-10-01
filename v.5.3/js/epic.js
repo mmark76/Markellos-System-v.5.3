@@ -48,11 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
-    if (anchor) {
-      const verbs = ["Και τότε ξεπροβάλλει", "Και τότε εμφανίζεται", "Και τότε φανερώνεται"];
-      const verb = verbs[Math.floor(Math.random() * verbs.length)];
-      sentence += ` ${verb} ${anchor}.`;
-    }
+if (anchor) {
+  const verbs = ["Και τότε ξεπροβάλλει", "Και τότε εμφανίζεται", "Και τότε φανερώνεται"];
+  const verb = verbs[Math.floor(Math.random() * verbs.length)];
+  sentence += `\n${verb} ${anchor}.`;
+}
 
     return sentence;
   }
@@ -176,5 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
