@@ -41,20 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} και ${targetAssocB}.`,
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, ενώ ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, και ${targetAssocB}.`,
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντάποκρίνεται, με την κίνηση ${sanB} και ${targetAssocB}.`,
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, και ${targetAssocB}.`
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, φτάνει ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} και μπαίνει ${targetAssocB}.`,
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, μπαίνει ${targetAssocW}, ενώ ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, και εισέρχεται ${targetAssocB}.`,
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, εισέρχεται ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντάποκρίνεται, με την κίνηση ${sanB} και αφήνει τα ίχνη του ${targetAssocB}.`,
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, κινείται ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, και μπαίνει ${targetAssocB}.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
-if (anchor) {
-  const verbs = ["...", "...", "..."];
-  const verb = verbs[Math.floor(Math.random() * verbs.length)];
-  const cleanAnchor = anchor.replace(/^\s*\d+\s*—\s*/, "");
-
-  sentence += `\n${verb} ${cleanAnchor}.`;
-}
+    if (anchor) {
+      const verbs = ["Και τότε ξεπροβάλλει", "Και τότε εμφανίζεται", "Και τότε φανερώνεται"];
+      const verb = verbs[Math.floor(Math.random() * verbs.length)];
+      sentence += ` ${verb} ${anchor}.`;
+    }
 
     return sentence;
   }
@@ -111,17 +109,17 @@ if (anchor) {
       }
     }
 
-// ➤ Τελικό μήνυμα
-let finalMsg = "";
-if (headers.Result === "1-0") {
-  finalMsg = "Με την τελευταία αυτή κίνηση, ο Λευκός κατακτά τη νίκη και γράφει ιστορία.";
-} else if (headers.Result === "0-1") {
-  finalMsg = "Με την τελευταία αυτή κίνηση, ο Μαύρος θριαμβεύει σε αυτή τη μάχη.";
-} else if (headers.Result === "1/2-1/2") {
-  finalMsg = "Ύστερα από σκληρή μάχη, το πεδίο μάχης σιωπά· η μάχη τελείωσε και η παρτίδα έληξε ισόπαλη.";
-}
-document.getElementById("gameConclusion").innerText = finalMsg;
-
+    // ➤ Τελικό μήνυμα
+    let finalMsg = "";
+    if (headers.Result === "1-0") {
+      finalMsg = "Και με την τελευταία κίνηση, ο Λευκός κερδίζει.";
+    } else if (headers.Result === "0-1") {
+      finalMsg = "Και με την τελευταία κίνηση, ο Μαύρος κερδίζει.";
+    } else if (headers.Result === "1/2-1/2") {
+      finalMsg = "Η παρτίδα έληξε ισόπαλη.";
+    }
+    document.getElementById("gameConclusion").innerText = finalMsg;
+  }
 
   // ➤ Κοινή συνάρτηση για άνοιγμα modal
   function openEpicModal() {
@@ -178,10 +176,3 @@ document.getElementById("gameConclusion").innerText = finalMsg;
     }
   });
 });
-
-
-
-
-
-
-
