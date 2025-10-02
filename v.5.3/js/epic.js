@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
 if (anchor) {
-  const verbs = ["-", "-", "-"];
+  const verbs = ["...", "...", "..."];
   const verb = verbs[Math.floor(Math.random() * verbs.length)];
   const cleanAnchor = anchor.replace(/^\s*\d+\s*—\s*/, "");
 
@@ -178,6 +178,7 @@ document.getElementById("gameConclusion").innerText = finalMsg;
     }
   });
 });
+
 
 
 
