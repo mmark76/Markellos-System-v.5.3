@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, ...να ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} ... και τώρα να ${targetAssocB}.`,
-      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, ...να ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, ... και τώρα να ${targetAssocB}.`,
-      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, ...να ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB} ... και τώρα να ${targetAssocB}.`,
-      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, ...να ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, ... και τώρα να ${targetAssocB}.`
+      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, ...να ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} ... και να ${targetAssocB}.`,
+      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, ...να ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, ... και να ${targetAssocB}.`,
+      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, ...να ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB} ... και να ${targetAssocB}.`,
+      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, ...να ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, ... και να ${targetAssocB}.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
