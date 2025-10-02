@@ -41,15 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, φτάνει ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} και μπαίνει ${targetAssocB}.`,
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, μπαίνει ${targetAssocW}, ενώ ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, και εισέρχεται ${targetAssocB}.`,
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, εισέρχεται ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντάποκρίνεται, με την κίνηση ${sanB} και αφήνει τα ίχνη του ${targetAssocB}.`,
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, κινείται ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, και μπαίνει ${targetAssocB}.`
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} και ${targetAssocB}.`,
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, ενώ ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, και ${targetAssocB}.`,
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντάποκρίνεται, με την κίνηση ${sanB} και ${targetAssocB}.`,
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, και ${targetAssocB}.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
 if (anchor) {
-  const verbs = ["Και τότε ξεπροβάλλει", "Και τότε εμφανίζεται", "Και τότε φανερώνεται"];
+  const verbs = ["-", "-", "-"];
   const verb = verbs[Math.floor(Math.random() * verbs.length)];
   const cleanAnchor = anchor.replace(/^\s*\d+\s*—\s*/, "");
 
@@ -178,6 +178,7 @@ if (anchor) {
     }
   });
 });
+
 
 
 
