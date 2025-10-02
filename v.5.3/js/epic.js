@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, και τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} και ${targetAssocB}.`,
+      `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, τότε ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB} και ${targetAssocB}.`,
       `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, ενώ ο μαύρος στρατός με ${pieceAssocB} απαντά, με την κίνηση ${sanB}, και ${targetAssocB}.`,
       `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντάποκρίνεται, με την κίνηση ${sanB} και ${targetAssocB}.`,
       `${locus} όπου ο λευκός στρατός με ${pieceAssocW}, και την κίνηση ${sanW}, ${targetAssocW}, αλλά ο μαύρος στρατός με ${pieceAssocB} αντιδρά, με την κίνηση ${sanB}, και ${targetAssocB}.`
@@ -111,17 +111,17 @@ if (anchor) {
       }
     }
 
-    // ➤ Τελικό μήνυμα
-    let finalMsg = "";
-    if (headers.Result === "1-0") {
-      finalMsg = "Και με την τελευταία κίνηση, ο Λευκός κερδίζει.";
-    } else if (headers.Result === "0-1") {
-      finalMsg = "Και με την τελευταία κίνηση, ο Μαύρος κερδίζει.";
-    } else if (headers.Result === "1/2-1/2") {
-      finalMsg = "Η παρτίδα έληξε ισόπαλη.";
-    }
-    document.getElementById("gameConclusion").innerText = finalMsg;
-  }
+// ➤ Τελικό μήνυμα
+let finalMsg = "";
+if (headers.Result === "1-0") {
+  finalMsg = "Με την τελευταία αυτή κίνηση, ο Λευκός κατακτά τη νίκη και γράφει ιστορία.";
+} else if (headers.Result === "0-1") {
+  finalMsg = "Με την τελευταία αυτή κίνηση, ο Μαύρος θριαμβεύει σε αυτή τη μάχη.";
+} else if (headers.Result === "1/2-1/2") {
+  finalMsg = "Ύστερα από σκληρή μάχη, το πεδίο μάχης σιωπά· η μάχη τελείωσε και η παρτίδα έληξε ισόπαλη.";
+}
+document.getElementById("gameConclusion").innerText = finalMsg;
+
 
   // ➤ Κοινή συνάρτηση για άνοιγμα modal
   function openEpicModal() {
@@ -178,6 +178,7 @@ if (anchor) {
     }
   });
 });
+
 
 
 
