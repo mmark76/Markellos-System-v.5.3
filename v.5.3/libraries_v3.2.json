@@ -308,7 +308,7 @@
                 "en": "in the white barn with the full sheaves"
             },
             "a2": {
-                "el": "παρατηρεί από τις λευκές επάλξεις με τις ασπίδες",
+                "el": "παρατηρεί από τις λευκές επάλξεις",
                 "en": "on the white battlement with shields"
             },
             "a3": {
@@ -352,7 +352,7 @@
                 "en": "in the haunted, ruined graveyard"
             },
             "b5": {
-                "el": "γονατίζει πάνω στη σπασμένη ταφόπλακα",
+                "el": "περπατάει πάνω στη σπασμένη ταφόπλακα",
                 "en": "at the broken tombstone"
             },
             "b6": {
@@ -368,15 +368,15 @@
                 "en": "in the stables with the wild black horses"
             },
             "c1": {
-                "el": "κάθεται στη μεγάλη αίθουσα τραπεζαρίας με τα ασημένια σκεύη",
-                "en": "in the great dining hall with the silverware"
+                "el": "κάθεται στη μεγάλη αίθουσα της λευκής τραπεζαρίας",
+                "en": "in the great white dining hall"
             },
             "c2": {
-                "el": "στέκεται στον καταπέλτη από λευκό μάρμαρο",
+                "el": "στέκεται στον καταπέλτη me to λευκό μάρμαρο",
                 "en": "at the catapult of white marble"
             },
             "c3": {
-                "el": "ξεκουράζεται στην ασημένια ιτιά",
+                "el": "ξεκουράζεται στην τεράστια λευκή ιτιά",
                 "en": "at the silver willow"
             },
             "c4": {
@@ -400,7 +400,7 @@
                 "en": "in the great ballroom with the black chandeliers"
             },
             "d1": {
-                "el": "ξεκουράζεται στο δωμάτιο με τις δαντέλες της λευκής βασίλισσας ",
+                "el": "ξεκουράζεται στο δωμάτιο της λευκής βασίλισσας ",
                 "en": "in the white queen's room with the lace"
             },
             "d2": {
@@ -412,11 +412,11 @@
                 "en": "with the white sharks"
             },
             "d4": {
-                "el": "μπαίνει στο σκοτεινό σπήλαιο με τους κρυστάλλους",
+                "el": "μπαίνει στο σκοτεινό σπήλαιο με τους λαμπερούς κρυστάλλους",
                 "en": "in the dark cave"
             },
             "d5": {
-                "el": "πέφτει στο άβυσσο, και χωρίς πάτο, βάραθρο",
+                "el": "πέφτει στο άβυσσαλέο και χωρίς πάτο βάραθρο",
                 "en": "in the bottomless abyss chasm"
             },
             "d6": {
@@ -424,11 +424,11 @@
                 "en": "with the black alligators"
             },
             "d7": {
-                "el": "αλυσσοδένεται στη στοά με τους σκελετούς και τις αλυσίδες",
+                "el": "αλυσσοδένεται στη μαύρη στοά με τους σκελετούς και τις αλυσίδες",
                 "en": "in the arcade with the skeletons and the chains"
             },
             "d8": {
-                "el": "στέκεται στα δωμάτια με τα μαύρα βελούδα της μαύρης βασίλισσας ",
+                "el": "στέκεται στα δωμάτια της μαύρης βασίλισσας ",
                 "en": "in the black queen's rooms with the black velvets"
             },
             "e1": {
@@ -436,19 +436,19 @@
                 "en": "on the throne of the white king made of ivory"
             },
             "e2": {
-                "el": "περνά στη μεγάλη πύλη με τα χρυσά στολίδια",
-                "en": "at the great gate with the golden ornaments"
+                "el": "περνά στη μεγάλη λευκή πύλη",
+                "en": "at the great white gate"
             },
             "e3": {
                 "el": "στέκεται πάνω στην πέτρινη γέφυρα",
                 "en": "on the stone bridge"
             },
             "e4": {
-                "el": "θαυμάζει τη σπηλιά με τους λαμπερούς βράχους",
+                "el": "θαυμάζει τη σπηλιά με τους άγριους βράχους",
                 "en": "in the cave with shining crystals"
             },
             "e5": {
-                "el": "περπατά στο πεδίο με το άγριο, πυκνό γρασίδι",
+                "el": "περπατά στο πεδίο με το πυκνό γρασίδι",
                 "en": "in the field with the wild, dense grass"
             },
             "e6": {
@@ -460,11 +460,11 @@
                 "en": "at the central gate with the iron spikes"
             },
             "e8": {
-                "el": "κάθεται στο θρόνο από ηφαιστειακό γυαλί του μαύρου βασιλιά",
+                "el": "κάθεται στο θρόνο του μαύρου βασιλιά",
                 "en": "on the throne of the black king made of volcanic glass"
             },
             "f1": {
-                "el": "σχεδιάζει στην αίθουσα με τους χάρτες και τα λάβαρα",
+                "el": "σχεδιάζει στην λευκή αίθουσα με τους χάρτες",
                 "en": "in the hall of the generals with maps and banners"
             },
             "f2": {
@@ -476,7 +476,7 @@
                 "en": "on the great white rock"
             },
             "f4": {
-                "el": "κατεβαίνει στη χαράδρα και το άγριο ποτάμι",
+                "el": "κατεβαίνει στη χαράδρα με το άγριο ποτάμι",
                 "en": "in the gorge with the wild river"
             },
             "f5": {
@@ -484,7 +484,7 @@
                 "en": "on the steep hill"
             },
             "f6": {
-                "el": "στέκεται στην περιοχή των πολλών σκελετών",
+                "el": "στέκεται στην περιοχή των σκελετών",
                 "en": "in the Place of Skulls"
             },
             "f7": {
@@ -496,11 +496,11 @@
                 "en": "in the hall of the dark councils"
             },
             "g1": {
-                "el": "μαγειρεύει στις κουζίνες με τα χάλκινα καζάνια",
+                "el": "κάθεται στις κουζίνες του λευκού παλατιού",
                 "en": "in the kitchens with the bronze cauldrons"
             },
             "g2": {
-                "el": "παρατηρεί στο παρατηρητήριο με το τηλεσκόπιο",
+                "el": "παρατηρεί με το τηλεσκόπιο",
                 "en": "at the observatory with the telescope"
             },
             "g3": {
@@ -516,7 +516,7 @@
                 "en": "in the haunted clearing"
             },
             "g6": {
-                "el": "στέκεται πάνω στην άγκυρα στο βυθό",
+                "el": "στέκεται πάνω σε μία άγκυρα στο βυθό του ποταμού",
                 "en": "At the anchor at the bottom"
             },
             "g7": {
@@ -3640,6 +3640,7 @@
         }
 }
 }
+
 
 
 
