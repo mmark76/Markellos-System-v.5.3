@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const headers = chess.header();
 
     const gameInfoDiv = document.getElementById("gameInfo");
-    gameInfoDiv.innerHTML = "<h3>Game info/h3>";
+    gameInfoDiv.innerHTML = "<h3>Game info</h3>";
 
     for (const key in headers) {
       if (headers.hasOwnProperty(key)) {
@@ -214,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
