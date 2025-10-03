@@ -38,39 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(modal);
 
   /* ---------- SAN σε φυσική γλώσσα (μόνο για το έπος) ---------- */
-  function sanToText(san, side="White") {
-  if (!san) return "";
-
-  let move = san.replace(/[+#?!]/g, ""); 
-
-  // 🔹 Ειδικός έλεγχος για ροκέ
-  if (move === "O-O")   return `${side} King castles short`;
-  if (move === "O-O-O") return `${side} King castles long`;
-
-  const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
-  let piece = "";
-  let action = "";
-  let square = "";
-
-  // Αν ξεκινά με γράμμα κομματιού
-  if (pieceMap[move[0]]) {
-    piece = pieceMap[move[0]];
-    move = move.slice(1);
-  } else {
-    piece = "pawn";   // ✅ για τα πιόνια να συνεχίζει να γράφει "pawn"
-  }
-
-  // Έλεγχος για capture
-  if (move.includes("x")) {
-    action = "takes";
-    square = move.split("x")[1];
-  } else {
-    action = "to";
-    square = move;
-  }
-
-  return `${piece} ${action} ${square}`;
-};
+  function sanToText(san) {
+    if (!san) return "";
+    
+	// ➤ Ειδικός έλεγχος για ροκέ
+    if (san === "O-O")   return "King castles short";
+    if (san === "O-O-O") return "King castles long";
+    
+	const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
     let move = san.replace(/[+#?!]/g, ""); // βγάζει +, #, ?!, κτλ
     let piece = "";
     let action = "";
