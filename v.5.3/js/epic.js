@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
       action = "takes";
       square = move.split("x")[1];
     } else {
-      action = "to";
+      action = " ";
       square = move;
     }
 
@@ -81,12 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, να ${targetAssocW}, ... και το μαύρο στρατό με ${pieceAssocB} να αντιδρά, με την κίνηση ${sanB}, και να ${targetAssocB}.`
+      `${locus} όπου βλέπει ${pieceAssocW}, με την κίνηση ${sanW}, να ${targetAssocW}, ... και ${pieceAssocB} να αντιδρά με την κίνηση ${sanB}, και να ${targetAssocB}.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
     if (anchor) {
-      const verbs = ["Και τότε ξεπροβάλλει", "Και τότε εμφανίζεται", "Και τότε φανερώνεται"];
+      const verbs = ["Και τότε από μπροστά του περνάει", "Και τότε μπροστά του εμφανίζεται", "Και τότε μπροστά του ξεπροβάλλει"];
       const verb = verbs[Math.floor(Math.random() * verbs.length)];
       sentence += ` ${verb} ${anchor} `;
     }
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const headers = chess.header();
 
     const gameInfoDiv = document.getElementById("gameInfo");
-    gameInfoDiv.innerHTML = "<h3>Παρτίδα</h3>";
+    gameInfoDiv.innerHTML = "<h3>Game info/h3>";
 
     for (const key in headers) {
       if (headers.hasOwnProperty(key)) {
@@ -150,11 +150,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // ➤ Τελικό μήνυμα
     let finalMsg = "";
     if (headers.Result === "1-0") {
-      finalMsg = "Και με την τελευταία κίνηση, ο Λευκός κερδίζει.";
+      finalMsg = "... kai mε την τελευταία κίνηση, ο Λευκός κερδίζει.";
     } else if (headers.Result === "0-1") {
-      finalMsg = "Και με την τελευταία κίνηση, ο Μαύρος κερδίζει.";
+      finalMsg = "... kai mε την τελευταία κίνηση, ο Μαύρος κερδίζει.";
     } else if (headers.Result === "1/2-1/2") {
-      finalMsg = "Η παρτίδα έληξε ισόπαλη.";
+      finalMsg = "... και με την τελευταία κίνηση οι αντίπαλοι συμφωνούν όπως η παρτίδα λήξει ισόπαλη.";
     }
     document.getElementById("gameConclusion").innerText = finalMsg;
   }
@@ -214,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
