@@ -1,5 +1,5 @@
 /* =========================
-   Markellos CMS v5.6 — Epic Narrative (Heroic Epic with White+Black pair scenes)
+   Markellos CMS v5.6 — The Epic Story 
    ========================= */
 document.addEventListener("DOMContentLoaded", () => {
   // ➤ Δημιουργία Epic Narrative section (άδειο)
@@ -37,43 +37,46 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   document.body.appendChild(modal);
 
-/* ---------- SAN σε φυσική γλώσσα (μόνο για το έπος) ---------- */
-function sanToText(san) {
-  if (!san) return "";
+  /* ---------- SAN σε φυσική γλώσσα (μόνο για το έπος) ---------- */
+  function sanToText(san) {
+    if (!san) return "";
 
-  const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
-  let move = san.replace(/[+#?!]/g, ""); // βγάζει +, #, ?!, κτλ
-  let piece = "";
-  let action = "";
-  let square = "";
+    const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
+    let move = san.replace(/[+#?!]/g, ""); // βγάζει +, #, ?!, κτλ
+    let piece = "";
+    let action = "";
+    let square = "";
 
-  // Αν ξεκινά με γράμμα κομματιού
-  if (pieceMap[move[0]]) {
-    piece = pieceMap[move[0]];
-    move = move.slice(1);
-  } else {
-    piece = "pawn";
+    // Αν ξεκινά με γράμμα κομματιού
+    if (pieceMap[move[0]]) {
+      piece = pieceMap[move[0]];
+      move = move.slice(1);
+    } else {
+      piece = "pawn";
+    }
+
+    // Αν έχει capture
+    if (move.includes("x")) {
+      action = "takes";
+      square = move.split("x")[1];
+    } else {
+      action = "to";
+      square = move;
+    }
+
+    return `${piece} ${action} ${square}`;
   }
 
-  // Αν έχει capture
-  if (move.includes("x")) {
-    action = "takes";
-    square = move.split("x")[1];
-  } else {
-    action = "to";
-    square = move;
+  /* ---------- Καθάρισμα Anchor μόνο για το Έπος ---------- */
+  function cleanAnchor(txt) {
+    if (!txt) return "";
+    return txt.replace(/^\d+\s*—\s*/, ""); // βγάζει "7 — " μπροστά
   }
-
-  return `${piece} ${action} ${square}`;
-}
 
   /* ---------- Βοηθητική για Associations ---------- */
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, και να ${targetAssocW}, ... και το μαύρο στρατό με ${pieceAssocB} να αντιδρά, με την κίνηση ${sanB}, και να ${targetAssocB}.`,
-      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, και να ${targetAssocW}, ... και το μαύρο στρατό με ${pieceAssocB} να αντιδρά, με την κίνηση ${sanB}, και να ${targetAssocB}.`,
-      `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, και να ${targetAssocW}, ... και το μαύρο στρατό με ${pieceAssocB} να αντιδρά, με την κίνηση ${sanB}, και να ${targetAssocB}.`,
       `${locus} όπου βλέπει το λευκό στρατό με ${pieceAssocW}, και την κίνηση ${sanW}, και να ${targetAssocW}, ... και το μαύρο στρατό με ${pieceAssocB} να αντιδρά, με την κίνηση ${sanB}, και να ${targetAssocB}.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
@@ -108,13 +111,13 @@ function sanToText(san) {
         [...b.children].map(td => td.innerText.trim());
 
       const locus = locusW || locusB || "σκηνή";
-      const anchor = anchorW || anchorB || "";
+      const anchor = cleanAnchor(anchorW || anchorB || ""); // ✨ καθάρισμα εδώ
 
-let sentence = buildEpicSentence(
-  locus,
-  colorW, pieceAssocW, sanToText(sanW), targetAssocW,
-  colorB, pieceAssocB, sanToText(sanB), targetAssocB, anchor
-);
+      let sentence = buildEpicSentence(
+        locus,
+        colorW, pieceAssocW, sanToText(sanW), targetAssocW,
+        colorB, pieceAssocB, sanToText(sanB), targetAssocB, anchor
+      );
 
       stories.push(sentence);
     }
@@ -207,17 +210,3 @@ let sentence = buildEpicSentence(
     }
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
