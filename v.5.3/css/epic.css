@@ -126,4 +126,12 @@
   line-height: 1.8;
 }
 
+/* Διορθώνει το κόλλημα του κουμπιού Show Epic Story με το dropdown */
+#openEpicBtn {
+  margin-top: 8px;       /* λίγο κενό πάνω */
+  margin-bottom: 12px;   /* λίγο κενό κάτω */
+  display: inline-block; /* να μη τεντώνει */
+}
+
+
 
