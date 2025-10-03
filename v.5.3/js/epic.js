@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <!-- 🔹 Στοιχεία Παρτίδας -->
       <div id="gameInfo" class="epic-game-info">
-        <h3>Παρτίδα</h3>
+        <h3>Game info</h3>
       </div>
 
       <!-- 🔹 Κουμπί Copy -->
@@ -214,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
