@@ -1,6 +1,6 @@
-/* =========================
+/* ====================================
    Markellos CMS v5.6 — The Epic Story 
-   ========================= */
+   ==================================== */
 document.addEventListener("DOMContentLoaded", () => {
   // ➤ Δημιουργία Epic Narrative section (άδειο)
   const epicSection = document.createElement("section");
@@ -214,5 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
