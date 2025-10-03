@@ -37,6 +37,36 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   document.body.appendChild(modal);
 
+/* ---------- SAN σε φυσική γλώσσα (μόνο για το έπος) ---------- */
+function sanToText(san) {
+  if (!san) return "";
+
+  const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
+  let move = san.replace(/[+#?!]/g, ""); // βγάζει +, #, ?!, κτλ
+  let piece = "";
+  let action = "";
+  let square = "";
+
+  // Αν ξεκινά με γράμμα κομματιού
+  if (pieceMap[move[0]]) {
+    piece = pieceMap[move[0]];
+    move = move.slice(1);
+  } else {
+    piece = "pawn";
+  }
+
+  // Αν έχει capture
+  if (move.includes("x")) {
+    action = "takes";
+    square = move.split("x")[1];
+  } else {
+    action = "to";
+    square = move;
+  }
+
+  return `${piece} ${action} ${square}`;
+}
+
   /* ---------- Βοηθητική για Associations ---------- */
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
@@ -176,6 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
 
 
 
