@@ -110,10 +110,11 @@ function sanToText(san) {
       const locus = locusW || locusB || "σκηνή";
       const anchor = anchorW || anchorB || "";
 
-      let sentence = buildEpicSentence(
-        locus, colorW, pieceAssocW, sanW, targetAssocW,
-        colorB, pieceAssocB, sanB, targetAssocB, anchor
-      );
+let sentence = buildEpicSentence(
+  locus,
+  colorW, pieceAssocW, sanToText(sanW), targetAssocW,
+  colorB, pieceAssocB, sanToText(sanB), targetAssocB, anchor
+);
 
       stories.push(sentence);
     }
@@ -206,6 +207,7 @@ function sanToText(san) {
     }
   });
 });
+
 
 
 
