@@ -1,5 +1,5 @@
 /* =====================================================
-   Markellos CMS v5.8 — Epic Story (Unified Text Edition)
+   Markellos CMS v5.8 — Epic Story
    ===================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const anchor = cleanAnchor(anchorW || anchorB || "");
 
       stories.push(
+           `${i / 2 + 1}. ` +
         buildEpicSentence(
           locus,
           colorW, pieceAssocW, sanToText(sanW), targetAssocW,
@@ -179,5 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
