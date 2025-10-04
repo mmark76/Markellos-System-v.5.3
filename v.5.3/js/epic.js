@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (anchor) {
       const verbs = ["Και τότε μπροστά του εμφανίζεται", "Και τότε μπροστά του ξεπροβάλλει", "Και τότε από μακριά αναδύεται"];
-      sentence += ` ${verbs[Math.floor(Math.random() * verbs.length)]} ${anchor}.`;
+      sentence += ` ${verbs[Math.floor(Math.random() * verbs.length)]} ${anchor}`;
     }
     return sentence;
   }
@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
