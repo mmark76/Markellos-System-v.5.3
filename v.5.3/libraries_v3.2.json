@@ -396,7 +396,7 @@
                 "en": "at the siege engine with the flaming stones"
             },
             "c8": {
-                "el": "χορεύει στη μεγάλη αίθουσα χορού με τους μαύρους πολυελαίους",
+                "el": "βρίσκεται στη μεγάλη αίθουσα χορού με τους μαύρους πολυελαίους",
                 "en": "in the great ballroom with the black chandeliers"
             },
             "d1": {
@@ -444,7 +444,7 @@
                 "en": "on the stone bridge"
             },
             "e4": {
-                "el": "θαυμάζει τη σπηλιά με τους άγριους βράχους",
+                "el": "μπαίνει στη σπηλιά με τους άγριους βράχους",
                 "en": "in the cave with shining cryls"
             },
             "e5": {
@@ -464,7 +464,7 @@
                 "en": "on the throne of the black king made of volcanic glass"
             },
             "f1": {
-                "el": "σχεδιάζει στην λευκή αίθουσα με τους χάρτες",
+                "el": "μπαίνει στη λευκή αίθουσα με τους χάρτες",
                 "en": "in the hall of the generals with maps and banners"
             },
             "f2": {
@@ -3640,6 +3640,7 @@
         }
 }
 }
+
 
 
 
