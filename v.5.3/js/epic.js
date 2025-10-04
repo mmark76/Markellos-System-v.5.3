@@ -1,6 +1,6 @@
-/* =====================================================
-   Markellos CMS v5.8 — Epic Story (Unified Text Edition)
-   ===================================================== */
+/* ================================
+   Markellos CMS v5.3 — Epic Story 
+   ================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -179,4 +179,5 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
