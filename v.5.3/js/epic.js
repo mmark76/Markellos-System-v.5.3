@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       stories.push(
         buildEpicSentence(
-          locus.,
+          locus,
           colorW, pieceAssocW, sanToText(sanW), targetAssocW,
           colorB, pieceAssocB, sanToText(sanB), targetAssocB, anchor
         )
@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
