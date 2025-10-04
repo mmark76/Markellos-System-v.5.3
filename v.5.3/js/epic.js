@@ -84,9 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const anchor = cleanAnchor(anchorW || anchorB || "");
 
       stories.push(
-           `${i / 2 + 1}. ` +
         buildEpicSentence(
-          locus,
+          locus.,
           colorW, pieceAssocW, sanToText(sanW), targetAssocW,
           colorB, pieceAssocB, sanToText(sanB), targetAssocB, anchor
         )
@@ -180,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
