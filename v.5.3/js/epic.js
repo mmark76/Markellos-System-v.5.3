@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} όπου βλέπει ${pieceAssocW}, που με την κίνηση ${sanW}, ${targetAssocW}, ... , λίγο μετά βλέπει ${pieceAssocB} να αντιδρά ο οποίος με την κίνηση ${sanB}, ${targetAssocB}.`
+      `${locus} όπου βλέπει ${pieceAssocW}, που με την κίνηση ${sanW}, ${targetAssocW}, ... . Λίγο μετά βλέπει ${pieceAssocB}, να αντιδρά..., ο οποίος με την κίνηση ${sanB}, ${targetAssocB}.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
@@ -179,3 +179,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
