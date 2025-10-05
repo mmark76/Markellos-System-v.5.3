@@ -34,7 +34,7 @@ function s1Square(square){
 }
 function p1PAO(d){
   const P = String(d.P-1), A = String(d.F-1), O = String(d.R-1);
-  const lib = libs?.["PAO 0-9"]?.LibraryP1;
+  const lib = libs?.["PAO 0-9"]?.Library_p1;
   if(!lib) return {person:'',action:'',object:''};
   const person = lib?.Persons?.[P]?.[selectedLang] || lib?.Persons?.[P]?.el || '';
   const action = lib?.Actions?.[A]?.[selectedLang] || lib?.Actions?.[A]?.el || '';
