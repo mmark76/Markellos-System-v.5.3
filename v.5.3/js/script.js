@@ -1,6 +1,6 @@
-/* =========================
-   Markellos CMS v5.3 — Core Script (Associations fix)
-   ========================= */
+/* ================================
+   Markellos CMS v5.3 — Core Script
+   ================================ */
 
 let libs = null;
 let gameMoves = [];
@@ -32,14 +32,17 @@ function s1Square(square){
   if(!node) return '';
   return (node[selectedLang] || node.el || node.en || '');
 }
-function p1PAO(d){
-  const P = String(d.P-1), A = String(d.F-1), O = String(d.R-1);
+function p1PAO(d) {
+  const P = String(d.P);  // χωρίς -1
+  const A = String(d.F);
+  const O = String(d.R);
   const lib = libs?.["PAO 0-9"]?.Library_p1;
-  if(!lib) return {person:'',action:'',object:''};
-  const person = lib?.Persons?.[P]?.[selectedLang] || lib?.Persons?.[P]?.el || '';
-  const action = lib?.Actions?.[A]?.[selectedLang] || lib?.Actions?.[A]?.el || '';
-  const object = lib?.Objects?.[O]?.[selectedLang] || lib?.Objects?.[O]?.el || '';
-  return {person, action, object};
+  if (!lib) return { person: '', action: '', object: '' };
+  const lang = selectedLang || 'el';
+  const person = lib?.persons?.[P]?.[lang] || lib?.persons?.[P]?.el || '';
+  const action = lib?.actions?.[A]?.[lang] || lib?.actions?.[A]?.el || '';
+  const object = lib?.objects?.[O]?.[lang] || lib?.objects?.[O]?.el || '';
+  return { person, action, object };
 }
 function p2p3Get(idx2, collection){
   const lib = libs?.["PAO 00-99"]?.[collection];
