@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const black = headers["Black"] || "";
     const result = headers["Result"] || "";
 
-    const gameHeader = `${event}\n${white} εναντίον ${black}\n${date} — ${result}`.trim();
+    const gameHeader = `${event}\n${white} vs ${black}\n${date} — ${result}`.trim();
 
     // === Τελική φράση ===
     let finalMsg = "";
@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
