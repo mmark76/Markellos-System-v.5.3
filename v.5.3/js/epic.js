@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chess.load_pgn(document.getElementById("pgnText").value, { sloppy: true });
     const headers = chess.header();
 
-    const event = headers["Event"] || "";
+    const event = (headers["Event"] || "").trim();
     const date = headers["Date"] || "";
     const white = headers["White"] || "";
     const black = headers["Black"] || "";
@@ -179,6 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
