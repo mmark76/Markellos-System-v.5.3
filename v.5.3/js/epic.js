@@ -127,21 +127,21 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
   .join("\n\n");
     document.getElementById("epicTextView").innerText = fullText;
 
-    // === Τελική φράση ===
-    let finalMsg = "";
-    if (result === "1-0") {
-      finalMsg = "…και με την τελευταία κίνηση, ο Λευκός κερδίζει.";
-    } else if (result === "0-1") {
-      finalMsg = "…και με την τελευταία κίνηση, ο Μαύρος κερδίζει.";
-    } else if (result === "1/2-1/2") {
-      finalMsg = "…και με την τελευταία κίνηση, οι αντίπαλοι συμφωνούν να λήξει η παρτίδα ισόπαλη.";
-    }
+// === Τελική φράση ===
+let finalMsg = "";
+if (result === "1-0") {
+  finalMsg = "…και με την τελευταία κίνηση, ο Λευκός κερδίζει.";
+} else if (result === "0-1") {
+  finalMsg = "…και με την τελευταία κίνηση, ο Μαύρος κερδίζει.";
+} else if (result === "1/2-1/2") {
+  finalMsg = "…και με την τελευταία κίνηση, οι αντίπαλοι συμφωνούν να λήξει η παρτίδα ισόπαλη.";
+}
 
-    const fullText = [gameHeader, narrativeText, `${finalMsg} (${result})`.trim()]
-      .filter(Boolean)
-      .join("\n\n");
+const fullText = [gameHeader, narrativeText, finalMsg.trim()]
+  .filter(Boolean)
+  .join("\n\n");
 
-    document.getElementById("epicTextView").innerText = fullText;
+document.getElementById("epicTextView").innerText = fullText;
 
     // === Copy Story (απλό, σταθερό, ενιαίο) ===
     const copyBtn = document.getElementById("copyEpicBtn");
@@ -198,6 +198,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
