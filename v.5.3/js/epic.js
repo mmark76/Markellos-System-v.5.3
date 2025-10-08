@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} από όπου ξεπροβάλλει ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}, ... . Και ${pieceAssocB} ..., και με την κίνηση ${sanB}, ${targetAssocB}.`
+      `${locus} από όπου ξεπροβάλλει ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}, ... . Και ${pieceAssocB} ..., με την κίνηση ${sanB}, ${targetAssocB}.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
@@ -182,6 +182,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
