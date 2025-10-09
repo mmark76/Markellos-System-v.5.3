@@ -589,38 +589,38 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "ο λευκός στρατιώτης Andy Akita",
-            "Pb2": "ο λευκός στρατιώτης Bandy Boa",
-            "Pc2": "ο λευκός στρατιώτης Charlie Cougar",
-            "Pd2": "ο λευκός στρατιώτης Danny Dingo",
-            "Pe2": "ο λευκός στρατιώτης Eddy Eagle",
-            "Pf2": "ο λευκός στρατιώτης Freddy Falcon",
-            "Pg2": "ο λευκός στρατιώτης Garry Gnu",
-            "Ph2": "ο λευκός στρατιώτης Harry Hedgehog",
-            "Pa7": "η μαύρη στρατιωτίνα Αnna Conda",
-            "Pb7": "η μαύρη στρατιωτίνα Bonnie Bat",
-            "Pc7": "η μαύρη στρατιωτίνα Connie Cheetah",
-            "Pd7": "τη μαύρη στρατιωτίνα Dona Deer",
-            "Pe7": "η μαύρη στρατιωτίνα Ella Phant",
-            "Pf7": "η μαύρη στρατιωτίνα Fiona Fox",
-            "Pg7": "η μαύρη στρατιωτίνα Grace Gazella",
-            "Ph7": "η μαύρη στρατιωτίνα Hyena Hope",
-            "Ra1": "ο λευκός Rook Μινώταυρος",
-            "Nb1": "ο λευκός Ιππότης Πήγασος",
-            "Bc1": "ο λευκός Επίσκοπος Serephis",
-            "Qd1": "η λευκή Βασίλισσα Χιονάτη",
-            "Ke1": "ο Lion King",
-            "Bf1": "η λευκή Επίσκοπος Σφίγγα",
-            "Ng1": "ο λευκός Ιππότης Unicorn",
-            "Rh1": "ο λευκός Rook Titan",
-            "Ra8": "ο μαύρος Rook Godzilla",
-            "Nb8": "ο μαύρος Ιππότης Nightmare",
-            "Bc8": "ο μαύρος Επίσκοπος Vampire",
-            "Qd8": "η μαύρη Βασίλισσα Banshee",
-            "Ke8": "ο King Kong",
-            "Bf8": "ο μαύρος Επίσκοπος Were Wolf",
-            "Ng8": "ο μαύρος Ιππότης Δαίμονας",
-            "Rh8": "ο μαύρος Rook Thor"
+             "Pa2": "Ο λευκός στρατιώτης Arctic Wolf",
+            "Pb2": "Ο λευκός στρατιώτης Battle Snake",
+            "Pc2": "Ο λευκός στρατιώτης Cyborg Cougar",
+            "Pd2": "Ο λευκός στρατιώτης Danny Dingo",
+            "Pe2": "Ο λευκός στρατιώτης Eddy Eagle",
+            "Pf2": "Ο λευκός στρατιώτης Freddy Falcon",
+            "Pg2": "Ο λευκός στρατιώτης Garry Gorilla",
+            "Ph2": "Ο λευκός στρατιώτης Harry Hedgehog",
+            "Pa7": "Η μαύρη στρατιωτίνα Αnna Conda",
+            "Pb7": "Η μαύρη στρατιωτίνα Bonnie Bat",
+            "Pc7": "Η μαύρη στρατιωτίνα Connie Cheetah",
+            "Pd7": "Η μαύρη στρατιωτίνα Dark Deer",
+            "Pe7": "Η μαύρη στρατιωτίνα Ella Phant",
+            "Pf7": "Η μαύρη στρατιωτίνα Fiona Fox",
+            "Pg7": "Η μαύρη στρατιωτίνα Grace Gazella",
+            "Ph7": "Η μαύρη στρατιωτίνα Hyena Hope",
+            "Ra1": "Ο λευκός Rook Μινώταυρος",
+            "Nb1": "Ο λευκός Ιππότης Πήγασος",
+            "Bc1": "Ο λευκός Επίσκοπος Merlin",
+            "Qd1": "Η λευκή Βασίλισσα White Witch",
+            "Ke1": "Ο λευκός Βασιλιάς Lion King",
+            "Bf1": "Η λευκή Επίσκοπος Σφίγγα",
+            "Ng1": "Ο λευκός Ιππότης Silver Unicorn",
+            "Rh1": "Ο λευκός Rook Titan",
+            "Ra8": "Ο μαύρος Rook Godzilla",
+            "Nb8": "Ο μαύρος Ιππότης Nightmare",
+            "Bc8": "Ο μαύρος Επίσκοπος Vampire",
+            "Qd8": "Η μαύρη Βασίλισσα Banshee",
+            "Ke8": "Ο μαύρος Βασιλιάς King Kong",
+            "Bf8": "Ο μαύρος Επίσκοπος Were Wolf",
+            "Ng8": "Ο μαύρος Ιππότης Dread Knight",
+            "Rh8": "Ο μαύρος Rook Thor"
         }
     },
     "PAO 0-9": {
@@ -3640,6 +3640,7 @@
         }
 }
 }
+
 
 
 
