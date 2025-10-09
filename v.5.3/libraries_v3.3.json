@@ -532,7 +532,7 @@
     "Characters": {
         "LibraryC1": {
             "Pa2": "Ο λευκός στρατιώτης Arctic Wolf",
-            "Pb2": "Ο λευκός στρατιώτης Bad Snake",
+            "Pb2": "Ο λευκός στρατιώτης Battle Snake",
             "Pc2": "Ο λευκός στρατιώτης Cyborg Cougar",
             "Pd2": "Ο λευκός στρατιώτης Danny Dingo",
             "Pe2": "Ο λευκός στρατιώτης Eddy Eagle",
@@ -567,3 +567,4 @@
     }
 
 }
+
