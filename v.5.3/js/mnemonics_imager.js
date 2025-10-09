@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="epic-modal-content">
       <span class="epic-close" id="mnemonicImagerCloseBtn">&times;</span>
       <div class="epic-copy-toolbar" style="display:flex; gap:.6rem; align-items:center; flex-wrap:wrap;">
-        <button id="createImagesBtn" class="btn btn-primary">🧠 Create Mnemonic Images</button>
+        <button id="createImagesBtn" class="btn btn-primary">Create Mnemonic Images</button>
         <button id="copyImagesBtn" class="btn btn-secondary">📋 Copy</button>
       </div>
       <div id="mnemonicImagerView" class="epic-text parchment edge" 
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const div = document.createElement("div");
     div.className = "table-toolbar";
     div.innerHTML = `<button id="openMnemonicImagerBtn" class="btn btn-primary">
-        🧩 Show Mnemonic Imager</button>`;
+        Show Mnemonic Imager</button>`;
     assocSection.parentNode.insertBefore(div, assocSection);
     document.getElementById("openMnemonicImagerBtn").onclick = openModal;
   }
@@ -127,5 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("createImagesBtn").onclick = createImages;
   document.getElementById("copyImagesBtn").onclick = copyImages;
 });
+
 
 
