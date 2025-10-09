@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const locW = fromS1(squareW);
     const locB = fromS1(squareB);
 
-    return `${elW} ${locW} ${movePair} ${locB} ${elB}`;
+    return `${elW} ${locW} ${movePair} - ${locus} ${locB} ${elB}`;
   }
 
   // === Create Mnemonic Images ===
@@ -127,4 +127,5 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("createImagesBtn").onclick = createImages;
   document.getElementById("copyImagesBtn").onclick = copyImages;
 });
+
 
