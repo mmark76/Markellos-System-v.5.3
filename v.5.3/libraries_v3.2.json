@@ -594,33 +594,33 @@
             "Pg2": "ο λευκός στρατιώτης Garry Gorilla",
             "Ph2": "ο λευκός στρατιώτης Hikaru Hedgehog",
             "Pa7": "η μαύρη στρατιωτίνα Anna Conda",
-            "Pb7": "η μαύρη στρατιωτίνα Borstein Bat",
-            "Pc7": "η μαύρη στρατιωτίνα Capablanca Cheetah",
-            "Pd7": "η μαύρη στρατιωτίνα Dvoretsky Deer",
+            "Pb7": "ο μαύρος στρατιώτης Borstein Bat",
+            "Pc7": "ο μαύρος στρατιώτης Capablanca Cheetah",
+            "Pd7": "ο μαύρος στρατιώτης Dvoretsky Deer",
             "Pe7": "η μαύρη στρατιωτίνα Ella Phant",
-            "Pf7": "η μαύρη στρατιωτίνα Firouzja Fox",
-            "Pg7": "η μαύρη στρατιωτίνα Giri Gazella",
+            "Pf7": "ο μαύρος στρατιώτης Firouzja Fox",
+            "Pg7": "ο μαύρος στρατιώτης Giri Gazella",
             "Ph7": "η μαύρη στρατιωτίνα Hou Hyena",
-            "Ra1": "ο λευκός Rook Μινώταυρος",
-            "Nb1": "ο λευκός Ιππότης Πήγασος",
+            "Ra1": "ο λευκός Προστάτης Μινώταυρος",
+            "Nb1": "ο λευκός Ιππότης Pale Rider",
             "Bc1": "ο λευκός Επίσκοπος Merlin",
-            "Qd1": "η λευκή Βασίλισσα White Witch",
+            "Qd1": "η λευκή Βασίλισσα Snow White",
             "Ke1": "ο λευκός Βασιλιάς Lion King",
             "Bf1": "η λευκή Επίσκοπος Σφίγγα",
             "Ng1": "ο λευκός Ιππότης Silver Unicorn",
-            "Rh1": "ο λευκός Rook Titan",
-            "Ra8": "ο μαύρος Rook Godzilla",
+            "Rh1": "ο λευκός Προστάτης Titan",
+            "Ra8": "ο μαύρος Προστάτης Godzilla",
             "Nb8": "ο μαύρος Ιππότης Nightmare",
             "Bc8": "ο μαύρος Επίσκοπος Vampire",
             "Qd8": "η μαύρη Βασίλισσα Banshee",
             "Ke8": "ο μαύρος Βασιλιάς King Kong",
             "Bf8": "ο μαύρος Επίσκοπος Were Wolf",
-            "Ng8": "ο μαύρος Ιππότης Eligos",
-            "Rh8": "ο μαύρος Rook Thor"
+            "Ng8": "ο μαύρος Ιππότης Χάρος",
+            "Rh8": "ο μαύρος Προστάτης Thor"
         }
     },
     "PAO 0-9": {
-"Library_p1": {
+        "Library_p1": {
             "persons": {
                 "0": {
                     "el": "Ο Μάγος",
@@ -748,60 +748,10 @@
                 }
             }
         }
-},
+    },
     "PAO 00-99": {
-"LibraryP1": {
-            "00": {
-                "person": "Όσιρις",
-                "action": "σείει",
-                "object": "σκήπτρο"
-            },
-            "01": {
-                "person": "Ουάσινγκτον",
-                "action": "διασχίζει",
-                "object": "ποτάμι"
-            },
-            "02": {
-                "person": "Σπάιντερμαν",
-                "action": "εκτοξεύει",
-                "object": "ιστό"
-            },
-            "03": {
-                "person": "Σούπερμαν",
-                "action": "απογειώνεται",
-                "object": "κάπα"
-            },
-            "04": {
-                "person": "Οδυσσέας",
-                "action": "δένει",
-                "object": "κατάρτι"
-            },
-            "05": {
-                "person": "Τσώρτσιλ",
-                "action": "αναφλέγει",
-                "object": "πούρο"
-            },
-            "06": {
-                "person": "Μπριν",
-                "action": "προσαρμόζει",
-                "object": "Χειροπέδες"
-            },
-            "07": {
-                "person": "Γκάνταλφ",
-                "action": "τινάζει",
-                "object": "καπέλο μάγου"
-            },
-            "08": {
-                "person": "Απόλλων",
-                "action": "δοξαρεύει",
-                "object": "λύρα"
-            },
-            "09": {
-                "person": "Μπολτ",
-                "action": "εκτινάσσεται",
-                "object": "παπούτσι"
-            },
-			"10": {
+        "LibraryP1": {
+            "10": {
                 "person": "Πελέ",
                 "action": "σουτάρει",
                 "object": "μπάλα"
@@ -1250,80 +1200,60 @@
                 "person": "Κουετζαλκοάτλ",
                 "action": "ανεμίζει",
                 "object": "φτερά"
-            }
-        },
-"LibraryP2": {
+            },
             "00": {
-                "letters": "O O",
-                "person": "Oprah Winfrey",
-                "occupation": "Orator",
-                "action": "μιλά σε κοινό",
-                "object": "μικρόφωνο"
+                "person": "Όσιρις",
+                "action": "σείει",
+                "object": "σκήπτρο"
             },
             "01": {
-                "letters": "O A",
-                "person": "Orlando Bloom",
-                "occupation": "Actor",
-                "action": "παίζει ρόλο",
-                "object": "σπαθί"
+                "person": "Ουάσινγκτον",
+                "action": "διασχίζει",
+                "object": "ποτάμι"
             },
             "02": {
-                "letters": "O B",
-                "person": "Hakeem Olajuwon",
-                "occupation": "Basketball Player",
-                "action": "ντριμπλάρει",
-                "object": "μπάλα μπάσκετ"
+                "person": "Σπάιντερμαν",
+                "action": "εκτοξεύει",
+                "object": "ιστό"
             },
             "03": {
-                "letters": "O C",
-                "person": "Ossip Bernstein",
-                "occupation": "Chess Player",
-                "action": "κινεί πιόνι",
-                "object": "σκακιέρα"
+                "person": "Σούπερμαν",
+                "action": "απογειώνεται",
+                "object": "κάπα"
             },
             "04": {
-                "letters": "O D",
-                "person": "Oliver Stone",
-                "occupation": "Director",
-                "action": "σκηνοθετεί",
-                "object": "κάμερα"
+                "person": "Οδυσσέας",
+                "action": "δένει",
+                "object": "κατάρτι"
             },
             "05": {
-                "letters": "O E",
-                "person": "Ozzy Osbourne",
-                "occupation": "Entertainer",
-                "action": "τραγουδά",
-                "object": "μικρόφωνο"
+                "person": "Τσώρτσιλ",
+                "action": "αναφλέγει",
+                "object": "πούρο"
             },
             "06": {
-                "letters": "O S",
-                "person": "Oppenheimer",
-                "occupation": "Scientist",
-                "action": "σχεδιάζει άτομο",
-                "object": "μοντέλο ατόμου"
+                "person": "Μπριν",
+                "action": "προσαρμόζει",
+                "object": "Χειροπέδες"
             },
             "07": {
-                "letters": "O G",
-                "person": "Οδυσσέας",
-                "occupation": "Greek",
-                "action": "τραβά τόξο",
-                "object": "καράβι"
+                "person": "Γκάνταλφ",
+                "action": "τινάζει",
+                "object": "καπέλο μάγου"
             },
             "08": {
-                "letters": "O H",
-                "person": "Obi-Wan Kenobi",
-                "occupation": "Hero",
-                "action": "μονομαχεί",
-                "object": "lightsaber"
+                "person": "Απόλλων",
+                "action": "δοξαρεύει",
+                "object": "λύρα"
             },
             "09": {
-                "letters": "O N",
-                "person": "George Orwell",
-                "occupation": "Novelist",
-                "action": "γράφει",
-                "object": "βιβλίο"
-            },
-			"10": {
+                "person": "Μπολτ",
+                "action": "εκτινάσσεται",
+                "object": "παπούτσι"
+            }
+        },
+        "LibraryP2": {
+            "10": {
                 "letters": "A O",
                 "person": "Aristotle",
                 "occupation": "Orator",
@@ -1952,55 +1882,80 @@
                 "occupation": "Novelist",
                 "action": "γράφει ξανά",
                 "object": "βιβλίο"
-            }
-        },
-"LibraryP3": {
+            },
+            "00": {
+                "letters": "O O",
+                "person": "Oprah Winfrey",
+                "occupation": "Orator",
+                "action": "μιλά σε κοινό",
+                "object": "μικρόφωνο"
+            },
             "01": {
-                "person": "Περικλής",
-                "action": "εκφωνεί λόγο",
-                "object": "πάπυρος"
+                "letters": "O A",
+                "person": "Orlando Bloom",
+                "occupation": "Actor",
+                "action": "παίζει ρόλο",
+                "object": "σπαθί"
             },
             "02": {
-                "person": "Σωκράτης",
-                "action": "διδάσκει μαθητές",
-                "object": "κύπελλο"
+                "letters": "O B",
+                "person": "Hakeem Olajuwon",
+                "occupation": "Basketball Player",
+                "action": "ντριμπλάρει",
+                "object": "μπάλα μπάσκετ"
             },
             "03": {
-                "person": "Αριστοτέλης",
-                "action": "γράφει φιλοσοφία",
-                "object": "βιβλίο"
+                "letters": "O C",
+                "person": "Ossip Bernstein",
+                "occupation": "Chess Player",
+                "action": "κινεί πιόνι",
+                "object": "σκακιέρα"
             },
             "04": {
-                "person": "Πλάτων",
-                "action": "συζητά σε συμπόσιο",
-                "object": "ειλητάριο"
+                "letters": "O D",
+                "person": "Oliver Stone",
+                "occupation": "Director",
+                "action": "σκηνοθετεί",
+                "object": "κάμερα"
             },
             "05": {
-                "person": "Αχιλλέας",
-                "action": "καρφώνει δόρυ",
-                "object": "ασπίδα"
+                "letters": "O E",
+                "person": "Ozzy Osbourne",
+                "occupation": "Entertainer",
+                "action": "τραγουδά",
+                "object": "μικρόφωνο"
             },
             "06": {
+                "letters": "O S",
+                "person": "Oppenheimer",
+                "occupation": "Scientist",
+                "action": "σχεδιάζει άτομο",
+                "object": "μοντέλο ατόμου"
+            },
+            "07": {
+                "letters": "O G",
                 "person": "Οδυσσέας",
+                "occupation": "Greek",
                 "action": "τραβά τόξο",
                 "object": "καράβι"
             },
-            "07": {
-                "person": "Ηρακλής",
-                "action": "σηκώνει ρόπαλο",
-                "object": "ρόπαλο"
-            },
             "08": {
-                "person": "Θησέας",
-                "action": "σκοτώνει Μινώταυρο",
-                "object": "σπαθί"
+                "letters": "O H",
+                "person": "Obi-Wan Kenobi",
+                "occupation": "Hero",
+                "action": "μονομαχεί",
+                "object": "lightsaber"
             },
             "09": {
-                "person": "Περσέας",
-                "action": "κρατά το κεφάλι της Μέδουσας",
-                "object": "σπαθί"
-            },
-			            "10": {
+                "letters": "O N",
+                "person": "George Orwell",
+                "occupation": "Novelist",
+                "action": "γράφει",
+                "object": "βιβλίο"
+            }
+        },
+        "LibraryP3": {
+            "10": {
                 "person": "Λεωνίδας",
                 "action": "κραυγάζει «Μολών λαβέ»",
                 "object": "δόρυ"
@@ -2450,64 +2405,59 @@
                 "action": "συνθέτει μουσική",
                 "object": "παρτιτούρα"
             },
+            "01": {
+                "person": "Περικλής",
+                "action": "εκφωνεί λόγο",
+                "object": "πάπυρος"
+            },
+            "02": {
+                "person": "Σωκράτης",
+                "action": "διδάσκει μαθητές",
+                "object": "κύπελλο"
+            },
+            "03": {
+                "person": "Αριστοτέλης",
+                "action": "γράφει φιλοσοφία",
+                "object": "βιβλίο"
+            },
+            "04": {
+                "person": "Πλάτων",
+                "action": "συζητά σε συμπόσιο",
+                "object": "ειλητάριο"
+            },
+            "05": {
+                "person": "Αχιλλέας",
+                "action": "καρφώνει δόρυ",
+                "object": "ασπίδα"
+            },
+            "06": {
+                "person": "Οδυσσέας",
+                "action": "τραβά τόξο",
+                "object": "καράβι"
+            },
+            "07": {
+                "person": "Ηρακλής",
+                "action": "σηκώνει ρόπαλο",
+                "object": "ρόπαλο"
+            },
+            "08": {
+                "person": "Θησέας",
+                "action": "σκοτώνει Μινώταυρο",
+                "object": "σπαθί"
+            },
+            "09": {
+                "person": "Περσέας",
+                "action": "κρατά το κεφάλι της Μέδουσας",
+                "object": "σπαθί"
+            },
             "00": {
                 "person": "Ζευς",
                 "action": "εκτοξεύει κεραυνό",
                 "object": "κεραυνός"
             }
         },
-"LibraryP4": {
-            "00": {
-                "person": "Ομέγα Ορνιθόπτερος",
-                "action": "Σφυροκοπάει",
-                "object": "Αυγό και Μπάλα"
-            },
-            "01": {
-                "person": "Όμηρος Άλφα",
-                "action": "Σκοντάφτει",
-                "object": "Αυγό και Κερί"
-            },
-            "02": {
-                "person": "Οβελίξ Βλαξ",
-                "action": "Σηκώνει",
-                "object": "Αυγό και Κύκνο"
-            },
-            "03": {
-                "person": "Ομέγα Κλόουν",
-                "action": "Σπρώχνει",
-                "object": "Αυγό και Χειροπέδες"
-            },
-            "04": {
-                "person": "Οδυσσέας Δραπέτης",
-                "action": "Σέρνει",
-                "object": "Αυγό και Καρέκλα"
-            },
-            "05": {
-                "person": "Όσκαρ Έντινσον",
-                "action": "Σαλτάρει",
-                "object": "Αυγό και Γάντζο"
-            },
-            "06": {
-                "person": "Όσκαρ Σαμουράι",
-                "action": "Σχίζει",
-                "object": "Αυγό και Κεράσι"
-            },
-            "07": {
-                "person": "Ορκ Γίγαντας",
-                "action": "Σκοτώνει",
-                "object": "Αυγό και Δρεπάνι"
-            },
-            "08": {
-                "person": "Οράτιος Ηφαίστειος",
-                "action": "Σφυρίζει",
-                "object": "Αυγό και Χιονάνθρωπο"
-            },
-            "09": {
-                "person": "Ορφέας Νάνος",
-                "action": "Σπάζει",
-                "object": "Αυγό και Μπαλόνι"
-            },
-			            "10": {
+        "LibraryP4": {
+            "10": {
                 "person": "Άγγελος Οδοιπόρος",
                 "action": "Τσακίζει",
                 "object": "Δόρυ και Αυγό"
@@ -2956,60 +2906,60 @@
                 "person": "Ironman Νάιτ",
                 "action": "Πιάνει",
                 "object": "Διπλά Μπαλόνια"
-            }
-        },
-"LibraryP5": {
+            },
             "00": {
-                "person": "Albert Einstein",
-                "action": "Writing",
-                "object": "Chalkboard"
+                "person": "Ομέγα Ορνιθόπτερος",
+                "action": "Σφυροκοπάει",
+                "object": "Αυγό και Μπάλα"
             },
             "01": {
-                "person": "Robin",
-                "action": "Leaping",
-                "object": "Batarang"
+                "person": "Όμηρος Άλφα",
+                "action": "Σκοντάφτει",
+                "object": "Αυγό και Κερί"
             },
             "02": {
-                "person": "Charlie Chaplin",
-                "action": "Dancing",
-                "object": "Cane"
+                "person": "Οβελίξ Βλαξ",
+                "action": "Σηκώνει",
+                "object": "Αυγό και Κύκνο"
             },
             "03": {
-                "person": "Donald Duck",
-                "action": "Quacking",
-                "object": "Beak"
+                "person": "Ομέγα Κλόουν",
+                "action": "Σπρώχνει",
+                "object": "Αυγό και Χειροπέδες"
             },
             "04": {
-                "person": "Elvis Presley",
-                "action": "Singing",
-                "object": "Guitar"
+                "person": "Οδυσσέας Δραπέτης",
+                "action": "Σέρνει",
+                "object": "Αυγό και Καρέκλα"
             },
             "05": {
-                "person": "Frodo Baggins",
-                "action": "Sneaking",
-                "object": "Necklace"
+                "person": "Όσκαρ Έντινσον",
+                "action": "Σαλτάρει",
+                "object": "Αυγό και Γάντζο"
             },
             "06": {
-                "person": "Merlin",
-                "action": "Illuminating",
-                "object": "Wizard Hat"
+                "person": "Όσκαρ Σαμουράι",
+                "action": "Σχίζει",
+                "object": "Αυγό και Κεράσι"
             },
             "07": {
-                "person": "Newt Scamander",
-                "action": "Spellcasting",
-                "object": "Broomstick"
+                "person": "Ορκ Γίγαντας",
+                "action": "Σκοτώνει",
+                "object": "Αυγό και Δρεπάνι"
             },
             "08": {
-                "person": "Rick O’Connell",
-                "action": "Whipping",
-                "object": "Golden Idol"
+                "person": "Οράτιος Ηφαίστειος",
+                "action": "Σφυρίζει",
+                "object": "Αυγό και Χιονάνθρωπο"
             },
             "09": {
-                "person": "James Bond",
-                "action": "Driving",
-                "object": "Aston Martin"
-            },
-			           "10": {
+                "person": "Ορφέας Νάνος",
+                "action": "Σπάζει",
+                "object": "Αυγό και Μπαλόνι"
+            }
+        },
+        "LibraryP5": {
+            "10": {
                 "person": "King Kong",
                 "action": "Climbing",
                 "object": "Building"
@@ -3458,11 +3408,61 @@
                 "person": "Voldermort",
                 "action": "Killing",
                 "object": "Horcrux"
+            },
+            "00": {
+                "person": "Albert Einstein",
+                "action": "Writing",
+                "object": "Chalkboard"
+            },
+            "01": {
+                "person": "Robin",
+                "action": "Leaping",
+                "object": "Batarang"
+            },
+            "02": {
+                "person": "Charlie Chaplin",
+                "action": "Dancing",
+                "object": "Cane"
+            },
+            "03": {
+                "person": "Donald Duck",
+                "action": "Quacking",
+                "object": "Beak"
+            },
+            "04": {
+                "person": "Elvis Presley",
+                "action": "Singing",
+                "object": "Guitar"
+            },
+            "05": {
+                "person": "Frodo Baggins",
+                "action": "Sneaking",
+                "object": "Necklace"
+            },
+            "06": {
+                "person": "Merlin",
+                "action": "Illuminating",
+                "object": "Wizard Hat"
+            },
+            "07": {
+                "person": "Newt Scamander",
+                "action": "Spellcasting",
+                "object": "Broomstick"
+            },
+            "08": {
+                "person": "Rick O’Connell",
+                "action": "Whipping",
+                "object": "Golden Idol"
+            },
+            "09": {
+                "person": "James Bond",
+                "action": "Driving",
+                "object": "Aston Martin"
             }
         }
-},
+    },
     "Verses": {
-"LibraryV1": {
+        "LibraryV1": {
             "Pieces": {
                 "P": {
                     "el": "πόνι",
@@ -3580,9 +3580,9 @@
                 ]
             }
         }
-},
+    },
     "Foundations": {
-"LibraryF1": {
+        "LibraryF1": {
             "P": {
                 "el": "Πιόνι",
                 "en": "Pawn",
@@ -3634,64 +3634,5 @@
                 "code": "0"
             }
         }
+    }
 }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
