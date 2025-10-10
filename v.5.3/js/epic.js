@@ -51,12 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
                              colorB, pieceAssocB, sanB, targetAssocB, anchor) {
     const templates = [
-      `${locus} ξεπροβάλλει ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${locus} ξεπροβάλλει και ${pieceAssocB}, και με την κίνηση ${sanB}, ${targetAssocB}.`
+      `${locus} ξεπροβάλλει ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${locus} εμφανίζεται και ${pieceAssocB}, και με την κίνηση ${sanB}, ${targetAssocB}.`
     ];
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
     if (anchor) {
-      const verbs = ["Και τότε μπροστά του εμφανίζεται", "Και τότε μπροστά του ξεπροβάλλει", "Και τότε μπροστά του εμφανίζεται"];
+      const verbs = ["Και τότε μπροστά του παρουσιάζεται"];
       sentence += ` ${verbs[Math.floor(Math.random() * verbs.length)]} ${anchor}`;
     }
     return sentence;
@@ -182,6 +182,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
