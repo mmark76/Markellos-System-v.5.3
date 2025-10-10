@@ -585,38 +585,38 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "ο λευκός στρατιώτης Aagard Akita",
-            "Pb2": "ο λευκός στρατιώτης Botvinnik Boa",
-            "Pc2": "ο λευκός στρατιώτης Carlsen Cougar",
-            "Pd2": "ο λευκός στρατιώτης Ding Dog",
-            "Pe2": "ο λευκός στρατιώτης Erigaisi Eagle",
-            "Pf2": "ο λευκός στρατιώτης Fisher Falcon",
+            "Pa2": "ο λευκός στρατιώτης Arry Akita",
+            "Pb2": "ο λευκός στρατιώτης Barry Boa",
+            "Pc2": "ο λευκός στρατιώτης Charlie Cougar",
+            "Pd2": "ο λευκός στρατιώτης Danny Dingo",
+            "Pe2": "ο λευκός στρατιώτης Eddy Eagle",
+            "Pf2": "ο λευκός στρατιώτης Freddy Falcon",
             "Pg2": "ο λευκός στρατιώτης Garry Gorilla",
-            "Ph2": "ο λευκός στρατιώτης Hikaru Hedgehog",
+            "Ph2": "ο λευκός στρατιώτης Harry Hedgehog",
             "Pa7": "η μαύρη στρατιωτίνα Anna Conda",
-            "Pb7": "ο μαύρος στρατιώτης Borstein Bat",
-            "Pc7": "ο μαύρος στρατιώτης Capablanca Cheetah",
-            "Pd7": "ο μαύρος στρατιώτης Dvoretsky Deer",
+            "Pb7": "η μαύρη στρατιωτίνα Bella Bat",
+            "Pc7": "η μαύρη στρατιωτίνα Conna Cheetah",
+            "Pd7": "η μαύρη στρατιωτίνα Dora Deer",
             "Pe7": "η μαύρη στρατιωτίνα Ella Phant",
-            "Pf7": "ο μαύρος στρατιώτης Firouzja Fox",
-            "Pg7": "ο μαύρος στρατιώτης Giri Gazella",
-            "Ph7": "η μαύρη στρατιωτίνα Hou Hyena",
-            "Ra1": "ο λευκός Προστάτης Μινώταυρος",
+            "Pf7": "η μαύρη στρατιωτίνα Fiona Fox",
+            "Pg7": "η μαύρη στρατιωτίνα Grace Gazella",
+            "Ph7": "η μαύρη στρατιωτίνα Hope Hyena",
+            "Ra1": "ο λευκός Γίγαντας Μινώταυρος",
             "Nb1": "ο λευκός Ιππότης Pale Rider",
             "Bc1": "ο λευκός Επίσκοπος Merlin",
             "Qd1": "η λευκή Βασίλισσα Snow White",
             "Ke1": "ο λευκός Βασιλιάς Lion King",
             "Bf1": "η λευκή Επίσκοπος Σφίγγα",
             "Ng1": "ο λευκός Ιππότης Silver Unicorn",
-            "Rh1": "ο λευκός Προστάτης Titan",
-            "Ra8": "ο μαύρος Προστάτης Godzilla",
+            "Rh1": "ο λευκός Γίγαντας Titan",
+            "Ra8": "ο μαύρος Γίγαντας Godzilla",
             "Nb8": "ο μαύρος Ιππότης Nightmare",
             "Bc8": "ο μαύρος Επίσκοπος Vampire",
             "Qd8": "η μαύρη Βασίλισσα Banshee",
             "Ke8": "ο μαύρος Βασιλιάς King Kong",
             "Bf8": "ο μαύρος Επίσκοπος Were Wolf",
             "Ng8": "ο μαύρος Ιππότης Χάρος",
-            "Rh8": "ο μαύρος Προστάτης Thor"
+            "Rh8": "ο μαύρος Γίγαντας Thor"
         }
     },
     "PAO 0-9": {
@@ -3635,4 +3635,5 @@
             }
         }
     }
+
 }
