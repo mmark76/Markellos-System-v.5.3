@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let sentence = templates[Math.floor(Math.random() * templates.length)];
 
     if (anchor) {
-      const verbs = ["Και τότε μπροστά του παρουσιάζεται"];
+      const verbs = ["Και τότε μπροστά τους εμφανίζεται"];
       sentence += ` ${verbs[Math.floor(Math.random() * verbs.length)]} ${anchor}`;
     }
     return sentence;
@@ -182,6 +182,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
