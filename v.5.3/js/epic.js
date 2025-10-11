@@ -55,18 +55,18 @@ function buildEpicSentence(
   const verbsW = ["εμφανίζεται", "προβάλλει", "αναδύεται", "φαίνεται", "ξεσπά", "αποκαλύπτεται"];
   const verbsB = ["αντικρούει", "αντιδρά", "ανταπαντά", "ορμά", "σηκώνεται", "απαντά", "αντανακλά"];
   const links = [
-    "και καθώς ο χρόνος κυλά στη σκακιέρα",
-    "την ίδια στιγμή, σαν κύμα που επιστρέφει",
-    "μέσα στην ίδια αναπνοή της μάχης",
-    "ενώ η ενέργεια ακόμη πάλλεται στο πεδίο",
-    "στον αντίλαλο της πρώτης κίνησης"
+    "Και καθώς ο χρόνος κυλά στη σκακιέρα",
+    "Και την ίδια στιγμή, σαν κύμα που επιστρέφει",
+    "Και μέσα στην ίδια αναπνοή της μάχης",
+    "Και ενώ η ενέργεια ακόμη πάλλεται στο πεδίο",
+    "Και στον αντίλαλο της πρώτης κίνησης"
   ];
 
   const vW = verbsW[Math.floor(Math.random() * verbsW.length)];
   const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
   const link = links[Math.floor(Math.random() * links.length)];
 
-  let sentence = `${locus} ${vW} ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${link}, ${colorB} ${vB} με ${pieceAssocB}, και με την κίνηση ${sanB}, ${targetAssocB}.`;
+  let sentence = `${locus} ${vW} ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${link}, ${pieceAssocB} ${vB}, και με την κίνηση ${sanB}, ${targetAssocB}.`;
 
   if (anchor) sentence += ` Και τότε μπροστά τους εμφανίζεται ${anchor}.`;
 
@@ -193,6 +193,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
