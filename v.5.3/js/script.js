@@ -74,8 +74,7 @@ function anchorForMovePair(n){
 
 /* ---------- PGN parsing ---------- */
 function parsePGN(pgn){
-  const chess = new Chess();
-  chess.load_pgn(pgn, { sloppy: true });
+  const chess = new Chess(); chess.load_pgn(pgn, { sloppy: true });
   const hist = chess.history({ verbose:true });
   const tmp = new Chess();
   let out=[];
