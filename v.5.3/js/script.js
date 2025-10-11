@@ -74,7 +74,7 @@ function anchorForMovePair(n){
 
 /* ---------- PGN parsing ---------- */
 function parsePGN(pgn){
-  const chess = new Chess();
+  pgn = pgn.replace(/\{\[%.*?\]\}/g, '');    // 🔹 Καθαρισμός engine data (όπως [%evp ...], [%clk ...] κ.λπ.)const chess = new Chess();
   chess.load_pgn(pgn, { sloppy: true });
   const hist = chess.history({ verbose:true });
   const tmp = new Chess();
