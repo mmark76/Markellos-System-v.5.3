@@ -48,19 +48,30 @@ document.addEventListener("DOMContentLoaded", () => {
     return txt.replace(/^\d+\s*—\s*/, "");
   }
 
-  function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
-                             colorB, pieceAssocB, sanB, targetAssocB, anchor) {
-    const templates = [
-      `${locus} ξεπροβάλλει ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ... και καθώς αυτή η ενέργεια ταξιδεύει μέσα στο πεδίο της μάχης · σαν αντίλαλος ξεπροβάλλει ${pieceAssocB}, και με την κίνηση ${sanB}, ${targetAssocB}.`
-    ];
-    let sentence = templates[Math.floor(Math.random() * templates.length)];
+function buildEpicSentence(
+  locus, colorW, pieceAssocW, sanW, targetAssocW,
+  colorB, pieceAssocB, sanB, targetAssocB, anchor
+) {
+  const verbsW = ["εμφανίζεται", "προβάλλει", "αναδύεται", "φαίνεται", "ξεσπά", "αποκαλύπτεται"];
+  const verbsB = ["αντικρούει", "αντιδρά", "ανταπαντά", "ορμά", "σηκώνεται", "απαντά", "αντανακλά"];
+  const links = [
+    "και καθώς ο χρόνος κυλά στη σκακιέρα",
+    "την ίδια στιγμή, σαν κύμα που επιστρέφει",
+    "μέσα στην ίδια αναπνοή της μάχης",
+    "ενώ η ενέργεια ακόμη πάλλεται στο πεδίο",
+    "στον αντίλαλο της πρώτης κίνησης"
+  ];
 
-    if (anchor) {
-      const verbs = ["Και τότε μπροστά τους εμφανίζεται"];
-      sentence += ` ${verbs[Math.floor(Math.random() * verbs.length)]} ${anchor}`;
-    }
-    return sentence;
-  }
+  const vW = verbsW[Math.floor(Math.random() * verbsW.length)];
+  const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
+  const link = links[Math.floor(Math.random() * links.length)];
+
+  let sentence = `${locus} ${vW} ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${link}, ${colorB} ${vB} με ${pieceAssocB}, και με την κίνηση ${sanB}, ${targetAssocB}.`;
+
+  if (anchor) sentence += ` Και τότε μπροστά τους εμφανίζεται ${anchor}.`;
+
+  return sentence;
+}
 
   /* ---------- Δημιουργία Επικής Αφήγησης ---------- */
   function updateEpicText() {
@@ -182,6 +193,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
