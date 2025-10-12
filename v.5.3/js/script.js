@@ -115,7 +115,7 @@ function fillSanTable(moves){
   body.innerHTML='';
   moves.forEach(m=>{
     const locus  = (m.side==='White') ? locusForMovePair(m.movePair) : '';
-    const anchor = (m.movePair % 7 === 0) ? anchorForMovePair(m.movePair) : '';
+    const anchor = (m.movePair % 8 === 0) ? anchorForMovePair(m.movePair) : '';
 	const pieceDisplay = `${m.piece} — ${pieceGreek(m.piece)}`;
     const tr=document.createElement('tr'); tr.dataset.index=m.index;
     tr.innerHTML =
@@ -222,7 +222,7 @@ function fillPaoTable_0_9(moves){
   body.innerHTML='';
   moves.forEach(m=>{
     const locus  = (m.side==='White') ? locusForMovePair(m.movePair) : '';
-    const anchor = (m.movePair % 7 === 0) ? anchorForMovePair(m.movePair) : '';
+    const anchor = (m.movePair % 8 === 0) ? anchorForMovePair(m.movePair) : '';
     const pfr = toPFR(m);
     const code = formatPFR(pfr);
     const {person,action,object} = p1PAO(pfr);
@@ -258,7 +258,7 @@ function fillPaoTable_00_99(moves){
     const wm=moves[i], bm=moves[i+1]; if(!wm||!bm) break;
     const movePair=wm.movePair;
     const locus  = locusForMovePair(movePair);
-    const anchor = (movePair % 7 === 0) ? anchorForMovePair(movePair) : '';
+    const anchor = (movePair % 8 === 0) ? anchorForMovePair(movePair) : '';
     const parts = weave6Digits(toPFR(wm), toPFR(bm));
     const P = p2p3Get(twoDigit(parts.a), collection).person;
     const A = p2p3Get(twoDigit(parts.b), collection).action;
@@ -284,7 +284,7 @@ function fillVerseTable(moves){
   body.innerHTML='';
   moves.forEach(m=>{
     const locus  = (m.side==='White') ? locusForMovePair(m.movePair) : '';
-    const anchor = (m.movePair % 7 === 0) ? anchorForMovePair(m.movePair) : '';
+    const anchor = (m.movePair % 8 === 0) ? anchorForMovePair(m.movePair) : '';
     const file = m.to?.[0]; const rank = Number(m.to?.[1]||0);
     const v = v1Verse(m.piece, file, rank, m.side, m.moveNumber);
     const tr=document.createElement('tr'); tr.dataset.index=m.index;
