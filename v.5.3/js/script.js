@@ -76,15 +76,17 @@ function anchorForMovePair(n){
 function parsePGN(pgn){
 
 // 🧹 Καθαρισμός meta δεδομένων κινητήρων (π.χ. [%evp ...], [%clk ...], [%emt ...])
-pgn = String(pgn || '');
+pgn = String(pgn || '').replace(/\r\n/g, '\n'); // ενοποίηση line endings
 pgn = pgn.replace(/\{\[%[\s\S]*?\]\}/g, '');   // αφαιρεί {[%...]} blocks
 pgn = pgn.replace(/\[%[\s\S]*?\]/g, '');       // αφαιρεί σκέτα [%...]
 pgn = pgn.replace(/\{[^}]*\}/g, '');           // αφαιρεί περιγραφικά σχόλια {...}
 pgn = pgn
   .replace(/[ \t]+/g, ' ')                     // πολλαπλά κενά → ένα
   .replace(/[ \t]*\n[ \t]*/g, '\n')            // καθαρισμός ανά γραμμή
-  .replace(/\n{3,}/g, '\n\n');                 // πάνω από 2 κενές → 2
-pgn = pgn.replace(/(\]\n)(?!\n)/g, '$1\n').trim(); // διασφαλίζει διπλό newline μετά τα tags
+  .replace(/\n{3,}/g, '\n\n')                  // πάνω από 2 κενές → 2
+  .replace(/(\]\n)(?!\n)/g, '$1\n')            // εξασφαλίζει διπλό newline μετά τα tags
+  .trim();
+
 	
   const chess = new Chess();
   chess.load_pgn(pgn, { sloppy: true });
@@ -372,8 +374,6 @@ function cleanPGN(pgn){
     .replace(/\[%.*?\]/gs, '')
     // αφαιρεί περιγραφικά σχόλια {...}
     .replace(/\{[^}]*\}/gs, '')
-    // αφαιρεί όλα τα headers [Tag "Value"] (Event, Site, PlyCount, Result κ.λπ.)
-    .replace(/^\s*\[.*?\]\s*$/gm, '')
     // καθαρίζει πολλαπλά κενά και άχρηστα line breaks
     .replace(/[ \t]+/g, ' ')
     .replace(/[ \t]*\n[ \t]*/g, '\n')
