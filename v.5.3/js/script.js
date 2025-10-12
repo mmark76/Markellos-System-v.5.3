@@ -151,7 +151,7 @@ function fillAssociationsTable(moves){
   moves.forEach(m=>{
     // locus/anchor
     const locus  = (m.side==='White') ? locusForMovePair(m.movePair) : '';
-    const anchor = (m.movePair % 7 === 0) ? anchorForMovePair(m.movePair) : '';
+    const anchor = (m.movePair % 8 === 0) ? anchorForMovePair(m.movePair) : '';
 
     // πάρε την «τρέχουσα» ετικέτα από το FROM ή φτιάξε την αρχική από το library
     let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
