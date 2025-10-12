@@ -84,7 +84,8 @@ pgn = pgn
   .replace(/[ \t]+/g, ' ')                     // πολλαπλά κενά → ένα
   .replace(/[ \t]*\n[ \t]*/g, '\n')            // καθαρισμός ανά γραμμή
   .replace(/\n{3,}/g, '\n\n');                 // πάνω από 2 κενές → 2
-pgn = pgn.replace(/(\]\n)(?!\n)/g, '$1\n').trim(); // διασφαλίζει διπλό newline μετά τα tags
+pgn = pgn.replace(/(\]\n)(?!\n)/g, '$1\n')
+.trim(); // διασφαλίζει διπλό newline μετά τα tags
 	
   const chess = new Chess();
   chess.load_pgn(pgn, { sloppy: true });
