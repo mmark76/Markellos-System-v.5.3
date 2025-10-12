@@ -52,12 +52,11 @@ function buildEpicSentence(
   locus, colorW, pieceAssocW, sanW, targetAssocW,
   colorB, pieceAssocB, sanB, targetAssocB, anchor
 ) {
-  const verbsW = ["εμφανίζεται", "ξεπροβάλλει", "αποκαλύπτεται"];
-  const verbsB = ["απαντά", "αντιδρά", "αντιστέκεται"];
+  const verbsW = ["εμφανίζεται", "ξεπροβάλλει"];
+  const verbsB = ["απαντά", "αντιδρά"];
   const links = [
     "Και σαν απάντηση",
     "Και σαν αντίδραση",
-    "Και σαν αντίλαλος"
   ];
 
   const vW = verbsW[Math.floor(Math.random() * verbsW.length)];
@@ -191,6 +190,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
