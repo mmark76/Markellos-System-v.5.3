@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
   document.body.appendChild(modal);
-
+   
   /* ---------- SAN σε φυσική γλώσσα ---------- */
   function sanToText(san) {
     if (!san) return "";
@@ -191,6 +191,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
