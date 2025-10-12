@@ -74,6 +74,13 @@ function anchorForMovePair(n){
 
 /* ---------- PGN parsing ---------- */
 function parsePGN(pgn){
+
+// 🧹 Καθαρισμός meta δεδομένων κινητήρων (π.χ. [%evp ...], [%clk ...], [%emt ...])
+  pgn = pgn.replace(/\{\[%.*?\]\}/gs, '');   // αφαιρεί {[%...]} blocks
+  pgn = pgn.replace(/\[%.*?\]/g, '');        // αφαιρεί τυχόν σκέτα [%...]
+  pgn = pgn.replace(/\{[^}]*\}/g, '');       // αφαιρεί περιγραφικά σχόλια {...}
+  pgn = pgn.replace(/\s+/g, ' ').trim();     // καθαρίζει κενά
+	
   const chess = new Chess();
   chess.load_pgn(pgn, { sloppy: true });
   const hist = chess.history({ verbose:true });
