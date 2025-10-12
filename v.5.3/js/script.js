@@ -372,8 +372,6 @@ function cleanPGN(pgn){
     .replace(/\[%.*?\]/gs, '')
     // αφαιρεί περιγραφικά σχόλια {...}
     .replace(/\{[^}]*\}/gs, '')
-    // αφαιρεί όλα τα headers [Tag "Value"] (Event, Site, PlyCount, Result κ.λπ.)
-    .replace(/^\s*\[.*?\]\s*$/gm, '')
     // καθαρίζει πολλαπλά κενά και άχρηστα line breaks
     .replace(/[ \t]+/g, ' ')
     .replace(/[ \t]*\n[ \t]*/g, '\n')
