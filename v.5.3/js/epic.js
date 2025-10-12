@@ -52,14 +52,13 @@ function buildEpicSentence(
   locus, colorW, pieceAssocW, sanW, targetAssocW,
   colorB, pieceAssocB, sanB, targetAssocB, anchor
 ) {
-  const verbsW = ["εμφανίζεται", "προβάλλει", "αναδύεται", "φαίνεται", "ξεσπά", "αποκαλύπτεται"];
-  const verbsB = ["αντικρούει", "αντιδρά", "ανταπαντά", "ορμά", "σηκώνεται", "απαντά", "αντανακλά"];
+  const verbsW = ["εμφανίζεται", "ξεπροβάλλει", "φαίνεται", "αποκαλύπτεται"];
+  const verbsB = ["αντικρούει", "ορμά", "σηκώνεται", "αντανακλά"];
   const links = [
-    "Και καθώς ο χρόνος κυλά στη σκακιέρα",
-    "Και την ίδια στιγμή, σαν κύμα που επιστρέφει",
-    "Και μέσα στην ίδια αναπνοή της μάχης",
-    "Και ενώ η ενέργεια ακόμη πάλλεται στο πεδίο",
-    "Και στον αντίλαλο της πρώτης κίνησης"
+    "Και σαν απάντηση",
+    "Και σαν ανταπάντηση",
+    "Και σαν αντίδραση",
+    "Και σαν αντίλαλος"
   ];
 
   const vW = verbsW[Math.floor(Math.random() * verbsW.length)];
@@ -193,6 +192,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
