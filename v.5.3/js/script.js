@@ -66,7 +66,7 @@ function v1Verse(pieceLetter, file, rank, side, moveNo){
 /* ---------- Locus / Anchor ---------- */
 function locusForMovePair(n){ const label = t1Label(n); return label?`${n} — ${label}`:''; }
 function anchorForMovePair(n){
-  const idx = Math.floor((n - 1) / 7) + 1;   // 7→1, 14→2, 21→3...
+  const idx = Math.floor((n - 1) / 8) + 1;   // 8→1, 16→2, 24→3...
   const label = t2Label(idx);
   const fallback = `Αγκύρα ${idx}`;
   return `${n} — ${label || fallback}`;
