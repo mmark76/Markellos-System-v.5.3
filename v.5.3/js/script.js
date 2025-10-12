@@ -376,6 +376,7 @@ function cleanPGN(pgn){
     .replace(/[ \t]+/g, ' ')
     .replace(/[ \t]*\n[ \t]*/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
+	.replace(/\n(\d+\.\s)/g, ' $1')
     .trim();
 }
 
