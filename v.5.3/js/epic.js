@@ -67,7 +67,7 @@ function buildEpicSentence(
 
   let sentence = `${locus} ${vW} ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${link}, ${pieceAssocB} ${vB}, και με την κίνηση ${sanB}, ${targetAssocB}.`;
 
-  if (anchor) sentence += ` Και τότε μπροστά τους εμφανίζεται ${anchor}.`;
+  if (anchor) sentence += ` Και τότε ξάφνου μπροστά τους παρουσιάζεται ${anchor}.`;
 
   return sentence;
 }
@@ -192,6 +192,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
