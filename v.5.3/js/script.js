@@ -77,24 +77,14 @@ function parsePGN(pgn){
 
 // 🧹 Καθαρισμός meta δεδομένων κινητήρων (π.χ. [%evp ...], [%clk ...], [%emt ...])
 pgn = String(pgn || '');
-
-// 1️⃣ Αφαίρεση όλων των {[% ... ]} ακόμα και πολυγραμμικών
-pgn = pgn.replace(/\{\[%[\s\S]*?\]\}/gm, '');
-
-// 2️⃣ Αφαίρεση γραμμών που περιέχουν μόνο [% ...]
-pgn = pgn.replace(/^\s*\[%[\s\S]*?\]\s*$/gm, '');
-
-// 3️⃣ Αφαίρεση περιγραφικών σχολίων {...} αλλά όχι των tags [Event "..."]
-pgn = pgn.replace(/\{(?!\[)[^}]*\}/g, '');
-
-// 4️⃣ Εξομάλυνση γραμμών και κενών χωρίς να χαθεί το format
+pgn = pgn.replace(/\{\[%[\s\S]*?\]\}/g, '');   // αφαιρεί {[%...]} blocks
+pgn = pgn.replace(/\[%[\s\S]*?\]/g, '');       // αφαιρεί σκέτα [%...]
+pgn = pgn.replace(/\{[^}]*\}/g, '');           // αφαιρεί περιγραφικά σχόλια {...}
 pgn = pgn
-  .replace(/[ \t]+/g, ' ')          // πολλαπλά spaces → 1
-  .replace(/[ \t]*\n[ \t]*/g, '\n') // καθαρισμός ανά γραμμή
-  .replace(/\n{3,}/g, '\n\n');      // >2 κενές → 2
-
-// 5️⃣ Διασφάλιση διπλού newline μετά τα tags
-pgn = pgn.replace(/(\]\n)(?!\n)/g, '$1\n').trim();
+  .replace(/[ \t]+/g, ' ')                     // πολλαπλά κενά → ένα
+  .replace(/[ \t]*\n[ \t]*/g, '\n')            // καθαρισμός ανά γραμμή
+  .replace(/\n{3,}/g, '\n\n');                 // πάνω από 2 κενές → 2
+pgn = pgn.replace(/(\]\n)(?!\n)/g, '$1\n').trim(); // διασφαλίζει διπλό newline μετά τα tags
 	
   const chess = new Chess();
   chess.load_pgn(pgn, { sloppy: true });
@@ -373,6 +363,25 @@ async function loadLibraries(){
   console.log("Characters:", libs.Characters);
 }
 
+/* ---------- Καθαρισμός PGN πριν εισαχθεί στο textarea ---------- */
+function cleanPGN(pgn){
+  return String(pgn || '')
+    // αφαιρεί blocks τύπου {[%evp ...]}, {[%clk ...]}, {[%emt ...]}
+    .replace(/\{\[%.*?\]\}/gs, '')
+    // αφαιρεί σκέτα [%...]
+    .replace(/\[%.*?\]/gs, '')
+    // αφαιρεί περιγραφικά σχόλια {...}
+    .replace(/\{[^}]*\}/gs, '')
+    // αφαιρεί όλα τα headers [Tag "Value"] (Event, Site, PlyCount, Result κ.λπ.)
+    .replace(/^\s*\[.*?\]\s*$/gm, '')
+    // καθαρίζει πολλαπλά κενά και άχρηστα line breaks
+    .replace(/[ \t]+/g, ' ')
+    .replace(/[ \t]*\n[ \t]*/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+/* ---------- PGN σύνδεση & γεγονότα ---------- */
 function wirePGN(){
   const ta = document.getElementById('pgnText');
   const fileInput = document.getElementById('pgnFileInput');
@@ -384,20 +393,23 @@ function wirePGN(){
       const f = ev.target.files?.[0]; if(!f) return;
       const r = new FileReader();
       r.onload = ()=>{ 
-        if(ta) ta.value = r.result; 
-        gameMoves = parsePGN(r.result);
+        const cleaned = cleanPGN(r.result);
+        if(ta) ta.value = cleaned; 
+        gameMoves = parsePGN(cleaned);
         renderAll();
       };
       r.readAsText(f);
     });
   }
+
   if(parseBtn){
     parseBtn.addEventListener('click', ()=>{
-      const pgn = ta ? ta.value : '';
+      const pgn = ta ? cleanPGN(ta.value) : '';
       gameMoves = parsePGN(pgn);
       renderAll();
     });
   }
+
   if(clearBtn){
     clearBtn.addEventListener('click', ()=>{
       if(ta) ta.value='';
