@@ -65,7 +65,7 @@ function buildEpicSentence(
   const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
   const link = links[Math.floor(Math.random() * links.length)];
 
-  let sentence = `${locus} ${vW} ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${link}, ${pieceAssocB} ${vB}, και με την κίνηση ${sanB}, ${targetAssocB}.`;
+  let sentence = `Σκηνή ${locus} ${vW} ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${link}, ${pieceAssocB} ${vB}, και με την κίνηση ${sanB}, ${targetAssocB}.`;
 
   if (anchor) sentence += ` Και τότε ξάφνου μπροστά τους παρουσιάζεται ${anchor}.`;
 
@@ -192,6 +192,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
