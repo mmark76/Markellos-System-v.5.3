@@ -90,10 +90,9 @@ function buildEpicSentence(
 
       stories.push(
         buildEpicSentence(
-          anchor,
           locus,
           colorW, pieceAssocW, sanToText(sanW), targetAssocW,
-          colorB, pieceAssocB, sanToText(sanB), targetAssocB, 
+          colorB, pieceAssocB, sanToText(sanB), targetAssocB, anchor
         )
       );
     }
@@ -188,6 +187,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
