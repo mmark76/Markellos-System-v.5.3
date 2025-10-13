@@ -60,7 +60,7 @@ function buildEpicSentence(
   const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
   const link = links[Math.floor(Math.random() * links.length)];
 
-  let sentence = `${anchor ? anchor + " — " : ""} Σκηνή ${locus} - ${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}, και ${pieceAssocB} ${targetAssocB}, με την κίνηση ${sanB}.`;
+  let sentence = `${anchor ? anchor + ".\n\n" : ""} Σκηνή ${locus}.\n\n${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}, και ${pieceAssocB} ${targetAssocB}, με την κίνηση ${sanB}.\n`;
    
   return sentence;
 }
@@ -185,6 +185,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
