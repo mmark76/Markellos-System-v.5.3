@@ -585,37 +585,37 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "Ο Andy Akita",
-            "Pb2": "Ο Bandy Boa",
+            "Pa2": "Ο Andy Armadillo",
+            "Pb2": "Ο Bandy Bison",
             "Pc2": "Ο Cobby Cougar",
             "Pd2": "Ο Danny Dingo",
             "Pe2": "Ο Eddy Eagle",
             "Pf2": "Ο Freddy Falcon",
-            "Pg2": "Ο Garry Gorilla",
-            "Ph2": "Ο Harry Hobbit",
+            "Pg2": "Ο Garry Goofy",
+            "Ph2": "Ο Harry Hippo",
             "Pa7": "Η Anna Conda",
-            "Pb7": "Η Bella Bat",
-            "Pc7": "Η Conna Cheetah",
-            "Pd7": "Η Dora Dwarve",
-            "Pe7": "Η Ella Phant",
-            "Pf7": "Η Fiona Fox",
-            "Pg7": "Η Grace Gazella",
-            "Ph7": "Η Hope Hyena",
+            "Pb7": "Η Bella Bear",
+            "Pc7": "Η Cheetah Connie",
+            "Pd7": "Η Daisy Duck",
+            "Pe7": "Η Έλλα Φαντ",
+            "Pf7": "Η Αλεπού Φοξ",
+            "Pg7": "Η Γορίλλας Γρέις",
+            "Ph7": "Η Ύαινα Χοπ",
             "Ra1": "Ο Μινώταυρος",
-            "Nb1": "Ο λευκός Ιππότης Πήγασος",
+            "Nb1": "Ο λευκός Ιππότης Αράχνη",
             "Bc1": "Ο λευκός Μάγος Γκάνταλφ",
             "Qd1": "Η λευκή Βασίλισσα Χιονάτη",
             "Ke1": "Ο λευκός Βασιλιάς Lion King",
-            "Bf1": "Η λευκή Επίσκοπος Σφίγγα",
+            "Bf1": "Η λευκή Μάγισσα Σφίγγα",
             "Ng1": "Ο λευκός Ιππότης 'Οκταπους",
             "Rh1": "Ο Τιτάνας",
             "Ra8": "Ο Γκοτζίλα",
             "Nb8": "Ο μαύρος Ιππότης Εφιάλτης",
-            "Bc8": "Ο μαύρος Βαμπίρ",
+            "Bc8": "Ο Βαμπίρ",
             "Qd8": "Η μαύρη Βασίλισσα Banshee",
             "Ke8": "Ο μαύρος Βασιλιάς King Kong",
             "Bf8": "Ο Λυκάνθρωπος",
-            "Ng8": "Ο μαύρος Ιππότης Θάνατος",
+            "Ng8": "Ο μαύρος Ιππότης Ντεθ",
             "Rh8": "Ο Άτλας"
         }
     },
@@ -3636,6 +3636,7 @@
         }
     }
 }
+
 
 
 
