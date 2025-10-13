@@ -60,10 +60,10 @@ function buildEpicSentence(
   const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
   const link = links[Math.floor(Math.random() * links.length)];
 
-  if (anchor) sentence += `${anchor}.`;
-  
   let sentence = `Σκηνή ${locus}... . - ${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}. ${pieceAssocB} ${targetAssocB}, με την κίνηση ${sanB}.`;
 
+  if (anchor) sentence += `${anchor}.`;
+  
   return sentence;
 }
 
@@ -188,6 +188,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
