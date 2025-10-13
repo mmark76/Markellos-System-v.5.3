@@ -16,8 +16,8 @@ body {
 /* === Header === */
 header {
   background: #222;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
   position: sticky;
   top: 0;
   z-index: 1000;
