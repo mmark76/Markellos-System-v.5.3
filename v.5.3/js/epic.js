@@ -60,7 +60,7 @@ function buildEpicSentence(
   const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
   const link = links[Math.floor(Math.random() * links.length)];
 
-  let sentence = `Σκηνή ${locus}... . - ${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}. ${pieceAssocB} ${targetAssocB}, με την κίνηση ${sanB}.`;
+  let sentence = `${anchor ? anchor + " — " : ""} Σκηνή ${locus}... . - ${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}. ${pieceAssocB} ${targetAssocB}, με την κίνηση ${sanB}.`;
 
   if (anchor) sentence += `${anchor}.`;
   
@@ -111,8 +111,8 @@ function buildEpicSentence(
     const black = headers["Black"] || "";
     const result = headers["Result"] || "";
 
-   const [y, m, d] = date.split(".");
-const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("en-GB", {
+    const [y, m, d] = date.split(".");
+    const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("en-GB", {
   day: "numeric", month: "long", year: "numeric"
 });
 const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); // χωρίς αποτέλεσμα
@@ -187,6 +187,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
