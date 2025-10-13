@@ -53,11 +53,8 @@ function buildEpicSentence(
   colorB, pieceAssocB, sanB, targetAssocB, anchor
 ) {
   const verbsW = [" "];
-  const verbsB = ["απαντά", "αντιδρά"];
-  const links = [
-    "Και σαν απάντηση",
-    "Και σαν αντίδραση",
-  ];
+  const verbsB = [" "];
+  const links = [" "];
 
   const vW = verbsW[Math.floor(Math.random() * verbsW.length)];
   const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
@@ -65,7 +62,7 @@ function buildEpicSentence(
 
   if (anchor) sentence += `${anchor}.`;
   
-  let sentence = `Σκηνή ${locus}... . - ${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}. ${pieceAssocB} ${vB} και ${targetAssocB}, με την κίνηση ${sanB}.`;
+  let sentence = `Σκηνή ${locus}... . - ${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}. ${pieceAssocB} ${targetAssocB}, με την κίνηση ${sanB}.`;
 
   return sentence;
 }
@@ -191,6 +188,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
