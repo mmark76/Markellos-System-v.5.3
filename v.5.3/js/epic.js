@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- SAN σε φυσική γλώσσα ---------- */
   function sanToText(san) {
     if (!san) return "";
-    if (san === "O-O") return "King castles short";
-    if (san === "O-O-O") return "King castles long";
+    if (san === "O-O") return "King Castle Short";
+    if (san === "O-O-O") return "King Castle Long";
 
     const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
     let move = san.replace(/[+#?!]/g, "");
@@ -190,6 +190,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
