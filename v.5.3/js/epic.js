@@ -52,7 +52,7 @@ function buildEpicSentence(
   locus, colorW, pieceAssocW, sanW, targetAssocW,
   colorB, pieceAssocB, sanB, targetAssocB, anchor
 ) {
-  const verbsW = ["..."];
+  const verbsW = [" "];
   const verbsB = ["απαντά", "αντιδρά"];
   const links = [
     "Και σαν απάντηση",
@@ -63,9 +63,9 @@ function buildEpicSentence(
   const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
   const link = links[Math.floor(Math.random() * links.length)];
 
-  let sentence = `Σκηνή ${locus}. ${vW} ${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}. Και τότε, ${pieceAssocB} ${vB} και ${targetAssocB}, με την κίνηση ${sanB}.`;
-
-  if (anchor) sentence += ` Και τότε ξάφνου μπροστά τους εμφανίζεται ${anchor}.`;
+  if (anchor) sentence += `${anchor}.`;
+  
+  let sentence = `Σκηνή ${locus}... . - ${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}. ${pieceAssocB} ${vB} και ${targetAssocB}, με την κίνηση ${sanB}.`;
 
   return sentence;
 }
@@ -190,6 +190,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
