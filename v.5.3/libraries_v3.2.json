@@ -585,38 +585,38 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "ο Andy Akita",
-            "Pb2": "ο Bandy Boa",
-            "Pc2": "ο Cobby Cougar",
-            "Pd2": "ο Danny Dingo",
-            "Pe2": "ο Eddy Eagle",
-            "Pf2": "ο Freddy Falcon",
-            "Pg2": "ο Garry Gorilla",
-            "Ph2": "ο Harry Hobbit",
-            "Pa7": "η Anna Conda",
-            "Pb7": "η Bella Bat",
-            "Pc7": "η Conna Cheetah",
-            "Pd7": "η Dora Dwarve",
-            "Pe7": "η Ella Phant",
-            "Pf7": "η Fiona Fox",
-            "Pg7": "η Grace Gazella",
-            "Ph7": "η Hope Hyena",
-            "Ra1": "ο Μινώταυρος",
-            "Nb1": "ο λευκός Ιππότης Πήγασος",
-            "Bc1": "ο λευκός Μάγος Γκάνταλφ",
-            "Qd1": "η λευκή Βασίλισσα Χιονάτη",
-            "Ke1": "ο λευκός Βασιλιάς Lion King",
-            "Bf1": "η λευκή Επίσκοπος Σφίγγα",
-            "Ng1": "ο λευκός Ιππότης 'Οκταπους",
-            "Rh1": "ο Τιτάνας",
-            "Ra8": "ο Γκοτζίλα",
-            "Nb8": "ο μαύρος Ιππότης Εφιάλτης",
-            "Bc8": "ο μαύρος Βαμπίρ",
-            "Qd8": "η μαύρη Βασίλισσα Banshee",
-            "Ke8": "ο μαύρος Βασιλιάς King Kong",
-            "Bf8": "ο Λυκάνθρωπος",
-            "Ng8": "ο μαύρος Ιππότης Θάνατος",
-            "Rh8": "ο Άτλας"
+            "Pa2": "Ο Andy Akita",
+            "Pb2": "Ο Bandy Boa",
+            "Pc2": "Ο Cobby Cougar",
+            "Pd2": "Ο Danny Dingo",
+            "Pe2": "Ο Eddy Eagle",
+            "Pf2": "Ο Freddy Falcon",
+            "Pg2": "Ο Garry Gorilla",
+            "Ph2": "Ο Harry Hobbit",
+            "Pa7": "Η Anna Conda",
+            "Pb7": "Η Bella Bat",
+            "Pc7": "Η Conna Cheetah",
+            "Pd7": "Η Dora Dwarve",
+            "Pe7": "Η Ella Phant",
+            "Pf7": "Η Fiona Fox",
+            "Pg7": "Η Grace Gazella",
+            "Ph7": "Η Hope Hyena",
+            "Ra1": "Ο Μινώταυρος",
+            "Nb1": "Ο λευκός Ιππότης Πήγασος",
+            "Bc1": "Ο λευκός Μάγος Γκάνταλφ",
+            "Qd1": "Η λευκή Βασίλισσα Χιονάτη",
+            "Ke1": "Ο λευκός Βασιλιάς Lion King",
+            "Bf1": "Η λευκή Επίσκοπος Σφίγγα",
+            "Ng1": "Ο λευκός Ιππότης 'Οκταπους",
+            "Rh1": "Ο Τιτάνας",
+            "Ra8": "Ο Γκοτζίλα",
+            "Nb8": "Ο μαύρος Ιππότης Εφιάλτης",
+            "Bc8": "Ο μαύρος Βαμπίρ",
+            "Qd8": "Η μαύρη Βασίλισσα Banshee",
+            "Ke8": "Ο μαύρος Βασιλιάς King Kong",
+            "Bf8": "Ο Λυκάνθρωπος",
+            "Ng8": "Ο μαύρος Ιππότης Θάνατος",
+            "Rh8": "Ο Άτλας"
         }
     },
     "PAO 0-9": {
@@ -3636,6 +3636,7 @@
         }
     }
 }
+
 
 
 
