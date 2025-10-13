@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 function buildEpicSentence(
-  locus, colorW, pieceAssocW, sanW, targetAssocW,
-  colorB, pieceAssocB, sanB, targetAssocB, anchor
+  anchor, locus, colorW, pieceAssocW, sanW, targetAssocW,
+  colorB, pieceAssocB, sanB, targetAssocB, 
 ) {
   const verbsW = [" "];
   const verbsB = [" "];
@@ -90,9 +90,9 @@ function buildEpicSentence(
 
       stories.push(
         buildEpicSentence(
-          locus,
+          anchor, locus,
           colorW, pieceAssocW, sanToText(sanW), targetAssocW,
-          colorB, pieceAssocB, sanToText(sanB), targetAssocB, anchor
+          colorB, pieceAssocB, sanToText(sanB), targetAssocB, 
         )
       );
     }
@@ -187,6 +187,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
