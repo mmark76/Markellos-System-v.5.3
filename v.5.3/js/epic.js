@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 if (isHalf) {
   // === Half-move: μία ξεχωριστή σκηνή ανά ημικίνηση ===
-  let sceneCounter = 1;
   for (let i = 0; i < rows.length; i++) {
     const r = rows[i];
     const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
@@ -79,13 +78,13 @@ if (isHalf) {
     const anchorTxt = cleanAnchor(anchor);
     const sanText = sanToText(san);
 
+    // ✅ Τελική καθαρή εκδοχή
     let phrase = `Σκηνή ${locus}\n\n`;
     phrase += `${pieceAssoc} ${targetAssoc} με την κίνηση ${sanText}.`;
 
     if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
 
     stories.push(phrase.trim());
-    sceneCounter++;
   }
 }
 
@@ -188,6 +187,7 @@ const narrativeText = stories.join("\n\n\n");
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
