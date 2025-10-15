@@ -108,7 +108,7 @@ if (isHalf) {
     }
 
     // === Combine Text ===
-    const narrativeText = stories.join("\n\n");
+const narrativeText = stories.join("\n\n\n");
 
     // === Game Info ===
     const chess = new Chess();
@@ -188,6 +188,7 @@ if (isHalf) {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
