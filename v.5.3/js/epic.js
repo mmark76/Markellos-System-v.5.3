@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     move = pieceMap[move[0]] ? move.slice(1) : move;
 
     const [_, square] = move.split("x");
-    const action = move.includes("x") ? "takes" : "moves to";
+    const action = move.includes("x") ? "take" : "moves to";
     return `${piece} ${action} ${square || move}`.trim();
   }
 
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildEpicSentence(anchor, locus, colorW, pieceW, sanW, targetW, colorB, pieceB, sanB, targetB) {
-    return `${anchor ? anchor + "\n\n" : ""}Scene ${locus}\n\n${pieceW} ${targetW}, with move ${sanW}, and ${pieceB} ${targetB}, with move ${sanB}.`;
+    return `${anchor ? anchor + "\n\n" : ""}Σκηνή ${locus}\n\n${pieceW} ${targetW}, με την κίνηση ${sanW}, και ${pieceB} ${targetB}, με την κίνηση ${sanB}.`;
   }
 
   /* ---------- Epic Story Generator ---------- */
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const anchorTxt = cleanAnchor(anchor);
         const sanText = sanToText(san);
-        const phrase = `${anchorTxt ? anchorTxt + "\n\n" : ""}Scene ${locus}\n\n${color} ${pieceAssoc} ${sanText} ${targetAssoc}.`;
+        const phrase = `${anchorTxt ? anchorTxt + "\n\n" : ""}Σκηνή ${locus}\n\n${color} ${pieceAssoc} ${sanText} ${targetAssoc}.`;
         stories.push(phrase);
       }
     } else {
@@ -173,3 +173,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
