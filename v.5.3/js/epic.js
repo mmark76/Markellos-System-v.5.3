@@ -58,15 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const rows = [...tbody.querySelectorAll("tr")];
     if (!rows.length) return;
 
-let isHalf = false;
-try {
-  isHalf = (window.locusMode && window.locusMode.toString().toLowerCase() === "half");
-  console.log("📘 Epic.js locus mode detected:", window.locusMode);
-} catch (err) {
-  console.warn("⚠️ Epic.js locusMode not found, defaulting to 'full'");
-}
-
-     let stories = [];
+    let isHalf = false;
+    try {
+    isHalf = (window.locusMode && window.locusMode.toString().toLowerCase() === "half");
+     console.log("📘 Epic.js locus mode detected:", window.locusMode);
+   } catch (err) {
+     console.warn("⚠️ Epic.js locusMode not found, defaulting to 'full'");
+   }
+    let stories = [];
 
 if (isHalf) {
   // === Half-move: μία ξεχωριστή σκηνή ανά ημικίνηση ===
@@ -80,7 +79,7 @@ if (isHalf) {
     const anchorTxt = cleanAnchor(anchor);
     const sanText = sanToText(san);
 
-    let phrase = `Σκηνή ${sceneCounter} — ${locus}\n\n`;
+    let phrase = `Σκηνή ${locus}\n\n`;
     phrase += `${pieceAssoc} ${targetAssoc} με την κίνηση ${sanText}.`;
 
     if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
@@ -189,6 +188,7 @@ if (isHalf) {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
