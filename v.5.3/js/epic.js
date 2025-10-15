@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
      const isHalf = (typeof window.locusMode !== "undefined" && window.locusMode === "half");
      let stories = [];
 
- if (isHalf) {
+if (isHalf) {
   // === Half-move: μία ξεχωριστή σκηνή ανά ημικίνηση ===
   let sceneCounter = 1;
   for (let i = 0; i < rows.length; i++) {
@@ -74,13 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const sanText = sanToText(san);
 
     let phrase = `Σκηνή ${sceneCounter} — ${locus}\n\n`;
-    if (color === "Λευκό") {
-      phrase += `Η ${pieceAssoc} του Λευκού ${sanText} προς ${targetAssoc}.`;
-    } else {
-      phrase += `Η ${pieceAssoc} του Μαύρου ${sanText} προς ${targetAssoc}.`;
-    }
+    phrase += `${pieceAssoc} ${targetAssoc} με την κίνηση ${sanText}.`;
 
-    // πρόσθεσε anchor εάν υπάρχει
     if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
 
     stories.push(phrase.trim());
@@ -187,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
