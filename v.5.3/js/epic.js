@@ -26,20 +26,20 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
   document.body.appendChild(modal);
-
+   
   /* ---------- SAN σε φυσική γλώσσα ---------- */
   function sanToText(san) {
     if (!san) return "";
-    if (san === "O-O") return "ροκέ μικρό";
-    if (san === "O-O-O") return "ροκέ μεγάλο";
+    if (san === "O-O") return "King Castle Short";
+    if (san === "O-O-O") return "King Castle Long";
 
-    const pieceMap = { N: "Ίππος", B: "Αξιωματικός", R: "Πύργος", Q: "Βασίλισσα", K: "Βασιλιάς" };
+    const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
     let move = san.replace(/[+#?!]/g, "");
-    let piece = pieceMap[move[0]] ? pieceMap[move[0]] : "στρατιώτης";
+    let piece = pieceMap[move[0]] ? pieceMap[move[0]] : "pawn";
     move = pieceMap[move[0]] ? move.slice(1) : move;
 
     const [_, square] = move.split("x");
-    const action = move.includes("x") ? "αιχμαλωτίζει στο" : "πηγαίνει στο";
+    const action = move.includes("x") ? "take" : "";
     return `${piece} ${action} ${square || move}`.trim();
   }
 
@@ -48,20 +48,22 @@ document.addEventListener("DOMContentLoaded", () => {
     return txt.replace(/^\d+\s*—\s*/, "");
   }
 
-  function buildEpicSentence(locus, colorW, pieceAssocW, sanW, targetAssocW,
-                             colorB, pieceAssocB, sanB, targetAssocB, anchor) {
-    const verbsW = ["εμφανίζεται", "ξεπροβάλλει", "φαίνεται", "αποκαλύπτεται"];
-    const verbsB = ["αντικρούει", "ορμά", "σηκώνεται", "αντανακλά"];
-    const links = ["Και σαν απάντηση", "Και σαν ανταπάντηση", "Και σαν αντίδραση", "Και σαν αντίλαλος"];
+function buildEpicSentence(
+  anchor, locus, colorW, pieceAssocW, sanW, targetAssocW,
+  colorB, pieceAssocB, sanB, targetAssocB, 
+) {
+  const verbsW = [" "];
+  const verbsB = [" "];
+  const links = [" "];
 
-    const vW = verbsW[Math.floor(Math.random() * verbsW.length)];
-    const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
-    const link = links[Math.floor(Math.random() * links.length)];
+  const vW = verbsW[Math.floor(Math.random() * verbsW.length)];
+  const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
+  const link = links[Math.floor(Math.random() * links.length)];
 
-    let sentence = `${locus} ${vW} ${pieceAssocW}, και με την κίνηση ${sanW}, ${targetAssocW}. ${link}, ${pieceAssocB} ${vB}, και με την κίνηση ${sanB}, ${targetAssocB}.`;
-    if (anchor) sentence += ` Και τότε ξάφνου μπροστά τους παρουσιάζεται ${anchor}.`;
-    return sentence;
-  }
+  let sentence = `${anchor ? anchor + "\n\n" : ""} Σκηνή ${locus}\n\n${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}, και ${pieceAssocB} ${targetAssocB}, με την κίνηση ${sanB}.\n`;
+   
+  return sentence;
+}
 
   /* ---------- Δημιουργία Επικής Αφήγησης ---------- */
   function updateEpicText() {
@@ -71,48 +73,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const rows = [...tbody.querySelectorAll("tr")];
     if (rows.length === 0) return;
 
-    const isHalf = (window.locusMode === "half");
     let stories = [];
+    for (let i = 0; i < rows.length; i += 2) {
+      const w = rows[i], b = rows[i + 1];
+      if (!w || !b) break;
 
-    if (isHalf) {
-      // === Ημικίνηση: κάθε γραμμή ανεξάρτητη ===
-      for (let i = 0; i < rows.length; i++) {
-        const r = rows[i];
-        const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
-          [...r.children].map(td => td.innerText.trim());
-        if (!locus) continue;
+      const [_, sanW, locusW, anchorW, colorW, pieceAssocW, targetAssocW] =
+        [...w.children].map(td => td.innerText.trim());
+      const [__, sanB, locusB, anchorB, colorB, pieceAssocB, targetAssocB] =
+        [...b.children].map(td => td.innerText.trim());
 
-        const anchorTxt = cleanAnchor(anchor);
-        const sanText = sanToText(san);
-        const phrase = `${anchorTxt ? anchorTxt + " — " : ""}${locus}: ο ${color} ${pieceAssoc} ${sanText}, στο ${targetAssoc}.`;
-        stories.push(phrase);
-      }
+      const locus = locusW || locusB || "σκηνή";
+      const anchor = cleanAnchor(anchorW || anchorB || "");
 
-    } else {
-      // === Πλήρης Κίνηση: Λευκός + Μαύρος ===
-      for (let i = 0; i < rows.length; i += 2) {
-        const w = rows[i], b = rows[i + 1];
-        if (!w || !b) break;
-
-        const [_, sanW, anchorW, locusW, colorW, pieceAssocW, targetAssocW] =
-          [...w.children].map(td => td.innerText.trim());
-        const [__, sanB, anchorB, locusB, colorB, pieceAssocB, targetAssocB] =
-          [...b.children].map(td => td.innerText.trim());
-
-        const locus = locusW || locusB || "σκηνή";
-        const anchor = cleanAnchor(anchorW || anchorB || "");
-        const sW = sanToText(sanW);
-        const sB = sanToText(sanB);
-
-        stories.push(buildEpicSentence(locus, colorW, pieceAssocW, sW, targetAssocW,
-                                       colorB, pieceAssocB, sB, targetAssocB, anchor));
-      }
+      stories.push(
+        buildEpicSentence(
+          anchor, locus,
+          colorW, pieceAssocW, sanToText(sanW), targetAssocW,
+          colorB, pieceAssocB, sanToText(sanB), targetAssocB, 
+        )
+      );
     }
 
     // === Ενοποιημένο Κείμενο ===
     const narrativeText = stories.join("\n\n");
 
-    // === Game Info ===
+    // === Game Info (ως πρόλογος) ===
     const chess = new Chess();
     chess.load_pgn(document.getElementById("pgnText").value, { sloppy: true });
     const headers = chess.header();
@@ -124,29 +110,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const result = headers["Result"] || "";
 
     const [y, m, d] = date.split(".");
-    const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("el-GR", {
-      day: "numeric", month: "long", year: "numeric"
-    });
-    const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim();
+    const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("en-GB", {
+  day: "numeric", month: "long", year: "numeric"
+});
+const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); // χωρίς αποτέλεσμα
 
+    // === Τελική φράση ===
     let finalMsg = "";
-    if (result === "1-0") finalMsg = "…και με την τελευταία κίνηση, ο Λευκός κερδίζει.";
-    else if (result === "0-1") finalMsg = "…και με την τελευταία κίνηση, ο Μαύρος κερδίζει.";
-    else if (result === "1/2-1/2") finalMsg = "…και η παρτίδα λήγει ισόπαλη.";
+    if (result === "1-0") {
+      finalMsg = "…και με την τελευταία κίνηση, ο Λευκός κερδίζει.";
+    } else if (result === "0-1") {
+      finalMsg = "…και με την τελευταία κίνηση, ο Μαύρος κερδίζει.";
+    } else if (result === "1/2-1/2") {
+      finalMsg = "…και με την τελευταία κίνηση, οι αντίπαλοι συμφωνούν να λήξει η παρτίδα ισόπαλη.";
+    }
 
-    const fullText = [gameHeader, narrativeText, finalMsg.trim()].filter(Boolean).join("\n\n");
+   const fullText = [gameHeader, narrativeText, finalMsg.trim()]
+  .filter(Boolean)
+  .join("\n\n");
     document.getElementById("epicTextView").innerText = fullText;
 
-    // === Αντιγραφή ===
+    // === Copy Story (απλό, σταθερό, ενιαίο) ===
     const copyBtn = document.getElementById("copyEpicBtn");
     if (copyBtn) {
       copyBtn.replaceWith(copyBtn.cloneNode(true));
       const freshBtn = document.getElementById("copyEpicBtn");
+
       freshBtn.addEventListener("click", async () => {
         try {
           await navigator.clipboard.writeText(fullText);
           freshBtn.innerText = "✅ Copied!";
         } catch (err) {
+          console.error("Copy failed:", err);
           const ta = document.createElement("textarea");
           ta.value = fullText;
           document.body.appendChild(ta);
