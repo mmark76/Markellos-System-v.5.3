@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const rows = [...tbody.querySelectorAll("tr")];
     if (!rows.length) return;
 
-    const isHalf = (window.locusMode === "half");
-    let stories = [];
+     const isHalf = (typeof window.locusMode !== "undefined" && window.locusMode === "half");
+     let stories = [];
 
     if (isHalf) {
       // === Half-move: one line per move ===
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const anchorTxt = cleanAnchor(anchor);
         const sanText = sanToText(san);
-        const phrase = `${anchorTxt ? anchorTxt + "\n\n" : ""}Σκηνή ${locus}\n\n${color} ${pieceAssoc} ${sanText} ${targetAssoc}.`;
+        const phrase = `${anchorTxt ? anchorTxt + "\n\n" : ""}Σκηνή ${locus}\n\n${color} ${pieceAssoc} ${sanText} προς ${targetAssoc}.`;
         stories.push(phrase);
       }
     } else {
@@ -173,4 +173,5 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
