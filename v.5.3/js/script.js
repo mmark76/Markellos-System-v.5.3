@@ -284,8 +284,10 @@ function fillPaoTable_00_99(moves){
   for(let i=0;i<moves.length;i+=2){
     const wm=moves[i], bm=moves[i+1]; if(!wm||!bm) break;
     const movePair=wm.movePair;
-	const locus = locusForMove(m);
-    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
+    const locus = locusForMove(wm);
+    const anchor = (wm.side === 'White' && (movePair === 1 || movePair % 8 === 0))
+      ? anchorForMovePair(movePair)
+      : '';
     const parts = weave6Digits(toPFR(wm), toPFR(bm));
     const P = p2p3Get(twoDigit(parts.a), collection).person;
     const A = p2p3Get(twoDigit(parts.b), collection).action;
@@ -295,7 +297,7 @@ function fillPaoTable_00_99(moves){
       `<td>${escapeHtml(`${movePair}.`)}</td>`+
       `<td>${escapeHtml(`${wm.san}  ${bm.san}`)}</td>`+
       `<td>${escapeHtml(anchor)}</td>`+
-	  `<td>${escapeHtml(locus)}</td>`+
+      `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml('Πλήρης κίνηση')}</td>`+
       `<td>${escapeHtml(parts.all)}</td>`+
       `<td>${escapeHtml(`Person: ${P}`)}<br>`+
