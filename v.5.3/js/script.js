@@ -148,8 +148,8 @@ function fillSanTable(moves){
     tr.innerHTML =
       `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
       `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(anchor)}</td>`+
+	  `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceDisplay)}</td>`+
       `<td>${escapeHtml(m.to)}</td>`+
@@ -226,8 +226,8 @@ function fillAssociationsTable(moves){
     tr.innerHTML =
       `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
       `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+
+      `<td>${escapeHtml(anchor)}</td>`+     
+	  `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceAssoc)}</td>`+
       `<td>${escapeHtml(targetAssoc)}</td>`;
@@ -257,8 +257,8 @@ function fillPaoTable_0_9(moves){
     tr.innerHTML =
       `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
       `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(anchor)}</td>`+
+      `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(`${code} (${m.san})`)}</td>`+
       `<td>${escapeHtml(`Κωδικός: ${code}`)}<br>`+
@@ -294,8 +294,8 @@ function fillPaoTable_00_99(moves){
     tr.innerHTML =
       `<td>${escapeHtml(`${movePair}.`)}</td>`+
       `<td>${escapeHtml(`${wm.san}  ${bm.san}`)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(anchor)}</td>`+
+	  `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml('Πλήρης κίνηση')}</td>`+
       `<td>${escapeHtml(parts.all)}</td>`+
       `<td>${escapeHtml(`Person: ${P}`)}<br>`+
@@ -318,8 +318,8 @@ function fillVerseTable(moves){
     tr.innerHTML =
       `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
       `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(anchor)}</td>`+
+	  `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(`Piece: ${v.piece}`)}<br>`+
           `${escapeHtml(`File: ${v.file}`)}<br>`+
