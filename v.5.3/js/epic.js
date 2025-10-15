@@ -61,20 +61,30 @@ document.addEventListener("DOMContentLoaded", () => {
      const isHalf = (typeof window.locusMode !== "undefined" && window.locusMode === "half");
      let stories = [];
 
-    if (isHalf) {
-      // === Half-move: one line per move ===
-      for (let i = 0; i < rows.length; i++) {
-        const r = rows[i];
-        const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
-          [...r.children].map(td => td.innerText.trim());
-        if (!locus) continue;
+   if (isHalf) {
+  // === Half-move: μία πρόταση ανά ημικίνηση ===
+  for (let i = 0; i < rows.length; i++) {
+    const r = rows[i];
+    const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
+      [...r.children].map(td => td.innerText.trim());
+    if (!locus) continue;
 
-        const anchorTxt = cleanAnchor(anchor);
-        const sanText = sanToText(san);
-        const phrase = `${anchorTxt ? anchorTxt + "\n\n" : ""}Σκηνή ${locus}\n\n${color} ${pieceAssoc} ${sanText} προς ${targetAssoc}.`;
-        stories.push(phrase);
-      }
+    const anchorTxt = cleanAnchor(anchor);
+    const sanText = sanToText(san);
+
+    let phrase = "";
+
+    if (color === "Λευκό") {
+      phrase = `${anchorTxt ? anchorTxt + "\n\n" : ""}Σκηνή ${locus}\n\nΟ ${pieceAssoc} του Λευκού ${sanText} προς ${targetAssoc}.`;
     } else {
+      phrase = `${anchorTxt ? anchorTxt + "\n\n" : ""}Σκηνή ${locus}\n\nΟ ${pieceAssoc} του Μαύρου ${sanText} προς ${targetAssoc}.`;
+    }
+
+    stories.push(phrase);
+  }
+}
+
+    else {
       // === Full-move: pair of White + Black ===
       for (let i = 0; i < rows.length; i += 2) {
         const w = rows[i], b = rows[i + 1];
@@ -173,6 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
