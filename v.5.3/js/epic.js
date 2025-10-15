@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildEpicSentence(anchor, locus, colorW, pieceW, sanW, targetW, colorB, pieceB, sanB, targetB) {
-    return `${anchor ? anchor + "\n\n" : ""}Σκηνή ${locus}\n\n ${pieceW} ${targetW}, με την κίνηση ${sanW}. ${pieceB} ${targetB}, με την κίνηση ${sanB}.`;
+    return `${anchor ? anchor + "\n\n" : ""}Σκηνή ${locus}\n\n${pieceW} ${targetW}, με την κίνηση ${sanW}. ${pieceB} ${targetB}, με την κίνηση ${sanB}.`;
   }
 
   /* ---------- Epic Story Generator ---------- */
@@ -188,6 +188,7 @@ if (isHalf) {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
