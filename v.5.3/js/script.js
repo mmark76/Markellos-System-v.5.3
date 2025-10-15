@@ -6,6 +6,24 @@ let libs = null;
 let gameMoves = [];
 let selectedLang = 'el';
 
+/* ---------- Global Locus Mode ---------- */
+let locusMode = 'half'; // προεπιλογή: ανά ημικίνηση
+
+document.addEventListener('DOMContentLoaded', () => {
+  const locusSelect = document.getElementById('locusMode');
+  if (locusSelect) {
+    locusSelect.value = locusMode;
+    locusSelect.addEventListener('change', e => {
+      locusMode = e.target.value;
+      // ανανέωση πινάκων για να εφαρμοστεί το νέο mode
+      if (gameMoves && gameMoves.length) {
+        fillSanTable(gameMoves);
+        fillAssociationsTable(gameMoves);
+      }
+    });
+  }
+});
+
 /* ---------- UI helpers ---------- */
 function sideGR(side){ return side==='White' ? 'Λευκό' : 'Μαύρο'; }
 const PIECE_GREEK = {P:'Στρατιώτης', N:'Ίππος', B:'Αξιωματικός', R:'Πύργος', Q:'Βασίλισσα', K:'Βασιλιάς'};
@@ -64,8 +82,17 @@ function v1Verse(pieceLetter, file, rank, side, moveNo){
 }
 
 /* ---------- Locus / Anchor ---------- */
-function locusForMovePair(n){ const label = t1Label(n); return label?`${n} — ${label}`:''; }
-function anchorForMovePair(n){
+function locusForMove(m) {
+  if (locusMode === 'full') {
+    const label = t1Label(m.movePair);
+    return label ? `${m.movePair} — ${label}` : '';
+  } else {
+    const label = t1Label(m.index + 1);
+    return label ? `${m.index + 1} — ${label}` : '';
+  }
+}
+
+function anchorForMovePair(n) {
   const idx = Math.ceil((n + 1) / 8);   // ✅ διορθωμένος υπολογισμός   // 8→1, 16→2, 24→3...
   const label = t2Label(idx);
   const fallback = `Αγκύρα ${idx}`;
@@ -114,7 +141,7 @@ function fillSanTable(moves){
   const body = document.getElementById('sanBody'); if(!body) return;
   body.innerHTML='';
   moves.forEach(m=>{
-    const locus  = (m.side==='White') ? locusForMovePair(m.movePair) : '';
+	const locus = locusForMove(m);
     const anchor = (m.movePair === 1 || m.movePair % 8 === 0)  ? anchorForMovePair(m.movePair)  : '';
 	const pieceDisplay = `${m.piece} — ${pieceGreek(m.piece)}`;
     const tr=document.createElement('tr'); tr.dataset.index=m.index;
@@ -150,7 +177,7 @@ function fillAssociationsTable(moves){
 
   moves.forEach(m=>{
     // locus/anchor
-    const locus  = (m.side==='White') ? locusForMovePair(m.movePair) : '';
+	const locus = locusForMove(m);
     const anchor = (m.movePair === 1 || m.movePair % 8 === 0)  ? anchorForMovePair(m.movePair)  : '';
 
     // πάρε την «τρέχουσα» ετικέτα από το FROM ή φτιάξε την αρχική από το library
@@ -221,7 +248,7 @@ function fillPaoTable_0_9(moves){
   const body = document.getElementById('paoBody'); if(!body) return;
   body.innerHTML='';
   moves.forEach(m=>{
-    const locus  = (m.side==='White') ? locusForMovePair(m.movePair) : '';
+	const locus = locusForMove(m);
     const anchor = (m.movePair % 8 === 0) ? anchorForMovePair(m.movePair) : '';
     const pfr = toPFR(m);
     const code = formatPFR(pfr);
@@ -257,7 +284,7 @@ function fillPaoTable_00_99(moves){
   for(let i=0;i<moves.length;i+=2){
     const wm=moves[i], bm=moves[i+1]; if(!wm||!bm) break;
     const movePair=wm.movePair;
-    const locus  = locusForMovePair(movePair);
+	const locus = locusForMove(m);
     const anchor = (movePair % 8 === 0) ? anchorForMovePair(movePair) : '';
     const parts = weave6Digits(toPFR(wm), toPFR(bm));
     const P = p2p3Get(twoDigit(parts.a), collection).person;
@@ -283,7 +310,7 @@ function fillVerseTable(moves){
   const body = document.getElementById('verseBody'); if(!body) return;
   body.innerHTML='';
   moves.forEach(m=>{
-    const locus  = (m.side==='White') ? locusForMovePair(m.movePair) : '';
+	const locus = locusForMove(m);
     const anchor = (m.movePair % 8 === 0) ? anchorForMovePair(m.movePair) : '';
     const file = m.to?.[0]; const rank = Number(m.to?.[1]||0);
     const v = v1Verse(m.piece, file, rank, m.side, m.moveNumber);
