@@ -142,7 +142,7 @@ function fillSanTable(moves){
   body.innerHTML='';
   moves.forEach(m=>{
 	const locus = locusForMove(m);
-    const anchor = (m.movePair === 1 || m.movePair % 8 === 0)  ? anchorForMovePair(m.movePair)  : '';
+    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
 	const pieceDisplay = `${m.piece} — ${pieceGreek(m.piece)}`;
     const tr=document.createElement('tr'); tr.dataset.index=m.index;
     tr.innerHTML =
@@ -178,7 +178,7 @@ function fillAssociationsTable(moves){
   moves.forEach(m=>{
     // locus/anchor
 	const locus = locusForMove(m);
-    const anchor = (m.movePair === 1 || m.movePair % 8 === 0)  ? anchorForMovePair(m.movePair)  : '';
+    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
 
     // πάρε την «τρέχουσα» ετικέτα από το FROM ή φτιάξε την αρχική από το library
     let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
@@ -249,7 +249,7 @@ function fillPaoTable_0_9(moves){
   body.innerHTML='';
   moves.forEach(m=>{
 	const locus = locusForMove(m);
-    const anchor = (m.movePair % 8 === 0) ? anchorForMovePair(m.movePair) : '';
+    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
     const pfr = toPFR(m);
     const code = formatPFR(pfr);
     const {person,action,object} = p1PAO(pfr);
@@ -285,7 +285,7 @@ function fillPaoTable_00_99(moves){
     const wm=moves[i], bm=moves[i+1]; if(!wm||!bm) break;
     const movePair=wm.movePair;
 	const locus = locusForMove(m);
-    const anchor = (movePair % 8 === 0) ? anchorForMovePair(movePair) : '';
+    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
     const parts = weave6Digits(toPFR(wm), toPFR(bm));
     const P = p2p3Get(twoDigit(parts.a), collection).person;
     const A = p2p3Get(twoDigit(parts.b), collection).action;
@@ -311,7 +311,7 @@ function fillVerseTable(moves){
   body.innerHTML='';
   moves.forEach(m=>{
 	const locus = locusForMove(m);
-    const anchor = (m.movePair % 8 === 0) ? anchorForMovePair(m.movePair) : '';
+    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
     const file = m.to?.[0]; const rank = Number(m.to?.[1]||0);
     const v = v1Verse(m.piece, file, rank, m.side, m.moveNumber);
     const tr=document.createElement('tr'); tr.dataset.index=m.index;
@@ -346,12 +346,12 @@ function downloadTableAsCSV(sectionId, filename){
   if(!table){ alert('Δεν βρέθηκε table.'); return; }
   let csv=[];
   for(const row of table.querySelectorAll('tr')){
-    const cells=[...row.children].map(td=>{
-      const raw=td.innerText.replace(/\r?\n/g,' ').trim();
-      return `"${raw.replace(/"/g,'""')}"`;
-    });
-    if(cells.length) csv.push(cells.join(','));
-  }
+  const cells=[...row.children].map(td=>{
+  const raw=td.innerText.replace(/\r?\n/g,' ').trim();
+  return `"${raw.replace(/"/g,'""')}"`;
+ });
+  if(cells.length) csv.push(cells.join(','));
+ }
   const blob=new Blob([csv.join('\n')],{type:'text/csv;charset=utf-8;'});
   saveAs(blob, filename||'table.csv');
 }
