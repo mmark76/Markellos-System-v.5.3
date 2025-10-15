@@ -58,7 +58,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const rows = [...tbody.querySelectorAll("tr")];
     if (!rows.length) return;
 
-     const isHalf = (typeof window.locusMode !== "undefined" && window.locusMode === "half");
+let isHalf = false;
+try {
+  isHalf = (window.locusMode && window.locusMode.toString().toLowerCase() === "half");
+  console.log("📘 Epic.js locus mode detected:", window.locusMode);
+} catch (err) {
+  console.warn("⚠️ Epic.js locusMode not found, defaulting to 'full'");
+}
+
      let stories = [];
 
 if (isHalf) {
@@ -182,6 +189,7 @@ if (isHalf) {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
