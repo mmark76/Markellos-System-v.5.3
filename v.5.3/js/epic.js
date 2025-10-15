@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // === Δημιουργία Modal Epic Story ===
+  // === Create Modal ===
   const epicSection = document.createElement("section");
   epicSection.id = "epicSection";
   const verseSection = document.getElementById("verseSection");
@@ -17,17 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
   modal.innerHTML = `
     <div class="epic-modal-content">
       <span class="epic-close" id="epicCloseBtn">&times;</span>
-
       <div class="epic-copy-toolbar">
         <button id="copyEpicBtn" class="btn btn-primary">📋 Copy Story</button>
       </div>
-
       <div id="epicTextView" class="epic-text"></div>
     </div>
   `;
   document.body.appendChild(modal);
-   
-  /* ---------- SAN σε φυσική γλώσσα ---------- */
+
+  /* ---------- Helpers ---------- */
   function sanToText(san) {
     if (!san) return "";
     if (san === "O-O") return "King Castle Short";
@@ -39,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     move = pieceMap[move[0]] ? move.slice(1) : move;
 
     const [_, square] = move.split("x");
-    const action = move.includes("x") ? "take" : "";
+    const action = move.includes("x") ? "takes" : "moves to";
     return `${piece} ${action} ${square || move}`.trim();
   }
 
@@ -48,62 +46,61 @@ document.addEventListener("DOMContentLoaded", () => {
     return txt.replace(/^\d+\s*—\s*/, "");
   }
 
-function buildEpicSentence(
-  anchor, locus, colorW, pieceAssocW, sanW, targetAssocW,
-  colorB, pieceAssocB, sanB, targetAssocB, 
-) {
-  const verbsW = [" "];
-  const verbsB = [" "];
-  const links = [" "];
+  function buildEpicSentence(anchor, locus, colorW, pieceW, sanW, targetW, colorB, pieceB, sanB, targetB) {
+    return `${anchor ? anchor + "\n\n" : ""}Scene ${locus}\n\n${pieceW} ${targetW}, with move ${sanW}, and ${pieceB} ${targetB}, with move ${sanB}.`;
+  }
 
-  const vW = verbsW[Math.floor(Math.random() * verbsW.length)];
-  const vB = verbsB[Math.floor(Math.random() * verbsB.length)];
-  const link = links[Math.floor(Math.random() * links.length)];
-
-  let sentence = `${anchor ? anchor + "\n\n" : ""} Σκηνή ${locus}\n\n${pieceAssocW} ${targetAssocW}, με την κίνηση ${sanW}, και ${pieceAssocB} ${targetAssocB}, με την κίνηση ${sanB}.\n`;
-   
-  return sentence;
-}
-
-  /* ---------- Δημιουργία Επικής Αφήγησης ---------- */
+  /* ---------- Epic Story Generator ---------- */
   function updateEpicText() {
     const tbody = document.querySelector(`#assocSection tbody`);
     if (!tbody) return;
 
     const rows = [...tbody.querySelectorAll("tr")];
-    if (rows.length === 0) return;
+    if (!rows.length) return;
 
+    const isHalf = (window.locusMode === "half");
     let stories = [];
-    for (let i = 0; i < rows.length; i += 2) {
-      const w = rows[i], b = rows[i + 1];
-      if (!w || !b) break;
 
-      const [_, sanW, locusW, anchorW, colorW, pieceAssocW, targetAssocW] =
-        [...w.children].map(td => td.innerText.trim());
-      const [__, sanB, locusB, anchorB, colorB, pieceAssocB, targetAssocB] =
-        [...b.children].map(td => td.innerText.trim());
+    if (isHalf) {
+      // === Half-move: one line per move ===
+      for (let i = 0; i < rows.length; i++) {
+        const r = rows[i];
+        const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
+          [...r.children].map(td => td.innerText.trim());
+        if (!locus) continue;
 
-      const locus = locusW || locusB || "σκηνή";
-      const anchor = cleanAnchor(anchorW || anchorB || "");
+        const anchorTxt = cleanAnchor(anchor);
+        const sanText = sanToText(san);
+        const phrase = `${anchorTxt ? anchorTxt + "\n\n" : ""}Scene ${locus}\n\n${color} ${pieceAssoc} ${sanText} ${targetAssoc}.`;
+        stories.push(phrase);
+      }
+    } else {
+      // === Full-move: pair of White + Black ===
+      for (let i = 0; i < rows.length; i += 2) {
+        const w = rows[i], b = rows[i + 1];
+        if (!w || !b) break;
 
-      stories.push(
-        buildEpicSentence(
-          anchor, locus,
-          colorW, pieceAssocW, sanToText(sanW), targetAssocW,
-          colorB, pieceAssocB, sanToText(sanB), targetAssocB, 
-        )
-      );
+        const [_, sanW, anchorW, locusW, colorW, pieceW, targetW] =
+          [...w.children].map(td => td.innerText.trim());
+        const [__, sanB, anchorB, locusB, colorB, pieceB, targetB] =
+          [...b.children].map(td => td.innerText.trim());
+
+        const locus = locusW || locusB || "scene";
+        const anchor = cleanAnchor(anchorW || anchorB || "");
+        stories.push(buildEpicSentence(anchor, locus, colorW, pieceW, sanToText(sanW), targetW,
+                                       colorB, pieceB, sanToText(sanB), targetB));
+      }
     }
 
-    // === Ενοποιημένο Κείμενο ===
+    // === Combine Text ===
     const narrativeText = stories.join("\n\n");
 
-    // === Game Info (ως πρόλογος) ===
+    // === Game Info ===
     const chess = new Chess();
     chess.load_pgn(document.getElementById("pgnText").value, { sloppy: true });
     const headers = chess.header();
 
-    const event = (headers["Event"] || "").trim();
+    const event = headers["Event"] || "";
     const date = headers["Date"] || "";
     const white = headers["White"] || "";
     const black = headers["Black"] || "";
@@ -111,37 +108,28 @@ function buildEpicSentence(
 
     const [y, m, d] = date.split(".");
     const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("en-GB", {
-  day: "numeric", month: "long", year: "numeric"
-});
-const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); // χωρίς αποτέλεσμα
+      day: "numeric", month: "long", year: "numeric"
+    });
+    const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim();
 
-    // === Τελική φράση ===
     let finalMsg = "";
-    if (result === "1-0") {
-      finalMsg = "…και με την τελευταία κίνηση, ο Λευκός κερδίζει.";
-    } else if (result === "0-1") {
-      finalMsg = "…και με την τελευταία κίνηση, ο Μαύρος κερδίζει.";
-    } else if (result === "1/2-1/2") {
-      finalMsg = "…και με την τελευταία κίνηση, οι αντίπαλοι συμφωνούν να λήξει η παρτίδα ισόπαλη.";
-    }
+    if (result === "1-0") finalMsg = "…and with the final move, White wins.";
+    else if (result === "0-1") finalMsg = "…and with the final move, Black wins.";
+    else if (result === "1/2-1/2") finalMsg = "…and the game ends in a draw.";
 
-   const fullText = [gameHeader, narrativeText, finalMsg.trim()]
-  .filter(Boolean)
-  .join("\n\n");
+    const fullText = [gameHeader, narrativeText, finalMsg.trim()].filter(Boolean).join("\n\n");
     document.getElementById("epicTextView").innerText = fullText;
 
-    // === Copy Story (απλό, σταθερό, ενιαίο) ===
+    // === Copy Button ===
     const copyBtn = document.getElementById("copyEpicBtn");
     if (copyBtn) {
       copyBtn.replaceWith(copyBtn.cloneNode(true));
       const freshBtn = document.getElementById("copyEpicBtn");
-
       freshBtn.addEventListener("click", async () => {
         try {
           await navigator.clipboard.writeText(fullText);
           freshBtn.innerText = "✅ Copied!";
-        } catch (err) {
-          console.error("Copy failed:", err);
+        } catch {
           const ta = document.createElement("textarea");
           ta.value = fullText;
           document.body.appendChild(ta);
@@ -161,7 +149,7 @@ const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim(); //
     modal.style.display = "block";
   }
 
-  // === Κουμπί Show Epic Story ===
+  // === Button & Modal Logic ===
   const assocSection = document.getElementById("assocSection");
   let assocBtnDiv = null;
   if (assocSection) {
