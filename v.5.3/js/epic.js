@@ -122,9 +122,9 @@ if (isHalf) {
     const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim();
 
     let finalMsg = "";
-    if (result === "1-0") finalMsg = "…and with the final move, White wins.";
-    else if (result === "0-1") finalMsg = "…and with the final move, Black wins.";
-    else if (result === "1/2-1/2") finalMsg = "…and the game ends in a draw.";
+    if (result === "1-0") finalMsg = "… και με την τελευταία κίνηση ο λευκός κερδίζει.";
+    else if (result === "0-1") finalMsg = "… και με την τελευταία κίνηση κερδίζει ο μαύρος.";
+    else if (result === "1/2-1/2") finalMsg = "… και με την τελευταία κίνηση η μαχη λήγει ισόπαλη.";
 
     const fullText = [gameHeader, narrativeText, finalMsg.trim()].filter(Boolean).join("\n\n");
     document.getElementById("epicTextView").innerText = fullText;
@@ -182,6 +182,7 @@ if (isHalf) {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
