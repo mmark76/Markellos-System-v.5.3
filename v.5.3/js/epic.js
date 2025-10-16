@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (result === "0-1") finalMsg = " \n … και μετά την τελευταία κίνηση του μαύρου, ο λευκός βασιλιάς κατάλαβε πως η μάχη είχε κριθεί. Έσκυψε το κεφάλι του αργά και παραδόθηκε με αξιοπρέπεια. Το πεδίο σώπασε και η ηχώ της μάχης έμεινε να αιωρείται μέσα στο χώρο. Και ο Γέροντας έκλεισε το παλιό βιβλίο και η παρτίδα έμεινε σαν ανάμνηση μιας μάχης που θα ζει για πάντα στη μνήμη και την ιστορία.";
     else if (result === "1/2-1/2") finalMsg = " \n … και μετά την τελευταία κίνηση, οι δύο Στρατηγοί καταλαβαίνουν ότι κανείς δεν μπορεί να κερδίσει αυτή τη μάχη και δίνουν τα χέρια και η μάχη λήγει ισόπαλη. Και ο Γέροντας έκλεισε το παλιό βιβλίο και η παρτίδα έμεινε σαν ανάμνηση μιας μάχης που θα ζει για πάντα στη μνήμη και την ιστορία.";
 
-    const fullText = [prologue, gameHeader, narrativeText, finalMsg.trim()]  .filter(Boolean)  .join("\n\n");
+    const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]  .filter(Boolean)  .join("\n\n");
     
      document.getElementById("epicTextView").innerText = fullText;
 
@@ -157,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
