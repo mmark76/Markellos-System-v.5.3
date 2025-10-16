@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     move = pieceMap[move[0]] ? move.slice(1) : move;
 
     const [_, square] = move.split("x");
-    const action = move.includes("x") ? "take" : "move to";
+    const action = move.includes("x") ? "take" : " ";
     return `${piece} ${action} ${square || move}`.trim();
   }
 
@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
