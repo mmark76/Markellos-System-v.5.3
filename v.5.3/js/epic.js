@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const sanText = sanToText(san);
 
       let phrase = `Σκηνή ${locus}\n\n`;
-      phrase += `ξεπροβάλλει ${pieceAssoc} ${targetAssoc} με την κίνηση ${sanText}.`;
+      phrase += `ξεπροβάλλει ${pieceAssoc} και ${targetAssoc}, με την κίνηση ${sanText}.`;
 
       if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
 
@@ -155,4 +155,5 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
