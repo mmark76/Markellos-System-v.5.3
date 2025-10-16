@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let phrase = `Σκηνή ${locus}, `;
       phrase += ` ξεπροβάλλει ${pieceAssoc}, και ${targetAssoc}, με την κίνηση ${sanText}.\n`;
-
+ 
       if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
 
       stories.push(phrase.trim());
@@ -95,9 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameHeader = `${event}\n${white} vs ${black}\n${formattedDate}`.trim();
 
     let finalMsg = "";
-    if (result === "1-0") finalMsg = "… και με την τελευταία κίνηση ο λευκός κερδίζει.";
-    else if (result === "0-1") finalMsg = "… και με την τελευταία κίνηση κερδίζει ο μαύρος.";
-    else if (result === "1/2-1/2") finalMsg = "… και με την τελευταία κίνηση η μάχη λήγει ισόπαλη.";
+    if (result === "1-0") finalMsg = "… και μετά την τελευταία κίνηση του λευκού, ο μαύρος Βασιλιάς κατάλαβε πως η μάχη είχε κριθεί. Έσκυψε το κεφάλι του αργά και παραδόθηκε με αξιοπρέπεια. Το πεδίο σώπασε και η ηχώ της μάχης έμεινε να αιωρείται μέσα στο χώρο. Και ο Γέροντας έκλεισε το παλιό βιβλίο και η παρτίδα έμεινε σαν ανάμνηση μιας μάχης που θα ζει για πάντα στη μνήμη και την ιστορία.";
+    else if (result === "0-1") finalMsg = "… και μετά την τελευταία κίνηση του μαύρου, ο λευκός βασιλιάς κατάλαβε πως η μάχη είχε κριθεί. Έσκυψε το κεφάλι του αργά και παραδόθηκε με αξιοπρέπεια. Το πεδίο σώπασε και η ηχώ της μάχης έμεινε να αιωρείται μέσα στο χώρο. Και ο Γέροντας έκλεισε το παλιό βιβλίο και η παρτίδα έμεινε σαν ανάμνηση μιας μάχης που θα ζει για πάντα στη μνήμη και την ιστορία.";
+    else if (result === "1/2-1/2") finalMsg = "… και μετά την τελευταία κίνηση, οι δύο Στρατηγοί καταλαβαίνουν ότι κανείς δεν μπορεί να κερδίσει αυτή τη μάχη και δίνουν τα χέρια και η μάχη λήγει ισόπαλη. Και ο Γέροντας έκλεισε το παλιό βιβλίο και η παρτίδα έμεινε σαν ανάμνηση μιας μάχης που θα ζει για πάντα στη μνήμη και την ιστορία.";
 
     const fullText = [gameHeader, narrativeText, finalMsg.trim()].filter(Boolean).join("\n\n");
     document.getElementById("epicTextView").innerText = fullText;
@@ -155,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
