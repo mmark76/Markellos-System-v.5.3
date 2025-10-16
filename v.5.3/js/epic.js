@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     move = pieceMap[move[0]] ? move.slice(1) : move;
 
     const [_, square] = move.split("x");
-    const action = move.includes("x") ? "take" : "moves to";
+    const action = move.includes("x") ? "take" : "move to";
     return `${piece} ${action} ${square || move}`.trim();
   }
 
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const sanText = sanToText(san);
 
       let phrase = `Σκηνή ${locus}\n\n`;
-      phrase += `${pieceAssoc} ${targetAssoc} με την κίνηση ${sanText}.`;
+      phrase += `ξεπροβάλλει ${pieceAssoc} ${targetAssoc} με την κίνηση ${sanText}.`;
 
       if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
 
@@ -155,3 +155,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
