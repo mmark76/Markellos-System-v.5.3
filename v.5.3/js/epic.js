@@ -1,5 +1,5 @@
 /* ================================
-   Markellos CMS v5.3 — Epic Story 
+   Markellos CMS v5.3 — Epic Story (Half-Move Only)
    ================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -46,10 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return txt.replace(/^\d+\s*—\s*/, "");
   }
 
-  function buildEpicSentence(anchor, locus, colorW, pieceW, sanW, targetW, colorB, pieceB, sanB, targetB) {
-    return `${anchor ? anchor + "\n\n" : ""}Σκηνή ${locus}\n\n${pieceW} ${targetW}, με την κίνηση ${sanW}. ${pieceB} ${targetB}, με την κίνηση ${sanB}.`;
-  }
-
   /* ---------- Epic Story Generator ---------- */
   function updateEpicText() {
     const tbody = document.querySelector(`#assocSection tbody`);
@@ -58,56 +54,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const rows = [...tbody.querySelectorAll("tr")];
     if (!rows.length) return;
 
-    let isHalf = false;
-    try {
-    isHalf = (window.locusMode && window.locusMode.toString().toLowerCase() === "half");
-     console.log("📘 Epic.js locus mode detected:", window.locusMode);
-   } catch (err) {
-     console.warn("⚠️ Epic.js locusMode not found, defaulting to 'full'");
-   }
     let stories = [];
 
-if (isHalf) {
-  // === Half-move: μία ξεχωριστή σκηνή ανά ημικίνηση ===
-  for (let i = 0; i < rows.length; i++) {
-    const r = rows[i];
-    const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
-      [...r.children].map(td => td.innerText.trim());
-    if (!locus) continue;
+    // === Half-move only: μία σκηνή ανά ημικίνηση ===
+    for (let i = 0; i < rows.length; i++) {
+      const r = rows[i];
+      const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
+        [...r.children].map(td => td.innerText.trim());
+      if (!locus) continue;
 
-    const anchorTxt = cleanAnchor(anchor);
-    const sanText = sanToText(san);
+      const anchorTxt = cleanAnchor(anchor);
+      const sanText = sanToText(san);
 
-    // ✅ Τελική καθαρή εκδοχή
-    let phrase = `Σκηνή ${locus}\n\n`;
-    phrase += `${pieceAssoc} ${targetAssoc} με την κίνηση ${sanText}.`;
+      let phrase = `Σκηνή ${locus}\n\n`;
+      phrase += `${pieceAssoc} ${targetAssoc} με την κίνηση ${sanText}.`;
 
-    if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
+      if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
 
-    stories.push(phrase.trim());
-  }
-}
-
-    else {
-      // === Full-move: pair of White + Black ===
-      for (let i = 0; i < rows.length; i += 2) {
-        const w = rows[i], b = rows[i + 1];
-        if (!w || !b) break;
-
-        const [_, sanW, anchorW, locusW, colorW, pieceW, targetW] =
-          [...w.children].map(td => td.innerText.trim());
-        const [__, sanB, anchorB, locusB, colorB, pieceB, targetB] =
-          [...b.children].map(td => td.innerText.trim());
-
-        const locus = locusW || locusB || "scene";
-        const anchor = cleanAnchor(anchorW || anchorB || "");
-        stories.push(buildEpicSentence(anchor, locus, colorW, pieceW, sanToText(sanW), targetW,
-                                       colorB, pieceB, sanToText(sanB), targetB));
-      }
+      stories.push(phrase.trim());
     }
 
     // === Combine Text ===
-const narrativeText = stories.join("\n\n\n");
+    const narrativeText = stories.join("\n\n\n");
 
     // === Game Info ===
     const chess = new Chess();
@@ -129,7 +97,7 @@ const narrativeText = stories.join("\n\n\n");
     let finalMsg = "";
     if (result === "1-0") finalMsg = "… και με την τελευταία κίνηση ο λευκός κερδίζει.";
     else if (result === "0-1") finalMsg = "… και με την τελευταία κίνηση κερδίζει ο μαύρος.";
-    else if (result === "1/2-1/2") finalMsg = "… και με την τελευταία κίνηση η μαχη λήγει ισόπαλη.";
+    else if (result === "1/2-1/2") finalMsg = "… και με την τελευταία κίνηση η μάχη λήγει ισόπαλη.";
 
     const fullText = [gameHeader, narrativeText, finalMsg.trim()].filter(Boolean).join("\n\n");
     document.getElementById("epicTextView").innerText = fullText;
@@ -187,16 +155,3 @@ const narrativeText = stories.join("\n\n\n");
     if (event.target === modal) modal.style.display = "none";
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
