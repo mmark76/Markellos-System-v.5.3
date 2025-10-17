@@ -86,10 +86,10 @@ function v1Verse(pieceLetter, file, rank, side, moveNo){
 function locusForMove(m) {
   if (locusMode === 'full') {
     const label = t1Label(m.movePair);
-    return label ? `${m.movePair} — ${label}` : '';
+    return label || '';
   } else {
     const label = t1Label(m.index + 1);
-    return label ? `${m.index + 1} — ${label}` : '';
+    return label || '';
   }
 }
 
