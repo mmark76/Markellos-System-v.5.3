@@ -94,10 +94,10 @@ function locusForMove(m) {
 }
 
 function anchorForMovePair(n) {
-  const idx = Math.ceil((n + 1) / 8);   // ✅ διορθωμένος υπολογισμός   // 8→1, 16→2, 24→3...
+  const idx = Math.ceil((n + 1) / 8);   // 8→1, 16→2, 24→3...
   const label = t2Label(idx);
   const fallback = `Αγκύρα ${idx}`;
-  return `${n} — ${label || fallback}`;
+  return label || fallback;
 }
 
 /* ---------- PGN parsing ---------- */
