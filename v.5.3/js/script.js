@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     locusSelect.addEventListener('change', e => {
       locusMode = e.target.value;
       // ανανέωση πινάκων για να εφαρμοστεί το νέο mode
-       window.locusMode = locusMode;  // ✅ Ενημερώνει το global scope ώστε να το βλέπει το epic.js
+       window.locusMode = locusMode;
       if (gameMoves && gameMoves.length) {
         fillSanTable(gameMoves);
         fillAssociationsTable(gameMoves);
