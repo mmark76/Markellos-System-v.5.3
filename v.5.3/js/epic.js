@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const sanText = sanToText(san);
 
       let sceneNumber = i + 1; // αριθμός σκηνής
-      let phrase = `Σκηνή ${sceneNumber}: \n `;
+      let phrase = `Σκηνή ${sceneNumber}: \n\n `;
       phrase += ` ${locus}, ξεπροβάλλει ${pieceAssoc}, και ${targetAssoc}, με την κίνηση ${sanText}.\n`;
  
       if (anchorTxt) phrase = `${anchorTxt}\n\n${phrase}`;
@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
