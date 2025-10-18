@@ -166,23 +166,23 @@ function fillSanTable(moves){
   });
 }
 
-/* ---------- Ενεργοποίηση χειροκίνητων anchors ---------- */
+/* ---------- Ενεργοποίηση χειροκίνητων anchors (σε όλους τους πίνακες) ---------- */
 function enableManualAnchors() {
-  const movesTable = document.getElementById('sanBody');
-  if (!movesTable) return;
-
-  movesTable.querySelectorAll('tr').forEach(tr => {
-    tr.addEventListener('click', () => {
-      const moveIndex = tr.dataset.index;
-      if (manualAnchors[moveIndex]) {
-        delete manualAnchors[moveIndex];
-      } else {
-        manualAnchors[moveIndex] = true;
-      }
-      renderAll();
-      enableManualAnchors(); // επανασύνδεση listeners μετά το re-render
+  document.querySelectorAll('#sanBody, #assocBody, #paoBody, #pao99Body, #verseBody')
+    .forEach(table => {
+      table.querySelectorAll('tr').forEach(tr => {
+        const moveIndex = tr.dataset.index;
+        tr.onclick = () => {
+          if (manualAnchors[moveIndex]) {
+            delete manualAnchors[moveIndex];
+          } else {
+            manualAnchors[moveIndex] = true;
+          }
+          renderAll();
+          enableManualAnchors(); // επανασύνδεση listeners
+        };
+      });
     });
-  });
 }
 
 /* ---------- ASSOCIATIONS TABLE (labels move with pieces) ---------- */
@@ -205,7 +205,7 @@ function fillAssociationsTable(moves){
   moves.forEach(m=>{
     // locus/anchor
 	const locus = locusForMove(m);
-    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
+    const anchor = anchorForMove(m.index);
 
     // πάρε την «τρέχουσα» ετικέτα από το FROM ή φτιάξε την αρχική από το library
     let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
@@ -276,7 +276,7 @@ function fillPaoTable_0_9(moves){
   body.innerHTML='';
   moves.forEach(m=>{
 	const locus = locusForMove(m);
-    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
+    const anchor = anchorForMove(m.index);
     const pfr = toPFR(m);
     const code = formatPFR(pfr);
     const {person,action,object} = p1PAO(pfr);
@@ -312,9 +312,7 @@ function fillPaoTable_00_99(moves){
     const wm=moves[i], bm=moves[i+1]; if(!wm||!bm) break;
     const movePair=wm.movePair;
     const locus = locusForMove(wm);
-    const anchor = (wm.side === 'White' && (movePair === 1 || movePair % 8 === 0))
-      ? anchorForMovePair(movePair)
-      : '';
+    const anchor = anchorForMove(wm.index);
     const parts = weave6Digits(toPFR(wm), toPFR(bm));
     const P = p2p3Get(twoDigit(parts.a), collection).person;
     const A = p2p3Get(twoDigit(parts.b), collection).action;
@@ -340,7 +338,7 @@ function fillVerseTable(moves){
   body.innerHTML='';
   moves.forEach(m=>{
 	const locus = locusForMove(m);
-    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
+    const anchor = anchorForMove(m.index);
     const file = m.to?.[0]; const rank = Number(m.to?.[1]||0);
     const v = v1Verse(m.piece, file, rank, m.side, m.moveNumber);
     const tr=document.createElement('tr'); tr.dataset.index=m.index;
