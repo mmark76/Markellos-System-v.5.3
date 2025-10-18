@@ -86,7 +86,7 @@ const opening = i === 0 ? "Η ιστορία μας ξεκινά όταν" : ope
 const action = verbs[i % verbs.length];
 
 // === let sceneNumber = i + 1; // αριθμός σκηνής
-let phrase = `${opening}, ${pieceAssoc}, ${action} ${locus} και από εκεί ${targetAssoc}.\n`; //===, με την κίνηση ${sanText} ===//
+let phrase = `${opening}, ${pieceAssoc}, ${targetAssoc} και από εκεί ${action} ${locus}.\n`; //===, με την κίνηση ${sanText} ===//
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
 stories.push(phrase.trim());
@@ -175,6 +175,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
