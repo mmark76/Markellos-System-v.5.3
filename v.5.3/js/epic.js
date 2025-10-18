@@ -82,11 +82,11 @@ const verbs = [
   "ξεπροβάλλει"
 ];
 
-const opening = i === 0 ? "Η ιστορία μας ξεκινά όταν" : openings[i % openings.length];
+const opening = i === 0 ? "Η ιστορία μας ξεκινάει όταν" : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 // === let sceneNumber = i + 1; // αριθμός σκηνής
-let phrase = `${opening}, ${pieceAssoc}, ${targetAssoc} και εκεί ${action} ${locus}.\n`; //===, με την κίνηση ${sanText} ===//
+let phrase = `${opening}, ${pieceAssoc}, ${targetAssoc} και τότε εκεί ${action} ${locus}.\n`; //===, με την κίνηση ${sanText} ===//
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
 stories.push(phrase.trim());
@@ -111,7 +111,7 @@ stories.push(phrase.trim());
       day: "numeric", month: "long", year: "numeric"
     });
     const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
-    const prologue = `Ο Γέροντας παίρνει στα χέρια του με μεγάλη προσοχή ένα χοντρό βιβλίο και λέει στο μικρό σκακιστή ...\n Σήμερα θα μελετήσουμε τη μάχη ανάμεσα σε αυτούς τους δύο μεγάλους στρατηγούς, ... και ανοίγει το αρχαίο, πολύτιμο βιβλίο, μετροφυλλάει κάποιες σελίδες και ξεκινάει να διαβάζει...\n `;
+    const prologue = `Ο Γέροντας παίρνει στα χέρια του με μεγάλη προσοχή ένα χοντρό βιβλίο και λέει στο μικρό σκακιστή ...\n Σήμερα θα μελετήσουμε μία πολυ μεγάλη μάχη, ... και ανοίγει το αρχαίο πολύτιμο βιβλίο μετροφυλλάει κάποιες σελίδες και ξεκινάει να διαβάζει...\n `;
     
     let finalMsg = "";
     if (result === "1-0") finalMsg = "\n … και μετά την τελευταία κίνηση, ο μαύρος Στρατηγός κατάλαβε πως η μάχη είχε κριθεί. Έσκυψε το κεφάλι του αργά, και δίνοντας το χέρι του στον αντίπαλο Στρατηγό, αποδέχτηκε με αξιοπρέπεια την ήττα ... και ο Γέροντας κλείνει το παλιό σκονισμένο βιβλίο ... και έτσι η παρτίδα έγινε ανάμνηση για πάντα στη μνήμη και γράφτηκε στην ιστορία.";
@@ -175,6 +175,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
