@@ -82,7 +82,7 @@ const verbs = [
   "ξεπροβάλλει"
 ];
 
-const opening = i === 0 ? "Ξεκινά η ιστορία μας όταν" : openings[i % openings.length];
+const opening = i === 0 ? "Η ιστορία μας ξεκινά όταν" : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 // === let sceneNumber = i + 1; // αριθμός σκηνής
@@ -175,6 +175,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
