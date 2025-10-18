@@ -82,7 +82,7 @@ function v1Verse(pieceLetter, file, rank, side, moveNo){
   return {piece, file:fileTxt, rank:rankTxt, closing};
 }
 
-/* ---------- Locus / Anchor ---------- */
+/* ---------- Locus ---------- */
 function locusForMove(m) {
   if (locusMode === 'full') {
     const label = t1Label(m.movePair);
@@ -93,11 +93,15 @@ function locusForMove(m) {
   }
 }
 
+// --- Χειροκίνητα Anchors ---
+let manualAnchors = {};  // π.χ. { "4": true, "12": true }
+
+function anchorForMove(index) {
+  return manualAnchors[index] ? '⚓' : '';
+}
+// ✅ Συμβατότητα για τις υπόλοιπες συναρτήσεις
 function anchorForMovePair(n) {
-  const idx = Math.ceil((n + 1) / 8);   // 8→1, 16→2, 24→3...
-  const label = t2Label(idx);
-  const fallback = `Αγκύρα ${idx}`;
-  return label || fallback;
+  return anchorForMove(n);
 }
 
 /* ---------- PGN parsing ---------- */
@@ -137,25 +141,47 @@ pgn = pgn
   return out;
 }
 
-/* ---------- SAN TABLE ---------- */
+/* ---------- SAN TABLE (ενημερωμένο) ---------- */
 function fillSanTable(moves){
-  const body = document.getElementById('sanBody'); if(!body) return;
+  const body = document.getElementById('sanBody'); 
+  if(!body) return;
   body.innerHTML='';
+
   moves.forEach(m=>{
-	const locus = locusForMove(m);
-    const anchor = (m.side === 'White' && (m.movePair === 1 || m.movePair % 8 === 0))  ? anchorForMovePair(m.movePair)  : '';
-	const pieceDisplay = `${m.piece} — ${pieceGreek(m.piece)}`;
-    const tr=document.createElement('tr'); tr.dataset.index=m.index;
-    tr.innerHTML =
+    const locus = locusForMove(m);
+    const anchor = anchorForMove(m.index);
+    const pieceDisplay = `${m.piece} — ${pieceGreek(m.piece)}`;
+    const tr = document.createElement('tr');
+     tr.dataset.index = m.index;
+     tr.innerHTML =
       `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
       `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+
-	  `<td>${escapeHtml(locus)}</td>`+
+      `<td style="text-align:center;">${escapeHtml(anchor)}</td>`+
+      `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceDisplay)}</td>`+
       `<td>${escapeHtml(m.to)}</td>`+
       `<td>${escapeHtml(m.fen)}</td>`;
     body.appendChild(tr);
+  });
+}
+
+/* ---------- Ενεργοποίηση χειροκίνητων anchors ---------- */
+function enableManualAnchors() {
+  const movesTable = document.getElementById('sanBody');
+  if (!movesTable) return;
+
+  movesTable.querySelectorAll('tr').forEach(tr => {
+    tr.addEventListener('click', () => {
+      const moveIndex = tr.dataset.index;
+      if (manualAnchors[moveIndex]) {
+        delete manualAnchors[moveIndex];
+      } else {
+        manualAnchors[moveIndex] = true;
+      }
+      renderAll();
+      enableManualAnchors(); // επανασύνδεση listeners μετά το re-render
+    });
   });
 }
 
@@ -411,7 +437,7 @@ function cleanPGN(pgn){
     .trim();
 }
 
-/* ---------- PGN σύνδεση & γεγονότα ---------- */
+/* ---------- PGN σύνδεση & γεγονότα (ενημερωμένο) ---------- */
 function wirePGN(){
   const ta = document.getElementById('pgnText');
   const fileInput = document.getElementById('pgnFileInput');
@@ -420,13 +446,16 @@ function wirePGN(){
 
   if(fileInput){
     fileInput.addEventListener('change', ev=>{
-      const f = ev.target.files?.[0]; if(!f) return;
+      const f = ev.target.files?.[0]; 
+      if(!f) return;
       const r = new FileReader();
       r.onload = ()=>{ 
         const cleaned = cleanPGN(r.result);
         if(ta) ta.value = cleaned; 
         gameMoves = parsePGN(cleaned);
+        manualAnchors = {}; // καθαρισμός αγκυρών
         renderAll();
+        enableManualAnchors();
       };
       r.readAsText(f);
     });
@@ -436,7 +465,9 @@ function wirePGN(){
     parseBtn.addEventListener('click', ()=>{
       const pgn = ta ? cleanPGN(ta.value) : '';
       gameMoves = parsePGN(pgn);
+      manualAnchors = {}; // καθαρισμός αγκυρών
       renderAll();
+      enableManualAnchors();
     });
   }
 
@@ -445,6 +476,7 @@ function wirePGN(){
       if(ta) ta.value='';
       if(fileInput) fileInput.value='';
       gameMoves=[]; 
+      manualAnchors = {};
       renderAll();
     });
   }
@@ -486,10 +518,12 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
   const ta = document.getElementById('pgnText');
+  
   if(ta && ta.value.trim()){
     gameMoves = parsePGN(ta.value);
   }
   renderAll();
+  enableManualAnchors();
 
   const fenBtn=document.getElementById('openFenBuilderBtn');
   if(fenBtn){
@@ -586,15 +620,16 @@ function exportTable(sectionId, format){
 
 // === Universal Hide/Unhide Columns for All Tables ===
 document.addEventListener("DOMContentLoaded", () => {
-  // Επιλέγει όλους τους πίνακες (εκτός αν θέλεις να εξαιρέσεις κάποιους)
+
+// Επιλέγει όλους τους πίνακες (εκτός αν θέλεις να εξαιρέσεις κάποιους)
   document.querySelectorAll("table").forEach((table, tableIndex) => {
 
-    // Δημιουργεί toolbar για κάθε πίνακα
+// Δημιουργεί toolbar για κάθε πίνακα
     const toolbar = document.createElement("div");
     toolbar.className = "table-toolbar";
     toolbar.style.marginBottom = "8px";
 
-    // Βρίσκει όλες τις κεφαλίδες στηλών (th)
+// Βρίσκει όλες τις κεφαλίδες στηλών (th)
     const headers = table.querySelectorAll("th");
     headers.forEach((th, idx) => {
       const colName = th.textContent.trim() || `Στήλη ${idx + 1}`;
@@ -617,7 +652,7 @@ document.addEventListener("DOMContentLoaded", () => {
       toolbar.appendChild(label);
     });
 
-    // Εισάγει το toolbar ακριβώς πριν από κάθε πίνακα
+// Εισάγει το toolbar ακριβώς πριν από κάθε πίνακα
     table.parentNode.insertBefore(toolbar, table);
   });
 });
