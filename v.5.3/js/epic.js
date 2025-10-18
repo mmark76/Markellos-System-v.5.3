@@ -85,13 +85,11 @@ const verbs = [
 const opening = i === 0 ? "Ξεκινά η ιστορία μας όταν" : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
-let sceneNumber = i + 1; // αριθμός σκηνής
-let phrase = ` ${sceneNumber}: `;
-phrase += `${opening}, ${pieceAssoc}, ${action} ${locus} και ${targetAssoc}, με την κίνηση ${sanText}.\n`;
+// === let sceneNumber = i + 1; // αριθμός σκηνής
+let phrase = `${opening}, ${pieceAssoc}, ${action} ${locus} και από εκεί ${targetAssoc}.\n`; //===, με την κίνηση ${sanText} ===//
+if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
-   if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
-
-       stories.push(phrase.trim());
+stories.push(phrase.trim());
 }
 
     // === Combine Text ===
@@ -177,6 +175,7 @@ phrase += `${opening}, ${pieceAssoc}, ${action} ${locus} και ${targetAssoc}, 
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
