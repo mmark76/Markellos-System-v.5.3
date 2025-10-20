@@ -1,0 +1,704 @@
+{
+    "LibraryP2": {
+        "10": {
+            "letters": "A O",
+            "person": "Aristotle",
+            "occupation": "Orator",
+            "action": "διδάσκει",
+            "object": "ειλητάριο"
+        },
+        "11": {
+            "letters": "A A",
+            "person": "Al Pacino",
+            "occupation": "Actor",
+            "action": "υποδύεται",
+            "object": "σενάριο"
+        },
+        "12": {
+            "letters": "A B",
+            "person": "Anthony Joshua",
+            "occupation": "Boxer",
+            "action": "πυγμαχεί",
+            "object": "γάντια"
+        },
+        "13": {
+            "letters": "A C",
+            "person": "Anatoly Karpov",
+            "occupation": "Chess Player",
+            "action": "σκέφτεται",
+            "object": "σκακιέρα"
+        },
+        "14": {
+            "letters": "A D",
+            "person": "Anthony Fauci",
+            "occupation": "Doctor",
+            "action": "εξετάζει",
+            "object": "στηθοσκόπιο"
+        },
+        "15": {
+            "letters": "A E",
+            "person": "Adele",
+            "occupation": "Entertainer",
+            "action": "τραγουδά",
+            "object": "μικρόφωνο"
+        },
+        "16": {
+            "letters": "A S",
+            "person": "Albert Einstein",
+            "occupation": "Scientist",
+            "action": "γράφει εξίσωση",
+            "object": "κιμωλία"
+        },
+        "17": {
+            "letters": "A G",
+            "person": "Alexander the Great",
+            "occupation": "Greek",
+            "action": "μάχεται",
+            "object": "σπαθί"
+        },
+        "18": {
+            "letters": "A H",
+            "person": "Achilles",
+            "occupation": "Hero",
+            "action": "καρφώνει δόρυ",
+            "object": "ασπίδα"
+        },
+        "19": {
+            "letters": "A N",
+            "person": "Agatha Christie",
+            "occupation": "Novelist",
+            "action": "γράφει",
+            "object": "βιβλίο"
+        },
+        "20": {
+            "letters": "B O",
+            "person": "Barack Obama",
+            "occupation": "Orator",
+            "action": "εκφωνεί λόγο",
+            "object": "podium"
+        },
+        "21": {
+            "letters": "B A",
+            "person": "Marlon Brando",
+            "occupation": "Actor",
+            "action": "παίζει ρόλο",
+            "object": "καπέλο"
+        },
+        "22": {
+            "letters": "B B",
+            "person": "Kobe Bryant",
+            "occupation": "Basketball Player",
+            "action": "σουτάρει",
+            "object": "μπάλα"
+        },
+        "23": {
+            "letters": "B C",
+            "person": "Bobby Fischer",
+            "occupation": "Chess Player",
+            "action": "κινεί κομμάτι",
+            "object": "σκακιέρα"
+        },
+        "24": {
+            "letters": "B D",
+            "person": "Bernardo Bertolucci",
+            "occupation": "Director",
+            "action": "σκηνοθετεί",
+            "object": "κάμερα"
+        },
+        "25": {
+            "letters": "B E",
+            "person": "Beyoncé",
+            "occupation": "Entertainer",
+            "action": "χορεύει",
+            "object": "μικρόφωνο"
+        },
+        "26": {
+            "letters": "B S",
+            "person": "Carl Sagan",
+            "occupation": "Scientist",
+            "action": "δείχνει αστέρια",
+            "object": "τηλεσκόπιο"
+        },
+        "27": {
+            "letters": "B G",
+            "person": "Βουκεφάλας",
+            "occupation": "Greek",
+            "action": "καλπάζει",
+            "object": "άλογο"
+        },
+        "28": {
+            "letters": "B H",
+            "person": "Βελλεροφόντης",
+            "occupation": "Hero",
+            "action": "πετάει με τον Πήγασο",
+            "object": "Πήγασος"
+        },
+        "29": {
+            "letters": "B N",
+            "person": "Βίκτωρ Ουγκώ",
+            "occupation": "Novelist",
+            "action": "γράφει",
+            "object": "χειρόγραφο"
+        },
+        "30": {
+            "letters": "C O",
+            "person": "Cicero",
+            "occupation": "Orator",
+            "action": "ρητορεύει",
+            "object": "ειλητάριο"
+        },
+        "31": {
+            "letters": "C A",
+            "person": "Charlie Chaplin",
+            "occupation": "Actor",
+            "action": "κάνει παντομίμα",
+            "object": "καπέλο"
+        },
+        "32": {
+            "letters": "C B",
+            "person": "Michael Jordan",
+            "occupation": "Basketball Player",
+            "action": "καρφώνει",
+            "object": "μπάλα"
+        },
+        "33": {
+            "letters": "C C",
+            "person": "Garry Kasparov",
+            "occupation": "Chess Player",
+            "action": "παίζει σκάκι",
+            "object": "σκακιέρα"
+        },
+        "34": {
+            "letters": "C D",
+            "person": "Charles Darwin",
+            "occupation": "Doctor",
+            "action": "εξετάζει δείγμα",
+            "object": "βιβλίο"
+        },
+        "35": {
+            "letters": "C E",
+            "person": "Celine Dion",
+            "occupation": "Entertainer",
+            "action": "τραγουδά",
+            "object": "μικρόφωνο"
+        },
+        "36": {
+            "letters": "C S",
+            "person": "Copernicus",
+            "occupation": "Scientist",
+            "action": "παρουσιάζει πλανήτες",
+            "object": "ηλιακό σύστημα"
+        },
+        "37": {
+            "letters": "C G",
+            "person": "Καλλίμαχος",
+            "occupation": "Greek",
+            "action": "σχεδιάζει ναό",
+            "object": "πάπυρος"
+        },
+        "38": {
+            "letters": "C H",
+            "person": "Ηρακλής",
+            "occupation": "Hero",
+            "action": "σηκώνει ρόπαλο",
+            "object": "ρόπαλο"
+        },
+        "39": {
+            "letters": "C N",
+            "person": "Charles Dickens",
+            "occupation": "Novelist",
+            "action": "γράφει ιστορία",
+            "object": "χειρόγραφο"
+        },
+        "40": {
+            "letters": "D O",
+            "person": "Demosthenes",
+            "occupation": "Orator",
+            "action": "ρητορεύει με πέτρες στο στόμα",
+            "object": "πέτρα"
+        },
+        "41": {
+            "letters": "D A",
+            "person": "Daniel Day-Lewis",
+            "occupation": "Actor",
+            "action": "υποδύεται χαρακτήρα",
+            "object": "κοστούμι"
+        },
+        "42": {
+            "letters": "D B",
+            "person": "Dirk Nowitzki",
+            "occupation": "Basketball Player",
+            "action": "σουτάρει τρίποντο",
+            "object": "μπάλα"
+        },
+        "43": {
+            "letters": "D C",
+            "person": "David Bronstein",
+            "occupation": "Chess Player",
+            "action": "παίζει κίνηση",
+            "object": "σκακιέρα"
+        },
+        "44": {
+            "letters": "D D",
+            "person": "David Livingstone",
+            "occupation": "Doctor",
+            "action": "εξερευνά",
+            "object": "χάρτης"
+        },
+        "45": {
+            "letters": "D E",
+            "person": "Dua Lipa",
+            "occupation": "Entertainer",
+            "action": "τραγουδά",
+            "object": "μικρόφωνο"
+        },
+        "46": {
+            "letters": "D S",
+            "person": "Stephen Hawking",
+            "occupation": "Scientist",
+            "action": "γράφει θεωρία",
+            "object": "βιβλίο"
+        },
+        "47": {
+            "letters": "D G",
+            "person": "Διογένης",
+            "occupation": "Greek",
+            "action": "κάθεται σε πιθάρι",
+            "object": "πιθάρι"
+        },
+        "48": {
+            "letters": "D H",
+            "person": "Θησέας",
+            "occupation": "Hero",
+            "action": "σκοτώνει Μινώταυρο",
+            "object": "σπαθί"
+        },
+        "49": {
+            "letters": "D N",
+            "person": "Dante Alighieri",
+            "occupation": "Novelist",
+            "action": "γράφει ποίηση",
+            "object": "βιβλίο"
+        },
+        "50": {
+            "letters": "E O",
+            "person": "Emmeline Pankhurst",
+            "occupation": "Orator",
+            "action": "διαδηλώνει",
+            "object": "πανό"
+        },
+        "51": {
+            "letters": "E A",
+            "person": "Emma Stone",
+            "occupation": "Actor",
+            "action": "παίζει σε ταινία",
+            "object": "σκηνικό"
+        },
+        "52": {
+            "letters": "E B",
+            "person": "Earvin Magic Johnson",
+            "occupation": "Basketball Player",
+            "action": "παίρνει πάσα",
+            "object": "μπάλα"
+        },
+        "53": {
+            "letters": "E C",
+            "person": "Emanuel Lasker",
+            "occupation": "Chess Player",
+            "action": "παίζει άμυνα",
+            "object": "σκακιέρα"
+        },
+        "54": {
+            "letters": "E D",
+            "person": "Edward Jenner",
+            "occupation": "Doctor",
+            "action": "κάνει εμβολιασμό",
+            "object": "σύριγγα"
+        },
+        "55": {
+            "letters": "E E",
+            "person": "Elvis Presley",
+            "occupation": "Entertainer",
+            "action": "τραγουδά και χορεύει",
+            "object": "κιθάρα"
+        },
+        "56": {
+            "letters": "E S",
+            "person": "Edwin Hubble",
+            "occupation": "Scientist",
+            "action": "παρατηρεί αστέρια",
+            "object": "τηλεσκόπιο"
+        },
+        "57": {
+            "letters": "E G",
+            "person": "Ευκλείδης",
+            "occupation": "Greek",
+            "action": "γράφει γεωμετρία",
+            "object": "κανόνας"
+        },
+        "58": {
+            "letters": "E H",
+            "person": "Περσέας",
+            "occupation": "Hero",
+            "action": "κρατά κεφάλι Μέδουσας",
+            "object": "σπαθί"
+        },
+        "59": {
+            "letters": "E N",
+            "person": "Ernest Hemingway",
+            "occupation": "Novelist",
+            "action": "γράφει διήγημα",
+            "object": "γραφομηχανή"
+        },
+        "60": {
+            "letters": "S O",
+            "person": "Socrates",
+            "occupation": "Orator",
+            "action": "διδάσκει",
+            "object": "κύπελλο"
+        },
+        "61": {
+            "letters": "S A",
+            "person": "Scarlett Johansson",
+            "occupation": "Actor",
+            "action": "υποδύεται",
+            "object": "στολή"
+        },
+        "62": {
+            "letters": "S B",
+            "person": "Shaquille O’Neal",
+            "occupation": "Basketball Player",
+            "action": "καρφώνει",
+            "object": "μπάλα"
+        },
+        "63": {
+            "letters": "S C",
+            "person": "Samuel Reshevsky",
+            "occupation": "Chess Player",
+            "action": "παίζει σκάκι",
+            "object": "σκακιέρα"
+        },
+        "64": {
+            "letters": "S D",
+            "person": "Sigmund Freud",
+            "occupation": "Doctor",
+            "action": "αναλύει",
+            "object": "καναπές"
+        },
+        "65": {
+            "letters": "S E",
+            "person": "Shakira",
+            "occupation": "Entertainer",
+            "action": "χορεύει",
+            "object": "μικρόφωνο"
+        },
+        "66": {
+            "letters": "S S",
+            "person": "Stephen Curry",
+            "occupation": "Scientist (Basketball Shooter)",
+            "action": "σουτάρει τρίποντο",
+            "object": "μπάλα"
+        },
+        "67": {
+            "letters": "S G",
+            "person": "Σόλων",
+            "occupation": "Greek",
+            "action": "θεσπίζει νόμους",
+            "object": "πάπυρος"
+        },
+        "68": {
+            "letters": "S H",
+            "person": "Αχιλλέας",
+            "occupation": "Hero",
+            "action": "χτυπά με δόρυ",
+            "object": "δόρυ"
+        },
+        "69": {
+            "letters": "S N",
+            "person": "Sophocles",
+            "occupation": "Novelist",
+            "action": "γράφει τραγωδία",
+            "object": "πάπυρος"
+        },
+        "70": {
+            "letters": "G O",
+            "person": "Gorgias",
+            "occupation": "Orator",
+            "action": "διδάσκει",
+            "object": "πάπυρος"
+        },
+        "71": {
+            "letters": "G A",
+            "person": "George Clooney",
+            "occupation": "Actor",
+            "action": "υποδύεται",
+            "object": "κοστούμι"
+        },
+        "72": {
+            "letters": "G B",
+            "person": "Giannis Antetokounmpo",
+            "occupation": "Basketball Player",
+            "action": "καρφώνει",
+            "object": "μπάλα"
+        },
+        "73": {
+            "letters": "G C",
+            "person": "Magnus Carlsen",
+            "occupation": "Chess Player",
+            "action": "παίζει γρήγορα",
+            "object": "σκακιέρα"
+        },
+        "74": {
+            "letters": "G D",
+            "person": "Gregor Mendel",
+            "occupation": "Doctor",
+            "action": "πειραματίζεται",
+            "object": "μπιζέλια"
+        },
+        "75": {
+            "letters": "G E",
+            "person": "Gloria Estefan",
+            "occupation": "Entertainer",
+            "action": "τραγουδά",
+            "object": "μικρόφωνο"
+        },
+        "76": {
+            "letters": "G S",
+            "person": "Galileo Galilei",
+            "occupation": "Scientist",
+            "action": "παρατηρεί ουρανό",
+            "object": "τηλεσκόπιο"
+        },
+        "77": {
+            "letters": "G G",
+            "person": "Γοργώ",
+            "occupation": "Greek Myth",
+            "action": "παγώνει με βλέμμα",
+            "object": "φίδια"
+        },
+        "78": {
+            "letters": "G H",
+            "person": "Ηρακλής (δεύτερη εκδοχή)",
+            "occupation": "Hero",
+            "action": "σχίζει λιοντάρι",
+            "object": "λεοντή"
+        },
+        "79": {
+            "letters": "G N",
+            "person": "Γκαμπριέλ Γκαρσία Μάρκες",
+            "occupation": "Novelist",
+            "action": "γράφει μυθιστόρημα",
+            "object": "βιβλίο"
+        },
+        "80": {
+            "letters": "H O",
+            "person": "Homer",
+            "occupation": "Orator/Poet",
+            "action": "απαγγέλει έπος",
+            "object": "πάπυρος"
+        },
+        "81": {
+            "letters": "H A",
+            "person": "Harrison Ford",
+            "occupation": "Actor",
+            "action": "υποδύεται ήρωα",
+            "object": "καπέλο"
+        },
+        "82": {
+            "letters": "H B",
+            "person": "Hakeem Olajuwon (δεύτερη χρήση)",
+            "occupation": "Basketball Player",
+            "action": "κάνει ντρίπλα",
+            "object": "μπάλα"
+        },
+        "83": {
+            "letters": "H C",
+            "person": "Howard Staunton",
+            "occupation": "Chess Player",
+            "action": "παίζει παρτίδα",
+            "object": "σκακιέρα"
+        },
+        "84": {
+            "letters": "H D",
+            "person": "Hippocrates",
+            "occupation": "Doctor",
+            "action": "θεραπεύει ασθενή",
+            "object": "βότανα"
+        },
+        "85": {
+            "letters": "H E",
+            "person": "Harry Styles",
+            "occupation": "Entertainer",
+            "action": "τραγουδά",
+            "object": "μικρόφωνο"
+        },
+        "86": {
+            "letters": "H S",
+            "person": "Henri Poincaré",
+            "occupation": "Scientist",
+            "action": "γράφει μαθηματικά",
+            "object": "πίνακας"
+        },
+        "87": {
+            "letters": "H G",
+            "person": "Ηρόδοτος",
+            "occupation": "Greek",
+            "action": "γράφει ιστορία",
+            "object": "πάπυρος"
+        },
+        "88": {
+            "letters": "H H",
+            "person": "Ηρακλής (παραλλαγή)",
+            "occupation": "Hero",
+            "action": "σηκώνει βράχο",
+            "object": "βράχος"
+        },
+        "89": {
+            "letters": "H N",
+            "person": "Homer (Novelist)",
+            "occupation": "Novelist",
+            "action": "γράφει έπος",
+            "object": "πάπυρος"
+        },
+        "90": {
+            "letters": "N O",
+            "person": "Νικόμαχος",
+            "occupation": "Orator",
+            "action": "διδάσκει μαθητές",
+            "object": "πάπυρος"
+        },
+        "91": {
+            "letters": "N A",
+            "person": "Nicolas Cage",
+            "occupation": "Actor",
+            "action": "υποδύεται",
+            "object": "στολή"
+        },
+        "92": {
+            "letters": "N B",
+            "person": "Νίκος Γκάλης",
+            "occupation": "Basketball Player",
+            "action": "σουτάρει",
+            "object": "μπάλα"
+        },
+        "93": {
+            "letters": "N C",
+            "person": "Νίκος Καζαντζάκης",
+            "occupation": "Chess/Writer hybrid",
+            "action": "γράφει",
+            "object": "βιβλίο"
+        },
+        "94": {
+            "letters": "N D",
+            "person": "Ναπολέων",
+            "occupation": "Director/Leader",
+            "action": "διοικεί στρατό",
+            "object": "ξίφος"
+        },
+        "95": {
+            "letters": "N E",
+            "person": "Νάνα Μούσχουρη",
+            "occupation": "Entertainer",
+            "action": "τραγουδά",
+            "object": "μικρόφωνο"
+        },
+        "96": {
+            "letters": "N S",
+            "person": "Νεύτωνας",
+            "occupation": "Scientist",
+            "action": "παρατηρεί μήλο",
+            "object": "μήλο"
+        },
+        "97": {
+            "letters": "N G",
+            "person": "Νέαρχος",
+            "occupation": "Greek",
+            "action": "πλέει",
+            "object": "καράβι"
+        },
+        "98": {
+            "letters": "N H",
+            "person": "Νιόβη",
+            "occupation": "Hero",
+            "action": "θρηνεί",
+            "object": "δάκρυα"
+        },
+        "99": {
+            "letters": "N N",
+            "person": "Νίκος Καζαντζάκης (παραλλαγή)",
+            "occupation": "Novelist",
+            "action": "γράφει ξανά",
+            "object": "βιβλίο"
+        },
+        "00": {
+            "letters": "O O",
+            "person": "Oprah Winfrey",
+            "occupation": "Orator",
+            "action": "μιλά σε κοινό",
+            "object": "μικρόφωνο"
+        },
+        "01": {
+            "letters": "O A",
+            "person": "Orlando Bloom",
+            "occupation": "Actor",
+            "action": "παίζει ρόλο",
+            "object": "σπαθί"
+        },
+        "02": {
+            "letters": "O B",
+            "person": "Hakeem Olajuwon",
+            "occupation": "Basketball Player",
+            "action": "ντριμπλάρει",
+            "object": "μπάλα μπάσκετ"
+        },
+        "03": {
+            "letters": "O C",
+            "person": "Ossip Bernstein",
+            "occupation": "Chess Player",
+            "action": "κινεί πιόνι",
+            "object": "σκακιέρα"
+        },
+        "04": {
+            "letters": "O D",
+            "person": "Oliver Stone",
+            "occupation": "Director",
+            "action": "σκηνοθετεί",
+            "object": "κάμερα"
+        },
+        "05": {
+            "letters": "O E",
+            "person": "Ozzy Osbourne",
+            "occupation": "Entertainer",
+            "action": "τραγουδά",
+            "object": "μικρόφωνο"
+        },
+        "06": {
+            "letters": "O S",
+            "person": "Oppenheimer",
+            "occupation": "Scientist",
+            "action": "σχεδιάζει άτομο",
+            "object": "μοντέλο ατόμου"
+        },
+        "07": {
+            "letters": "O G",
+            "person": "Οδυσσέας",
+            "occupation": "Greek",
+            "action": "τραβά τόξο",
+            "object": "καράβι"
+        },
+        "08": {
+            "letters": "O H",
+            "person": "Obi-Wan Kenobi",
+            "occupation": "Hero",
+            "action": "μονομαχεί",
+            "object": "lightsaber"
+        },
+        "09": {
+            "letters": "O N",
+            "person": "George Orwell",
+            "occupation": "Novelist",
+            "action": "γράφει",
+            "object": "βιβλίο"
+        }
+    }
+}

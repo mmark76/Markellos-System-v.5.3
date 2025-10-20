@@ -1,0 +1,15 @@
+{
+  "version": "1",
+  "author": "Markellos",
+  "category": "PAO 0-9",
+  "description": "Primary single-digit Person–Action–Object base for fundamental encoding (used by p1PAO).",
+  "libraries": {
+    "LibraryP1": "Library P1_PAO 00-99 v.1.json"
+  },
+  "structure": {
+    "persons": "Digits 0–9 mapped to mnemonic characters",
+    "actions": "Digits 0–9 mapped to symbolic movements",
+    "objects": "Digits 0–9 mapped to tangible anchors"
+  },
+  "default": "LibraryP1"
+}

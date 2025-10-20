@@ -1,0 +1,10 @@
+{
+  "version": "1",
+  "author": "Markellos",
+  "category": "Foundations",
+  "description": "Core foundational settings and memory framework base.",
+  "libraries": {
+    "LibraryF1": "Library F1_Foundations v.1.json"
+  },
+  "default": "LibraryF1"
+}

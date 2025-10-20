@@ -1,0 +1,19 @@
+{
+  "version": "1",
+  "author": "Markellos",
+  "description": "Root index linking all sub-coordinators of the Mnemonic System",
+  "coordinators": {
+    "FoundationsCoordinator": "Coordinator - Foundations.json",
+    "CharactersCoordinator": "Coordinator - Characters.json",
+    "PAO-0-9_Coordinator": "Coordinator - PAO_0-9.json", 
+    "PAO-00-99_Coordinator": "Coordinator - PAO_00-99.json",
+    "SpatialCoordinator": "Coordinator - Spatial Memory Palace-Sqrs.json",
+    "TemporalCoordinator": "Coordinator - Temporal.json",
+    "Rhythm_VersesCoordinator": "Coordinator - Rhythm_Verses.json"
+  },
+  "defaultSettings": {
+    "language": "el",
+    "locusMode": "half",
+    "activeCoordinator": "Coordinator - Characters.json"
+  }
+}

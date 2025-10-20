@@ -1,0 +1,11 @@
+{
+  "version": "1",
+  "author": "Markellos",
+  "category": "Temporal",
+  "description": "Temporal sequencing of moves and chapter anchors.",
+  "libraries": {
+    "LibraryT1": "Library T1_Temporal Linear Memory Palace v.1.json",
+    "LibraryT2": "Library T2_Chapter Anchors v.1.json"
+  },
+  "default": "LibraryT1"
+}

@@ -1,0 +1,28 @@
+{
+    "LibraryC1": {
+        "Pawn": {
+            "el": "το Πιόνι",
+            "en": "Pawn"
+        },
+        "Knight": {
+            "el": "ο Ιππότης",
+            "en": "Knight"
+        },
+        "Bishop": {
+            "el": "ο Αξιωματικός",
+            "en": "Bishop"
+        },
+        "Rook": {
+            "el": "ο Πύργος",
+            "en": "Rook"
+        },
+        "Queen": {
+            "el": "η Βασίλισσα",
+            "en": "Queen"
+        },
+        "King": {
+            "el": "ο Βασιλιάς",
+            "en": "King"
+        }
+    }
+}

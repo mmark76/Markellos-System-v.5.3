@@ -1,0 +1,237 @@
+/* === Basic Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #111;    /* Μαύρο φόντο */
+  color: #eee;               /* Λευκά γράμματα */
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 10px;
+}
+
+/* === Header === */
+header {
+  background: #222;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  font-size: 1.6em;
+}
+
+/* === Layout (3 στήλες) === */
+.layout-container {
+  display: grid;
+  grid-template-columns: 46% 17% 35%;
+  gap: 15px;
+  margin-bottom: 20px;
+
+  position: sticky;   /* sticky μόνο στο desktop */
+  top: 63px;
+  z-index: 900;
+  background: #111;
+  padding: 10px 0;
+}
+
+.middle-panel {
+  min-width: 0;      /* επιτρέπει στο grid να μικρύνει */
+  overflow: hidden;  /* αναγκάζει τα παιδιά να τυλιχτούν / κοπούν */
+}
+
+.left-panel, .middle-panel, .right-panel {
+  background: #1a1a1a;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+.left-panel textarea {
+  width: 100%;
+  height: 220px;
+  background: #222;
+  color: #eee;
+  border: 1px solid #555;
+  padding: 8px;
+  resize: vertical;
+}
+
+.middle-panel .button-group,
+.middle-panel .dropdown-group {
+  margin: 10px 0;
+}
+
+#google_translate_element {
+  margin: 10px 0;
+  text-align: center;
+}
+
+.goog-te-gadget {
+  font-size: 0.9em !important;
+  color: #eee !important;
+}
+
+.goog-te-gadget-simple {
+  background-color: #222 !important;
+  border: 1px solid #555 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px;
+  color: #eee !important;
+}
+
+.middle-panel button,
+.right-panel button,
+select {
+  background: #333;
+  color: #eee;
+  border: 1px solid #555;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 2px 0;
+}
+
+button:hover, select:hover {
+  background: #444;
+}
+
+/* Βιβλιοθήκες σε 5 στήλες με scroll */
+
+.right-panel {
+  height: auto;          /* αφήνει το grid να το ελέγχει */
+  max-height: none;      /* χωρίς περιορισμό */
+  overflow: visible;     /* καθόλου scroll */
+  align-self: stretch;   /* τεντώνει για να φτάσει το ύψος των άλλων */
+}
+
+.libraries-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.library {
+  background: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+.library span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.lib-btn {
+  display: block;
+  width: 100%;
+  margin: 2px 0;
+  padding: 4px;
+  font-size: 0.8em;
+  background: #333;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lib-btn:hover {
+  background: #444;
+}
+
+/* Mobile === */
+
+@media (max-width: 768px) {
+  .layout-container {
+    position: static;   /* όχι sticky σε κινητό */
+    top: auto;
+    z-index: auto;
+    grid-template-columns: 1fr; /* μία στήλη */
+  }
+
+  .left-panel, .middle-panel, .right-panel {
+    width: 100%;
+  }
+
+  .left-panel textarea {
+    height: 180px;
+  }
+
+  .libraries-group {
+    grid-template-columns: 1fr;  /* μία στήλη */
+  }
+}
+
+/* === Tables === */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 6px 10px;
+  text-align: center;
+}
+
+th {
+  background: #333;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+}
+
+tr:nth-child(even) {
+  background: #1a1a1a;
+}
+
+tr:nth-child(odd) {
+  background: #111;
+}
+
+/* === Download Dropdown === */
+.download-select {
+  background: #333;
+  color: #eee;
+  border: 1px solid #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* === Footer === */
+footer {
+  background: #222;
+  padding: 10px;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9em;
+  position: sticky;
+  bottom: 0;
+}
+
+<style>
+  .dropdown-group select, 
+  .dropdown-group button {
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+</style>
+
