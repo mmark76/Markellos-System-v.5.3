@@ -5,51 +5,51 @@
   "description": "Master index των 7 συντονιστών (coordinators) και 13 υπο-βιβλιοθηκών περιεχομένου για το Markellos CMS v5.3.",
   "libraries": {
     "Temporal": {
-      "coordinator": "Coordinator - Temporal.json",
+      "coordinator": "/data/Coordinator - Temporal.json",
       "includes": [
-        "Library T1_Temporal Linear Memory Palace v.1.json",
-        "Library T2_Chapter Anchors v.1.json"
+        "/data/Library T1_Temporal Linear Memory Palace v.1.json",
+        "/data/Library T2_Chapter Anchors v.1.json"
       ]
     },
     "Spatial": {
-      "coordinator": "Coordinator - Spatial Memory Palace-Sqrs.json",
+      "coordinator": "/data/Coordinator - Spatial Memory Palace-Sqrs.json",
       "includes": [
-        "Library S1_Spatial Memory Palace v.1.json"
+        "/data/Library S1_Spatial Memory Palace v.1.json"
       ]
     },
     "Characters": {
-      "coordinator": "Coordinator - Characters.json",
+      "coordinator": "/data/Coordinator - Characters.json",
       "includes": [
-        "Library C1_Characters in SAN.json",
-        "Library C2_Fictional Characters v.1.json"
+        "/data/Library C1_Characters in SAN.json",
+        "/data/Library C2_Fictional Characters v.1.json"
       ]
     },
     "Foundations": {
-      "coordinator": "Coordinator - Foundations.json",
+      "coordinator": "/data/Coordinator - Foundations.json",
       "includes": [
-        "Library F1_Foundations v.1.json"
+        "/data/Library F1_Foundations v.1.json"
       ]
     },
     "Verses": {
-      "coordinator": "Coordinator - Rhythm_Verses.json",
+      "coordinator": "/data/Coordinator - Rhythm_Verses.json",
       "includes": [
-        "Library V1_Rhythm v.1.json"
+        "/data/Library V1_Rhythm v.1.json"
       ]
     },
     "PAO 0-9": {
-      "coordinator": "Coordinator - PAO_0-9.json",
+      "coordinator": "/data/Coordinator - PAO_0-9.json",
       "includes": [
-        "Library p1_PAO 0-9 v.1.json"
+        "/data/Library p1_PAO 0-9 v.1.json"
       ]
     },
     "PAO 00-99": {
-      "coordinator": "Coordinator - PAO_00-99.json",
+      "coordinator": "/data/Coordinator - PAO_00-99.json",
       "includes": [
-        "Library P1_PAO 00-99 v.1.json",
-        "Library P2_PAO 00-99 v.1.json",
-        "Library P3_PAO 00-99 v.1.json",
-        "Library P4_PAO 00-99 v.1.json",
-        "Library P5_PAO 00-99 v.1.json"
+        "/data/Library P1_PAO 00-99 v.1.json",
+        "/data/Library P2_PAO 00-99 v.1.json",
+        "/data/Library P3_PAO 00-99 v.1.json",
+        "/data/Library P4_PAO 00-99 v.1.json",
+        "/data/Library P5_PAO 00-99 v.1.json"
       ]
     }
   }
