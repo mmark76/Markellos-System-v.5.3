@@ -411,9 +411,8 @@ function buildLibrariesBar(){
 }
 
 /* ---------- Init ---------- */
-/* ---------- Deep Loader for Markellos CMS v5.3 ---------- */
 async function loadLibrariesDeep() {
-  const res = await fetch('libraries.json');
+  const res = await fetch('libraries_v3.2.json');
   const index = await res.json();
   const libsOut = {};
 
