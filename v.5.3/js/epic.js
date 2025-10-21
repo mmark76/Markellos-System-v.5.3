@@ -78,7 +78,7 @@ const verbs = [
   "ξεπροβάλλει,"
 ];
 
-const opening = i === 0 ? "Η μάχη ξεκινάει όταν" : openings[i % openings.length];
+const opening = i === 0 ? "Ο Γέροντας συνεχίζει την αφήγηση και λέει ... Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια ... ακούγεται μία σάλπιγγα ..." : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
@@ -173,6 +173,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
