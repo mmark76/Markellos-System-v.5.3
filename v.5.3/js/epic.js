@@ -81,8 +81,9 @@ const verbs = [
 const opening = i === 0 ? "Η μάχη ξεκινάει όταν" : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
-let sceneNumber = i + 1; // αριθμός σκηνής
-let phrase = ` «Κεφάλαιο ${sceneNumber} - ${locus}» \n\n ${opening} με την κίνηση ${sanText}, ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
+let sceneNumber = i + 1;
+const t1Header = `⚓ T1–${sceneNumber}: ${locus}`;
+let phrase = ` ${t1Header}\n\n ${opening} με την κίνηση ${sanText}, ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
 stories.push(phrase.trim());
@@ -172,6 +173,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
