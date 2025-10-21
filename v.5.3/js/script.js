@@ -411,12 +411,42 @@ function buildLibrariesBar(){
 }
 
 /* ---------- Init ---------- */
-async function loadLibraries(){
+/* ---------- Deep Loader for Markellos CMS v5.3 ---------- */
+async function loadLibrariesDeep() {
   const res = await fetch('libraries.json');
-  libs = await res.json();
-  console.log("LIBS KEYS:", Object.keys(libs));
-  console.log("Temporal:", libs.Temporal);
-  console.log("Characters:", libs.Characters);
+  const index = await res.json();
+  const libsOut = {};
+
+  for (const [groupName, group] of Object.entries(index.libraries)) {
+    const groupObj = {};
+    if (group.coordinator) {
+      try {
+        const coordRes = await fetch(group.coordinator);
+        groupObj.coordinator = await coordRes.json();
+      } catch (e) {
+        console.warn(`⚠️ Coordinator not found for ${groupName}:`, e);
+      }
+    }
+
+    if (Array.isArray(group.includes)) {
+      for (const incPath of group.includes) {
+        try {
+          const incRes = await fetch(incPath);
+          const data = await incRes.json();
+          const base = incPath.split('/').pop().replace(/\..*$/, '');
+          const key = base.replace(/\s+/g, '').replace(/[^A-Za-z0-9_]/g, '');
+          groupObj[key] = data;
+        } catch (e) {
+          console.warn(`⚠️ Could not load ${incPath}:`, e);
+        }
+      }
+    }
+    libsOut[groupName] = groupObj;
+  }
+
+  libs = libsOut;
+  console.log("✅ All libraries loaded:", Object.keys(libs));
+  console.log("Details:", libs);
 }
 
 /* ---------- Καθαρισμός PGN πριν εισαχθεί στο textarea ---------- */
