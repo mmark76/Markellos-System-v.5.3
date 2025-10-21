@@ -522,7 +522,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     });
   }
 
-  await loadLibraries();
+await loadLibrariesDeep();
 
   if (LIBRARIES_BAR_ENABLED) buildLibrariesBar();
   else {
