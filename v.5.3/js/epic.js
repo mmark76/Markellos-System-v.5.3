@@ -155,7 +155,7 @@ stories.push(phrase.trim());
   const toolbar = modal.querySelector(".epic-copy-toolbar");
   if (toolbar && !toolbar.querySelector(".epic-translate-btn")) {
     const translateBtn = document.createElement("button");
-    translateBtn.textContent = "🌐 Μετάφραση";
+    translateBtn.textContent = "🌐 Translate";
     translateBtn.className = "epic-translate-btn";
     Object.assign(translateBtn.style, {
       marginLeft: "10px",
@@ -227,6 +227,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
