@@ -147,11 +147,10 @@ stories.push(phrase.trim());
   function openEpicModal() {
     updateEpicText();
     modal.style.display = "block";
-
- // ✅ Εξωτερικό setTimeout
+}
+   
+/*  // === Κουμπί Μετάφρασης (δίπλα στο Copy) ===
   setTimeout(() => {
-     
-  // === Κουμπί Μετάφρασης (δίπλα στο Copy) ===
   const toolbar = modal.querySelector(".epic-copy-toolbar");
   if (toolbar && !toolbar.querySelector(".epic-translate-btn")) {
     const translateBtn = document.createElement("button");
@@ -167,7 +166,6 @@ stories.push(phrase.trim());
       background: "#f7f7f7",
       fontSize: "13px",
     });
-
     translateBtn.addEventListener("click", () => {
       const googleTrigger = document.querySelector(".goog-te-gadget-simple");
       if (googleTrigger) {
@@ -190,19 +188,18 @@ stories.push(phrase.trim());
   setTimeout(() => location.reload(), 800);
 }
     });
-
     document.addEventListener("click", (e) => {
       const frame = document.querySelector(".goog-te-menu-frame");
       if (frame && !translateBtn.contains(e.target) && !frame.contains(e.target)) {
         frame.style.display = "none";
       }
     });
-
     toolbar.appendChild(translateBtn);
   }
- }, 200); // ✅ καθυστέρηση πριν δημιουργηθεί το κουμπί
-}
-   
+ }, 200);
+}  }, 200);
+*/
+      
   // === Button & Modal Logic ===
   const assocSection = document.getElementById("assocSection");
   let assocBtnDiv = null;
@@ -227,6 +224,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
