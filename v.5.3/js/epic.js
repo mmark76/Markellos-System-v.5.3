@@ -25,31 +25,24 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   document.body.appendChild(modal);
 
-   // === Δεύτερος Μεταφραστής Google για το Epic Story ===
-  const epicTranslateDiv = document.createElement("div");
-  epicTranslateDiv.id = "google_translate_epic";
-  epicTranslateDiv.style.margin = "10px 0";
-  epicTranslateDiv.style.textAlign = "right";
+// === Δεύτερος Μεταφραστής Google για το Epic Story ===
+const epicTranslateDiv = document.createElement("div");
+epicTranslateDiv.id = "google_translate_epic";
+epicTranslateDiv.style.margin = "10px 0";
+epicTranslateDiv.style.textAlign = "right";
+modal.querySelector(".epic-modal-content").appendChild(epicTranslateDiv);
 
-  // Τοποθέτηση κάτω από το κείμενο του Epic Story
-  modal.querySelector(".epic-modal-content").appendChild(epicTranslateDiv);
-
-  // Δήλωση global callback για τη Google
-  window.googleTranslateEpicInit = function() {
-    new google.translate.TranslateElement(
-      {
-        pageLanguage: 'el',
-        includedLanguages: 'en,el,fr,de,it,es,ru',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      },
-      'google_translate_epic'
-    );
-  };
-
-  // Φόρτωση script της Google για το δεύτερο widget
-  const script2 = document.createElement("script");
-  script2.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateEpicInit";
-  document.body.appendChild(script2);
+// ✅ Δημιουργεί δεύτερο widget χρησιμοποιώντας το ήδη φορτωμένο script
+if (window.google && window.google.translate) {
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: 'el',
+      includedLanguages: 'en,el,fr,de,it,es,ru',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    },
+    'google_translate_epic'
+  );
+}
 
   /* ---------- Helpers ---------- */
   function sanToText(san) {
@@ -199,6 +192,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
