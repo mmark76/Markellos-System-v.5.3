@@ -121,6 +121,16 @@ stories.push(phrase.trim());
      document.getElementById("epicTextView").innerText = fullText;
 
     // === Copy Button ===
+<script type="text/javascript">
+   function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {pageLanguage: 'el', includedLanguages: 'en,el,fr,de,it,es,ru'},
+      'google_translate_element'
+    );
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+     
     const copyBtn = document.getElementById("copyEpicBtn");
     if (copyBtn) {
       copyBtn.replaceWith(copyBtn.cloneNode(true));
@@ -173,6 +183,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
