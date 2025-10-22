@@ -82,7 +82,7 @@ const opening = i === 0 ? "Ο Γέροντας συνεχίζει την αφή�
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `♞♟ Κίνηση ${sceneNumber}: Η σκηνή όπου εμφανίζεται ${locus} και ${pieceAssoc} που ${targetAssoc}`;
+const t1Header = `♞♟ Κίνηση ${sceneNumber}: Η σκηνή όπου εμφανίζεται ${locus}`;
 let phrase = ` ${t1Header}\n\n ${opening} με την κίνηση ${sanText}, ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
@@ -109,7 +109,7 @@ stories.push(phrase.trim());
     });
     
     const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
-    const prologue = `♟ Ο Γέροντας παίρνει στα χέρια του με ηρεμία και μεγάλη προσοχή το χοντρό βιβλίο με τις πολλές ιστορικές παρτίδες και λέει στο μικρό σκακιστή ...\n\n Σήμερα θα μελετήσουμε μία πολύ ενδιαφέρουσα μάχη, ... και ανοίγει το εξώφυλλο, μετροφυλλάει κάποιες σελίδες και ξεκινάει να διαβάζει...`;
+    const prologue = `♟♞ Ο Γέροντας παίρνει στα χέρια του με ηρεμία και μεγάλη προσοχή το χοντρό βιβλίο με τις πολλές ιστορικές παρτίδες και λέει στο μικρό σκακιστή ...\n\n Σήμερα θα μελετήσουμε μία πολύ ενδιαφέρουσα μάχη, ... και ανοίγει το εξώφυλλο, μετροφυλλάει κάποιες σελίδες και ξεκινάει να διαβάζει...`;
      
     let finalMsg = "";
     if (result === "1-0") finalMsg = "\n … και μετά την τελευταία κίνηση, ο μαύρος Στρατηγός κατάλαβε πως η μάχη είχε κριθεί. Έσκυψε το κεφάλι του αργά, και δίνοντας το χέρι του στον αντίπαλο Στρατηγό, αποδέχτηκε με αξιοπρέπεια την ήττα ... και ο Γέροντας κλείνει το χοντρό βιβλίο ... και η παρτίδα γίνεται ανάμνηση και για πάντα χαράσσεται στη μνήμη ... και το έπος γράφτηκε στην ιστορία.";
@@ -148,58 +148,7 @@ stories.push(phrase.trim());
     updateEpicText();
     modal.style.display = "block";
 }
-   
-/*  // === Κουμπί Μετάφρασης (δίπλα στο Copy) ===
-  setTimeout(() => {
-  const toolbar = modal.querySelector(".epic-copy-toolbar");
-  if (toolbar && !toolbar.querySelector(".epic-translate-btn")) {
-    const translateBtn = document.createElement("button");
-    translateBtn.textContent = "🌐 Translate";
-    translateBtn.className = "epic-translate-btn";
-    Object.assign(translateBtn.style, {
-      marginLeft: "10px",
-      verticalAlign: "middle",
-      cursor: "pointer",
-      padding: "4px 10px",
-      border: "1px solid #ccc",
-      borderRadius: "6px",
-      background: "#f7f7f7",
-      fontSize: "13px",
-    });
-    translateBtn.addEventListener("click", () => {
-      const googleTrigger = document.querySelector(".goog-te-gadget-simple");
-      if (googleTrigger) {
-        googleTrigger.click();
-        setTimeout(() => {
-          const frame = document.querySelector(".goog-te-menu-frame");
-          if (frame) {
-            const btnRect = translateBtn.getBoundingClientRect();
-            Object.assign(frame.style, {
-              display: "block",
-              position: "fixed",
-              top: btnRect.bottom + 5 + "px",
-              left: btnRect.left + "px",
-              zIndex: "999999",
-            });
-          }
-        }, 300);
-        } else {
-  alert("Ο μεταφραστής ενεργοποιείται... Παρακαλώ περίμενε 1 δευτερόλεπτο και ξαναδοκίμασε.");
-  setTimeout(() => location.reload(), 800);
-}
-    });
-    document.addEventListener("click", (e) => {
-      const frame = document.querySelector(".goog-te-menu-frame");
-      if (frame && !translateBtn.contains(e.target) && !frame.contains(e.target)) {
-        frame.style.display = "none";
-      }
-    });
-    toolbar.appendChild(translateBtn);
-  }
- }, 200);
-}  }, 200);
-*/
-      
+         
   // === Button & Modal Logic ===
   const assocSection = document.getElementById("assocSection");
   let assocBtnDiv = null;
@@ -224,6 +173,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
