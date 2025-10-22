@@ -197,7 +197,7 @@ stories.push(phrase.trim());
     toolbar.appendChild(translateBtn);
   }
 }
-}
+   
   // === Button & Modal Logic ===
   const assocSection = document.getElementById("assocSection");
   let assocBtnDiv = null;
@@ -222,6 +222,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
