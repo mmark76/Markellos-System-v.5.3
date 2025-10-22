@@ -185,9 +185,10 @@ stories.push(phrase.trim());
             });
           }
         }, 300);
-      } else {
-        alert("Ο μεταφραστής δεν είναι ακόμη έτοιμος.");
-      }
+        } else {
+  alert("Ο μεταφραστής ενεργοποιείται... Παρακαλώ περίμενε 1 δευτερόλεπτο και ξαναδοκίμασε.");
+  setTimeout(() => location.reload(), 800);
+}
     });
 
     document.addEventListener("click", (e) => {
@@ -226,6 +227,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
