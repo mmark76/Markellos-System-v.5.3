@@ -148,6 +148,9 @@ stories.push(phrase.trim());
     updateEpicText();
     modal.style.display = "block";
 
+ // ✅ Εξωτερικό setTimeout
+  setTimeout(() => {
+     
   // === Κουμπί Μετάφρασης (δίπλα στο Copy) ===
   const toolbar = modal.querySelector(".epic-copy-toolbar");
   if (toolbar && !toolbar.querySelector(".epic-translate-btn")) {
@@ -196,6 +199,7 @@ stories.push(phrase.trim());
 
     toolbar.appendChild(translateBtn);
   }
+ }, 200); // ✅ καθυστέρηση πριν δημιουργηθεί το κουμπί
 }
    
   // === Button & Modal Logic ===
@@ -222,6 +226,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
