@@ -25,30 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   document.body.appendChild(modal);
 
-// === Δεύτερος Μεταφραστής Google για το Epic Story (δίπλα στο Copy) ===
-const toolbar = modal.querySelector(".epic-copy-toolbar");
-if (toolbar) {
-  const epicTranslateDiv = document.createElement("div");
-  epicTranslateDiv.id = "google_translate_epic";
-  epicTranslateDiv.style.display = "inline-block";
-  epicTranslateDiv.style.marginLeft = "10px";
-  epicTranslateDiv.style.verticalAlign = "middle";
-
-  toolbar.appendChild(epicTranslateDiv);
-
-  // ✅ Δημιουργεί δεύτερο widget χρησιμοποιώντας το ήδη φορτωμένο script
-  if (window.google && window.google.translate) {
-    new google.translate.TranslateElement(
-      {
-        pageLanguage: 'el',
-        includedLanguages: 'en,el,fr,de,it,es,ru',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      },
-      'google_translate_epic'
-    );
-  }
-}
-
   /* ---------- Helpers ---------- */
   function sanToText(san) {
     if (!san) return "";
@@ -173,6 +149,56 @@ stories.push(phrase.trim());
     modal.style.display = "block";
   }
 
+  // === Κουμπί Μετάφρασης (δίπλα στο Copy) ===
+  const toolbar = modal.querySelector(".epic-copy-toolbar");
+  if (toolbar && !toolbar.querySelector(".epic-translate-btn")) {
+    const translateBtn = document.createElement("button");
+    translateBtn.textContent = "🌐 Μετάφραση";
+    translateBtn.className = "epic-translate-btn";
+    Object.assign(translateBtn.style, {
+      marginLeft: "10px",
+      verticalAlign: "middle",
+      cursor: "pointer",
+      padding: "4px 10px",
+      border: "1px solid #ccc",
+      borderRadius: "6px",
+      background: "#f7f7f7",
+      fontSize: "13px",
+    });
+
+    translateBtn.addEventListener("click", () => {
+      const googleTrigger = document.querySelector(".goog-te-gadget-simple");
+      if (googleTrigger) {
+        googleTrigger.click();
+        setTimeout(() => {
+          const frame = document.querySelector(".goog-te-menu-frame");
+          if (frame) {
+            const btnRect = translateBtn.getBoundingClientRect();
+            Object.assign(frame.style, {
+              display: "block",
+              position: "fixed",
+              top: btnRect.bottom + 5 + "px",
+              left: btnRect.left + "px",
+              zIndex: "999999",
+            });
+          }
+        }, 300);
+      } else {
+        alert("Ο μεταφραστής δεν είναι ακόμη έτοιμος.");
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      const frame = document.querySelector(".goog-te-menu-frame");
+      if (frame && !translateBtn.contains(e.target) && !frame.contains(e.target)) {
+        frame.style.display = "none";
+      }
+    });
+
+    toolbar.appendChild(translateBtn);
+  }
+}
+
   // === Button & Modal Logic ===
   const assocSection = document.getElementById("assocSection");
   let assocBtnDiv = null;
@@ -197,6 +223,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
