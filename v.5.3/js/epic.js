@@ -147,7 +147,6 @@ stories.push(phrase.trim());
   function openEpicModal() {
     updateEpicText();
     modal.style.display = "block";
-  }
 
   // === Κουμπί Μετάφρασης (δίπλα στο Copy) ===
   const toolbar = modal.querySelector(".epic-copy-toolbar");
@@ -198,7 +197,7 @@ stories.push(phrase.trim());
     toolbar.appendChild(translateBtn);
   }
 }
-
+}
   // === Button & Modal Logic ===
   const assocSection = document.getElementById("assocSection");
   let assocBtnDiv = null;
@@ -223,6 +222,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
