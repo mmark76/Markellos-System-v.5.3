@@ -67,9 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const sanText = sanToText(san);
 
 const openings = [
-  "Στη συνέχεια, ο Γέροντας συνεχίζει την αφήγηση,",
-  "Λίγο αργότερα, και καθώς η μάχη συνεχίζεται,",
-  "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία,",
+  "Στη συνέχεια..., ο Γέροντας συνεχίζει την αφήγηση...,",
+  "Λίγο αργότερα..., και καθώς η μάχη συνεχίζεται...,",
+  "Μετά από λίγο..., και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία...,",
 ];
 
 const verbs = [
@@ -83,8 +83,8 @@ const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
 const sanLabel = `${sceneNumber}. ${sanText}`;
-const t1Header = `♞♟ Κίνηση ${sanLabel}:. Η σκηνή όπου εμφανίζεται ${locus} και ${pieceAssoc}.`;
-let phrase = `${t1Header}\n\n ${opening}..., ${action} ${locus}..., και τότε ${pieceAssoc} ${targetAssoc}.\n`;
+const t1Header = `♞♟ Κίνηση ${sanLabel}...: Η σκηνή όπου εμφανίζεται ${locus} και ${pieceAssoc}.`;
+let phrase = `${t1Header}\n\n ${opening} ${action} ${locus}..., και τότε ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
 stories.push(phrase.trim());
@@ -174,6 +174,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
