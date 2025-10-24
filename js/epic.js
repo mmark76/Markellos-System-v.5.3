@@ -82,8 +82,9 @@ const opening = i === 0 ? " Ο Γέροντας συνεχίζει την αφή
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `♞♟ Κίνηση ${sceneNumber}: Η σκηνή όπου εμφανίζεται ${locus} και ${pieceAssoc}`;
-let phrase = ` ${t1Header}\n\n ${opening} με την κίνηση ${sanText}, ${action} ${locus}, και τότε ${pieceAssoc} ${targetAssoc}.\n`;
+const sanLabel = `${sceneNumber}. ${san}`;
+const t1Header = `♞♟ Κίνηση ${sanLabel}: Η σκηνή όπου εμφανίζεται ${locus} και ${pieceAssoc}`;
+let phrase = `${t1Header}\n\n ${opening} με την κίνηση ${sanText}, ${action} ${locus}, και τότε ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
 stories.push(phrase.trim());
@@ -173,6 +174,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
