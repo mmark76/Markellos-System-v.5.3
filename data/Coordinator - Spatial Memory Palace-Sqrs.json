@@ -1,0 +1,10 @@
+{
+  "version": "1",
+  "author": "Markellos",
+  "category": "Spatial",
+  "description": "Spatial Memory Palace mappings for board coordinates and loci.",
+  "libraries": {
+    "LibraryS1": "Library S1_Spatial Memory Palace v.1.json"
+  },
+  "default": "LibraryS1"
+}

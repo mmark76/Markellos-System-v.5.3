@@ -1,0 +1,10 @@
+{
+  "version": "1",
+  "author": "Markellos",
+  "category": "Verses",
+  "description": "Rhythmic and poetic elements associated with mnemonic encoding.",
+  "libraries": {
+    "LibraryV1": "Library V1_Rhythm v.1.json"
+  },
+  "default": "LibraryV1"
+}
