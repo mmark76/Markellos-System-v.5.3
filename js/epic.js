@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     move = pieceMap[move[0]] ? move.slice(1) : move;
 
     const [_, square] = move.split("x");
-    const action = move.includes("x") ? "take" : " ";
+    const action = move.includes("x") ? "take" : "moves to";
     return `${piece} ${action} ${square || move}`.trim();
   }
 
@@ -174,6 +174,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
