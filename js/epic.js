@@ -83,7 +83,7 @@ const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
 const sanLabel = `${sceneNumber}. ${sanText}`;
-const t1Header = `♞♟ Ημικίνηση ${sanLabel}. Η σκηνή όπου εμφανίζονται ${locus} και ${pieceAssoc}.`;
+const t1Header = `♞♟ --- Ημικίνηση ${sanLabel}. Η σκηνή όπου εμφανίζονται ${locus} και ${pieceAssoc}.`;
 let phrase = `${t1Header}\n\n ${opening} ${action} ${locus}..., και τότε ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
@@ -174,6 +174,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
