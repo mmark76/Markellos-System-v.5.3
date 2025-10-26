@@ -89,10 +89,8 @@ let storySentence = targetAssoc?.trim() || '';
 let storyFeeling = '';
 let storyAction = '';
 let storyObject = '';
-let storyLocation = locus;
+let storyLocation = locus; // ✅ πρώτα η δήλωση
 
- const t1Header = `- Half-move ${sanLabel}.\n Σκηνή: ${storyLocation} \n`;
-       
 // Αν η LibraryS1 περιλαμβάνει αναλυτικά πεδία, αξιοποίησέ τα
 try {
   const node = libs?.Spatial?.LibraryS1?.[r.children[6].innerText.trim()];
@@ -103,7 +101,12 @@ try {
     storyLocation = node.Location || locus;
     if (!storySentence) storySentence = node.Sentence || '';
   }
-} catch (e) {}
+} catch (e) {
+  console.warn("LibraryS1 lookup error:", e);
+}
+
+// ✅ τώρα δημιουργούμε το header αφού όλα τα πεδία είναι έτοιμα
+const t1Header = `- Half-move ${sanLabel}.\n Σκηνή: ${storyLocation || locus} \n`;
 
 // Αν δεν υπάρχει sentence, συνθέτουμε μία
 if (!storySentence) {
@@ -207,6 +210,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
