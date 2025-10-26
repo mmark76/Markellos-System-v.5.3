@@ -192,8 +192,8 @@ function fillAssociationsTable(moves){
 
   // Libraries used:
   const Lpieces = libs?.Characters?.LibraryC2 || {};     // "Pa2", "Ng1", "R", "a2" κ.λπ.
-  const Ltarget = libs?.Spatial?.LibraryS1   || {};      // "a1".."h8"
-
+  const Ltarget = libs?.Spatial?.LibraryS1 || {};
+	
   // Strategy: χτίζουμε mapping "τετράγωνο -> ετικέτα" σε ΟΛΕΣ τις κινήσεις (from→to),
   // ώστε οι ετικέτες να μετακινούνται με το κομμάτι. Έτσι το pieceAssoc δεν μένει κενό.
   const assocBySquare = Object.create(null);
@@ -245,9 +245,15 @@ function fillAssociationsTable(moves){
     // Κάθισε την ετικέτα στο TO (αντικαθιστά τυχόν ετικέτα αντιπάλου σε capture)
     assocBySquare[m.to] = pieceAssoc;
 
-    const targetAssoc = Ltarget[m.to]
-      ? ((Ltarget[m.to][selectedLang] || Ltarget[m.to].el || Ltarget[m.to].en) || m.to)
-      : m.to;
+let targetAssoc = m.to;
+let locus = m.to;
+const node = Ltarget[m.to];
+
+if (node) {
+  locus = node.Location || m.to;               // π.χ. "Ο Λευκός Αχυρώνας"
+  targetAssoc = node.Sentence ||               // π.χ. "μπαίνει αποφασισμένος..."
+                 `${node.Action || ''} ${node.Feeling || ''} ${node.Object || ''}`.trim();
+}
 
     const tr=document.createElement('tr'); tr.dataset.index=m.index;
     tr.innerHTML =
