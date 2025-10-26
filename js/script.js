@@ -190,83 +190,85 @@ function fillAssociationsTable(moves){
   const body = document.getElementById('assocBody'); if(!body) return;
   body.innerHTML='';
 
-  // Libraries used:
-  const Lpieces = libs?.Characters?.LibraryC2 || {};     // "Pa2", "Ng1", "R", "a2" κ.λπ.
-  const Ltarget = libs?.Spatial?.LibraryS1 || {};
-	
-  // Strategy: χτίζουμε mapping "τετράγωνο -> ετικέτα" σε ΟΛΕΣ τις κινήσεις (from→to),
-  // ώστε οι ετικέτες να μετακινούνται με το κομμάτι. Έτσι το pieceAssoc δεν μένει κενό.
-  const assocBySquare = Object.create(null);
+ // Libraries used:
+const Lpieces = libs?.Characters?.LibraryC2 || {};     // "Pa2", "Ng1", "R", "a2" κ.λπ.
+// --- Νέο σύστημα LibraryS1 (Action–Feeling–Object–Location–Sentence)
+const Ltarget = libs?.Spatial?.LibraryS1 || {};
 
-  // Βρες περιγραφή κομματιού: προτεραιότητα "P+a2" > "a2" > "P" > όνομα κομματιού στα ελληνικά
-  const getAssocFor = (pieceLetter, fromSq) =>
-    (Lpieces[`${pieceLetter}${fromSq||''}`] || Lpieces[fromSq||''] || Lpieces[pieceLetter] || pieceGreek(pieceLetter));
+// Strategy: χτίζουμε mapping "τετράγωνο -> ετικέτα" σε ΟΛΕΣ τις κινήσεις (from→to),
+// ώστε οι ετικέτες να μετακινούνται με το κομμάτι.
+const assocBySquare = Object.create(null);
 
-  moves.forEach(m=>{
-    // locus/anchor
-	const locus = locusForMove(m);
-    const anchor = anchorForMove(m.index);
+// Βρες περιγραφή κομματιού: προτεραιότητα "P+a2" > "a2" > "P" > όνομα κομματιού στα ελληνικά
+const getAssocFor = (pieceLetter, fromSq) =>
+  (Lpieces[`${pieceLetter}${fromSq||''}`] || Lpieces[fromSq||''] || Lpieces[pieceLetter] || pieceGreek(pieceLetter));
 
-    // πάρε την «τρέχουσα» ετικέτα από το FROM ή φτιάξε την αρχική από το library
-    let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
+moves.forEach(m => {
+  const locusLabel = locusForMove(m);
+  const anchor = anchorForMove(m.index);
 
-    // αφαίρεσε ό,τι υπήρχε στο FROM
-    if(m.from) delete assocBySquare[m.from];
+  // Πάρε την «τρέχουσα» ετικέτα από το FROM ή φτιάξε την αρχική από το library
+  let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
 
-    // ειδικοί κανόνες
+  // Καθάρισε το FROM
+  if (m.from) delete assocBySquare[m.from];
 
-    // 1) Ροκέ: κούνα και την ετικέτα του πύργου στα σωστά τετράγωνα
-    const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
-    if(sanClean.startsWith('O-O')){ // O-O ή O-O-O
-      const long = sanClean.startsWith('O-O-O');
-      const white = (m.side==='White');
-      const rookFrom = white ? (long ? 'a1':'h1') : (long ? 'a8':'h8');
-      const rookTo   = white ? (long ? 'd1':'f1') : (long ? 'd8':'f8');
-      if(assocBySquare[rookFrom]){
-        assocBySquare[rookTo] = assocBySquare[rookFrom];
-        delete assocBySquare[rookFrom];
-      }else{
-        // αν δεν υπήρχε, φτιάξε από βιβλιοθήκη με βάση το αρχικό τετράγωνο του ρουκ
-        assocBySquare[rookTo] = getAssocFor('R', rookFrom);
-      }
+  // --- Ροκέ ---
+  const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
+  if (sanClean.startsWith('O-O')) {
+    const long = sanClean.startsWith('O-O-O');
+    const white = (m.side === 'White');
+    const rookFrom = white ? (long ? 'a1' : 'h1') : (long ? 'a8' : 'h8');
+    const rookTo   = white ? (long ? 'd1' : 'f1') : (long ? 'd8' : 'f8');
+    if (assocBySquare[rookFrom]) {
+      assocBySquare[rookTo] = assocBySquare[rookFrom];
+      delete assocBySquare[rookFrom];
+    } else {
+      assocBySquare[rookTo] = getAssocFor('R', rookFrom);
     }
+  }
 
-    // 2) En passant: αν η σημαία περιέχει 'e', η αιχμαλωτισμένη ετικέτα είναι πίσω από το "to"
-    if((m.flags||'').includes('e') && /^[a-h][1-8]$/.test(m.to)){
-      const toFile = m.to[0], toRank = parseInt(m.to[1],10);
-      const capRank = (m.side==='White') ? (toRank-1) : (toRank+1);
-      const capSq = `${toFile}${capRank}`;
-      if(assocBySquare[capSq]) delete assocBySquare[capSq];
+  // --- En passant ---
+  if ((m.flags || '').includes('e') && /^[a-h][1-8]$/.test(m.to)) {
+    const toFile = m.to[0], toRank = parseInt(m.to[1], 10);
+    const capRank = (m.side === 'White') ? (toRank - 1) : (toRank + 1);
+    const capSq = `${toFile}${capRank}`;
+    if (assocBySquare[capSq]) delete assocBySquare[capSq];
+  }
+
+  // Τοποθέτησε το κομμάτι στο νέο τετράγωνο
+  assocBySquare[m.to] = pieceAssoc;
+
+  // --- Νέος τρόπος ανάγνωσης LibraryS1 ---
+  let targetAssoc = '';
+  let locus = m.to;
+  const node = Ltarget[m.to];
+
+  if (node) {
+    locus = node.Location || m.to;
+    if (node.Sentence && node.Sentence.trim() !== '') {
+      targetAssoc = node.Sentence;
+    } else {
+      // Αν δεν υπάρχει πλήρης πρόταση, συνθέτουμε από Action, Feeling, Object
+      const parts = [node.Action, node.Feeling, node.Object].filter(Boolean).join(' ');
+      targetAssoc = parts || '';
     }
+  } else {
+    targetAssoc = m.to;
+  }
 
-    // 3) Προαγωγή: η ίδια ετικέτα συνεχίζει στο νέο τετράγωνο (η «ταυτότητα» του πιονιού κρατιέται)
-    // Δεν χρειάζεται ειδικός χειρισμός εδώ — απλώς θα καθίσει στο to.
-
-    // Κάθισε την ετικέτα στο TO (αντικαθιστά τυχόν ετικέτα αντιπάλου σε capture)
-    assocBySquare[m.to] = pieceAssoc;
-
-let targetAssoc = m.to;
-let locus = m.to;
-const node = Ltarget[m.to];
-
-if (node) {
-  locus = node.Location || m.to;               // π.χ. "Ο Λευκός Αχυρώνας"
-  targetAssoc = node.Sentence ||               // π.χ. "μπαίνει αποφασισμένος..."
-                 `${node.Action || ''} ${node.Feeling || ''} ${node.Object || ''}`.trim();
-}
-
-    const tr=document.createElement('tr'); tr.dataset.index=m.index;
-    tr.innerHTML =
-      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
-      `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+     
-	  `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml(sideGR(m.side))}</td>`+
-      `<td>${escapeHtml(pieceAssoc)}</td>`+
-      `<td>${escapeHtml(targetAssoc)}</td>`;
-    body.appendChild(tr);
-  });
-}
+  // --- Δημιουργία γραμμής πίνακα ---
+  const tr = document.createElement('tr');
+  tr.dataset.index = m.index;
+  tr.innerHTML =
+    `<td>${escapeHtml(m.moveNumDisplay)}</td>` +
+    `<td>${escapeHtml(m.san)}</td>` +
+    `<td>${escapeHtml(anchor)}</td>` +
+    `<td>${escapeHtml(locus)}</td>` +
+    `<td>${escapeHtml(sideGR(m.side))}</td>` +
+    `<td>${escapeHtml(pieceAssoc)}</td>` +
+    `<td>${escapeHtml(targetAssoc)}</td>`;
+  body.appendChild
 
 /* ---------- PAO 0–9 TABLE ---------- */
 function toPFR(m){
