@@ -84,9 +84,6 @@ const action = verbs[i % verbs.length];
 let sceneNumber = i + 1;
 const sanLabel = `${sceneNumber}. ${sanText}`;
 
-// === Νέα γενιά Epic Story (πλήρες LibraryS1 schema)
-const t1Header = `- Half-move ${sanLabel}.\n Σκηνή: ${storyLocation} \n`;
-
 // Προετοιμασία για πλήρη πρόταση
 let storySentence = targetAssoc?.trim() || '';
 let storyFeeling = '';
@@ -94,6 +91,8 @@ let storyAction = '';
 let storyObject = '';
 let storyLocation = locus;
 
+ const t1Header = `- Half-move ${sanLabel}.\n Σκηνή: ${storyLocation} \n`;
+       
 // Αν η LibraryS1 περιλαμβάνει αναλυτικά πεδία, αξιοποίησέ τα
 try {
   const node = libs?.Spatial?.LibraryS1?.[r.children[6].innerText.trim()];
@@ -208,6 +207,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
