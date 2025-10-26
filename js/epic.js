@@ -83,10 +83,44 @@ const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
 const sanLabel = `${sceneNumber}. ${sanText}`;
-const t1Header = `- Half-move ${sanLabel}. \n Η σκηνή όπου εμφανίζονται ${locus} και ${pieceAssoc}.`;
-let phrase = `${t1Header}\n\n ${opening} ${action} ${locus}..., και τότε ${pieceAssoc} ${targetAssoc}.\n`;
-if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
+// === Νέα γενιά Epic Story (πλήρες LibraryS1 schema)
+const t1Header = `- Half-move ${sanLabel}.\nΗ σκηνή όπου εμφανίζονται ${locus} και ${pieceAssoc}.`;
+
+// Προετοιμασία για πλήρη πρόταση
+let storySentence = targetAssoc?.trim() || '';
+let storyFeeling = '';
+let storyAction = '';
+let storyObject = '';
+let storyLocation = locus;
+
+// Αν η LibraryS1 περιλαμβάνει αναλυτικά πεδία, αξιοποίησέ τα
+try {
+  const node = libs?.Spatial?.LibraryS1?.[r.children[6].innerText.trim()];
+  if (node) {
+    storyAction = node.Action || '';
+    storyFeeling = node.Feeling || '';
+    storyObject = node.Object || '';
+    storyLocation = node.Location || locus;
+    if (!storySentence) storySentence = node.Sentence || '';
+  }
+} catch (e) {}
+
+// Αν δεν υπάρχει sentence, συνθέτουμε μία
+if (!storySentence) {
+  const parts = [storyAction, storyFeeling, storyObject]
+    .filter(Boolean)
+    .join(' ')
+    .trim();
+  storySentence = parts
+    ? `${pieceAssoc} ${parts} στο ${storyLocation}.`
+    : `${pieceAssoc} δρα στο ${storyLocation}.`;
+}
+
+// Δημιουργία τελικής αφηγηματικής φράσης
+let phrase = `${t1Header}\n\n${opening} ${action} ${storyLocation}..., και τότε ${storySentence}\n`;
+
+if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 stories.push(phrase.trim());
 }
 
@@ -174,6 +208,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
