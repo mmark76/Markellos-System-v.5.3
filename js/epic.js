@@ -85,7 +85,7 @@ let sceneNumber = i + 1;
 const sanLabel = `${sceneNumber}. ${sanText}`;
 
 // === Νέα γενιά Epic Story (πλήρες LibraryS1 schema)
-const t1Header = `- Half-move ${sanLabel}.\n Σκηνή: ${locus} και ${pieceAssoc}.`;
+const t1Header = `- Half-move ${sanLabel}.\n Σκηνή: ${pieceAssoc}\n`;
 
 // Προετοιμασία για πλήρη πρόταση
 let storySentence = targetAssoc?.trim() || '';
@@ -118,7 +118,7 @@ if (!storySentence) {
 }
 
 // Δημιουργία τελικής αφηγηματικής φράσης
-let phrase = `${t1Header}\n\n${opening} ${action} ${storyLocation}..., και τότε ${storySentence}\n`;
+let phrase = `${t1Header}\n\n ${opening} ${action} ${storyLocation}..., και τότε ${storySentence}\n`;
 
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 stories.push(phrase.trim());
@@ -208,6 +208,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
