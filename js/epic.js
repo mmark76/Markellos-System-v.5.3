@@ -56,74 +56,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let stories = [];
 
-    // === Half-move only: μία σκηνή ανά ημικίνηση ===
-    for (let i = 0; i < rows.length; i++) {
-      const r = rows[i];
-      const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
-        [...r.children].map(td => td.innerText.trim());
-      if (!locus) continue;
+// === Half-move only: μία σκηνή ανά ημικίνηση ===
+for (let i = 0; i < rows.length; i++) {
+  const r = rows[i];
+  const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
+    [...r.children].map(td => td.innerText.trim());
+  if (!locus) continue;
 
-      const anchorTxt = cleanAnchor(anchor);
-      const sanText = sanToText(san);
+  const anchorTxt = cleanAnchor(anchor);
+  const sanText = sanToText(san);
 
-const openings = [
-  "Ο Γέροντας συνεχίζει την αφήγηση...,",
-  "Λίγο αργότερα..., και καθώς η μάχη συνεχίζεται...,",
-  "Μετά από λίγο..., και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία...,",
-];
+  const openings = [
+    "Ο Γέροντας συνεχίζει την αφήγηση...,",
+    "Λίγο αργότερα..., και καθώς η μάχη συνεχίζεται...,",
+    "Μετά από λίγο..., και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία...,",
+  ];
 
-const verbs = [
-  "εμφανίζεται στο πεδίο της μάχης,",
-  "ξεπροβάλλει στο πεδίο της μάχης,",
-  "διακρίνεται στο πεδίο της μάχης,"
-];
+  const verbs = [
+    "εμφανίζεται στο πεδίο της μάχης,",
+    "ξεπροβάλλει στο πεδίο της μάχης,",
+    "διακρίνεται στο πεδίο της μάχης,"
+  ];
 
-const opening = i === 0 ? "Ο Γέροντας ξεκινάει την αφήγηση και διαβάζει ...\n Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια, ακούγεται μία σάλπιγγα και" : openings[i % openings.length];
-const action = verbs[i % verbs.length];
+  const opening = i === 0
+    ? "Ο Γέροντας ξεκινάει την αφήγηση και διαβάζει ...\n Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια, ακούγεται μία σάλπιγγα και"
+    : openings[i % openings.length];
+  const action = verbs[i % verbs.length];
 
-let sceneNumber = i + 1;
-const sanLabel = `${sceneNumber}. ${sanText}`;
+  let sceneNumber = i + 1;
+  const sanLabel = `${sceneNumber}. ${sanText}`;
 
-// Προετοιμασία για πλήρη πρόταση
-let storySentence = targetAssoc?.trim() || '';
-let storyFeeling = '';
-let storyAction = '';
-let storyObject = '';
-let storyLocation = locus; // ✅ πρώτα η δήλωση
+  // === Story fields ===
+  let storySentence = targetAssoc?.trim() || '';
+  let storyFeeling = '';
+  let storyAction = '';
+  let storyObject = '';
+  let storyLocation = '';       // ✅ καθαρά χωρικό
+  const storyLocus = locus;     // ✅ καθαρά χρονικό
 
-// Αν η LibraryS1 περιλαμβάνει αναλυτικά πεδία, αξιοποίησέ τα
-try {
-  const node = libs?.Spatial?.LibraryS1?.[r.children[6].innerText.trim()];
-  if (node) {
-    storyAction = node.Action || '';
-    storyFeeling = node.Feeling || '';
-    storyObject = node.Object || '';
-    storyLocation = node.Location || locus;
-    if (!storySentence) storySentence = node.Sentence || '';
+  // Αν η LibraryS1 περιλαμβάνει αναλυτικά πεδία, αξιοποίησέ τα
+  try {
+    const node = libs?.Spatial?.LibraryS1?.[r.children[6].innerText.trim()];
+    if (node) {
+      storyAction = node.Action || '';
+      storyFeeling = node.Feeling || '';
+      storyObject = node.Object || '';
+      storyLocation = node.Location || '';  // ⚡ χωρίς locus ως fallback
+      if (!storySentence) storySentence = node.Sentence || '';
+    }
+  } catch (e) {
+    console.warn("LibraryS1 lookup error:", e);
   }
-} catch (e) {
-  console.warn("LibraryS1 lookup error:", e);
-}
 
-// ✅ τώρα δημιουργούμε το header αφού όλα τα πεδία είναι έτοιμα
-const t1Header = `- Half-move ${sanLabel}.\n Σκηνή: ${storyLocation || locus} \n`;
+  // --- Header (T1 Temporal + S1 Spatial) ---
+  const t1Header = `- Half-move ${sanLabel}.
+Χρονικό σημείο (Locus): ${storyLocus}
+Σκηνή τοποθεσίας (Location): ${storyLocation || '(χωρίς καθορισμένη τοποθεσία)'}\n`;
 
-// Αν δεν υπάρχει sentence, συνθέτουμε μία
-if (!storySentence) {
-  const parts = [storyAction, storyFeeling, storyObject]
-    .filter(Boolean)
-    .join(' ')
-    .trim();
-  storySentence = parts
-    ? `${pieceAssoc} ${parts} στο ${storyLocation}.`
-    : `${pieceAssoc} δρα στο ${storyLocation}.`;
-}
+  // Αν δεν υπάρχει sentence, συνθέτουμε μία
+  if (!storySentence) {
+    const parts = [storyAction, storyFeeling, storyObject]
+      .filter(Boolean)
+      .join(' ')
+      .trim();
+    storySentence = parts
+      ? `${pieceAssoc} ${parts} στο ${storyLocation || 'άγνωστο σημείο'}.`
+      : `${pieceAssoc} δρα στο ${storyLocation || 'άγνωστο σημείο'}.`;
+  }
 
-// Δημιουργία τελικής αφηγηματικής φράσης
-let phrase = `${t1Header}\n\n ${opening} ${action} ${storyLocation}..., και τότε ${pieceAssoc} ${storySentence}\n`;
+  // Δημιουργία τελικής αφηγηματικής φράσης
+  let phrase = `${t1Header}\n\n ${opening} ${action} ${storyLocation || 'στο πεδίο'}..., και τότε ${pieceAssoc} ${storySentence}\n`;
 
-if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
-stories.push(phrase.trim());
+  if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
+  stories.push(phrase.trim());
 }
 
     // === Combine Text ===
@@ -210,6 +215,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
