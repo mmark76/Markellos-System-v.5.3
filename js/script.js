@@ -268,7 +268,9 @@ moves.forEach(m => {
     `<td>${escapeHtml(sideGR(m.side))}</td>` +
     `<td>${escapeHtml(pieceAssoc)}</td>` +
     `<td>${escapeHtml(targetAssoc)}</td>`;
-  body.appendChild
+  body.appendChild(tr);
+});
+}
 
 /* ---------- PAO 0–9 TABLE ---------- */
 function toPFR(m){
