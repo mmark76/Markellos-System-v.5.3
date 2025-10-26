@@ -250,11 +250,10 @@ function fillAssociationsTable(moves){
       `<td>${escapeHtml(m.moveNumDisplay)}</td>` +
       `<td>${escapeHtml(m.san)}</td>` +
       `<td>${escapeHtml(anchor)}</td>` +
-      `<td>${escapeHtml(locusLabel)}</td>` +       // ✅ Mnemonic locus (Temporal)
-      `<td>${escapeHtml(boardLocation)}</td>` +    // ✅ Location από LibraryS1
-      `<td>${escapeHtml(sideGR(m.side))}</td>` +
+      `<td>${escapeHtml(locusLabel)}</td>` + 
       `<td>${escapeHtml(pieceAssoc)}</td>` +
-      `<td>${escapeHtml(targetAssoc)}</td>`;
+      `<td>${escapeHtml(boardLocation)}</td>` + 
+	  `<td>${escapeHtml(targetAssoc)}</td>`;
     body.appendChild(tr);
   });
 }
