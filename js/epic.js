@@ -85,7 +85,7 @@ let sceneNumber = i + 1;
 const sanLabel = `${sceneNumber}. ${sanText}`;
 
 // === Νέα γενιά Epic Story (πλήρες LibraryS1 schema)
-const t1Header = `- Half-move ${sanLabel}.\nΗ σκηνή όπου εμφανίζονται ${locus} και ${pieceAssoc}.`;
+const t1Header = `- Half-move ${sanLabel}.\n Σκηνή: ${locus} και ${pieceAssoc}.`;
 
 // Προετοιμασία για πλήρη πρόταση
 let storySentence = targetAssoc?.trim() || '';
@@ -208,6 +208,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
