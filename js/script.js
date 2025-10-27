@@ -190,70 +190,74 @@ function fillAssociationsTable(moves){
   const body = document.getElementById('assocBody'); if(!body) return;
   body.innerHTML='';
 
-  const Lpieces = libs?.Characters?.LibraryC2 || {};
-  const Ltarget = libs?.Spatial?.LibraryS1 || {};
+  // Libraries used:
+  const Lpieces = libs?.Characters?.LibraryC2 || {};     // "Pa2", "Ng1", "R", "a2" κ.λπ.
+  const Ltarget = libs?.Spatial?.LibraryS1   || {};      // "a1".."h8"
+
+  // Strategy: χτίζουμε mapping "τετράγωνο -> ετικέτα" σε ΟΛΕΣ τις κινήσεις (from→to),
+  // ώστε οι ετικέτες να μετακινούνται με το κομμάτι. Έτσι το pieceAssoc δεν μένει κενό.
   const assocBySquare = Object.create(null);
 
+  // Βρες περιγραφή κομματιού: προτεραιότητα "P+a2" > "a2" > "P" > όνομα κομματιού στα ελληνικά
   const getAssocFor = (pieceLetter, fromSq) =>
     (Lpieces[`${pieceLetter}${fromSq||''}`] || Lpieces[fromSq||''] || Lpieces[pieceLetter] || pieceGreek(pieceLetter));
 
-  moves.forEach(m => {
-    const locusLabel = locusForMove(m); // ✅ Mnemonic locus (Temporal)
+  moves.forEach(m=>{
+    // locus/anchor
+	const locus = locusForMove(m);
     const anchor = anchorForMove(m.index);
 
+    // πάρε την «τρέχουσα» ετικέτα από το FROM ή φτιάξε την αρχική από το library
     let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
-    if (m.from) delete assocBySquare[m.from];
 
+    // αφαίρεσε ό,τι υπήρχε στο FROM
+    if(m.from) delete assocBySquare[m.from];
+
+    // ειδικοί κανόνες
+
+    // 1) Ροκέ: κούνα και την ετικέτα του πύργου στα σωστά τετράγωνα
     const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
-    if (sanClean.startsWith('O-O')) {
+    if(sanClean.startsWith('O-O')){ // O-O ή O-O-O
       const long = sanClean.startsWith('O-O-O');
-      const white = (m.side === 'White');
-      const rookFrom = white ? (long ? 'a1' : 'h1') : (long ? 'a8' : 'h8');
-      const rookTo   = white ? (long ? 'd1' : 'f1') : (long ? 'd8' : 'f8');
-      if (assocBySquare[rookFrom]) {
+      const white = (m.side==='White');
+      const rookFrom = white ? (long ? 'a1':'h1') : (long ? 'a8':'h8');
+      const rookTo   = white ? (long ? 'd1':'f1') : (long ? 'd8':'f8');
+      if(assocBySquare[rookFrom]){
         assocBySquare[rookTo] = assocBySquare[rookFrom];
         delete assocBySquare[rookFrom];
-      } else {
+      }else{
+        // αν δεν υπήρχε, φτιάξε από βιβλιοθήκη με βάση το αρχικό τετράγωνο του ρουκ
         assocBySquare[rookTo] = getAssocFor('R', rookFrom);
       }
     }
 
-    if ((m.flags || '').includes('e') && /^[a-h][1-8]$/.test(m.to)) {
-      const toFile = m.to[0], toRank = parseInt(m.to[1], 10);
-      const capRank = (m.side === 'White') ? (toRank - 1) : (toRank + 1);
+    // 2) En passant: αν η σημαία περιέχει 'e', η αιχμαλωτισμένη ετικέτα είναι πίσω από το "to"
+    if((m.flags||'').includes('e') && /^[a-h][1-8]$/.test(m.to)){
+      const toFile = m.to[0], toRank = parseInt(m.to[1],10);
+      const capRank = (m.side==='White') ? (toRank-1) : (toRank+1);
       const capSq = `${toFile}${capRank}`;
-      if (assocBySquare[capSq]) delete assocBySquare[capSq];
+      if(assocBySquare[capSq]) delete assocBySquare[capSq];
     }
 
+    // 3) Προαγωγή: η ίδια ετικέτα συνεχίζει στο νέο τετράγωνο (η «ταυτότητα» του πιονιού κρατιέται)
+    // Δεν χρειάζεται ειδικός χειρισμός εδώ — απλώς θα καθίσει στο to.
+
+    // Κάθισε την ετικέτα στο TO (αντικαθιστά τυχόν ετικέτα αντιπάλου σε capture)
     assocBySquare[m.to] = pieceAssoc;
 
-    // --- Board location info ---
-    const node = Ltarget[m.to];
-    const boardLocation = node?.Location || m.to; // ✅ πραγματικό "Location"
-    let targetAssoc = '';
+    const targetAssoc = Ltarget[m.to]
+      ? ((Ltarget[m.to][selectedLang] || Ltarget[m.to].el || Ltarget[m.to].en) || m.to)
+      : m.to;
 
-    if (node) {
-      if (node.Sentence && node.Sentence.trim() !== '') {
-        targetAssoc = node.Sentence;
-      } else {
-        const parts = [node.Action, node.Feeling, node.Object]
-          .filter(Boolean).join(' ');
-        targetAssoc = parts || '';
-      }
-    } else {
-      targetAssoc = m.to;
-    }
-
-    const tr = document.createElement('tr');
-    tr.dataset.index = m.index;
+    const tr=document.createElement('tr'); tr.dataset.index=m.index;
     tr.innerHTML =
-      `<td>${escapeHtml(m.moveNumDisplay)}</td>` +
-      `<td>${escapeHtml(m.san)}</td>` +
-      `<td>${escapeHtml(anchor)}</td>` +
-      `<td>${escapeHtml(locusLabel)}</td>` + 
-      `<td>${escapeHtml(pieceAssoc)}</td>` +
-      `<td>${escapeHtml(boardLocation)}</td>` + 
-	  `<td>${escapeHtml(targetAssoc)}</td>`;
+      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
+      `<td>${escapeHtml(m.san)}</td>`+
+      `<td>${escapeHtml(anchor)}</td>`+     
+	  `<td>${escapeHtml(locus)}</td>`+
+      `<td>${escapeHtml(sideGR(m.side))}</td>`+
+      `<td>${escapeHtml(pieceAssoc)}</td>`+
+      `<td>${escapeHtml(targetAssoc)}</td>`;
     body.appendChild(tr);
   });
 }
@@ -408,7 +412,7 @@ function buildLibrariesBar(){
 
 /* ---------- Init ---------- */
 async function loadLibraries(){
-  const res = await fetch('libraries.json');
+  const res = await fetch('libraries_v3.2.json');
   libs = await res.json();
   console.log("LIBS KEYS:", Object.keys(libs));
   console.log("Temporal:", libs.Temporal);
