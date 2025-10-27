@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     move = pieceMap[move[0]] ? move.slice(1) : move;
 
     const [_, square] = move.split("x");
-    const action = move.includes("x") ? "take" : " ";
+    const action = move.includes("x") ? "take" : "moves to";
     return `${piece} ${action} ${square || move}`.trim();
   }
 
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const sanText = sanToText(san);
 
 const openings = [
-  "Στη συνέχεια, ο Γέροντας συνεχίζει την αφήγηση,",
+  "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει,",
   "Λίγο αργότερα, και καθώς η μάχη συνεχίζεται,",
   "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία,",
 ];
@@ -78,12 +78,12 @@ const verbs = [
   "διακρίνεται στο πεδίο της μάχης,"
 ];
 
-const opening = i === 0 ? "Ο Γέροντας συνεχίζει την αφήγηση και λέει ... Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια ... ακούγεται μία σάλπιγγα ..." : openings[i % openings.length];
+const opening = i === 0 ? "Ο Γέροντας συνεχίζει την αφήγηση και λέει ... \n Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια ... ακούγεται μία σάλπιγγα ... ." : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `♞♟ Κίνηση ${sceneNumber}: Η σκηνή όπου εμφανίζεται ${locus}`;
-let phrase = ` ${t1Header}\n\n ${opening} με την κίνηση ${sanText}, ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
+const t1Header = `Half-move ${sceneNumber} ${sanText}: Η σκηνή όπου εμφανίζεται στο πεδίο της μάχης ${locus}`;
+let phrase = ` ${t1Header}\n\n ${opening}, ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
 stories.push(phrase.trim());
@@ -222,6 +222,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
