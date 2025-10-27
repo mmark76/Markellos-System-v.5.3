@@ -255,9 +255,9 @@ function fillAssociationsTable(moves){
       `<td>${escapeHtml(m.san)}</td>`+
       `<td>${escapeHtml(anchor)}</td>`+     
 	  `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceAssoc)}</td>`+
       `<td>${escapeHtml(targetAssoc)}</td>`;
+	  `<td>${escapeHtml(sentence)}</td>`;
     body.appendChild(tr);
   });
 }
