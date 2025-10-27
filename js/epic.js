@@ -78,7 +78,7 @@ const verbs = [
   "διακρίνεται στο πεδίο της μάχης,"
 ];
 
-const opening = i === 0 ? "Ο Γέροντας συνεχίζει την αφήγηση και λέει ... \n Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια ... ακούγεται μία σάλπιγγα ... ." : openings[i % openings.length];
+const opening = i === 0 ? "Ο Γέροντας συνεχίζει την αφήγηση και λέει ... \n Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια και ακούγεται μία σάλπιγγα." : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
@@ -222,6 +222,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
