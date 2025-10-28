@@ -187,77 +187,95 @@ function enableManualAnchors() {
 
 /* ---------- ASSOCIATIONS TABLE (labels move with pieces) ---------- */
 function fillAssociationsTable(moves){
-  const body = document.getElementById('assocBody'); if(!body) return;
-  body.innerHTML='';
+  const body = document.getElementById('assocBody');
+  if (!body) return;
+  body.innerHTML = '';
 
-  // Libraries used:
-  const Lpieces = libs?.Characters?.LibraryC2 || {};     // "Pa2", "Ng1", "R", "a2" κ.λπ.
-  const Ltarget = libs?.Spatial?.LibraryS1   || {};      // "a1".."h8"
+  const Lpieces = libs?.Characters?.LibraryC2 || {};
+  const Ltarget = libs?.Spatial?.LibraryS1 || {};
 
-  // Strategy: χτίζουμε mapping "τετράγωνο -> ετικέτα" σε ΟΛΕΣ τις κινήσεις (from→to),
-  // ώστε οι ετικέτες να μετακινούνται με το κομμάτι. Έτσι το pieceAssoc δεν μένει κενό.
+  // κρατάμε ποιος χαρακτήρας βρίσκεται σε ποιο τετράγωνο, και τον μετακινούμε
   const assocBySquare = Object.create(null);
 
-  // Βρες περιγραφή κομματιού: προτεραιότητα "P+a2" > "a2" > "P" > όνομα κομματιού στα ελληνικά
-  const getAssocFor = (pieceLetter, fromSq) =>
-    (Lpieces[`${pieceLetter}${fromSq||''}`] || Lpieces[fromSq||''] || Lpieces[pieceLetter] || pieceGreek(pieceLetter));
+  function getAssocFor(pieceLetter, fromSq) {
+    // Προτεραιότητα:
+    // 1. "Pa2" / "Nb1" style
+    // 2. "a2", "b1" κτλ
+    // 3. "P", "N", ...
+    // 4. generic greek piece name
+    return (
+      Lpieces[`${pieceLetter}${fromSq||''}`] ||
+      Lpieces[fromSq||''] ||
+      Lpieces[pieceLetter] ||
+      pieceGreek(pieceLetter) ||
+      ''
+    );
+  }
 
-  moves.forEach(m=>{
-    // locus/anchor
-	const locus = locusForMove(m);
-    const anchor = anchorForMove(m.index);
+  moves.forEach(m => {
+    // --- locus ---
+    const locus = locusForMove(m);          // από Temporal Library
+    const anchor = anchorForMove(m.index);  // ⚓ αν είναι μαρκαρισμένο
 
-    // πάρε την «τρέχουσα» ετικέτα από το FROM ή φτιάξε την αρχική από το library
+    // --- βρες/ενημέρωσε association του κομματιού που κινείται ---
     let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
 
-    // αφαίρεσε ό,τι υπήρχε στο FROM
-    if(m.from) delete assocBySquare[m.from];
+    // καθάρισε το παλιό τετράγωνο
+    if (m.from) delete assocBySquare[m.from];
 
-    // ειδικοί κανόνες
-
-    // 1) Ροκέ: κούνα και την ετικέτα του πύργου στα σωστά τετράγωνα
+    // ειδικές περιπτώσεις ροκέ / en passant όπως ήδη κάνεις:
     const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
-    if(sanClean.startsWith('O-O')){ // O-O ή O-O-O
+
+    // 1. ροκέ: μετακινείται και ο πύργος, άρα πρέπει να “σύρουμε” και την ετικέτα του
+    if (sanClean.startsWith('O-O')) {
       const long = sanClean.startsWith('O-O-O');
-      const white = (m.side==='White');
+      const white = (m.side === 'White');
       const rookFrom = white ? (long ? 'a1':'h1') : (long ? 'a8':'h8');
       const rookTo   = white ? (long ? 'd1':'f1') : (long ? 'd8':'f8');
-      if(assocBySquare[rookFrom]){
+
+      if (assocBySquare[rookFrom]) {
         assocBySquare[rookTo] = assocBySquare[rookFrom];
         delete assocBySquare[rookFrom];
-      }else{
-        // αν δεν υπήρχε, φτιάξε από βιβλιοθήκη με βάση το αρχικό τετράγωνο του ρουκ
+      } else {
         assocBySquare[rookTo] = getAssocFor('R', rookFrom);
       }
     }
 
-    // 2) En passant: αν η σημαία περιέχει 'e', η αιχμαλωτισμένη ετικέτα είναι πίσω από το "to"
-    if((m.flags||'').includes('e') && /^[a-h][1-8]$/.test(m.to)){
-      const toFile = m.to[0], toRank = parseInt(m.to[1],10);
-      const capRank = (m.side==='White') ? (toRank-1) : (toRank+1);
+    // 2. en passant: σβήσε το πιόνι που “τρώγεται” εκτός τετραγώνου προορισμού
+    if ((m.flags||'').includes('e') && /^[a-h][1-8]$/.test(m.to)) {
+      const toFile = m.to[0];
+      const toRank = parseInt(m.to[1],10);
+      const capRank = (m.side === 'White') ? (toRank-1) : (toRank+1);
       const capSq = `${toFile}${capRank}`;
-      if(assocBySquare[capSq]) delete assocBySquare[capSq];
+      if (assocBySquare[capSq]) delete assocBySquare[capSq];
     }
 
-    // 3) Προαγωγή: η ίδια ετικέτα συνεχίζει στο νέο τετράγωνο (η «ταυτότητα» του πιονιού κρατιέται)
-    // Δεν χρειάζεται ειδικός χειρισμός εδώ — απλώς θα καθίσει στο to.
-
-    // Κάθισε την ετικέτα στο TO (αντικαθιστά τυχόν ετικέτα αντιπάλου σε capture)
+    // τώρα βάζουμε το moved piece στο νέο τετράγωνο
     assocBySquare[m.to] = pieceAssoc;
 
-    const targetAssoc = Ltarget[m.to]
-      ? ((Ltarget[m.to][selectedLang] || Ltarget[m.to].el || Ltarget[m.to].en) || m.to)
-      : m.to;
+    // association του τετραγώνου-στόχου (σκηνή board square από Spatial)
+    const targetAssocRaw = Ltarget[m.to];
+    const targetAssoc = targetAssocRaw
+      ? (targetAssocRaw[selectedLang] || targetAssocRaw.el || targetAssocRaw.en || '')
+      : '';
 
-    const tr=document.createElement('tr'); tr.dataset.index=m.index;
+    // sentence (μία γραμμή περιγραφής: pieceAssoc κάνει κάτι στο targetAssoc)
+    // μπορείς να το προσαρμόσεις όπως το θέλεις
+    const sentence = `${pieceAssoc} πηγαίνει στο ${m.to} (${targetAssoc}).`;
+
+    // --- Δημιουργία γραμμής πίνακα με τη ΣΩΣΤΗ σειρά στηλών ---
+    const tr = document.createElement('tr');
+    tr.dataset.index = m.index;
+
     tr.innerHTML =
-      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
-      `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+     
-	  `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml(pieceAssoc)}</td>`+
-      `<td>${escapeHtml(targetAssoc)}</td>`;
-	  `<td>${escapeHtml(sentence)}</td>`;
+      `<td>${escapeHtml(m.moveNumDisplay)}</td>` +                 // Move #
+      `<td>${escapeHtml(m.san)}</td>` +                            // SAN
+      `<td style="text-align:center;">${escapeHtml(anchor)}</td>`+ // Anchor
+      `<td>${escapeHtml(locus)}</td>` +                            // Mnemonic Locus
+      `<td>${escapeHtml(pieceAssoc)}</td>` +                       // Piece Association
+      `<td>${escapeHtml(targetAssoc)}</td>` +                      // Target Square Association
+      `<td>${escapeHtml(sentence)}</td>`;                          // Sentence
+
     body.appendChild(tr);
   });
 }
