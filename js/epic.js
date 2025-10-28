@@ -83,7 +83,7 @@ const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
 const t1Header = `Half-move ${sceneNumber}. ${sanText}: Η σκηνή όπου στο πεδίο της μάχης εμφανίζεται ${locus}`;
-let phrase = `${t1Header}\n\n ${opening}, ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
+let phrase = `${t1Header}\n\n ${opening} ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt}\n${phrase}`;
 
 stories.push(phrase.trim());
@@ -173,6 +173,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
