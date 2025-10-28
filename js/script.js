@@ -368,3 +368,12 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   renderAll();
   enableManualAnchors();
 });
+
+function wirePGN() {
+  const ta = document.getElementById('pgnText');
+  if (!ta) return;
+  ta.addEventListener('input', () => {
+    gameMoves = parsePGN(ta.value);
+    renderAll();
+  });
+}
