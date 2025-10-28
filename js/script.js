@@ -1,5 +1,5 @@
 /* ================================
-   Markellos CMS v5.3 — Core Script
+   Markellos CMS v5.3 — Core Script (Stable Fix)
    ================================ */
 
 let libs = null;
@@ -131,6 +131,16 @@ function parsePGN(pgn){
   return out;
 }
 
+/* ---------- wirePGN (διορθωμένη θέση) ---------- */
+function wirePGN() {
+  const ta = document.getElementById('pgnText');
+  if (!ta) return;
+  ta.addEventListener('input', () => {
+    gameMoves = parsePGN(ta.value);
+    renderAll();
+  });
+}
+
 /* ---------- SAN TABLE ---------- */
 function fillSanTable(moves){
   const body = document.getElementById('sanBody'); 
@@ -220,100 +230,6 @@ function fillAssociationsTable(moves){
   });
 }
 
-/* ---------- PAO 0–9 TABLE ---------- */
-function toPFR(m){
-  const P = PIECE_TO_P[m.piece] || 0;
-  const F = FILE_TO_NUM[m.to?.[0]] || 0;
-  const R = Number(m.to?.[1]||0);
-  return {P,F,R};
-}
-function formatPFR(pfr){ return `${pfr.P}${pfr.F}${pfr.R}`; }
-
-function fillPaoTable_0_9(moves){
-  const body = document.getElementById('paoBody'); if(!body) return;
-  body.innerHTML='';
-  moves.forEach(m=>{
-	const locus = locusForMove(m);
-    const anchor = anchorForMove(m.index);
-    const pfr = toPFR(m);
-    const code = formatPFR(pfr);
-    const {person,action,object} = p1PAO(pfr);
-    const tr=document.createElement('tr'); tr.dataset.index=m.index;
-    tr.innerHTML =
-      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
-      `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml(sideGR(m.side))}</td>`+
-      `<td>${escapeHtml(`${code} (${m.san})`)}</td>`+
-      `<td>${escapeHtml(`Κωδικός: ${code}`)}<br>`+
-        `${escapeHtml('P: '+person)} | ${escapeHtml('A: '+action)} | ${escapeHtml('O: '+object)}</td>`;
-    body.appendChild(tr);
-  });
-}
-
-/* ---------- PAO 00–99 TABLE ---------- */
-function weave6Digits(pfrW, pfrB){
-  const a = `${pfrW.P}${pfrW.F}`;
-  const b = `${pfrW.R}${pfrB.P}`;
-  const c = `${pfrB.F}${pfrB.R}`;
-  return {a,b,c,all:`${a}${b}${c}`};
-}
-function twoDigit(str){ return String(str).padStart(2,'0'); }
-
-function fillPaoTable_00_99(moves){
-  const body = document.getElementById('pao99Body'); if(!body) return;
-  const collSel = document.getElementById('pao99CollectionSelect');
-  const collection = (collSel && collSel.value) ? collSel.value : 'LibraryP1';
-  body.innerHTML='';
-  for(let i=0;i<moves.length;i+=2){
-    const wm=moves[i], bm=moves[i+1]; if(!wm||!bm) break;
-    const movePair=wm.movePair;
-    const locus = locusForMove(wm);
-    const anchor = anchorForMove(wm.index);
-    const parts = weave6Digits(toPFR(wm), toPFR(bm));
-    const P = p2p3Get(twoDigit(parts.a), collection).person;
-    const A = p2p3Get(twoDigit(parts.b), collection).action;
-    const O = p2p3Get(twoDigit(parts.c), collection).object;
-    const tr=document.createElement('tr'); tr.dataset.index=wm.index;
-    tr.innerHTML =
-      `<td>${escapeHtml(`${movePair}.`)}</td>`+
-      `<td>${escapeHtml(`${wm.san}  ${bm.san}`)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml('Πλήρης κίνηση')}</td>`+
-      `<td>${escapeHtml(parts.all)}</td>`+
-      `<td>${escapeHtml(`Person: ${P}`)}<br>`+
-          `${escapeHtml(`Action: ${A}`)}<br>`+
-          `${escapeHtml(`Object: ${O}`)}</td>`;
-    body.appendChild(tr);
-  }
-}
-
-/* ---------- VERSE TABLE ---------- */
-function fillVerseTable(moves){
-  const body = document.getElementById('verseBody'); if(!body) return;
-  body.innerHTML='';
-  moves.forEach(m=>{
-	const locus = locusForMove(m);
-    const anchor = anchorForMove(m.index);
-    const file = m.to?.[0]; const rank = Number(m.to?.[1]||0);
-    const v = v1Verse(m.piece, file, rank, m.side, m.moveNumber);
-    const tr=document.createElement('tr'); tr.dataset.index=m.index;
-    tr.innerHTML =
-      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
-      `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+
-	  `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml(sideGR(m.side))}</td>`+
-      `<td>${escapeHtml(`Piece: ${v.piece}`)}<br>`+
-          `${escapeHtml(`File: ${v.file}`)}<br>`+
-          `${escapeHtml(`Rank: ${v.rank}`)}<br>`+
-          `${escapeHtml(`Closing: ${v.closing}`)}</td>`;
-    body.appendChild(tr);
-  });
-}
-
 /* ---------- Render All ---------- */
 function renderAll(){
   fillSanTable(gameMoves);
@@ -323,13 +239,11 @@ function renderAll(){
   fillVerseTable(gameMoves);
 }
 
-/* ---------- Load Libraries (διορθωμένη με bridge) ---------- */
+/* ---------- Load Libraries ---------- */
 async function loadLibraries(){
   try {
     const res = await fetch('libraries.json');
     libs = await res.json();
-
-    // --- Προσαρμογή Spatial από m/f σε el/en ---
     if (libs?.Spatial?.LibraryS1) {
       for (let sq in libs.Spatial.LibraryS1) {
         let e = libs.Spatial.LibraryS1[sq];
@@ -337,7 +251,6 @@ async function loadLibraries(){
         if (e.f && !e.en) e.en = e.f;
       }
     }
-
     console.log("✅ Libraries loaded:", Object.keys(libs));
     if (libs) renderAll();
   } catch (err) {
@@ -346,11 +259,11 @@ async function loadLibraries(){
 }
 
 /* ---------- Initialization ---------- */
-document.addEventListener('DOMContentLoaded', async ()=>{
+document.addEventListener('DOMContentLoaded', async ()=> {
   const langSel = document.getElementById('langSelect');
   if(langSel){
     selectedLang = (langSel.value || 'el');
-    langSel.addEventListener('change', ()=>{
+    langSel.addEventListener('change', ()=> {
       selectedLang = langSel.value || 'el';
       renderAll();
     });
@@ -358,7 +271,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 
   await loadLibraries();
   wirePGN();
-  wireTableSelect();
+  wireTableSelect?.();
 
   const ta = document.getElementById('pgnText');
   if(ta && ta.value.trim()){
@@ -366,14 +279,5 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
   renderAll();
-  enableManualAnchors();
+  enableManualAnchors?.();
 });
-
-function wirePGN() {
-  const ta = document.getElementById('pgnText');
-  if (!ta) return;
-  ta.addEventListener('input', () => {
-    gameMoves = parsePGN(ta.value);
-    renderAll();
-  });
-}
