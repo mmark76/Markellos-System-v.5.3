@@ -1,5 +1,5 @@
 /* ================================
-   Markellos CMS v5.3 — Core Script (Stable Fix)
+   Markellos CMS v5.3 — Core Script (Stable Final)
    ================================ */
 
 let libs = null;
@@ -131,7 +131,7 @@ function parsePGN(pgn){
   return out;
 }
 
-/* ---------- wirePGN (διορθωμένη θέση) ---------- */
+/* ---------- wirePGN ---------- */
 function wirePGN() {
   const ta = document.getElementById('pgnText');
   if (!ta) return;
@@ -230,13 +230,44 @@ function fillAssociationsTable(moves){
   });
 }
 
+/* ---------- PAO 0–9 TABLE ---------- */
+function toPFR(m){
+  const P = PIECE_TO_P[m.piece] || 0;
+  const F = FILE_TO_NUM[m.to?.[0]] || 0;
+  const R = Number(m.to?.[1]||0);
+  return {P,F,R};
+}
+function formatPFR(pfr){ return `${pfr.P}${pfr.F}${pfr.R}`; }
+
+function fillPaoTable_0_9(moves){
+  const body = document.getElementById('paoBody'); if(!body) return;
+  body.innerHTML='';
+  moves.forEach(m=>{
+    const locus = locusForMove(m);
+    const anchor = anchorForMove(m.index);
+    const pfr = toPFR(m);
+    const code = formatPFR(pfr);
+    const {person,action,object} = p1PAO(pfr);
+    const tr=document.createElement('tr'); tr.dataset.index=m.index;
+    tr.innerHTML =
+      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
+      `<td>${escapeHtml(m.san)}</td>`+
+      `<td>${escapeHtml(anchor)}</td>`+
+      `<td>${escapeHtml(locus)}</td>`+
+      `<td>${escapeHtml(sideGR(m.side))}</td>`+
+      `<td>${escapeHtml(`${code} (${m.san})`)}</td>`+
+      `<td>${escapeHtml('P: '+person+' | A: '+action+' | O: '+object)}</td>`;
+    body.appendChild(tr);
+  });
+}
+
 /* ---------- Render All ---------- */
 function renderAll(){
   fillSanTable(gameMoves);
   fillAssociationsTable(gameMoves);
   fillPaoTable_0_9(gameMoves);
-  fillPaoTable_00_99(gameMoves);
-  fillVerseTable(gameMoves);
+  fillPaoTable_00_99?.(gameMoves);
+  fillVerseTable?.(gameMoves);
 }
 
 /* ---------- Load Libraries ---------- */
@@ -281,3 +312,8 @@ document.addEventListener('DOMContentLoaded', async ()=> {
   renderAll();
   enableManualAnchors?.();
 });
+
+/* ---------- Placeholder Functions ---------- */
+function wireTableSelect(){
+  console.log("wireTableSelect() placeholder — no interactive tables defined.");
+}
