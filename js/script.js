@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     locusSelect.value = locusMode;
     locusSelect.addEventListener('change', e => {
       locusMode = e.target.value;
-      // ανανέωση πινάκων για να εφαρμοστεί το νέο mode
-       window.locusMode = locusMode;
+      window.locusMode = locusMode;
       if (gameMoves && gameMoves.length) {
         fillSanTable(gameMoves);
         fillAssociationsTable(gameMoves);
@@ -52,7 +51,7 @@ function s1Square(square){
   return (node[selectedLang] || node.el || node.en || '');
 }
 function p1PAO(d) {
-  const P = String(d.P);  // χωρίς -1
+  const P = String(d.P);
   const A = String(d.F);
   const O = String(d.R);
   const lib = libs?.["PAO 0-9"]?.Library_p1;
@@ -93,29 +92,23 @@ function locusForMove(m) {
   }
 }
 
-// --- Χειροκίνητα Anchors ---
-let manualAnchors = {};  // π.χ. { "4": true, "12": true }
-
-function anchorForMove(index) {
-  return manualAnchors[index] ? '⚓' : '';
-}
-function anchorForMovePair(n) {
-  return anchorForMove(n);
-}
+/* ---------- Manual Anchors ---------- */
+let manualAnchors = {};  
+function anchorForMove(index) { return manualAnchors[index] ? '⚓' : ''; }
+function anchorForMovePair(n) { return anchorForMove(n); }
 
 /* ---------- PGN parsing ---------- */
 function parsePGN(pgn){
-
-pgn = String(pgn || '').replace(/\r\n/g, '\n');
-pgn = pgn.replace(/\{\[%[\s\S]*?\]\}/g, '');
-pgn = pgn.replace(/\[%[\s\S]*?\]/g, '');
-pgn = pgn.replace(/\{[^}]*\}/g, '');
-pgn = pgn
-  .replace(/[ \t]+/g, ' ')
-  .replace(/[ \t]*\n[ \t]*/g, '\n')
-  .replace(/\n{3,}/g, '\n\n')
-  .replace(/(\]\n)(?!\n)/g, '$1\n')
-  .trim();
+  pgn = String(pgn || '').replace(/\r\n/g, '\n');
+  pgn = pgn.replace(/\{\[%[\s\S]*?\]\}/g, '');
+  pgn = pgn.replace(/\[%[\s\S]*?\]/g, '');
+  pgn = pgn.replace(/\{[^}]*\}/g, '');
+  pgn = pgn
+    .replace(/[ \t]+/g, ' ')
+    .replace(/[ \t]*\n[ \t]*/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .replace(/(\]\n)(?!\n)/g, '$1\n')
+    .trim();
 
   const chess = new Chess();
   chess.load_pgn(pgn, { sloppy: true });
@@ -330,21 +323,22 @@ function renderAll(){
   fillVerseTable(gameMoves);
 }
 
-/* ---------- Load Libraries (διορθωμένη) ---------- */
+/* ---------- Load Libraries (διορθωμένη με bridge) ---------- */
 async function loadLibraries(){
   try {
     const res = await fetch('libraries.json');
     libs = await res.json();
-    console.log("✅ Libraries loaded:", Object.keys(libs));
-    console.log("Temporal:", libs?.Temporal);
-    console.log("Spatial:", libs?.Spatial);
-    console.log("Characters:", libs?.Characters);
-    console.log("PAO 0-9:", libs?.["PAO 0-9"]);
-    console.log("PAO 00-99:", libs?.["PAO 00-99"]);
-    console.log("Verses:", libs?.Verses);
-    console.log("Foundations:", libs?.Foundations);
 
-    // ✅ FIX: ενημέρωση πινάκων μετά τη φόρτωση
+    // --- Προσαρμογή Spatial από m/f σε el/en ---
+    if (libs?.Spatial?.LibraryS1) {
+      for (let sq in libs.Spatial.LibraryS1) {
+        let e = libs.Spatial.LibraryS1[sq];
+        if (e.m && !e.el) e.el = e.m;
+        if (e.f && !e.en) e.en = e.f;
+      }
+    }
+
+    console.log("✅ Libraries loaded:", Object.keys(libs));
     if (libs) renderAll();
   } catch (err) {
     console.error("❌ Σφάλμα φόρτωσης βιβλιοθηκών:", err);
