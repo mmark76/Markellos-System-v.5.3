@@ -46,6 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return txt.replace(/^\d+\s*—\s*/, "");
   }
 
+  function getSquare(san) {
+    if (!san) return "";
+    const match = san.match(/([a-h][1-8])$/);
+    return match ? match[1] : "";
+}
+   
   /* ---------- Epic Story Generator ---------- */
   function updateEpicText() {
     const tbody = document.querySelector(`#assocSection tbody`);
@@ -65,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const anchorTxt = cleanAnchor(anchor);
       const sanText = sanToText(san);
+      const square = getSquare(san);
 
 const openings = [
   "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει,",
@@ -82,7 +89,7 @@ const opening = i === 0 ? "Η μάχη ξεκινάει αργά το απόγε
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `Half-move ${sceneNumber}. ${sanText}:\n Σκηνή: Στο πεδίο της μάχης εμφανίζεται ${locus}`;
+const t1Header = `Half-move ${sceneNumber}. ${sanText}:\n Σκηνή: Στο πεδίο της μάχης, περιοχή ${square} εμφανίζεται ${locus}`;
 let phrase = `${t1Header} \n\n ${opening} ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt} \n ${phrase}`;
 
@@ -173,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
