@@ -78,11 +78,11 @@ const verbs = [
   "διακρίνεται στο πεδίο της μάχης,"
 ];
 
-const opening = i === 0 ? "Ο Γέροντας συνεχίζει την αφήγηση και λέει ... \n Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια και ακούγεται μία σάλπιγγα, ..." : openings[i % openings.length];
+const opening = i === 0 ? "Ο Γέροντας συνεχίζει την αφήγηση και λέει ... \n Η μάχη ξεκινάει αργά το απόγευμα. Οι δύο Στρατηγοί δίνουν τα χέρια και ακούγεται μία σάλπιγγα και" : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `Half-move ${sceneNumber}. ${sanText}:\n Η σκηνή όπου στο πεδίο της μάχης, περίεργος και από το πουθενά, εμφανίζεται ${locus}`;
+const t1Header = `Half-move ${sceneNumber}. ${sanText}:\n Η σκηνή όπου στο πεδίο της μάχης, περιέργως και από το πουθενά, εμφανίζεται ${locus}`;
 let phrase = `${t1Header} \n\n ${opening} ${action} ${locus}, και ${pieceAssoc} ${targetAssoc}.\n`;
 if (anchorTxt) phrase = `${anchorTxt} \n ${phrase}`;
 
@@ -173,6 +173,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
