@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const anchorTxt = cleanAnchor(anchor);
       const sanText = sanToText(san);
-      const square = getSquare(san);
+      const square = targetSquare || getSquare(san);
 
 const openings = [
   "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει,",
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
