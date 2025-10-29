@@ -1171,14 +1171,14 @@
             "Pf2": "the white warrior Freddy",
             "Pg2": "the white warrior Garry",
             "Ph2": "the white warrior Harry",
-            "Ra1": "the white Queen's Commander",
-            "Nb1": "the white Queen's Knight",
-            "Bc1": "the white Queen's Wizard",
-            "Qd1": "the white Queen Banshee",
-            "Ke1": "the white King Kong",
-            "Bf1": "the white King's Wizard",
-            "Ng1": "the white King's Knight",
-            "Rh1": "the white King's Commander",
+            "Ra1": "the white Queen's Commander Cyclop",
+            "Nb1": "the white Queen's Knight Otrera",
+            "Bc1": "the white Queen's Wizard Gandalf",
+            "Qd1": "the white Queen Snow-white",
+            "Ke1": "the white Lion King",
+            "Bf1": "the white King's Wizard Sphinx",
+            "Ng1": "the white King's Knight Amazon Hippolite",
+            "Rh1": "the white King's Commander Yieti",
             "Pa7": "the black warrior Amy",
             "Pb7": "the black warrior Bella",
             "Pc7": "the black warrior Connie",
@@ -1187,14 +1187,14 @@
             "Pf7": "the black warrior Fiona",
             "Pg7": "the black warrior Grace",
             "Ph7": "the black warrior Hope",
-            "Ra8": "the black Queen's Commander",
-            "Nb8": "the black Queen's Knight",
-            "Bc8": "the black Queen's Wizard",
-            "Qd8": "the black Queen Snow-white",
-            "Ke8": "the black Lion King",
-            "Bf8": "the black King's Wizard",
-            "Ng8": "the black King's Knight",
-            "Rh8": "the black King's Commander"
+            "Ra8": "the black Queen's Commander Godzilla",
+            "Nb8": "the black Queen's Knight Dr Octopus",
+            "Bc8": "the black Queen's Wizard Bloody Vampire",
+            "Qd8": "the black Queen Banshee",
+            "Ke8": "the black King Kong",
+            "Bf8": "the black King's Wizard Venom",
+            "Ng8": "the black King's Knight Catwoman",
+            "Rh8": "the black King's Commander the Beast Werewolf"
         }
     },
     "PAO 0-9": {
@@ -4214,6 +4214,7 @@
         }
     }
 }
+
 
 
 
