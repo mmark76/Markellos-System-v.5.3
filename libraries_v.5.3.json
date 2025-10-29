@@ -35,7 +35,7 @@
             },
             "9": {
                 "el": "μία σιδερένια νεροπηγή",
-                "en": "Faucet"
+                "en": "Tap"
             },
             "10": {
                 "el": "μία κοντή πορτοκαλιά",
@@ -50,7 +50,7 @@
                 "en": "Olive Tree"
             },
             "13": {
-                "el": "μία στεφάνη κρεμασμένη ψηλά σε μία σιδερένια κολόνα",
+                "el": "μία σιδερένια στεφάνη κρεμασμένη ψηλά",
                 "en": "Basketball Hoop"
             },
             "14": {
@@ -119,7 +119,7 @@
             },
             "30": {
                 "el": "ένας καθρέφτης καθιστικού",
-                "en": "Mirror"
+                "en": "Living Room Mirror"
             },
             "31": {
                 "el": "η βιβλιοθήκη του καθιστικού",
@@ -159,7 +159,7 @@
             },
             "40": {
                 "el": "η ξύλινη πόρτα του δωματίου",
-                "en": "Bedroom Door"
+                "en": "Main Bedroom Door"
             },
             "41": {
                 "el": "η ντουλάπα με τα ρούχα",
@@ -167,15 +167,15 @@
             },
             "42": {
                 "el": "ένα μικρό κομοδίνο με ένα παλιό φωτιστικό",
-                "en": "Nightstand"
+                "en": "Nightstand with light"
             },
             "43": {
                 "el": "το μεγάλο κρεβάτι",
-                "en": "Bed"
+                "en": "Large Bed"
             },
             "44": {
                 "el": "το μικρό κομοδίνο με το λυχνάρι",
-                "en": "Nightstand"
+                "en": "Nightstand with lamp"
             },
             "45": {
                 "el": "η τεράστια μπαλκονόπορτα",
@@ -187,31 +187,31 @@
             },
             "47": {
                 "el": "μία αντανάκλαση μέσα από ένα καθρέφτη",
-                "en": "Mirror"
+                "en": "Mirror in main bedroom"
             },
             "48": {
                 "el": "ένας περίεργος γυάλινος πίνακας",
-                "en": "Television"
+                "en": "Television in main bedroom"
             },
             "49": {
                 "el": "η ξύλινη θύρα του λουτρού",
-                "en": "WC Door"
+                "en": "Girls' WC Door"
             },
             "50": {
                 "el": "οι μαρμάρινοι νιπτήρες του λουτρού",
-                "en": "Sink"
+                "en": "Girls' WC Sink"
             },
             "51": {
                 "el": "ο μεγάλος καθρέφτης του λουτρού",
-                "en": "Mirror"
+                "en": "Girls' WC Mirror"
             },
             "52": {
                 "el": "ένας μικρός φεγγίτης λουτρού",
-                "en": "Window"
+                "en": "Girls' WC small window"
             },
             "53": {
                 "el": "μία μεγάλη ντουζιέρα",
-                "en": "Shower"
+                "en": "Girls' WC Shower"
             },
             "54": {
                 "el": "μία μηχανή χαλάρωσης",
@@ -223,103 +223,103 @@
             },
             "56": {
                 "el": "το λευκό κάθισμα στο λουτρό",
-                "en": "Toilet"
+                "en": "Girls' WC Toilet"
             },
             "57": {
                 "el": "η ξανθιά ξύλινη πόρτα του γραφείου",
-                "en": "Office Door"
+                "en": "My Office Door"
             },
             "58": {
                 "el": "η ντουλάπα με τα είδη εκγύμνασης",
-                "en": "Office Closet"
+                "en": "My Office Closet"
             },
             "59": {
                 "el": "ένας μεγάλος γκρίζος καναπές",
-                "en": "Sofa"
+                "en": "Office Sofa"
             },
             "60": {
                 "el": "ένα λευκό ανακλινόμενο παράθυρο",
-                "en": "Window"
+                "en": "Office Window"
             },
             "61": {
                 "el": "ένας στάτης για μπουρνούζια",
-                "en": "Clothes Rack"
+                "en": "Office Clothes Rack"
             },
             "62": {
                 "el": "η ξύλινη λευκή βιβλιοθήκη",
-                "en": "Bookshelf"
+                "en": "Office Bookshelf"
             },
             "63": {
                 "el": "το μεγάλο γραφείο με την κόκκινη καρέκλα",
-                "en": "Desk"
+                "en": "Office Desk"
             },
             "64": {
                 "el": "ένας μικρός λευκός εκτυπωτής",
-                "en": "Printer"
+                "en": "Printer in office"
             },
             "65": {
                 "el": " ",
-                "en": " "
+                "en": "Loukia's bedroom door"
             },
             "66": {
                 "el": "",
-                "en": " "
+                "en": "Loukia's bedroom "
             },
             "67": {
                 "el": " ",
-                "en": " "
+                "en": "Loukia's bedroom  "
             },
             "68": {
                 "el": " ",
-                "en": " "
+                "en": "Loukia's bedroom  "
             },
             "69": {
                 "el": " ",
-                "en": " "
+                "en": "Loukia's bedroom  "
             },
             "70": {
                 "el": " ",
-                "en": " "
+                "en": "Loukia's bedroom  "
             },
             "71": {
                 "el": " ",
-                "en": " "
+                "en": "Loukia's bedroom "
             },
             "72": {
                 "el": " ",
-                "en": " "
+                "en": "Loukia's bedroom  "
             },
             "73": {
                 "el": " ",
-                "en": " "
+                "en": "Maria's bedroom"
             },
             "74": {
                 "el": " ",
-                "en": " "
+                "en": "Maria's bedroom "
             },
             "75": {
                 "el": " ",
-                "en": " "
+                "en": "Maria's bedroom "
             },
             "76": {
                 "el": " ",
-                "en": " "
+                "en": "Maria's bedroom "
             },
             "77": {
                 "el": " ",
-                "en": " "
+                "en": "Maria's bedroom "
             },
             "78": {
                 "el": " ",
-                "en": " "
+                "en": "Maria's bedroom "
             },
             "79": {
                 "el": " ",
-                "en": " "
+                "en": "Maria's bedroom "
             },
             "80": {
                 "el": " ",
-                "en": " "
+                "en": "Maria's bedroom "
             }
         },
         "LibraryT2": {
@@ -4214,6 +4214,7 @@
         }
     }
 }
+
 
 
 
