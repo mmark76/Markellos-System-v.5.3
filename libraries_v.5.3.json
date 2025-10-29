@@ -287,11 +287,11 @@
             },
             "72": {
                 "el": " ",
-                "en": "Loukia's bedroom  "
+                "en": "Loukia's bedroom "
             },
             "73": {
                 "el": " ",
-                "en": "Maria's bedroom"
+                "en": "Maria's bedroom door"
             },
             "74": {
                 "el": " ",
@@ -1163,38 +1163,38 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "the white warrior Aris",
-            "Pb2": "the white warrior Boris",
-            "Pc2": "the white warrior Cobby",
-            "Pd2": "the white warrior Derek",
-            "Pe2": "the white warrior Eddie",
-            "Pf2": "the white warrior Freddy",
-            "Pg2": "the white warrior Garry",
-            "Ph2": "the white warrior Harry",
-            "Ra1": "the white Queen's Commander Cyclop",
-            "Nb1": "the white Queen's Knight Amazon Otrera",
-            "Bc1": "the white Queen's Wizard Gandalf",
-            "Qd1": "the white Queen Snow-white",
-            "Ke1": "the white Lion King",
-            "Bf1": "the white King's Wizard Sphinx",
-            "Ng1": "the white King's Knight Amazon Hippolite",
-            "Rh1": "the white King's Commander Yieti",
-            "Pa7": "the black warrior Amy",
-            "Pb7": "the black warrior Bella",
-            "Pc7": "the black warrior Connie",
-            "Pd7": "the black warrior Dona",
-            "Pe7": "the black warrior Emma",
-            "Pf7": "the black warrior Fiona",
-            "Pg7": "the black warrior Grace",
-            "Ph7": "the black warrior Hope",
-            "Ra8": "the black Queen's Commander Godzilla",
-            "Nb8": "the black Queen's Knight Dr Octopus",
-            "Bc8": "the black Queen's Wizard Bloody Vampire",
-            "Qd8": "the black Queen Banshee",
-            "Ke8": "the black King Kong",
-            "Bf8": "the black King's Wizard Venom",
-            "Ng8": "the black King's Knight Catwoman",
-            "Rh8": "the black King's Commander the Beast Werewolf"
+            "Pa2": "The white warrior Aris",
+            "Pb2": "The white warrior Boris",
+            "Pc2": "The white warrior Cobby",
+            "Pd2": "The white warrior Derek",
+            "Pe2": "The white warrior Eddie",
+            "Pf2": "The white warrior Freddy",
+            "Pg2": "The white warrior Garry",
+            "Ph2": "The white warrior Harry",
+            "Ra1": "The white Queen's Commander Cyclop",
+            "Nb1": "The white Queen's Knight Amazon Otrera",
+            "Bc1": "The white Queen's Wizard Gandalf",
+            "Qd1": "The white Queen Snow-White",
+            "Ke1": "The white Lion King",
+            "Bf1": "The white King's Wizard Sphinx",
+            "Ng1": "The white King's Knight Amazon Hippolite",
+            "Rh1": "The white King's Commander Yieti",
+            "Pa7": "The black warrior Amy",
+            "Pb7": "The black warrior Bella",
+            "Pc7": "The black warrior Connie",
+            "Pd7": "The black warrior Dona",
+            "Pe7": "The black warrior Emma",
+            "Pf7": "The black warrior Fiona",
+            "Pg7": "The black warrior Grace",
+            "Ph7": "The black warrior Hope",
+            "Ra8": "The black Queen's Commander Godzilla",
+            "Nb8": "The black Queen's Knight Dr Octopus",
+            "Bc8": "The black Queen's Wizard Bloody Vampire",
+            "Qd8": "The black Queen Banshee",
+            "Ke8": "The black King Kong",
+            "Bf8": "The black King's Wizard Venom",
+            "Ng8": "The black King's Knight Catwoman",
+            "Rh8": "The black King's Commander Beast Werewolf"
         }
     },
     "PAO 0-9": {
@@ -4214,6 +4214,7 @@
         }
     }
 }
+
 
 
 
