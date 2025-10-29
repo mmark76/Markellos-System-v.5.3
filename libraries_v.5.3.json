@@ -1172,7 +1172,7 @@
             "Pg2": "the white warrior Garry",
             "Ph2": "the white warrior Harry",
             "Ra1": "the white Queen's Commander Cyclop",
-            "Nb1": "the white Queen's Knight Otrera",
+            "Nb1": "the white Queen's Knight Amazon Otrera",
             "Bc1": "the white Queen's Wizard Gandalf",
             "Qd1": "the white Queen Snow-white",
             "Ke1": "the white Lion King",
@@ -4214,6 +4214,7 @@
         }
     }
 }
+
 
 
 
