@@ -4,7 +4,7 @@
 
 let libs = null;
 let gameMoves = [];
-let selectedLang = 'el';
+let selectedLang = 'en';
 
 /* ---------- Global Locus Mode ---------- */
 let locusMode = 'half'; // προεπιλογή: ανά ημικίνηση
