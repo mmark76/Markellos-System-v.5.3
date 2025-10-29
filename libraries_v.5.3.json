@@ -1176,9 +1176,9 @@
             "Bc1": "the white Queen's Wizard",
             "Qd1": "the white Queen Banshee",
             "Ke1": "the white King Kong",
-            "Bf1": "the white's King Wizard",
-            "Ng1": "the white's King Knight",
-            "Rh1": "the white's King Commander",
+            "Bf1": "the white King's Wizard",
+            "Ng1": "the white King's Knight",
+            "Rh1": "the white King's Commander",
             "Pa7": "the black warrior Amy",
             "Pb7": "the black warrior Bella",
             "Pc7": "the black warrior Connie",
@@ -4214,5 +4214,6 @@
         }
     }
 }
+
 
 
