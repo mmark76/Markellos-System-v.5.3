@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- Helpers ---------- */
   function sanToText(san) {
     if (!san) return "";
-    if (san === "O-O") return "King Castle Short";
-    if (san === "O-O-O") return "King Castle Long";
+    if (san === "O-O") return "King Castle Short Side";
+    if (san === "O-O-O") return "King Castle Long Side";
 
     const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
     let move = san.replace(/[+#?!]/g, "");
@@ -173,6 +173,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
