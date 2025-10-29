@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ---------- UI helpers ---------- */
-function sideGR(side){ return side==='White' ? 'Λευκό' : 'Μαύρο'; }
+function sideGR(side){ return side==='White' ? 'White' : 'Black'; }
 const PIECE_GREEK = {P:'Στρατιώτης', N:'Ίππος', B:'Αξιωματικός', R:'Πύργος', Q:'Βασίλισσα', K:'Βασιλιάς'};
 function pieceGreek(letter){ return PIECE_GREEK[letter] || letter; }
 function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
