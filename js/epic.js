@@ -65,13 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // === Half-move only: μία σκηνή ανά ημικίνηση ===
     for (let i = 0; i < rows.length; i++) {
       const r = rows[i];
-      const [_, san, anchor, locus, color, pieceAssoc, targetAssoc] =
-        [...r.children].map(td => td.innerText.trim());
+      const [_, san, anchor, locus, targetSquare, color, pieceAssoc, targetAssoc] =  [...r.children].map(td => td.innerText.trim());
+      const square = targetSquare || getSquare(san);
+
       if (!locus) continue;
 
       const anchorTxt = cleanAnchor(anchor);
       const sanText = sanToText(san);
-      const square = targetSquare || getSquare(san);
 
 const openings = [
   "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει,",
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
