@@ -191,13 +191,14 @@ function fillAssociationsTable(moves){
   if(!body) return;
   body.innerHTML='';
 
-  // Libraries used:
-  const Lpieces = libs?.Characters?.LibraryC2 || {};       // "Pa2", "Ng1", κ.λπ.
-  const Ltarget1 = libs?.Spatial?.LibraryS1 || {};         // βασικές τοποθεσίες
-  const Ltarget2 = libs?.Spatial?.LibraryS2 || {};         // νέες αφηγηματικές τοποθεσίες
+  // Libraries
+  const Lpieces = libs?.Characters?.LibraryC2 || {}; 
+  const Ltarget1 = libs?.Spatial?.LibraryS1 || {}; 
+  const Ltarget2 = libs?.Spatial?.LibraryS2 || {}; 
 
   const assocBySquare = Object.create(null);
 
+  // Αντιστοίχιση κομματιού
   const getAssocFor = (pieceLetter, fromSq) =>
     (Lpieces[`${pieceLetter}${fromSq||''}`] || Lpieces[fromSq||''] || Lpieces[pieceLetter] || pieceGreek(pieceLetter));
 
@@ -208,7 +209,7 @@ function fillAssociationsTable(moves){
     let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
     if(m.from) delete assocBySquare[m.from];
 
-    // --- ειδικοί κανόνες όπως πριν ---
+    // --- Ροκέ ---
     const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
     if(sanClean.startsWith('O-O')){
       const long = sanClean.startsWith('O-O-O');
@@ -223,6 +224,7 @@ function fillAssociationsTable(moves){
       }
     }
 
+    // --- En passant ---
     if((m.flags||'').includes('e') && /^[a-h][1-8]$/.test(m.to)){
       const toFile = m.to[0], toRank = parseInt(m.to[1],10);
       const capRank = (m.side==='White') ? (toRank-1) : (toRank+1);
@@ -232,15 +234,18 @@ function fillAssociationsTable(moves){
 
     assocBySquare[m.to] = pieceAssoc;
 
-    // --- νέα λογική για Target Square Association ---
+    // --- Νέα Λογική για Target Square Association ---
     let targetAssoc = '';
     const node2 = Ltarget2[m.to];
     const node1 = Ltarget1[m.to];
-    if (node2 && (node2[selectedLang] || node2.el || node2.en)) {
-      targetAssoc = node2[selectedLang] || node2.el || node2.en;
-    } else if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
+
+    if (node2 && node2["Target Square Association"]) {
+      targetAssoc = node2["Target Square Association"];
+    } 
+    else if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
       targetAssoc = node1[selectedLang] || node1.el || node1.en;
-    } else {
+    } 
+    else {
       targetAssoc = m.to;
     }
 
