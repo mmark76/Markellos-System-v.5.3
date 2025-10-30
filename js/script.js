@@ -414,7 +414,7 @@ function buildLibrariesBar(){
 
 /* ---------- Init ---------- */
 async function loadLibraries(){
-  const res = await fetch('libraries_v.5.3.json');
+  const res = await fetch('../libraries_v.5.3.json');
   libs = await res.json();
   console.log("LIBS KEYS:", Object.keys(libs));
   console.log("Temporal:", libs.Temporal);
