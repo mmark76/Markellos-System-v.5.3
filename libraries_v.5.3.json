@@ -1107,14 +1107,14 @@
             "Pf2": "the White Warrior Freddy",
             "Pg2": "the White Warrior Garry",
             "Ph2": "the White Warrior Harry",
-            "Ra1": "the White QS Commander Cyclop",
-            "Nb1": "the White QS Knight Amazon Otrera",
-            "Bc1": "the White QS Wizard Gandalf",
+            "Ra1": "the White Queen-Side Commander Cyclop",
+            "Nb1": "the White Queen-Side Knight Amazon Otrera",
+            "Bc1": "the White Queen-Side Wizard Gandalf",
             "Qd1": "the White Queen Snow-White",
             "Ke1": "the White Lion King",
-            "Bf1": "the White KS Wizard Sphinx",
-            "Ng1": "the White KS Knight Amazon Hippolite",
-            "Rh1": "the White KS Commander Yieti",
+            "Bf1": "the White King-Side Wizard Sphinx",
+            "Ng1": "the White King-Side Knight Amazon Hippolite",
+            "Rh1": "the White King-Side Commander Yieti",
             "Pa7": "the Black Warrior Amy",
             "Pb7": "the Black Warrior Bella",
             "Pc7": "the Black Warrior Connie",
@@ -1123,14 +1123,14 @@
             "Pf7": "the Black Warrior Fiona",
             "Pg7": "the Black Warrior Grace",
             "Ph7": "the Black Warrior Hope",
-            "Ra8": "the Black QS Commander Godzilla",
-            "Nb8": "the Black QS Knight Dr Octopus",
-            "Bc8": "the Black QS Wizard Bloody Vampire",
+            "Ra8": "the Black Queen-Side Commander Godzilla",
+            "Nb8": "the Black Queen-Side Knight Dr Octopus",
+            "Bc8": "the Black Queen-Side Wizard Bloody Vampire",
             "Qd8": "the Black Queen Banshee",
             "Ke8": "the Black King Kong",
-            "Bf8": "the Black KS Wizard Venom",
-            "Ng8": "the Black KS Knight Catwoman",
-            "Rh8": "the Black KS Commander Beast Werewolf"
+            "Bf8": "the Black King-Side Wizard Venom",
+            "Ng8": "the Black King-Side Knight Catwoman",
+            "Rh8": "the Black King-Side Commander Beast Werewolf"
         }
     },
     "PAO 0-9": {
@@ -4150,4 +4150,5 @@
         }
     }
 }
+
 
