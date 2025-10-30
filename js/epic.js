@@ -123,7 +123,7 @@ stories.push(phrase.trim());
     else if (result === "0-1") finalMsg = "\n … και μετά την τελευταία κίνηση, ο λευκός Στρατηγός κατάλαβε πως η μάχη είχε κριθεί. Έσκυψε το κεφάλι του αργά, και δίνοντας το χέρι του στον αντίπαλο Στρατηγό, αποδέχτηκε με αξιοπρέπεια την ήττα. Ο Γέροντας κλείνει το χοντρό βιβλίο, η παρτίδα γίνεται ανάμνηση και για πάντα χαράσσεται στη μνήμη και το έπος γράφεται στην ιστορία.";
     else if (result === "1/2-1/2") finalMsg = "\n … και μετά την τελευταία κίνηση, οι δύο Στρατηγοί καταλαβαίνουν ότι κανείς δεν μπορεί να κερδίσει αυτή τη μάχη ... και έτσι δίνουν τα χέρια και η μάχη λήγει ισόπαλη. Ο Γέροντας κλείνει το χοντρό βιβλίο, η παρτίδα γίνεται ανάμνηση και για πάντα χαράσσεται στη μνήμη και το έπος γράφεται στην ιστορία.";
 
-    const fullText = [prologue, gameHeader, narrativeText, finalMsg.trim()]  .filter(Boolean)  .join("\n\n");
+    const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]  .filter(Boolean)  .join("\n\n");
     
      document.getElementById("epicTextView").innerText = fullText;
 
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
