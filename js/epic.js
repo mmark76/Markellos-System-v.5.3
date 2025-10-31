@@ -74,9 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const sanText = sanToText(san);
 
 const openings = [
-  "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει, η μάχη διαδραματίζεται",
-  "Λίγο αργότερα, και καθώς οι σελίδες του χοντρού βιβλίου γυρνάνε, η μάχη συνεχίζεται",
-  "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία, η μάχη γίνεται",
+  "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει, η δράση διαδραματίζεται",
+  "Λίγο αργότερα, και καθώς οι σελίδες του χοντρού βιβλίου γυρνάνε, η δράση συνεχίζεται",
+  "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία, η δράση γίνεται",
 ];
 
 const verbs = [
@@ -85,12 +85,12 @@ const verbs = [
   "διακρίνεται"
 ];
 
-const opening = i === 0 ? "Ξάφνου ακούγεται μία σάλπιγγα και η μάχη ξεκινάει ..." : openings[i % openings.length];
+const opening = i === 0 ? "Ξάφνου ακούγεται μία σάλπιγγα και η δράση ξεκινάει ..." : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
 const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}. Και ξάφνου ${action} ${locus}.`;
-let phrase = `${t1Header} Στη μάχη του ${square} μπαίνει ${pieceAssoc}.`;
+let phrase = `${t1Header} Στη δράση του ${square} μπαίνει ${pieceAssoc}.`;
 if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
 stories.push(phrase.trim());
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
