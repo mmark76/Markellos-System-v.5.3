@@ -1099,38 +1099,38 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "the White Warrior Aris",
-            "Pb2": "the White Warrior Boris",
-            "Pc2": "the White Warrior Cobby",
-            "Pd2": "the White Warrior Derek",
-            "Pe2": "the White Warrior Eddie",
-            "Pf2": "the White Warrior Freddy",
-            "Pg2": "the White Warrior Garry",
-            "Ph2": "the White Warrior Harry",
-            "Ra1": "the White Queen-Side Commander Cyclop",
-            "Nb1": "the White Queen-Side Knight Amazon Otrera",
-            "Bc1": "the White Queen-Side Wizard Gandalf",
-            "Qd1": "the White Queen Snow-White",
-            "Ke1": "the White Lion King",
-            "Bf1": "the White King-Side Wizard Sphinx",
-            "Ng1": "the White King-Side Knight Amazon Hippolite",
-            "Rh1": "the White King-Side Commander Yieti",
-            "Pa7": "the Black Warrior Amy",
-            "Pb7": "the Black Warrior Bella",
-            "Pc7": "the Black Warrior Connie",
-            "Pd7": "the Black Warrior Dona",
-            "Pe7": "the Black Warrior Emma",
-            "Pf7": "the Black Warrior Fiona",
-            "Pg7": "the Black Warrior Grace",
-            "Ph7": "the Black Warrior Hope",
-            "Ra8": "the Black Queen-Side Commander Godzilla",
-            "Nb8": "the Black Queen-Side Knight Dr Octopus",
-            "Bc8": "the Black Queen-Side Wizard Bloody Vampire",
+            "Pa2": "the White Warrior Άρης",
+            "Pb2": "the White Warrior Μπέννυ",
+            "Pc2": "the White Warrior Κόπυ",
+            "Pd2": "the White Warrior Ντέρεκ",
+            "Pe2": "the White Warrior Έντυ",
+            "Pf2": "the White Warrior Φρέτυ",
+            "Pg2": "the White Warrior Γκάρυ",
+            "Ph2": "the White Warrior Χάρρυ",
+            "Ra1": "the White Queen-Side Commander, Κύκλωπας",
+            "Nb1": "the White Queen-Side Knight, η Αμαζόνα Οτρέρα",
+            "Bc1": "the White Queen-Side Wizard, ο Μάγος Γκάνταλφ",
+            "Qd1": "the White Queen Ζήνα",
+            "Ke1": "the White King Ηρακλής",
+            "Bf1": "the White King-Side Wizard, η Σφίγγα",
+            "Ng1": "the White King-Side Knight, η Αμαζόνα Ιππόλυτη",
+            "Rh1": "the White King-Side Commander, Γιέτι",
+            "Pa7": "the Black Warrior Έϊμυ",
+            "Pb7": "the Black Warrior Μπόννι",
+            "Pc7": "the Black Warrior Κόνι",
+            "Pd7": "the Black Warrior Ντόνα",
+            "Pe7": "the Black Warrior Έμμα",
+            "Pf7": "the Black Warrior Φιόνα",
+            "Pg7": "the Black Warrior Γκρέις",
+            "Ph7": "the Black Warrior Χόουπ",
+            "Ra8": "the Black Queen-Side Commander, ο Γκοτζίλα",
+            "Nb8": "the Black Queen-Side Knight, ο Δρ. Όκταπους",
+            "Bc8": "the Black Queen-Side Wizard, ο Μπλάτι Βαμπίρ",
             "Qd8": "the Black Queen Banshee",
             "Ke8": "the Black King Kong",
-            "Bf8": "the Black King-Side Wizard Venom",
-            "Ng8": "the Black King-Side Knight Catwoman",
-            "Rh8": "the Black King-Side Commander Beast Werewolf"
+            "Bf8": "the Black King-Side Wizard, ο Βένομ",
+            "Ng8": "the Black King-Side Knight, η σέξι Κατγούμαν",
+            "Rh8": "the Black King-Side Commander, το Κτήνος Λυκάνθρωπος"
         }
     },
     "PAO 0-9": {
@@ -4150,6 +4150,7 @@
         }
     }
 }
+
 
 
 
