@@ -85,7 +85,7 @@ const verbs = [
   "διακρίνεται"
 ];
 
-const opening = i === 0 ? "Ξάφνου ακούγεται μία σάλπιγγα και η δράση ξεκινάει ..." : openings[i % openings.length];
+const opening = i === 0 ? "Ακούγεται μία σάλπιγγα και η δράση ξεκινάει ..." : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
