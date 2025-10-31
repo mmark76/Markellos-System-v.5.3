@@ -89,8 +89,8 @@ const opening = i === 0 ? "Ακούγεται μία σάλπιγγα και η 
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}. Και ξάφνου, λίγο παραδίπλα ${action} ${locus}.`;
-let phrase = `${t1Header} Τότε στη δράση του ${square} ορμά ${pieceAssoc}.`;
+const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}. Εκεί κοντά ${action} ${locus}.`;
+let phrase = `${t1Header} Τότε στο ${square} ορμά ${pieceAssoc}.`;
 if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
 stories.push(phrase.trim());
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
