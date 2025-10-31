@@ -91,7 +91,7 @@ const action = verbs[i % verbs.length];
 let sceneNumber = i + 1;
 const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}, ${action} και ${locus},`;
 let phrase = `${t1Header} ... και τότε ${action} και ${pieceAssoc}.`;
-if (anchorTxt) phrase = `${anchorTxt} \n ${phrase}`;
+if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
 stories.push(phrase.trim());
 }
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
