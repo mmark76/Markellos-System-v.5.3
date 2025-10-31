@@ -89,7 +89,7 @@ const opening = i === 0 ? "Ξάφνου ακούγεται μία σάλπιγγ
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}. Και ξάφνου ${action} ${locus}.`;
+const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}. Και ξάφνου, λίγο παρά δίπλα ${action} ${locus}.`;
 let phrase = `${t1Header} Στη δράση του ${square} μπαίνει ${pieceAssoc}.`;
 if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
