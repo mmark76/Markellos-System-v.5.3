@@ -1107,14 +1107,14 @@
             "Pf2": "ο Φρέτυ (the White Warrior)",
             "Pg2": "ο Γκάρυ (the White Warrior)",
             "Ph2": "ο Χάρρυ (the White Warrior)",
-            "Ra1": "ο Κύκλωπας (the White Queen-Side Commander)",
+            "Ra1": "ο Κύκλωπας (the White Queen-Side Rook)",
             "Nb1": "η Αμαζόνα Οτρέρα (the White Queen-Side Knight)",
-            "Bc1": "ο Μάγος Γκάνταλφ (the White Queen-Side Wizard)",
+            "Bc1": "ο Μάγος Γκάνταλφ (the White Queen-Side Bishop)",
             "Qd1": "η λευκή Βασίλισσα Ζήνα",
             "Ke1": "ο λευκός Βασιλιάς Ηρακλής",
-            "Bf1": "η Σφίγγα (the White King-Side Wizard)",
+            "Bf1": "η Σφίγγα (the White King-Side Bishop)",
             "Ng1": "η Αμαζόνα Ιππόλυτη (the White King-Side Knight)",
-            "Rh1": "η Γιέτι (the White King-Side Commander)",
+            "Rh1": "το Γιέτι (the White King-Side Rook)",
             "Pa7": "η Έϊμυ (the Black Warrior)",
             "Pb7": "η Μπόννι (the Black Warrior)",
             "Pc7": "η Κόνι (the Black Warrior)",
@@ -1123,14 +1123,14 @@
             "Pf7": "η Φιόνα  (the Black Warrior)",
             "Pg7": "η Γκρέις (the Black Warrior)",
             "Ph7": "η Χόουπ (the Black Warrior)",
-            "Ra8": "ο Γκοτζίλα (the Black Queen-Side Commander)",
-            "Nb8": "ο Δρ. Όκταπους (the Black Queen-Side Knight)",
-            "Bc8": "ο Μπλάτι Βαμπίρ (the Black Queen-Side Wizard) ",
+            "Ra8": "ο Γκοτζίλα (the Black Queen-Side Rook)",
+            "Nb8": "ο Δόκτωρ Όκταπους (the Black Queen-Side Knight)",
+            "Bc8": "ο Μπλάτυ Βαμπίρ (the Black Queen-Side Bishop) ",
             "Qd8": "η μαύρη Βασίλισσα Banshee",
             "Ke8": "ο μαύρος Βασιλιάς Δίας",
-            "Bf8": "ο τρομακτικός Βένομ (the Black King-Side Wizard)",
+            "Bf8": "ο τρομακτικός Βένομ (the Black King-Side Bishop)",
             "Ng8": "η σέξι Κατγούμαν (the Black King-Side Knight)",
-            "Rh8": "το Κτήνος Λυκάνθρωπος (the Black King-Side Commander)"
+            "Rh8": "το Κτήνος Λυκάνθρωπος (the Black King-Side Rook)"
         }
     },
     "PAO 0-9": {
@@ -4150,6 +4150,7 @@
         }
     }
 }
+
 
 
 
