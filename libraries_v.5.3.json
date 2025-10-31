@@ -1126,7 +1126,7 @@
             "Ra8": "ο Γκοτζίλα (the Black Queen-Side Rook)",
             "Nb8": "ο Δόκτωρ Όκταπους (the Black Queen-Side Knight)",
             "Bc8": "ο Μπλάτυ Βαμπίρ (the Black Queen-Side Bishop) ",
-            "Qd8": "η μαύρη Βασίλισσα Banshee",
+            "Qd8": "η μαύρη Βασίλισσα Ήρα",
             "Ke8": "ο μαύρος Βασιλιάς Δίας",
             "Bf8": "ο τρομακτικός Βένομ (the Black King-Side Bishop)",
             "Ng8": "η σέξι Κατγούμαν (the Black King-Side Knight)",
@@ -4150,6 +4150,7 @@
         }
     }
 }
+
 
 
 
