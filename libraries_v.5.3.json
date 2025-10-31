@@ -1099,38 +1099,38 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "the White Warrior Άρης",
-            "Pb2": "the White Warrior Μπέννυ",
-            "Pc2": "the White Warrior Κόπυ",
-            "Pd2": "the White Warrior Ντέρεκ",
-            "Pe2": "the White Warrior Έντυ",
-            "Pf2": "the White Warrior Φρέτυ",
-            "Pg2": "the White Warrior Γκάρυ",
-            "Ph2": "the White Warrior Χάρρυ",
-            "Ra1": "the White Queen-Side Commander, Κύκλωπας",
-            "Nb1": "the White Queen-Side Knight, η Αμαζόνα Οτρέρα",
-            "Bc1": "the White Queen-Side Wizard, ο Μάγος Γκάνταλφ",
-            "Qd1": "the White Queen Ζήνα",
-            "Ke1": "the White King Ηρακλής",
-            "Bf1": "the White King-Side Wizard, η Σφίγγα",
-            "Ng1": "the White King-Side Knight, η Αμαζόνα Ιππόλυτη",
-            "Rh1": "the White King-Side Commander, Γιέτι",
-            "Pa7": "the Black Warrior Έϊμυ",
-            "Pb7": "the Black Warrior Μπόννι",
-            "Pc7": "the Black Warrior Κόνι",
-            "Pd7": "the Black Warrior Ντόνα",
-            "Pe7": "the Black Warrior Έμμα",
-            "Pf7": "the Black Warrior Φιόνα",
-            "Pg7": "the Black Warrior Γκρέις",
-            "Ph7": "the Black Warrior Χόουπ",
-            "Ra8": "the Black Queen-Side Commander, ο Γκοτζίλα",
-            "Nb8": "the Black Queen-Side Knight, ο Δρ. Όκταπους",
-            "Bc8": "the Black Queen-Side Wizard, ο Μπλάτι Βαμπίρ",
-            "Qd8": "the Black Queen Banshee",
-            "Ke8": "the Black King Kong",
-            "Bf8": "the Black King-Side Wizard, ο Βένομ",
-            "Ng8": "the Black King-Side Knight, η σέξι Κατγούμαν",
-            "Rh8": "the Black King-Side Commander, το Κτήνος Λυκάνθρωπος"
+            "Pa2": "ο Άρης (the White Warrior)",
+            "Pb2": "ο Μπέννυ (the White Warrior)",
+            "Pc2": "ο Κόπυ (the White Warrior)",
+            "Pd2": "ο Ντέρεκ (the White Warrior)",
+            "Pe2": "ο Έντυ (the White Warrior)",
+            "Pf2": "ο Φρέτυ (the White Warrior)",
+            "Pg2": "ο Γκάρυ (the White Warrior)",
+            "Ph2": "ο Χάρρυ (the White Warrior)",
+            "Ra1": "ο Κύκλωπας (the White Queen-Side Commander)",
+            "Nb1": "η Αμαζόνα Οτρέρα (the White Queen-Side Knight)",
+            "Bc1": "ο Μάγος Γκάνταλφ (the White Queen-Side Wizard)",
+            "Qd1": "η λευκή Βασίλισσα Ζήνα",
+            "Ke1": "ο λευκός Βασιλιάς Ηρακλής",
+            "Bf1": "η Σφίγγα (the White King-Side Wizard)",
+            "Ng1": "η Αμαζόνα Ιππόλυτη (the White King-Side Knight)",
+            "Rh1": "η Γιέτι (the White King-Side Commander)",
+            "Pa7": "η Έϊμυ (the Black Warrior)",
+            "Pb7": "η Μπόννι (the Black Warrior)",
+            "Pc7": "η Κόνι (the Black Warrior)",
+            "Pd7": "η Ντόνα (the Black Warrior)",
+            "Pe7": "η Έμμα  (the Black Warrior)",
+            "Pf7": "η Φιόνα  (the Black Warrior)",
+            "Pg7": "η Γκρέις (the Black Warrior)",
+            "Ph7": "η Χόουπ (the Black Warrior)",
+            "Ra8": "ο Γκοτζίλα (the Black Queen-Side Commander)",
+            "Nb8": "ο Δρ. Όκταπους (the Black Queen-Side Knight)",
+            "Bc8": "ο Μπλάτι Βαμπίρ (the Black Queen-Side Wizard) ",
+            "Qd8": "η μαύρη Βασίλισσα Banshee",
+            "Ke8": "ο μαύρος Βασιλιάς Δίας",
+            "Bf8": "ο τρομακτικός Βένομ (the Black King-Side Wizard)",
+            "Ng8": "η σέξι Κατγούμαν (the Black King-Side Knight)",
+            "Rh8": "το Κτήνος Λυκάνθρωπος (the Black King-Side Commander)"
         }
     },
     "PAO 0-9": {
@@ -4150,6 +4150,7 @@
         }
     }
 }
+
 
 
 
