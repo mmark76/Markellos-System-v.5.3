@@ -85,12 +85,12 @@ const verbs = [
   "διακρίνεται"
 ];
 
-const opening = i === 0 ? "Ξάφνου ακούγεται μία σάλπιγγα..." : openings[i % openings.length];
+const opening = i === 0 ? "Ξάφνου ακούγεται μία σάλπιγγα και η μάχη ξεκινάει ..." : openings[i % openings.length];
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}, να σου ${locus},`;
-let phrase = `${t1Header} ... και τότε στη μάχη του ${square} μπαίνει ${pieceAssoc}.`;
+const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}. Και ${locus} εμφανίζεται.`;
+let phrase = `${t1Header} Τότε στη μάχη του ${square} μπαίνει ${pieceAssoc}.`;
 if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
 stories.push(phrase.trim());
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
