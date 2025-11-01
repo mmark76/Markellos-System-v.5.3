@@ -228,7 +228,7 @@ footer {
 
 /* === Μείωση κενού μεταξύ textarea και τίτλου Table selection === */
 .left-panel textarea {
-  margin-bottom: 6px !important;
+  margin-bottom: 3px !important;
 }
 
 .middle-panel h2,
