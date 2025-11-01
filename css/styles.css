@@ -228,22 +228,22 @@ footer {
 
 /* === Μείωση κενού μεταξύ textarea και τίτλου Table selection === */
 .left-panel textarea {
-  margin-bottom: 3px !important;
+  margin-bottom: 2px !important;
 }
 
 .middle-panel h2,
 .middle-panel h3,
 label[for="table-selection"] {
-  margin-top: 4px !important;
+  margin-top: 2px !important;
 }
 
 .left-panel {
-  margin-bottom: 4px !important;
-  padding-bottom: 4px !important;
+  margin-bottom: 2px !important;
+  padding-bottom: 2px !important;
 }
 
 .dropdown-group {
-  margin-top: 4px !important;
+  margin-top: 2px !important;
   padding-top: 0 !important;
 }
 
