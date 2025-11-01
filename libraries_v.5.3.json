@@ -1099,14 +1099,14 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "ο Άρης Ακίτα (the White Warrior)",
+            "Pa2": "ο Άρης Akita (the White Warrior)",
             "Pb2": "ο Μπέννυ Boa (the White Warrior)",
             "Pc2": "ο Κόπυ Cougar (the White Warrior)",
-            "Pd2": "ο Ντέρεκ (the White Warrior)",
-            "Pe2": "ο Έντυ (the White Warrior)",
-            "Pf2": "ο Φρέτυ (the White Warrior)",
-            "Pg2": "ο Γκάρυ (the White Warrior)",
-            "Ph2": "ο Χάρρυ (the White Warrior)",
+            "Pd2": "ο Ντέρεκ Dog (the White Warrior)",
+            "Pe2": "ο Έντυ Eagle (the White Warrior)",
+            "Pf2": "ο Φρέτυ Fossa (the White Warrior)",
+            "Pg2": "ο Γκάρυ Gnu (the White Warrior)",
+            "Ph2": "ο Χάρρυ Hippo (the White Warrior)",
             "Ra1": "ο Κύκλωπας (the White Queen-Side Rook)",
             "Nb1": "η Αμαζόνα Οτρέρα (the White Queen-Side Knight)",
             "Bc1": "ο Μάγος Γκάνταλφ (the White Queen-Side Bishop)",
@@ -1115,14 +1115,14 @@
             "Bf1": "η Σφίγγα (the White King-Side Bishop)",
             "Ng1": "η Αμαζόνα Ιππόλυτη (the White King-Side Knight)",
             "Rh1": "το Γιέτι (the White King-Side Rook)",
-            "Pa7": "η Έϊμυ (the Black Warrior)",
-            "Pb7": "η Μπόννι (the Black Warrior)",
-            "Pc7": "η Κόνι (the Black Warrior)",
-            "Pd7": "η Ντόνα (the Black Warrior)",
-            "Pe7": "η Έμμα  (the Black Warrior)",
-            "Pf7": "η Φιόνα  (the Black Warrior)",
-            "Pg7": "η Γκρέις (the Black Warrior)",
-            "Ph7": "η Χόουπ (the Black Warrior)",
+            "Pa7": "η Άννα Conda (the Black Warrior)",
+            "Pb7": "η Μπόννυ Bear (the Black Warrior)",
+            "Pc7": "η Κόνυ Cougar (the Black Warrior)",
+            "Pd7": "η Ντόνα Deer (the Black Warrior)",
+            "Pe7": "η Έλλα Phant (the Black Warrior)",
+            "Pf7": "η Φιόνα Fox (the Black Warrior)",
+            "Pg7": "η Γκρέις Gaselle (the Black Warrior)",
+            "Ph7": "η Χόουπ Hyena (the Black Warrior)",
             "Ra8": "ο Γκοτζίλα (the Black Queen-Side Rook)",
             "Nb8": "ο Δόκτωρ Όκταπους (the Black Queen-Side Knight)",
             "Bc8": "ο Μπλάτυ Βαμπίρ (the Black Queen-Side Bishop) ",
@@ -4150,6 +4150,7 @@
         }
     }
 }
+
 
 
 
