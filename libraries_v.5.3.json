@@ -1101,8 +1101,8 @@
         "LibraryC2": {
             "Pa2": "ο Άρης Akita (the White Warrior)",
             "Pb2": "ο Μπέννυ Boa (the White Warrior)",
-            "Pc2": "ο Κόπυ Cougar (the White Warrior)",
-            "Pd2": "ο Ντέρεκ Dog (the White Warrior)",
+            "Pc2": "ο Cobbie Cougar (the White Warrior)",
+            "Pd2": "ο Ντόναλντ Duck (the White Warrior)",
             "Pe2": "ο Έντυ Eagle (the White Warrior)",
             "Pf2": "ο Φρέτυ Fossa (the White Warrior)",
             "Pg2": "ο Γκάρυ Gnu (the White Warrior)",
@@ -1117,8 +1117,8 @@
             "Rh1": "το Γιέτι (the White King-Side Rook)",
             "Pa7": "η Άννα Conda (the Black Warrior)",
             "Pb7": "η Μπόννυ Bear (the Black Warrior)",
-            "Pc7": "η Κόνυ Cougar (the Black Warrior)",
-            "Pd7": "η Ντόνα Deer (the Black Warrior)",
+            "Pc7": "η Connie Cougar (the Black Warrior)",
+            "Pd7": "η Νταίζυ Duck (the Black Warrior)",
             "Pe7": "η Έλλα Phant (the Black Warrior)",
             "Pf7": "η Φιόνα Fox (the Black Warrior)",
             "Pg7": "η Γκρέις Gaselle (the Black Warrior)",
@@ -4150,6 +4150,7 @@
         }
     }
 }
+
 
 
 
