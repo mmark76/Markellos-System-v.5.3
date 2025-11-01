@@ -216,10 +216,10 @@ tr:nth-child(odd) {
 /* === Footer === */
 footer {
   background: #222;
-  padding: 10px;
+  padding: 7px;
   text-align: center;
   color: #aaa;
-  font-size: 0.9em;
+  font-size: 0.8em;
   position: sticky;
   bottom: 0;
 }
