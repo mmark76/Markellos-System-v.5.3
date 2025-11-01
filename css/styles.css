@@ -226,4 +226,15 @@ footer {
   bottom: 0;
 }
 
+/* === Μείωση κενού μεταξύ textarea και τίτλου Table selection === */
+.left-panel textarea {
+  margin-bottom: 6px !important;
+}
+
+.middle-panel h2,
+.middle-panel h3,
+label[for="table-selection"] {
+  margin-top: 4px !important;
+}
+
 
