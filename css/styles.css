@@ -103,13 +103,12 @@ button:hover, select:hover {
   background: #444;
 }
 
-/* Βιβλιοθήκες σε 5 στήλες με scroll */
-
+/* === Βιβλιοθήκες σε 5 στήλες με scroll === */
 .right-panel {
-  height: auto;          /* αφήνει το grid να το ελέγχει */
-  max-height: none;      /* χωρίς περιορισμό */
-  overflow: visible;     /* καθόλου scroll */
-  align-self: stretch;   /* τεντώνει για να φτάσει το ύψος των άλλων */
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  align-self: stretch;
 }
 
 .libraries-group {
@@ -149,14 +148,13 @@ button:hover, select:hover {
   background: #444;
 }
 
-/* Mobile === */
-
+/* === Mobile === */
 @media (max-width: 768px) {
   .layout-container {
-    position: static;   /* όχι sticky σε κινητό */
+    position: static;
     top: auto;
     z-index: auto;
-    grid-template-columns: 1fr; /* μία στήλη */
+    grid-template-columns: 1fr;
   }
 
   .left-panel, .middle-panel, .right-panel {
@@ -168,7 +166,7 @@ button:hover, select:hover {
   }
 
   .libraries-group {
-    grid-template-columns: 1fr;  /* μία στήλη */
+    grid-template-columns: 1fr;
   }
 }
 
