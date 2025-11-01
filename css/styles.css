@@ -237,22 +237,13 @@ label[for="table-selection"] {
   margin-top: 2px !important;
 }
 
-.left-panel {
-  margin-bottom: 2px !important;
-  padding-bottom: 2px !important;
-}
-
-.dropdown-group {
-  margin-top: 2px !important;
-  padding-top: 0 !important;
-}
-
 .layout-container {
-  margin-bottom: 4px !important;
+  gap: 10px !important;
+  margin-bottom: 2px !important;
   padding-bottom: 0 !important;
 }
 
 .dropdown-group {
-  margin-top: 2px !important;
+  margin-top: 0 !important;
   padding-top: 0 !important;
 }
