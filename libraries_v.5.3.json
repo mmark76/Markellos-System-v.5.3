@@ -1099,9 +1099,9 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "ο Άρης (the White Warrior)",
-            "Pb2": "ο Μπέννυ (the White Warrior)",
-            "Pc2": "ο Κόπυ (the White Warrior)",
+            "Pa2": "ο Άρης Ακίτα (the White Warrior)",
+            "Pb2": "ο Μπέννυ Boa (the White Warrior)",
+            "Pc2": "ο Κόπυ Cougar (the White Warrior)",
             "Pd2": "ο Ντέρεκ (the White Warrior)",
             "Pe2": "ο Έντυ (the White Warrior)",
             "Pf2": "ο Φρέτυ (the White Warrior)",
@@ -4150,6 +4150,7 @@
         }
     }
 }
+
 
 
 
