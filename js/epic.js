@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const openings = [
   "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει, η δράση διαδραματίζεται",
   "Λίγο αργότερα, και καθώς ο Γέροντας γυρνάει τις σελίδες του χοντρού βιβλίου, η δράση συνεχίζεται",
-  "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία, η δράση γίνεται",
+  "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία, η δράση μεταφέρεται",
 ];
 
 const verbs = [
@@ -89,7 +89,7 @@ const opening = i === 0 ? "Ακούγεται μία σάλπιγγα και η 
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}. Εκεί κοντά ${action} ${locus}.`;
+const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n - ${opening} στην περιοχή ${square}, όπου είναι ${targetAssoc}. Εκεί κοντά ${action} ${locus} (mnemonic locus ${sceneNumber}).`;
 let phrase = `${t1Header} ... και τότε στο ${square} ορμά ${pieceAssoc}.`;
 if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
@@ -180,6 +180,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
