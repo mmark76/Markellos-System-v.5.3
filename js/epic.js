@@ -91,7 +91,7 @@ const action = verbs[i % verbs.length];
 let sceneNumber = i + 1;
 const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
 let phrase = `${t1Header}
-             - ${opening} στην περιοχή ${square}, όπου ${pieceAssoc}, ${targetAssoc} (${square} association-text picture). 
+             - ${opening} στην περιοχή ${square}, όπου ${pieceAssoc}, ${targetAssoc}. 
              Εκεί κοντά βλέπει να ${action} και ${locus} (mnemonic locus ${sceneNumber}).`;
 if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
@@ -182,6 +182,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
