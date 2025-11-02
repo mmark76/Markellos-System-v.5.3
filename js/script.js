@@ -84,11 +84,14 @@ function v1Verse(pieceLetter, file, rank, side, moveNo){
 
 /* ---------- Locus ---------- */
 function locusForMove(m) {
+  const total = 80; // συνολικός αριθμός mnemonic loci (κυκλικός)
   if (locusMode === 'full') {
-    const label = t1Label(m.movePair);
+    const idx = ((m.movePair - 1) % total) + 1;
+    const label = t1Label(idx);
     return label || '';
   } else {
-    const label = t1Label(m.index + 1);
+    const idx = (m.index % total) + 1;
+    const label = t1Label(idx);
     return label || '';
   }
 }
