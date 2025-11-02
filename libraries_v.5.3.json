@@ -1116,11 +1116,11 @@
             "Ng1": "η Αμαζόνα Ιππόλυτη (the White King-Side Knight)",
             "Rh1": "το Γιέτι (the White King-Side Rook)",
             "Pa7": "η Angela Merkel (the Black Warrior)",
-            "Pb7": "η Barack Obama (the Black Warrior)",
-            "Pc7": "η Clint Eastwood (the Black Warrior)",
+            "Pb7": "ο Barack Obama (the Black Warrior)",
+            "Pc7": "ο Clint Eastwood (the Black Warrior)",
             "Pd7": "η Daisy Dee (the Black Warrior)",
-            "Pe7": "η Emmanuel Macron (the Black Warrior)",
-            "Pf7": "η François Hollande (the Black Warrior)",
+            "Pe7": "ο Emmanuel Macron (the Black Warrior)",
+            "Pf7": "ο François Hollande (the Black Warrior)",
             "Pg7": "η Greta Thunberg (the Black Warrior)",
             "Ph7": "η Hillary Clinton (the Black Warrior)",
             "Ra8": "ο Γκοτζίλα (the Black Queen-Side Rook)",
@@ -4150,4 +4150,5 @@
         }
     }
 }
+
 
