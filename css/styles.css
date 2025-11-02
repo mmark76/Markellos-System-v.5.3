@@ -220,10 +220,11 @@ footer {
   background: #222;
   padding: 7px;
   text-align: center;
-  color: #aaa;
+  color: #b3b3b3;
   font-size: 0.7em;
-  position: sticky;
+  position: fixed; 
   bottom: 0;
+  width: 100%;
 }
 
 /* === Μείωση κενού μεταξύ textarea και τίτλου Table selection === */
