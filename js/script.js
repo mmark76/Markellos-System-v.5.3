@@ -234,7 +234,7 @@ function fillAssociationsTable(moves){
 
     assocBySquare[m.to] = pieceAssoc;
 
-    // --- Νέα Λογική για Target Square Association ---
+   /* ==== 1η Λογική για Target Square Association
     let targetAssoc = '';
     const node2 = Ltarget2[m.to];
     const node1 = Ltarget1[m.to];
@@ -247,6 +247,22 @@ function fillAssociationsTable(moves){
     } 
     else {
       targetAssoc = m.to;
+    } 
+	================== */
+
+	// --- 2η Λογική για Target Square Association ---
+    let targetAssoc = '';
+    const node2 = Ltarget2[m.to];
+    const node1 = Ltarget1[m.to];
+
+    if (node2 && node2.text) {
+    targetAssoc = node2.text;
+    }
+    else if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
+     targetAssoc = node1[selectedLang] || node1.el || node1.en;
+    }
+    else {
+     targetAssoc = m.to;
     }
 
     const tr=document.createElement('tr'); 
