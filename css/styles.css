@@ -6,8 +6,8 @@
 }
 
 body {
-  background-color: #111;    /* Μαύρο φόντο */
-  color: #eee;               /* Λευκά γράμματα */
+  background-color: #111;
+  color: #eee;
   font-family: Arial, sans-serif;
   line-height: 1.6;
   padding: 10px;
@@ -35,7 +35,7 @@ header h1 {
   gap: 15px;
   margin-bottom: 20px;
 
-  position: sticky;   /* sticky μόνο στο desktop */
+  position: sticky;
   top: 63px;
   z-index: 900;
   background: #111;
@@ -43,8 +43,8 @@ header h1 {
 }
 
 .middle-panel {
-  min-width: 0;      /* επιτρέπει στο grid να μικρύνει */
-  overflow: hidden;  /* αναγκάζει τα παιδιά να τυλιχτούν / κοπούν */
+  min-width: 0;
+  overflow: hidden;
 }
 
 .left-panel, .middle-panel, .right-panel {
