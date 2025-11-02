@@ -1,6 +1,6 @@
-/* ================================
+/* ================================================
    Markellos CMS v5.3 — Epic Story (Half-Move Only)
-   ================================= */
+   ================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -182,6 +182,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
