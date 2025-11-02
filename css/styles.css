@@ -194,8 +194,8 @@ th {
   position: sticky;
   top: 0;
   z-index: 500;
-  font-size: 0.9em;       /* λίγο μικρότερη γραμματοσειρά */
-  letter-spacing: 0.3px;  /* ελαφριά απόσταση για καθαρότητα */
+  font-size: 0.9em;
+  letter-spacing: 0.3px;
 }
 
 tr:nth-child(even) {
@@ -221,7 +221,7 @@ footer {
   padding: 7px;
   text-align: center;
   color: #aaa;
-  font-size: 0.85em;
+  font-size: 0.7em;
   position: sticky;
   bottom: 0;
 }
