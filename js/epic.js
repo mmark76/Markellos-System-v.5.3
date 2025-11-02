@@ -89,8 +89,10 @@ const opening = i === 0 ? "Ακούγεται μία σάλπιγγα και η 
 const action = verbs[i % verbs.length];
 
 let sceneNumber = i + 1;
-const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n- ${opening} στην περιοχή όπου είναι ${targetAssoc}, (${square} association picture). Εκεί κοντά ${action} και ${locus}, (mnemonic locus ${sceneNumber}).`;
-let phrase = `${t1Header} ... και τότε στο ${square} ορμά ${pieceAssoc}.`;
+const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
+let phrase = `${t1Header}.
+             - ${opening} στην περιοχή ${square} όπου ${pieceAssoc} ${targetAssoc} (${square} association-text picture). 
+             Εκεί κοντά βλέπει να ${action} και ${locus} (mnemonic locus ${sceneNumber}).`;
 if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
 stories.push(phrase.trim());
@@ -180,6 +182,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
