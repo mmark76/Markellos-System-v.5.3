@@ -1099,38 +1099,41 @@
             }
         },
         "LibraryC2": {
-            "Pa2": "ο Aris Akita (the White Warrior)",
-            "Pb2": "ο Benny Boa (the White Warrior)",
-            "Pc2": "ο Cobbie Cougar (the White Warrior)",
-            "Pd2": "ο Donald Trump (the White Warrior)",
-            "Pe2": "ο Eddie Eagle (the White Warrior)",
-            "Pf2": "ο Freddie Fossa (the White Warrior)",
-            "Pg2": "ο Garry Gnu (the White Warrior)",
-            "Ph2": "ο Harry Hippo (the White Warrior)",
-            "Ra1": "ο Κύκλωπας (the White Queen-Side Rook)",
-            "Nb1": "η Αμαζόνα Οτρέρα (the White Queen-Side Knight)",
-            "Bc1": "ο Μάγος Γκάνταλφ (the White Queen-Side Bishop)",
-            "Qd1": "η λευκή Βασίλισσα Ζήνα",
-            "Ke1": "ο λευκός Βασιλιάς Ηρακλής",
-            "Bf1": "η Σφίγγα (the White King-Side Bishop)",
-            "Ng1": "η Αμαζόνα Ιππόλυτη (the White King-Side Knight)",
-            "Rh1": "το Γιέτι (the White King-Side Rook)",
-            "Pa7": "η Ana Conda (the Black Warrior)",
-            "Pb7": "η Bonnie Bear (the Black Warrior)",
-            "Pc7": "η Connie Cheetah (the Black Warrior)",
-            "Pd7": "η Daisy Dee (the Black Warrior)",
-            "Pe7": "η Ella Phant (the Black Warrior)",
-            "Pf7": "η Fiona Fox (the Black Warrior)",
-            "Pg7": "η Γκρέις Gaselle (the Black Warrior)",
-            "Ph7": "η Hope Hyena (the Black Warrior)",
-            "Ra8": "ο Γκοτζίλα (the Black Queen-Side Rook)",
-            "Nb8": "ο Δόκτωρ Όκταπους (the Black Queen-Side Knight)",
-            "Bc8": "ο Μπλάτυ Βαμπίρ (the Black Queen-Side Bishop) ",
-            "Qd8": "η μαύρη Βασίλισσα Ήρα",
-            "Ke8": "ο μαύρος Βασιλιάς Δίας",
-            "Bf8": "ο τρομακτικός Βένομ (the Black King-Side Bishop)",
-            "Ng8": "η σέξι Κατγούμαν (the Black King-Side Knight)",
-            "Rh8": "το Κτήνος Λυκάνθρωπος (the Black King-Side Rook)"
+           "Pa2": "ο Arnold Schwarzenegger (the White Warrior)",
+    "Pb2": "ο Boris Johnson (the White Warrior)",
+    "Pc2": "ο Conor McGregor (the White Warrior)",
+    "Pd2": "ο Donald Trump (the White Warrior)",
+    "Pe2": "ο Elon Musk (the White Warrior)",
+    "Pf2": "ο Floyd Mayweather (the White Warrior)",
+    "Pg2": "ο George W. Bush (the White Warrior)",
+    "Ph2": "ο Henry Kissinger (the White Warrior)",
+
+    "Ra1": "ο Κύκλωπας (the White Queen-Side Rook)",
+    "Nb1": "η Αμαζόνα Οτρέρα (the White Queen-Side Knight)",
+    "Bc1": "ο Μάγος Γκάνταλφ (the White Queen-Side Bishop)",
+    "Qd1": "η λευκή Βασίλισσα Ζήνα",
+    "Ke1": "ο λευκός Βασιλιάς Ηρακλής",
+    "Bf1": "η Σφίγγα (the White King-Side Bishop)",
+    "Ng1": "η Αμαζόνα Ιππόλυτη (the White King-Side Knight)",
+    "Rh1": "το Γιέτι (the White King-Side Rook)",
+
+    "Pa7": "η Angela Merkel (the Black Warrior)",
+    "Pb7": "η Barack Obama (the Black Warrior)",
+    "Pc7": "η Clint Eastwood (the Black Warrior)",
+    "Pd7": "η Daisy Dee (the Black Warrior)",
+    "Pe7": "η Emmanuel Macron (the Black Warrior)",
+    "Pf7": "η François Hollande (the Black Warrior)",
+    "Pg7": "η Greta Thunberg (the Black Warrior)",
+    "Ph7": "η Hillary Clinton (the Black Warrior)",
+
+    "Ra8": "ο Γκοτζίλα (the Black Queen-Side Rook)",
+    "Nb8": "η σέξι Lara Croft (the Black Queen-Side Knight)",
+    "Bc8": "ο Μπλάτυ Βαμπίρ (the Black Queen-Side Bishop)",
+    "Qd8": "η μαύρη Βασίλισσα Ήρα",
+    "Ke8": "ο μαύρος Βασιλιάς Δίας",
+    "Bf8": "ο τρομακτικός Βένομ (the Black King-Side Bishop)",
+    "Ng8": "η σέξι Κατγούμαν (the Black King-Side Knight)",
+    "Rh8": "το Κτήνος Λυκάνθρωπος (the Black King-Side Rook)"
         }
     },
     "PAO 0-9": {
@@ -4150,6 +4153,7 @@
         }
     }
 }
+
 
 
 
