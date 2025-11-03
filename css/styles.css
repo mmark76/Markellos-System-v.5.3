@@ -86,7 +86,7 @@ header nav a:hover {
 
 .modal-content p {
   line-height: 1.7;
-  font-size: 1.05em;
+  font-size: 0.95em;
 }
 
 .modal-content p::selection {
