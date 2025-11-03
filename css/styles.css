@@ -289,7 +289,7 @@ select:hover {
   transform: scale(1.05);  /* ελαφρώς μικρότερα checkbox */
   margin-right: 3px;
   vertical-align: middle;
-  accent-color: #CFAF4A;
+  accent-color: #3697ef;
 }
 
 /* === Tables === */
