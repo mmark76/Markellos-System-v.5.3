@@ -67,25 +67,16 @@
 <body>
 
 <header>
-  <h2 style="margin:0;">
+  <h1 class="main-title">
     Markellos Chess Mnemonic System and Epic Chess Stories Creator v.5.3
-  </h2>
+  </h1>
 
-  <h6 style="margin:2px 0 6px 0;">
-Η διαδικασία για να δημιουργήσεις Epic Story από μια παρτίδα σκακιού είναι η εξής:
-1️⃣ Πήγαινε στην επιλογή “Import PGN / SAN” (στα δεξιά).
-2️⃣ Επίλεξε “Choose file” για να φορτώσεις ένα αρχείο παρτίδας ή κάνε copy–paste το κείμενο της παρτίδας (PGN ή SAN) στο text area.
-3️⃣ Στην περίπτωση που χρησιμοποιήσεις copy–paste, πάτησε “Parse PGN / SAN” για να αναγνωριστεί η παρτίδα (αλλιώς αναγνωρίζεται αυτόματα).
-4️⃣ Από το Table Selection drop-down menu, επίλεξε “Associations”.
-5️⃣ Τέλος, πάτησε το κουμπί “Show Epic Story” που θα εμφανιστεί, για να δημιουργηθεί η αφήγηση της παρτίδας.
-  </h6>
+  <button id="howToBtn" class="minimal-btn">📜 Οδηγίες Epic Story</button>
 
-  <h3 style="font-family: Georgia, serif; margin:4px 0;">
-    <a href="https://markellos-chess-mnemonic-system.blogspot.com/" style="color: #CFAF4A; text-decoration: none;">⬅ Blog</a>
-  </h3>
-  <h3 style="font-family: Georgia, serif; margin:2px 0;">
-    <a href="https://mmark76.github.io/flashcards/index.html" style="color: #CFAF4A; text-decoration: none;">⬅ Flashcards</a>
-  </h3>
+  <nav class="header-links">
+    <a href="https://markellos-chess-mnemonic-system.blogspot.com/" target="_blank">⬅ Blog</a>
+    <a href="https://mmark76.github.io/flashcards/index.html" target="_blank">⬅ Flashcards</a>
+  </nav>
 </header>
   
  <!-- 🔹 Layout με τρεις στήλες -->
@@ -323,8 +314,33 @@
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+	<div id="howToModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Η διαδικασία για να δημιουργήσεις Epic Story</h3>
+    <p>
+      1️⃣ Πήγαινε στην επιλογή <strong>“Import PGN / SAN”</strong> (στα δεξιά).<br>
+      2️⃣ Επίλεξε <strong>“Choose file”</strong> ή κάνε <strong>copy–paste</strong> το PGN/SAN στο text area.<br>
+      3️⃣ Αν χρησιμοποίησες copy–paste, πάτησε <strong>“Parse PGN / SAN”</strong>.<br>
+      4️⃣ Από το <strong>Table Selection</strong> drop-down, επίλεξε “Associations”.<br>
+      5️⃣ Πάτησε το κουμπί <strong>“Show Epic Story”</strong> για να δημιουργηθεί η αφήγηση της παρτίδας.
+    </p>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("howToModal");
+  const btn = document.getElementById("howToBtn");
+  const span = document.querySelector(".close");
+
+  btn.onclick = () => modal.style.display = "block";
+  span.onclick = () => modal.style.display = "none";
+  window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+</script>
+
 </body>
 </html>
+
 
 
 
