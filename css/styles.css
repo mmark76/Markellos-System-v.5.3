@@ -268,6 +268,30 @@ select:hover {
   }
 }
 
+/* === Μικρότερο μέγεθος για τις λέξεις δίπλα στα checkbox === */
+#sanSection label,
+#assocSection label,
+#paoSection label,
+#pao99Section label,
+#verseSection label {
+  font-size: 0.8em;      /* 🔹 μικρότερο μέγεθος γραμμάτων */
+  color: #ccc;           /* ελαφρώς πιο απαλό γκρι για οπτική ισορροπία */
+  margin-right: 6px;
+  vertical-align: middle;
+  font-weight: normal;
+}
+
+#sanSection input[type="checkbox"],
+#assocSection input[type="checkbox"],
+#paoSection input[type="checkbox"],
+#pao99Section input[type="checkbox"],
+#verseSection input[type="checkbox"] {
+  transform: scale(1.05);  /* ελαφρώς μικρότερα checkbox */
+  margin-right: 3px;
+  vertical-align: middle;
+  accent-color: #CFAF4A;
+}
+
 /* === Tables === */
 .table-wrapper {
   overflow-x: auto;
