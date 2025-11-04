@@ -546,7 +546,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 
   const fenBtn=document.getElementById('openFenBuilderBtn');
   if(fenBtn){
-    fenBtn.addEventListener('click', ()=> window.open('http://chess-api.online','_blank'));
+    fenBtn.addEventListener('click', ()=> window.open('https://lichess.org/editor','_blank'));
   }
 
   // Κλειδώνουμε τα dropdowns
