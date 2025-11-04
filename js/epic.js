@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
   document.body.appendChild(modal);
+  document.getElementById("epicTextView").classList.add("parchment","edge");
 
   /* ---------- Helpers ---------- */
   function sanToText(san) {
@@ -198,6 +199,7 @@ textView.style.padding = "0";
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
