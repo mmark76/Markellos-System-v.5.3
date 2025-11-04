@@ -70,33 +70,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const square = targetSquare || getSquare(san);
 
       if (!locus) continue;
+    const anchorTxt = cleanAnchor(anchor);
+    const sanText = sanToText(san);
 
-      const anchorTxt = cleanAnchor(anchor);
-      const sanText = sanToText(san);
+    const openings = [
+        "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει, η δράση διαδραματίζεται",
+        "Λίγο αργότερα, και καθώς ο Γέροντας γυρνάει τις σελίδες του χοντρού βιβλίου, η δράση συνεχίζεται",
+        "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία, η δράση μεταφέρεται",
+    ];
 
-const openings = [
-  "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει, η δράση διαδραματίζεται",
-  "Λίγο αργότερα, και καθώς ο Γέροντας γυρνάει τις σελίδες του χοντρού βιβλίου, η δράση συνεχίζεται",
-  "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία, η δράση μεταφέρεται",
-];
+      const verbs = [
+        "εμφανίζεται",
+        "ξεπροβάλλει",
+        "διακρίνεται"
+    ];
 
-const verbs = [
-  "εμφανίζεται",
-  "ξεπροβάλλει",
-  "διακρίνεται"
-];
+    const opening = i === 0 ? "Ακούγεται μία σάλπιγγα και η δράση ξεκινάει" : openings[i % openings.length];
+    const action = verbs[i % verbs.length];
 
-const opening = i === 0 ? "Ακούγεται μία σάλπιγγα και η δράση ξεκινάει" : openings[i % openings.length];
-const action = verbs[i % verbs.length];
-
-let sceneNumber = i + 1;
-const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
-let phrase = `${t1Header}
+    let sceneNumber = i + 1;
+    const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
+    let phrase = `${t1Header}
              - ${opening} στην περιοχή ${square}, εκεί όπου ${action} ${locus} (mnemonic locus ${sceneNumber}). Τότε, ${pieceAssoc}, ${targetAssoc}.`;
-if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
+    if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
-stories.push(phrase.trim());
-}
+    stories.push(phrase.trim());
+    }
 
     // === Combine Text ===
     const narrativeText = stories.join("\n\n");
@@ -127,24 +126,24 @@ stories.push(phrase.trim());
 
     const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]  .filter(Boolean)  .join("\n\n");
     
-     const textView = document.getElementById("epicTextView");
+    const textView = document.getElementById("epicTextView");
 
 // ✳️ Μετατροπή σε παραγράφους
-const htmlText = fullText
-  .split(/\n{2,}/)                       // κάθε διπλό newline = νέα παράγραφος
-  .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)  // απλά line breaks μένουν inline
-  .join("");
+    const htmlText = fullText
+      .split(/\n{2,}/)                       // κάθε διπλό newline = νέα παράγραφος
+      .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)  // απλά line breaks μένουν inline
+      .join("");
 
 // ✳️ Εμφάνιση μορφοποιημένου κειμένου
-textView.innerHTML = htmlText;
+    textView.innerHTML = htmlText;
 
 // ✳️ Μορφοποίηση
-textView.style.fontFamily = '"Book Antiqua", Palatino, serif';
-textView.style.fontSize = "10pt";
-textView.style.textAlign = "justify";
-textView.style.lineHeight = "1";
-textView.style.margin = "0";
-textView.style.padding = "0";
+    textView.style.fontFamily = '"Book Antiqua", Palatino, serif';
+    textView.style.fontSize = "10pt";
+    textView.style.textAlign = "justify";
+    textView.style.lineHeight = "1";
+    textView.style.margin = "0";
+    textView.style.padding = "0";
 
     // === Copy Button ===
     const copyBtn = document.getElementById("copyEpicBtn");
@@ -199,6 +198,7 @@ textView.style.padding = "0";
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
