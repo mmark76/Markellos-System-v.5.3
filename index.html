@@ -110,45 +110,29 @@
 		
 	<!-- Δεξιά: Βιβλιοθήκες με κουμπιά -->
     <section class="right-panel">
-      <h4>Libraries (locked)</h4>
+      <h4>Default Libraries (locked)</h4>
       
 	<div class="libraries-group">
       <div class="library">
         
-		<span>Temporal:</span>
-          <button class="lib-btn" data-lib="LibraryT1">LibraryT1</button>
-          <button class="lib-btn" data-lib="LibraryT2">LibraryT2</button>
-        </div>
-
-        <div class="library">
-          <span>Characters:</span>
-          <button class="lib-btn" data-lib="LibraryC1">LibraryC1</button>
-          <button class="lib-btn" data-lib="LibraryC2">LibraryC2</button>
-        </div>
-
-        <div class="library">
-          <span>PAO 00–99:</span>
-		  <button class="lib-btn" data-lib="LibraryP1">LibraryP1</button>
-          <button class="lib-btn" data-lib="LibraryP2">LibraryP2</button>		  
-          <button class="lib-btn" data-lib="LibraryP3">LibraryP3</button>
-		  <button class="lib-btn" data-lib="LibraryP4">LibraryP4</button>
-		  <button class="lib-btn" data-lib="LibraryP5">LibraryP5</button>
-        </div>
-        
-		<div class="library">
-          <span>Spatial:</span>
-          <button class="lib-btn" data-lib="LibraryS1">LibraryS1</button>
-        </div>
-		
-		<div class="library">
-          <span>PAO 0–9:</span>
-          <button class="lib-btn" data-lib="Library_p1">Library_p1</button>
-        </div>
-		
-		<div class="library">
-          <span>Rhythm:</span>
-          <button class="lib-btn" data-lib="LibraryV1">LibraryV1</button>
-        </div>
+	  <div class="row">
+        <label for="librarySelect">Library:</label>
+        <select id="librarySelect">
+          <option value="Temporal/LibraryT1">Temporal T1</option>
+          <option value="Temporal/LibraryT2">Temporal T2</option>
+		  <option value="Characters/LibraryC1">Characters C1</option>
+          <option value="Characters/LibraryC2">Characters C2</option>
+		  <option value="Spatial/LibraryS1">Spatial S1</option>
+          <option value="Spatial/LibraryS2">Spatial S2</option>
+		  <option value="PAO 0-9/Library_p1">PAO 0-9 (p1)</option>
+		  <option value="PAO 00-99/LibraryP1">PAO 00-99 (P1)</option>
+          <option value="PAO 00-99/LibraryP2">PAO 00-99 (P2)</option>
+          <option value="PAO 00-99/LibraryP3">PAO 00-99 (P3)</option>
+          <option value="PAO 00-99/LibraryP4">PAO 00-99 (P4)</option>
+          <option value="PAO 00-99/LibraryP5">PAO 00-99 (P5)</option>
+          <option value="Verses/LibraryV1">Rhythm V1</option>
+        </select>
+      </div>
 			  
     </div>
     </section>
@@ -341,6 +325,7 @@
 
 </body>
 </html>
+
 
 
 
