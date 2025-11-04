@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // === Combine Text ===
-    const narrativeText = stories.join("\n\n\n");
+    const narrativeText = stories.join("\n\n");
 
     // === Game Info ===
     const chess = new Chess();
@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
