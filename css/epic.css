@@ -142,5 +142,13 @@
   line-height: 1;
 }
 
+#epicTextView {
+  white-space: pre-wrap;
+  line-height: 2;
+  font-family: "Book Antiqua", Palatino, serif;
+  font-size: 10pt;
+  text-align: justify;
+}
+
 
 
