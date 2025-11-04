@@ -364,260 +364,452 @@
     "Spatial": {
         "LibraryS1": {
             "a1": {
-                "el": "μπαίνει στο λευκό αχυρώνα και ανεμίζει το σπαθί",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "determination",
+                "Object": "sword",
+                "Target Square Association": "the white barn",
+                "text": "enters the white barn with determination and raises the sword into the light"
             },
             "a2": {
-                "el": "ανεβαίνει στις λευκές επάλξεις, από όπου και παρατηρεί τη μάχη",
-                "en": " "
+                "Action": "climbs",
+                "Feeling": "anxiety",
+                "Object": "spear",
+                "Target Square Association": "the white battlements",
+                "text": "climbs the white battlements with the spear in hand, feeling the air of battle approaching"
             },
             "a3": {
-                "el": "βουτάει στην τάφρο και κολυμπά γρήγορα προς τον λευκό κοραλλιογενή ύφαλο",
-                "en": " "
+                "Action": "dives",
+                "Feeling": "courage",
+                "Object": "spear",
+                "Target Square Association": "the white moat",
+                "text": "dives into the white moat and moves forward with courage toward the bright reef"
             },
             "a4": {
-                "el": "κατεβαίνει γρήγορα το βαθύ τεράστιο κρατήρα",
-                "en": " "
+                "Action": "descends",
+                "Feeling": "caution",
+                "Object": "spear",
+                "Target Square Association": "the deep crater",
+                "text": "descends carefully into the deep crater, holding the spear in the darkness"
             },
             "a5": {
-                "el": "ανεβαίνει στο ενεργό ηφαίστειο, από όπου και παρατηρεί την καυτή λάβα",
-                "en": " "
+                "Action": "climbs",
+                "Feeling": "ecstasy",
+                "Object": "spear",
+                "Target Square Association": "the active volcano",
+                "text": "climbs the active volcano, admiring the lava bursting around like living fire"
             },
             "a6": {
-                "el": "μπαίνει στην τάφρο και κολυμπά προς τον ύφαλο με το πράσινο πλαγκτόν",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "exhaustion",
+                "Object": "spear",
+                "Target Square Association": "the black moat",
+                "text": "enters the black moat and swims through the darkness, with the spear lighting the way"
             },
             "a7": {
-                "el": "φτάνει στη μαύρη σκοπιά με τις μαύρες αιχμηρές λόγχες",
-                "en": " "
+                "Action": "arrives",
+                "Feeling": "wariness",
+                "Object": "spear",
+                "Target Square Association": "the dark watchtower",
+                "text": "arrives at the dark watchtower, touches the spear to the ground and listens to the silence"
             },
             "a8": {
-                "el": "μπαίνει στις μαύρες και σκοτεινές αποθήκες",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "seriousness",
+                "Object": "torch",
+                "Target Square Association": "the black warehouses",
+                "text": "enters the black warehouses with a flickering torch, lighting up the dusty beams"
             },
             "b1": {
-                "el": "μπαίνει στους σταύλους με τα δυνατά λευκά άλογα",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "calmness",
+                "Object": "shield",
+                "Target Square Association": "the white stables",
+                "text": "enters the white stables and raises the shield among the proud horses"
             },
             "b2": {
-                "el": "ανεβαίνει στον ψηλό πύργο με την καμπάνα συναγερμού",
-                "en": " "
+                "Action": "climbs",
+                "Feeling": "alertness",
+                "Object": "bell",
+                "Target Square Association": "the tall white bell tower",
+                "text": "climbs the tall white bell tower and rings the alarm bell that echoes everywhere"
             },
             "b3": {
-                "el": "περπατάει στην άκρη του ποταμού, από όπου και παρατηρεί τη φωλιά με τα αγριεμένα νερόφιδα",
-                "en": " "
+                "Action": "walks",
+                "Feeling": "caution",
+                "Object": "bow",
+                "Target Square Association": "the riverbank",
+                "text": "walks along the riverbank with the bow ready, watching the water snakes move in the water"
             },
             "b4": {
-                "el": "περπατά γοργά αλλά προσεκτικά μέσα στο σκοτεινό και ερειπωμένο νεκροταφείο",
-                "en": " "
+                "Action": "walks",
+                "Feeling": "alertness",
+                "Object": "sword",
+                "Target Square Association": "the dark graveyard",
+                "text": "walks through the dark graveyard, ready to draw the sword at the slightest sound"
             },
             "b5": {
-                "el": "κινείται με προσοχή πάνω στη σπασμένη μαρμάρινη ταφόπλακα",
-                "en": " "
+                "Action": "moves",
+                "Feeling": "caution",
+                "Object": "shield",
+                "Target Square Association": "the broken marble tombstone",
+                "text": "moves across the broken marble tombstone, gripping the shield tightly"
             },
             "b6": {
-                "el": "κολυμπά στο ποτάμι κοντά στη φωλιά με τα πολλά πιράνχας",
-                "en": " "
+                "Action": "swims",
+                "Feeling": "fear",
+                "Object": "shield",
+                "Target Square Association": "the river of piranhas",
+                "text": "swims in the river of piranhas and raises the shield in front of the face for protection"
             },
             "b7": {
-                "el": "ανεβαίνει στο παρατηρητήριο του μαύρου πύργου, από όπου και παρατηρεί με τα κυάλια",
-                "en": " "
+                "Action": "climbs",
+                "Feeling": "focus",
+                "Object": "binoculars",
+                "Target Square Association": "the observatory of the black palace",
+                "text": "climbs to the observatory of the black palace and looks through the binoculars searching for movement"
             },
             "b8": {
-                "el": "βρίσκεται στους σκοτεινούς σταύλους και δαμάζει τα άγρια μαύρα άλογα",
-                "en": " "
+                "Action": "tames",
+                "Feeling": "persistence",
+                "Object": "horses",
+                "Target Square Association": "the dark stables",
+                "text": "tames the wild black horses in the dark stables as chains rattle"
             },
             "c1": {
-                "el": "βρίσκεται στη μεγάλη αίθουσα της λευκής τραπεζαρίας, όπου κάθεται να ξεκουραστεί",
-                "en": " "
+                "Action": "sits",
+                "Feeling": "calmness",
+                "Object": "cup",
+                "Target Square Association": "the white dining hall",
+                "text": "sits in the white dining hall and holds the cup thoughtfully in the silence"
             },
             "c2": {
-                "el": "τρέχει και στέκεται δίπλα από τον καταπέλτη με το τεράστιο λευκό βέλος",
-                "en": " "
+                "Action": "runs",
+                "Feeling": "anxiety",
+                "Object": "arrow",
+                "Target Square Association": "the white catapult",
+                "text": "runs to the white catapult and places the large arrow for launch"
             },
             "c3": {
-                "el": "φτάνει στο ψηλό κυπαρίσσι, όπου κάθεται να ξεκουραστεί",
-                "en": " "
+                "Action": "arrives",
+                "Feeling": "calmness",
+                "Object": "spear",
+                "Target Square Association": "the tall cypress tree",
+                "text": "arrives at the tall cypress and rests the spear on the ground for a pause"
             },
             "c4": {
-                "el": "κρύβεται μέσα στους πυκνούς θάμνους με τα ψηλά καλάμια",
-                "en": " "
+                "Action": "hides",
+                "Feeling": "anxiety",
+                "Object": "spear",
+                "Target Square Association": "the white bush",
+                "text": "hides inside the white bush holding the spear among the reeds"
             },
             "c5": {
-                "el": "κινείται γοργά μέσα σε βάλτους και έλη",
-                "en": " "
+                "Action": "marches",
+                "Feeling": "anger",
+                "Object": "spear",
+                "Target Square Association": "the black swamp",
+                "text": "marches through the black swamp with the spear raised amid fog and mud"
             },
             "c6": {
-                "el": "κάθεται κοντά στην τεράστια και γεμάτη αγκάθια πα-λούρα",
-                "en": " "
+                "Action": "sits",
+                "Feeling": "anxiety",
+                "Object": "spear",
+                "Target Square Association": "the thorny bush",
+                "text": "sits near the thorny bush and rests the spear upon it"
             },
             "c7": {
-                "el": "φτάνει στην πολιορκητική μηχανή, από όπου εκσφενδονίζει φλεγόμενα βράχια",
-                "en": " "
+                "Action": "arrives",
+                "Feeling": "rage",
+                "Object": "flaming rock",
+                "Target Square Association": "the siege engine launching flaming rocks",
+                "text": "arrives at the siege engine and launches a flaming rock"
             },
             "c8": {
-                "el": "κινείται γοργά μέσα στη μεγάλη αίθουσα χορού του μαύρου παλατιού",
-                "en": " "
+                "Action": "moves",
+                "Feeling": "calmness",
+                "Object": "sword",
+                "Target Square Association": "the ballroom of the black palace",
+                "text": "moves inside the ballroom of the black palace and the sword echoes in the silence"
             },
             "d1": {
-                "el": "μπαίνει στο δωμάτιο της λευκής βασίλισσα για να ξεκουραστεί",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "tiredness",
+                "Object": "armor",
+                "Target Square Association": "the room of the white queen",
+                "text": "enters the room of the white queen and places the armor beside the bed"
             },
             "d2": {
-                "el": "περνά τρέχοντας μέσα στη στοά με τα λευκά λάβαρα",
-                "en": " "
+                "Action": "passes",
+                "Feeling": "devotion",
+                "Object": "banner",
+                "Target Square Association": "the hall of banners",
+                "text": "passes through the hall of banners"
             },
             "d3": {
-                "el": "κολυμπά μαζί με τους λευκούς τεράστιους καρχαρίες",
-                "en": " "
+                "Action": "swims",
+                "Feeling": "caution",
+                "Object": "shield",
+                "Target Square Association": "the river of white sharks",
+                "text": "swims in the river of white sharks"
             },
             "d4": {
-                "el": "ορμάει στο σκοτεινό σπήλαιο με τις τρομακτικές νυχτερίδες",
-                "en": " "
+                "Action": "charges",
+                "Feeling": "wild energy",
+                "Object": "sword",
+                "Target Square Association": "the dark cave with bats",
+                "text": "charges into the dark cave of bats and waves the sword in the darkness"
             },
             "d5": {
-                "el": "μετακινείται γρήγορα στο μικρό ξύλινο σπιτάκι",
-                "en": " "
+                "Action": "moves",
+                "Feeling": "anxiety",
+                "Object": "sword",
+                "Target Square Association": "the small wooden hut",
+                "text": "moves inside the small wooden hut and sharpens the sword on the table"
             },
             "d6": {
-                "el": "κολυμπά με τους μαύρους τεράστιους αλιγάτορες",
-                "en": " "
+                "Action": "swims",
+                "Feeling": "calmness",
+                "Object": "spear",
+                "Target Square Association": "the black alligators",
+                "text": "swims among the black alligators with the spear pointing forward"
             },
             "d7": {
-                "el": "αλυσσοδένεται στη μαύρη στοά με τις νεκροκεφαλές",
-                "en": " "
+                "Action": "chains himself",
+                "Feeling": "despair",
+                "Object": "chains",
+                "Target Square Association": "the black hall of skulls",
+                "text": "chains himself in the black hall of skulls as darkness surrounds him"
             },
             "d8": {
-                "el": "κινείται στα σκοτεινά δωμάτια της μαύρης βασίλισσας",
-                "en": " "
+                "Action": "walks",
+                "Feeling": "sadness",
+                "Object": "crown",
+                "Target Square Association": "the dark rooms of the black queen",
+                "text": "walks through the dark rooms of the black queen holding the broken crown"
             },
             "e1": {
-                "el": "κάθεται στο λαμπερό θρόνο του λευκού βασιλιά",
-                "en": " "
+                "Action": "sits",
+                "Feeling": "serenity",
+                "Object": "crown",
+                "Target Square Association": "the white throne",
+                "text": "sits on the white throne and holds the crown with reverence in the silence of the hall"
             },
             "e2": {
-                "el": "περνά με γοργό βήμα τη μεγάλη και τεράστια κατάλευκη πύλη",
-                "en": " "
+                "Action": "passes",
+                "Feeling": "energy",
+                "Object": "gate",
+                "Target Square Association": "the white gate",
+                "text": "passes through the great white gate and observes the guards on the battlements"
             },
             "e3": {
-                "el": "τρέχει πάνω στην πέτρινη γέφυρα",
-                "en": " "
+                "Action": "runs",
+                "Feeling": "anxiety",
+                "Object": "stone bridge",
+                "Target Square Association": "the stone bridge",
+                "text": "runs across the stone bridge as the water rushes fiercely below"
             },
             "e4": {
-                "el": "μπαίνει στο υπόγειο τούνελ με τις νυφίτσες",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "determination",
+                "Object": "spear",
+                "Target Square Association": "the area with the white weasels",
+                "text": "enters the area with white weasels running between the trees"
             },
             "e5": {
-                "el": "ορμά μέσα στην περιοχή με τα πολλά κατακόκκινα τριαντάφυλλα",
-                "en": " "
+                "Action": "charges",
+                "Feeling": "rage",
+                "Object": "sword",
+                "Target Square Association": "the ravine of red roses",
+                "text": "charges into the ravine of red roses and the blood on the sword shines in the light"
             },
             "e6": {
-                "el": "διασχίζει γοργά το σκοτεινό και επικίνδυνο σιδερένιο πέρασμα",
-                "en": " "
+                "Action": "crosses",
+                "Feeling": "caution",
+                "Object": "sword",
+                "Target Square Association": "the iron passage",
+                "text": "crosses the iron passage where the air smells of rust and fear"
             },
             "e7": {
-                "el": "μάχεται κάτω από τη τεράστια μαύρη πύλη",
-                "en": " "
+                "Action": "fights",
+                "Feeling": "revenge",
+                "Object": "sword",
+                "Target Square Association": "the black gate",
+                "text": "fights under the black gate and the sword sparks in the darkness"
             },
             "e8": {
-                "el": "κάθεται στον εντυπωσιακό μαρμάρινο θρόνο του μαύρου βασιλιά",
-                "en": " "
+                "Action": "sits",
+                "Feeling": "coldness",
+                "Object": "scepter",
+                "Target Square Association": "the throne of the black king",
+                "text": "sits on the throne of the black king and lets the scepter fall on the marble"
             },
             "f1": {
-                "el": "μπαίνει στη μεγάλη αίθουσα πολέμου του λευκού παλατιού",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "focus",
+                "Object": "banner",
+                "Target Square Association": "the war hall of the white palace",
+                "text": "enters the war hall of the white palace and raises the banner before the light"
             },
             "f2": {
-                "el": "κινείται δίπλα στο άγαλμα του πελώριου λευκού δράκου",
-                "en": " "
+                "Action": "moves",
+                "Feeling": "prudence",
+                "Object": "statue",
+                "Target Square Association": "the statue of the white dragon",
+                "text": "moves beside the statue of the white dragon with the spear ready"
             },
             "f3": {
-                "el": "προσγειώνεται στον πελώριο λευκό βράχο και τον χτυπά με μένος",
-                "en": " "
+                "Action": "lands",
+                "Feeling": "anger",
+                "Object": "rock",
+                "Target Square Association": "the white rock",
+                "text": "lands on the white rock and strikes it with the spear, splashing water everywhere"
             },
             "f4": {
-                "el": "κατεβαίνει γοργά την απότομη και επικίνδυνη χαράδρα",
-                "en": " "
+                "Action": "descends",
+                "Feeling": "fear",
+                "Object": "shield",
+                "Target Square Association": "the steep ravine",
+                "text": "descends the steep ravine holding the shield in front of the body"
             },
             "f5": {
-                "el": "ανεβαίνει τρέχοντας στην κορυφή του επικίνδυνου υψώματος",
-                "en": " "
+                "Action": "climbs",
+                "Feeling": "stubbornness",
+                "Object": "spear",
+                "Target Square Association": "the dangerous hill",
+                "text": "climbs the dangerous hill and plants the spear in the ground as a symbol of victory"
             },
             "f6": {
-                "el": "προσγειώνεται στην σκοτεινή περιοχή των σκελετών",
-                "en": " "
+                "Action": "lands",
+                "Feeling": "tiredness",
+                "Object": "armor",
+                "Target Square Association": "the land of skeletons",
+                "text": "lands in the land of skeletons and the armor echoes on the bones"
             },
             "f7": {
-                "el": "τρέχει και φτάνει δίπλα από το άγαλμα του μαύρου δράκου φρουρού",
-                "en": " "
+                "Action": "runs",
+                "Feeling": "panic",
+                "Object": "spear",
+                "Target Square Association": "the statue of the black dragon guardian",
+                "text": "runs beside the statue of the black dragon guardian, gripping the spear tightly"
             },
             "f8": {
-                "el": "κάθεται και μελετάει στη μεγάλη αίθουσα πολέμου του μαύρου παλατιού",
-                "en": " "
+                "Action": "studies",
+                "Feeling": "calmness",
+                "Object": "book",
+                "Target Square Association": "the war hall of the black palace",
+                "text": "studies in the war hall of the black palace, leafing through an ancient book"
             },
             "g1": {
-                "el": "βρίσκεται να κάθεται στις κουζίνες του λευκού παλατιού",
-                "en": " "
+                "Action": "is",
+                "Feeling": "calmness",
+                "Object": "knife",
+                "Target Square Association": "the kitchens of the white palace",
+                "text": "is in the kitchens of the white palace and cleans the knife in the light"
             },
             "g2": {
-                "el": "ανεβαίνει στον ακριανό πύργο και παρατηρεί με το μεγάλο τηλεσκόπιο",
-                "en": " "
+                "Action": "climbs",
+                "Feeling": "observation",
+                "Object": "telescope",
+                "Target Square Association": "the white turret",
+                "text": "climbs the white turret and looks through the telescope at the horizon"
             },
             "g3": {
-                "el": "κρύβεται μέσα σε ένα σεντούκι το οποίο βρίσκεται στο βυθό του ποταμού",
-                "en": " "
+                "Action": "hides",
+                "Feeling": "terror",
+                "Object": "chest",
+                "Target Square Association": "a chest at the bottom of the river",
+                "text": "hides inside a chest at the bottom of the river and holds his breath"
             },
             "g4": {
-                "el": "τρέχει γρήγορα στο στοιχειωμένο μονοπάτι",
-                "en": " "
+                "Action": "runs",
+                "Feeling": "fear",
+                "Object": "spear",
+                "Target Square Association": "the haunted path",
+                "text": "runs along the haunted path while the trees move with the wind"
             },
             "g5": {
-                "el": "περιπλανιέται ανήσυχα στο στοιχειωμένο ξέφωτο",
-                "en": " "
+                "Action": "wanders",
+                "Feeling": "anxiety",
+                "Object": "sword",
+                "Target Square Association": "the haunted clearing",
+                "text": "wanders through the haunted clearing with the sword aimed toward the shadows"
             },
             "g6": {
-                "el": "στέκεται πάνω σε ένα ψηλό κατάρτι, που αναδύεται μέσα από το ποτάμι",
-                "en": " "
+                "Action": "stands",
+                "Feeling": "coldness",
+                "Object": "mast",
+                "Target Square Association": "the mast of the sunken ship",
+                "text": "stands upon the mast of the sunken ship and looks at the night spreading around"
             },
             "g7": {
-                "el": "ανεβαίνει στο ψηλό μαύρο πύργο και ανάβει ένα τεράστιο δαυλό",
-                "en": " "
+                "Action": "climbs",
+                "Feeling": "passion",
+                "Object": "torch",
+                "Target Square Association": "the tall black turret",
+                "text": "climbs the tall black turret and lights a great torch to illuminate the battlements"
             },
             "g8": {
-                "el": "βρίσκεται στα σκοτεινά μπουντρούμια του μαύρου παλατιού",
-                "en": " "
+                "Action": "is",
+                "Feeling": "isolation",
+                "Object": "chains",
+                "Target Square Association": "the dungeons of the black palace",
+                "text": "is in the dungeons of the black palace and hears the chains echoing in the darkness"
             },
             "h1": {
-                "el": "μπαίνει στο λευκό ναό με τις μεγάλες καμάρες για να προσευχηθεί",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "reverence",
+                "Object": "candle",
+                "Target Square Association": "the white temple",
+                "text": "enters the white temple and lights a candle under the tall arches"
             },
             "h2": {
-                "el": "περπατά γοργά μέσα στην υπόγεια στοά υπό το φως πολλών κεριών",
-                "en": " "
+                "Action": "walks",
+                "Feeling": "caution",
+                "Object": "candle",
+                "Target Square Association": "the underground passage",
+                "text": "walks through the underground passage holding the candle that lights the path ahead"
             },
             "h3": {
-                "el": "ανεβαίνει γρήγορα στον παλιό ψηλό και στοιχειωμένο φάρο",
-                "en": " "
+                "Action": "climbs",
+                "Feeling": "anxiety",
+                "Object": "lighthouse",
+                "Target Square Association": "the haunted lighthouse",
+                "text": "climbs the haunted lighthouse and looks at the river sinking into darkness"
             },
             "h4": {
-                "el": "πολεμάει στην άκρη του απότομου γκρεμού από όπου φαίνεται όλο το πεδίο μάχης",
-                "en": " "
+                "Action": "fights",
+                "Feeling": "anger",
+                "Object": "sword",
+                "Target Square Association": "the steep cliff",
+                "text": "fights on the edge of the steep cliff with the sword flashing in the battle light"
             },
             "h5": {
-                "el": "πολεμάει μέσα στην αιματοβαμένη ρεματιά",
-                "en": " "
+                "Action": "fights",
+                "Feeling": "fury",
+                "Object": "sword",
+                "Target Square Association": "the blood-soaked ravine",
+                "text": "fights within the blood-soaked ravine as the abyssal wind blows"
             },
             "h6": {
-                "el": "βουτάει στο στοιχειωμένο ναυάγιο",
-                "en": " "
+                "Action": "dives",
+                "Feeling": "surrender",
+                "Object": "spear",
+                "Target Square Association": "the haunted shipwreck",
+                "text": "dives into the haunted shipwreck and lets the spear sink into the depths of the river"
             },
             "h7": {
-                "el": "βρίσκεται στις μαύρες κατακόμβες",
-                "en": " "
+                "Action": "is",
+                "Feeling": "coldness",
+                "Object": "sword",
+                "Target Square Association": "the black catacombs",
+                "text": "is in the black catacombs and holds the sword while hearing whispers around"
             },
             "h8": {
-                "el": "μπαίνει στο μαύρο ναό για να προφυλαχτεί",
-                "en": " "
+                "Action": "enters",
+                "Feeling": "calmness",
+                "Object": "cloak",
+                "Target Square Association": "the black temple",
+                "text": "enters the black temple and wraps the cloak around the shoulders for protection"
             }
         },
         "LibraryS2": {
