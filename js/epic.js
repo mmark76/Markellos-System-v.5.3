@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // === Combine Text ===
-    const narrativeText = stories.join("\n\n");
+    const narrativeText = stories.join("\n\n\n");
 
     // === Game Info ===
     const chess = new Chess();
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
 
 // Εμφάνιση μορφοποιημένου κειμένου
-    textView.innerHTML = htmlText;
+    textView.innerText = fullText;
 
 // Μορφοποίηση
     textView.style.fontFamily = '"Book Antiqua", Palatino, serif';
@@ -198,4 +198,5 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
