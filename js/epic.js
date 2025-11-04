@@ -126,7 +126,24 @@ stories.push(phrase.trim());
 
     const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]  .filter(Boolean)  .join("\n\n");
     
-     document.getElementById("epicTextView").innerText = fullText;
+     const textView = document.getElementById("epicTextView");
+
+// ✳️ Μετατροπή σε παραγράφους
+const htmlText = fullText
+  .split(/\n{2,}/)                       // κάθε διπλό newline = νέα παράγραφος
+  .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)  // απλά line breaks μένουν inline
+  .join("");
+
+// ✳️ Εμφάνιση μορφοποιημένου κειμένου
+textView.innerHTML = htmlText;
+
+// ✳️ Μορφοποίηση
+textView.style.fontFamily = '"Book Antiqua", Palatino, serif';
+textView.style.fontSize = "10pt";
+textView.style.textAlign = "justify";
+textView.style.lineHeight = "1";
+textView.style.margin = "0";
+textView.style.padding = "0";
 
     // === Copy Button ===
     const copyBtn = document.getElementById("copyEpicBtn");
@@ -181,6 +198,7 @@ stories.push(phrase.trim());
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
