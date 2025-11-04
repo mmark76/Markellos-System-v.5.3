@@ -136,13 +136,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // Εμφάνιση μορφοποιημένου κειμένου
     textView.innerText = fullText;
 
-// Μορφοποίηση
-    textView.style.fontFamily = '"Book Antiqua", Palatino, serif';
-    textView.style.fontSize = "10pt";
-    textView.style.textAlign = "justify";
-    textView.style.lineHeight = "1";
-    textView.style.margin = "0";
-    textView.style.padding = "0";
+// Μορφοποίηση (απενεργοποιήθηκε — ορίζεται πλέον μέσω CSS)
+    // textView.style.fontFamily = '"Book Antiqua", Palatino, serif';
+    // textView.style.fontSize = "10pt";
+    // textView.style.textAlign = "justify";
+    // textView.style.lineHeight = "1";
+    // textView.style.margin = "0";
+    // textView.style.padding = "0";
 
     // === Copy Button ===
     const copyBtn = document.getElementById("copyEpicBtn");
@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
