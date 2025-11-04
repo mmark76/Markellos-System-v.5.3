@@ -90,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let sceneNumber = i + 1;
     const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
-    let phrase = `${t1Header}
-             - ${opening} στην περιοχή ${square}, εκεί όπου ${action} ${locus} (mnemonic locus ${sceneNumber}). Τότε, ${pieceAssoc}, ${targetAssoc}.`;
+    let phrase = `${t1Header}- ${opening} στην περιοχή ${square}, εκεί όπου ${action} ${locus} (mnemonic locus ${sceneNumber}). Τότε, ${pieceAssoc}, ${targetAssoc}.`;
     if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
     stories.push(phrase.trim());
@@ -198,6 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
