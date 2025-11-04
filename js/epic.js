@@ -128,16 +128,16 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const textView = document.getElementById("epicTextView");
 
-// ✳️ Μετατροπή σε παραγράφους
+// Μετατροπή σε παραγράφους
     const htmlText = fullText
       .split(/\n{2,}/)                       // κάθε διπλό newline = νέα παράγραφος
       .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)  // απλά line breaks μένουν inline
       .join("");
 
-// ✳️ Εμφάνιση μορφοποιημένου κειμένου
+// Εμφάνιση μορφοποιημένου κειμένου
     textView.innerHTML = htmlText;
 
-// ✳️ Μορφοποίηση
+// Μορφοποίηση
     textView.style.fontFamily = '"Book Antiqua", Palatino, serif';
     textView.style.fontSize = "10pt";
     textView.style.textAlign = "justify";
@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
