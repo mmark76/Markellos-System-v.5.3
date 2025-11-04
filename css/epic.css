@@ -133,5 +133,14 @@
   display: inline-block; /* να μη τεντώνει */
 }
 
+#epicTextView p {
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  font-family: "Book Antiqua", Palatino, serif;
+  font-size: 10pt;
+  line-height: 1;
+}
+
 
 
