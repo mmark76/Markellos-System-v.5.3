@@ -1101,7 +1101,7 @@
         "LibraryC2": {
             "Pa2": "ο Άρνολντ Σβαρτσενέγκερ, the White Warrior",
             "Pb2": "ο Μπόρις Τζόνσον, the White Warrior",
-            "Pc2": "ο Κόνορ ΜακΓκρέγκορ, the White Warrior",
+            "Pc2": "ο Conor McGregor, the White Warrior",
             "Pd2": "ο Ντόναλντ Τραμπ, the White Warrior",
             "Pe2": "ο Έλον Μασκ, the White Warrior",
             "Pf2": "ο Φλόιντ Μέιγουέδερ, the White Warrior",
@@ -4150,5 +4150,6 @@
         }
     }
 }
+
 
 
