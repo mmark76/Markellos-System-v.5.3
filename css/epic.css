@@ -89,7 +89,7 @@
 
 /* Περιεχόμενο modal (card) */
 .epic-modal-content {
-  background: #1a1a1a;
+  background: #111;
   color: #eee;
   margin: 5% auto;
   padding: 20px;
@@ -149,6 +149,7 @@
   font-size: 10pt;
   text-align: justify;
 }
+
 
 
 
