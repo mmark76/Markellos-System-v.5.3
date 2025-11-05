@@ -4,7 +4,7 @@
 
 let libs = null;
 let gameMoves = [];
-let selectedLang = 'el';
+let selectedLang = 'en';
 
 /* ---------- Global Locus Mode ---------- */
 let locusMode = 'half'; // προεπιλογή: ανά ημικίνηση
@@ -237,7 +237,18 @@ function fillAssociationsTable(moves){
 
     assocBySquare[m.to] = pieceAssoc;
 
-   /* ==== 1η Λογική για Target Square Association
+    /* === Target Square Association: ΜΟΝΟ S1 === */
+    let targetAssoc = '';
+    const node1 = Ltarget1[m.to];
+    
+    if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
+    targetAssoc = node1[selectedLang] || node1.el || node1.en;
+    } 
+    else {
+    targetAssoc = m.to;
+    }
+    
+    /* ==== 1η Λογική για Target Square Association
     let targetAssoc = '';
     const node2 = Ltarget2[m.to];
     const node1 = Ltarget1[m.to];
@@ -253,7 +264,7 @@ function fillAssociationsTable(moves){
     } 
 	================== */
 
-	// --- 2η Λογική για Target Square Association ---
+	/* --- 2η Λογική για Target Square Association ---
     let targetAssoc = '';
     const node2 = Ltarget2[m.to];
     const node1 = Ltarget1[m.to];
@@ -267,7 +278,8 @@ function fillAssociationsTable(moves){
     else {
      targetAssoc = m.to;
     }
-
+    ================== */
+	  
     const tr=document.createElement('tr'); 
     tr.dataset.index=m.index;
     tr.innerHTML =
