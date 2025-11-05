@@ -164,7 +164,7 @@ function fillSanTable(moves){
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceDisplay)}</td>`+
       `<td>${escapeHtml(m.to)}</td>`+
-      `<td>${escapeHtml(m.fen)}</td>`;
+      /*`<td>${escapeHtml(m.fen)}</td>`;*/
     body.appendChild(tr);
   });
 }
