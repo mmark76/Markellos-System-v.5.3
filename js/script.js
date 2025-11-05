@@ -238,14 +238,20 @@ function fillAssociationsTable(moves){
     assocBySquare[m.to] = pieceAssoc;
 
 /*===================== S1 text ====================*/
-let targetAssoc = '';
-  const node1 = Spatial.LibraryS1[m.to];   // μόνο S1
+  let targetAssoc = '';
+      const node1 = Ltarget1[m.to];
+	  const node2 = Ltarget2[m.to];
 
-   if (node1 && node1.text) {
-   targetAssoc = node1.text;  // πάντα αγγλικό text
-   } else {
-    targetAssoc = m.to;
-   }
+    if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
+      targetAssoc = node1[selectedLang] || node1.el || node1.en;
+    } 
+	 
+    else  if (node2 && node2["Target Square Association"]) {
+      targetAssoc = node2["Target Square Association"];
+    } 
+    else {
+      targetAssoc = m.to;
+    }
 /* =============================================*/
 	  
     const tr=document.createElement('tr'); 
