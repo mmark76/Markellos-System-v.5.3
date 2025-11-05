@@ -238,33 +238,27 @@ function fillAssociationsTable(moves){
     assocBySquare[m.to] = pieceAssoc;
 
 /*===================== S1 text ====================*/
-  let targetAssoc = '';
-      const node1 = Ltarget1[m.to];
-	  const node2 = Ltarget2[m.to];
+let targetAssoc = '';
+const node1 = Ltarget1[m.to];
+const storyText = node1?.text || '';
 
-    if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
-      targetAssoc = node1[selectedLang] || node1.el || node1.en;
-    } 
-	 
-    else  if (node2 && node2["Target Square Association"]) {
-      targetAssoc = node2["Target Square Association"];
-    } 
-    else {
-      targetAssoc = m.to;
-    }
+if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
+  targetAssoc = node1[selectedLang] || node1.el || node1.en;
+} else {
+  targetAssoc = m.to;
+}
 /* =============================================*/
-	  
-    const tr=document.createElement('tr'); 
-    tr.dataset.index=m.index;
-    tr.innerHTML =
-      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
-      `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml(m.to)}</td>`+
-      `<td>${escapeHtml(sideGR(m.side))}</td>`+
-      `<td>${escapeHtml(pieceAssoc)}</td>`+
-      `<td>${escapeHtml(targetAssoc)}</td>`;
+
+tr.innerHTML =
+  `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
+  `<td>${escapeHtml(m.san)}</td>`+
+  `<td>${escapeHtml(anchor)}</td>`+
+  `<td>${escapeHtml(locus)}</td>`+
+  `<td>${escapeHtml(m.to)}</td>`+
+  `<td>${escapeHtml(sideGR(m.side))}</td>`+
+  `<td>${escapeHtml(pieceAssoc)}</td>`+
+  `<td>${escapeHtml(targetAssoc)}</td>`+
+  `<td>${escapeHtml(storyText)}</td>`;
     body.appendChild(tr);
   });
 }
