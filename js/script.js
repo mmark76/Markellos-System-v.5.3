@@ -237,48 +237,16 @@ function fillAssociationsTable(moves){
 
     assocBySquare[m.to] = pieceAssoc;
 
-    /* === Target Square Association: ΜΟΝΟ S1 
-    let targetAssoc = '';
-    const node1 = Ltarget1[m.to];
-    
-    if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
-    targetAssoc = node1[selectedLang] || node1.el || node1.en;
-    } 
-    else {
+/*===================== S1 text ====================*/
+let targetAssoc = '';
+  const node1 = Spatial.LibraryS1[m.to];   // μόνο S1
+
+   if (node1 && node1.text) {
+   targetAssoc = node1.text;  // πάντα αγγλικό text
+   } else {
     targetAssoc = m.to;
-    } === */
-    
-    /* ==== 1η Λογική για Target Square Association================== */
-    let targetAssoc = '';
-    const node2 = Ltarget2[m.to];
-    const node1 = Ltarget1[m.to];
-
-    if (node2 && node2["Target Square Association"]) {
-      targetAssoc = node2["Target Square Association"];
-    } 
-    else if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
-      targetAssoc = node1[selectedLang] || node1.el || node1.en;
-    } 
-    else {
-      targetAssoc = m.to;
-    } 
-	
-
-	/* --- 2η Λογική για Target Square Association ---
-    let targetAssoc = '';
-    const node2 = Ltarget2[m.to];
-    const node1 = Ltarget1[m.to];
-
-    if (node2 && node2.text) {
-    targetAssoc = node2.text;
-    }
-    else if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
-     targetAssoc = node1[selectedLang] || node1.el || node1.en;
-    }
-    else {
-     targetAssoc = m.to;
-    }
-    ================== */
+   }
+/* =============================================*/
 	  
     const tr=document.createElement('tr'); 
     tr.dataset.index=m.index;
