@@ -195,9 +195,9 @@ function fillAssociationsTable(moves){
   body.innerHTML='';
 
   // Libraries
-  const Lpieces = libs?.Characters?.LibraryC2 || {}; 
-  const Ltarget1 = libs?.Spatial?.LibraryS1 || {}; 
-  const Ltarget2 = libs?.Spatial?.LibraryS2 || {}; 
+  const Lpieces  = libs?.Characters?.LibraryC2 || {}; 
+  const Ltarget1 = libs?.Spatial?.LibraryS1 || {}; // EN
+  const Ltarget2 = libs?.Spatial?.LibraryS2 || {}; // EL
 
   const assocBySquare = Object.create(null);
 
@@ -206,7 +206,7 @@ function fillAssociationsTable(moves){
     (Lpieces[`${pieceLetter}${fromSq||''}`] || Lpieces[fromSq||''] || Lpieces[pieceLetter] || pieceGreek(pieceLetter));
 
   moves.forEach(m=>{
-    const locus = locusForMove(m);
+    const locus  = locusForMove(m);
     const anchor = anchorForMove(m.index);
 
     let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
@@ -215,7 +215,7 @@ function fillAssociationsTable(moves){
     // --- Ροκέ ---
     const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
     if(sanClean.startsWith('O-O')){
-      const long = sanClean.startsWith('O-O-O');
+      const long  = sanClean.startsWith('O-O-O');
       const white = (m.side==='White');
       const rookFrom = white ? (long ? 'a1':'h1') : (long ? 'a8':'h8');
       const rookTo   = white ? (long ? 'd1':'f1') : (long ? 'd8':'f8');
@@ -237,28 +237,24 @@ function fillAssociationsTable(moves){
 
     assocBySquare[m.to] = pieceAssoc;
 
-/*===================== S1 text ====================*/
-let targetAssoc = '';
-const node1 = Ltarget1[m.to];
-const storyText = node1?.text || '';
+    // -------- S1/S2 στόχος + raw "text" στο ΤΕΛΕΥΤΑΙΟ κελί --------
+    const node = (selectedLang === 'el' ? Ltarget2[m.to] : Ltarget1[m.to]) || null;
+    const targetAssoc = node?.['Target Square Association'] || m.to;  // ανθρώπινη περιγραφή
+    const storyText   = node?.text || '';                             // raw περιγραφή (key "text")
 
-if (node1 && (node1[selectedLang] || node1.el || node1.en)) {
-  targetAssoc = node1[selectedLang] || node1.el || node1.en;
-} else {
-  targetAssoc = m.to;
-}
-/* =============================================*/
-
-tr.innerHTML =
-  `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
-  `<td>${escapeHtml(m.san)}</td>`+
-  `<td>${escapeHtml(anchor)}</td>`+
-  `<td>${escapeHtml(locus)}</td>`+
-  `<td>${escapeHtml(m.to)}</td>`+
-  `<td>${escapeHtml(sideGR(m.side))}</td>`+
-  `<td>${escapeHtml(pieceAssoc)}</td>`+
-  `<td>${escapeHtml(targetAssoc)}</td>`+
-  `<td>${escapeHtml(storyText)}</td>`;
+    // Δημιουργία γραμμής (FIX)
+    const tr = document.createElement('tr');
+    tr.dataset.index = m.index;
+    tr.innerHTML =
+      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
+      `<td>${escapeHtml(m.san)}</td>`+
+      `<td>${escapeHtml(anchor)}</td>`+
+      `<td>${escapeHtml(locus)}</td>`+
+      `<td>${escapeHtml(m.to)}</td>`+
+      `<td>${escapeHtml(sideGR(m.side))}</td>`+
+      `<td>${escapeHtml(pieceAssoc)}</td>`+
+      `<td>${escapeHtml(targetAssoc)}</td>`+   // προτελευταία: φιλική συσχέτιση τετραγώνου
+      `<td>${escapeHtml(storyText)}</td>`;     // ΤΕΛΕΥΤΑΙΑ: το κλειδί "text"
     body.appendChild(tr);
   });
 }
