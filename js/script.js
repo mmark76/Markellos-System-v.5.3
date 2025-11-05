@@ -237,7 +237,7 @@ function fillAssociationsTable(moves){
 
     assocBySquare[m.to] = pieceAssoc;
 
-    /* === Target Square Association: ΜΟΝΟ S1 === */
+    /* === Target Square Association: ΜΟΝΟ S1 
     let targetAssoc = '';
     const node1 = Ltarget1[m.to];
     
@@ -246,9 +246,9 @@ function fillAssociationsTable(moves){
     } 
     else {
     targetAssoc = m.to;
-    }
+    } === */
     
-    /* ==== 1η Λογική για Target Square Association
+    /* ==== 1η Λογική για Target Square Association================== */
     let targetAssoc = '';
     const node2 = Ltarget2[m.to];
     const node1 = Ltarget1[m.to];
@@ -262,7 +262,7 @@ function fillAssociationsTable(moves){
     else {
       targetAssoc = m.to;
     } 
-	================== */
+	
 
 	/* --- 2η Λογική για Target Square Association ---
     let targetAssoc = '';
