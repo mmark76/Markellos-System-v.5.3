@@ -518,9 +518,9 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   // Γλώσσα
   const langSel = document.getElementById('langSelect');
   if(langSel){
-    selectedLang = (langSel.value || 'el');
+    selectedLang = (langSel.value || 'en');
     langSel.addEventListener('change', ()=>{
-      selectedLang = langSel.value || 'el';
+      selectedLang = langSel.value || 'en';
       renderAll();
     });
   }
