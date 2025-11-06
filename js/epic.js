@@ -63,69 +63,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let stories = [];
 
-    // === Half-move only: μία σκηνή ανά ημικίνηση ===
-    for (let i = 0; i < rows.length; i++) {
-      const r = rows[i];
-      const [_, san, anchor, locus, targetSquare, color, pieceAssoc, targetAssoc] =  [...r.children].map(td => td.innerText.trim());
-      const square = targetSquare || getSquare(san);
+// === Half-move only: one scene per half-move ===
+for (let i = 0; i < rows.length; i++) {
+  const r = rows[i];
+  const [_, san, anchor, locus, targetSquare, color, pieceAssoc, targetAssoc] =
+    [...r.children].map(td => td.innerText.trim());
+  const square = targetSquare || getSquare(san);
 
-      if (!locus) continue;
-    const anchorTxt = cleanAnchor(anchor);
-    const sanText = sanToText(san);
+  if (!locus) continue;
+  const anchorTxt = cleanAnchor(anchor);
+  const sanText = sanToText(san);
 
-    const openings = [
-        "Στη συνέχεια, και καθώς ο Γέροντας συνεχίζει να διαβάζει, η δράση διαδραματίζεται",
-        "Λίγο αργότερα, και καθώς ο Γέροντας γυρνάει τις σελίδες του χοντρού βιβλίου, η δράση συνεχίζεται",
-        "Μετά από λίγο, και καθώς ο μικρός σκακιστής συνεχίζει να παρακολουθεί τη μάχη με μεγάλη αγωνία, η δράση μεταφέρεται",
-    ];
+  const openings = [
+    "Then, as the Elder continues reading, the action unfolds",
+    "A little later, as the Elder turns the thick pages, the action continues",
+    "After a while, as the young chess player watches with anticipation, the scene shifts",
+  ];
 
-      const verbs = [
-        "εμφανίζεται",
-        "ξεπροβάλλει",
-        "διακρίνεται"
-    ];
+  const verbs = [
+    "appears",
+    "emerges",
+    "can be seen"
+  ];
 
-    const opening = i === 0 ? "Ακούγεται μία σάλπιγγα και η δράση ξεκινάει" : openings[i % openings.length];
-    const action = verbs[i % verbs.length];
+  const opening = i === 0 ? "A trumpet sounds, and the battle begins" : openings[i % openings.length];
+  const action = verbs[i % verbs.length];
 
-    let sceneNumber = i + 1;
-    const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
-    let phrase = `${t1Header}- ${opening} στην περιοχή ${square}, εκεί όπου ${action} ${locus}. Τότε, ${pieceAssoc}, ${targetAssoc}.`;
-    if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
+  let sceneNumber = i + 1;
+  const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
+  let phrase = `${t1Header}- ${opening} in the area of ${square}, where ${locus} ${action}. Then, ${pieceAssoc}, ${targetAssoc}.`;
+  if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
-    stories.push(phrase.trim());
-    }
+  stories.push(phrase.trim());
+}
 
-    // === Combine Text ===
-    const narrativeText = stories.join("\n\n");
+// === Combine Text ===
+const narrativeText = stories.join("\n\n");
 
-    // === Game Info ===
-    const chess = new Chess();
-    chess.load_pgn(document.getElementById("pgnText").value, { sloppy: true });
-    const headers = chess.header();
+// === Game Info ===
+const chess = new Chess();
+chess.load_pgn(document.getElementById("pgnText").value, { sloppy: true });
+const headers = chess.header();
 
-    const event = headers["Event"] || "";
-    const date = headers["Date"] || "";
-    const white = headers["White"] || "";
-    const black = headers["Black"] || "";
-    const result = headers["Result"] || "";
+const event = headers["Event"] || "";
+const date = headers["Date"] || "";
+const white = headers["White"] || "";
+const black = headers["Black"] || "";
+const result = headers["Result"] || "";
 
-    const [y, m, d] = date.split(".");
-    const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("en-GB", {
-      day: "numeric", month: "long", year: "numeric"
-    });
-    
-    const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
-    const prologue = `♟. "Ο Γέροντας παίρνει στα χέρια του με ηρεμία και μεγάλη προσοχή το χοντρό βιβλίο με τις πολλές ιστορικές παρτίδες και λέει στο μικρό σκακιστή ...\n\n Σήμερα θα μελετήσουμε μία πολύ ενδιαφέρουσα μάχη. Και ανοίγει το εξώφυλλο, μετροφυλλάει κάποιες σελίδες και ξεκινάει να διαβάζει... \n\n ... ήταν αργά το απόγευμα, όταν oι δύο Στρατηγοί έδωσαν τα χέρια, και αφού δόθηκε το σινιάλο, η μάχη ξεκίνησε... `;
-     
-    let finalMsg = "";
-    if (result === "1-0") finalMsg = "\n … και μετά την τελευταία κίνηση, ο μαύρος Στρατηγός κατάλαβε πως η μάχη είχε κριθεί. Έσκυψε το κεφάλι του αργά, και δίνοντας το χέρι του στον αντίπαλο Στρατηγό, αποδέχτηκε με αξιοπρέπεια την ήττα. Ο Γέροντας κλείνει το χοντρό βιβλίο, η παρτίδα γίνεται ανάμνηση και για πάντα χαράσσεται στη μνήμη και το έπος γράφεται στην ιστορία.";
-    else if (result === "0-1") finalMsg = "\n … και μετά την τελευταία κίνηση, ο λευκός Στρατηγός κατάλαβε πως η μάχη είχε κριθεί. Έσκυψε το κεφάλι του αργά, και δίνοντας το χέρι του στον αντίπαλο Στρατηγό, αποδέχτηκε με αξιοπρέπεια την ήττα. Ο Γέροντας κλείνει το χοντρό βιβλίο, η παρτίδα γίνεται ανάμνηση και για πάντα χαράσσεται στη μνήμη και το έπος γράφεται στην ιστορία.";
-    else if (result === "1/2-1/2") finalMsg = "\n … και μετά την τελευταία κίνηση, οι δύο Στρατηγοί καταλαβαίνουν ότι κανείς δεν μπορεί να κερδίσει αυτή τη μάχη ... και έτσι δίνουν τα χέρια και η μάχη λήγει ισόπαλη. Ο Γέροντας κλείνει το χοντρό βιβλίο, η παρτίδα γίνεται ανάμνηση και για πάντα χαράσσεται στη μνήμη και το έπος γράφεται στην ιστορία.";
+const [y, m, d] = date.split(".");
+const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("en-GB", {
+  day: "numeric", month: "long", year: "numeric"
+});
 
-    const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]  .filter(Boolean)  .join("\n\n");
-    
-    const textView = document.getElementById("epicTextView");
+const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
+
+const prologue = `♟. "The Elder calmly takes in his hands the thick book of historic chess battles and says to the young chess player...\n\n Today we shall study a very interesting battle. He opens the cover, turns a few pages, and begins to read...\n\n ... it was late afternoon when the two Generals shook hands, and after the signal was given, the battle began..."`;
+
+let finalMsg = "";
+if (result === "1-0") finalMsg = "\n … and after the final move, the Black General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
+else if (result === "0-1") finalMsg = "\n … and after the final move, the White General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
+else if (result === "1/2-1/2") finalMsg = "\n … and after the final move, the two Generals understood that neither could claim victory. They shook hands, and the battle ended in a draw. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
+
+const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]
+  .filter(Boolean)
+  .join("\n\n");
+
+const textView = document.getElementById("epicTextView");
 
 // Μετατροπή σε παραγράφους
     const htmlText = fullText
@@ -133,16 +137,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)  // απλά line breaks μένουν inline
       .join("");
 
-// Εμφάνιση μορφοποιημένου κειμένου
+    // Εμφάνιση μορφοποιημένου κειμένου
     textView.innerText = fullText;
-
-// Μορφοποίηση (απενεργοποιήθηκε — ορίζεται πλέον μέσω CSS)
-    // textView.style.fontFamily = '"Book Antiqua", Palatino, serif';
-    // textView.style.fontSize = "10pt";
-    // textView.style.textAlign = "justify";
-    // textView.style.lineHeight = "1";
-    // textView.style.margin = "0";
-    // textView.style.padding = "0";
 
     // === Copy Button ===
     const copyBtn = document.getElementById("copyEpicBtn");
@@ -197,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
