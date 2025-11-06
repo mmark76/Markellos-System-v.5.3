@@ -75,8 +75,8 @@ for (let i = 0; i < rows.length; i++) {
   const sanText = sanToText(san);
 
   const openings = [
-    "Then, as the Elder continues reading, the action unfolds",
-    "A little later, as the Elder turns the thick pages, the action continues",
+    "Then, as the old man continues reading, the action unfolds",
+    "A little later, as the old man turns the thick pages, the action continues",
     "After a while, as the young chess player watches with anticipation, the scene shifts",
   ];
 
@@ -118,11 +118,11 @@ const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("en-GB", {
 
 const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
 
-const prologue = `♟. "The Elder calmly takes in his hands the thick book of historic chess battles and says to the young chess player...\n\n Today we shall study a very interesting battle. He opens the cover, turns a few pages, and begins to read...\n\n ... it was late afternoon when the two Generals shook hands, and after the signal was given, the battle began..."`;
+const prologue = `♟. "The old man calmly takes in his hands the thick book of historic chess battles and says to the young chess player...\n\n Today we shall study a very interesting battle. He opens the cover, turns a few pages, and begins to read...\n\n ... it was late afternoon when the two Generals shook hands, and after the signal was given, the battle began..."`;
 
 let finalMsg = "";
-if (result === "1-0") finalMsg = "\n … and after the final move, the Black General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
-else if (result === "0-1") finalMsg = "\n … and after the final move, the White General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
+if (result === "1-0") finalMsg = "\n … and after the final move, the Black General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The old man closes the thick book. The game becomes memory, yet forever engraved in history.";
+else if (result === "0-1") finalMsg = "\n … and after the final move, the White General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The old man closes the thick book. The game becomes memory, yet forever engraved in history.";
 else if (result === "1/2-1/2") finalMsg = "\n … and after the final move, the two Generals understood that neither could claim victory. They shook hands, and the battle ended in a draw. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
 
 const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]
@@ -193,6 +193,7 @@ const textView = document.getElementById("epicTextView");
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
