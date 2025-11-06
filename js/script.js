@@ -253,7 +253,6 @@ function fillAssociationsTable(moves){
       `<td>${escapeHtml(m.to)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceAssoc)}</td>`+
-      `<td>${escapeHtml(targetAssoc)}</td>`+   // προτελευταία: φιλική συσχέτιση τετραγώνου
       `<td>${escapeHtml(storyText)}</td>`;     // ΤΕΛΕΥΤΑΙΑ: το κλειδί "text"
     body.appendChild(tr);
   });
