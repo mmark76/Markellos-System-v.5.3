@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ---------- Helpers ---------- */
   function sanToText(san) {
     if (!san) return "";
-    if (san === "O-O") return "King Castle Short Side";
-    if (san === "O-O-O") return "King Castle Long Side";
+    if (san === "O-O") return "King Castles Short Side";
+    if (san === "O-O-O") return "King Castles Long Side";
 
     const pieceMap = { N: "Knight", B: "Bishop", R: "Rook", Q: "Queen", K: "King" };
     let move = san.replace(/[+#?!]/g, "");
@@ -75,9 +75,9 @@ for (let i = 0; i < rows.length; i++) {
   const sanText = sanToText(san);
 
   const openings = [
-    "Then, as the old man continues reading, the action unfolds",
-    "A little later, as the old man turns the thick pages, the action continues",
-    "After a while, as the young chess player watches with anticipation, the scene shifts",
+    "Then, the action unfolds",
+    "A little later, the action continues",
+    "After a while, the scene shifts",
   ];
 
   const verbs = [
@@ -193,6 +193,7 @@ const textView = document.getElementById("epicTextView");
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
