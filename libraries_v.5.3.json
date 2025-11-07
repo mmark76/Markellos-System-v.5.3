@@ -91,7 +91,7 @@
             },
             "23": {
                 "el": "η περιοχή των πάγων",
-                "en": "the refrigerator area"
+                "en": "the freezing area"
             },
             "24": {
                 "el": "ένα μεγάλο ξύλινο τραπέζι",
@@ -223,11 +223,11 @@
             },
             "56": {
                 "el": "το λευκό κάθισμα στο λουτρό",
-                "en": "the white toilet seat"
+                "en": "the white seat in the WC"
             },
             "57": {
                 "el": "η ξανθιά ξύλινη πόρτα του γραφείου",
-                "en": "the blonde wooden office door"
+                "en": "the wooden office door"
             },
             "58": {
                 "el": "η ντουλάπα με τα είδη εκγύμνασης",
@@ -4342,4 +4342,5 @@
         }
     }
 }
+
 
