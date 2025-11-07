@@ -133,8 +133,8 @@ const textView = document.getElementById("epicTextView");
 
 // Μετατροπή σε παραγράφους
     const htmlText = fullText
-      .split(/\n{2,}/)                       // κάθε διπλό newline = νέα παράγραφος
-      .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)  // απλά line breaks μένουν inline
+      .split(/\n{2,}/)
+      .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)
       .join("");
 
     // Εμφάνιση μορφοποιημένου κειμένου
@@ -193,20 +193,3 @@ const textView = document.getElementById("epicTextView");
     if (event.target === modal) modal.style.display = "none";
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
