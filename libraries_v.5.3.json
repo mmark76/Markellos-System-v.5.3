@@ -1292,13 +1292,13 @@
         },
         "LibraryC2": {
             "Pa2": "Arnold Schwarzenegger, the White Warrior",
-            "Pb2": "Boris Johnson, the White Warrior",
+            "Pb2": "Brad Pitt, the White Warrior",
             "Pc2": "Conor McGregor, the White Warrior",
             "Pd2": "Donald Trump, the White Warrior",
             "Pe2": "Elon Musk, the White Warrior",
-            "Pf2": "François Hollande, the White Warrior",
-            "Pg2": "George Bush, the White Warrior",
-            "Ph2": "Henry Kissinger, the White Warrior",
+            "Pf2": "Franz Kafka, the White Warrior",
+            "Pg2": "George Clooney, the White Warrior",
+            "Ph2": "Hugh Grant, the White Warrior",
             "Ra1": "the Cyclops, the White Queen-Side Rook",
             "Nb1": "the Amazon Otrera, the White Queen-Side Knight",
             "Bc1": "the Wizard Gandalf, the White Queen-Side Bishop",
@@ -1307,14 +1307,14 @@
             "Bf1": "the Sphinx, the White King-Side Bishop",
             "Ng1": "the Amazon Hippolyta, the White King-Side Knight",
             "Rh1": "the Yeti, the White King-Side Rook",
-            "Pa7": "Angela Merkel, the Black Warrior",
+            "Pa7": "Ali (Muhammad Ali), the Black Warrior",
             "Pb7": "Barack Obama, the Black Warrior",
-            "Pc7": "Clint Eastwood, the Black Warrior",
-            "Pd7": "Daisy Dee, the Black Warrior",
-            "Pe7": "Emmanuel Macron, the Black Warrior",
+            "Pc7": "Chris Rock, the Black Warrior",
+            "Pd7": "Denzel Washington, the Black Warrior",
+            "Pe7": "Eddie Murphy, the Black Warrior",
             "Pf7": "Floyd Mayweather, the Black Warrior",
-            "Pg7": "Greta Thunberg, the Black Warrior",
-            "Ph7": "Hillary Clinton, the Black Warrior",
+            "Pg7": "George Foreman, the Black Warrior",
+            "Ph7": "Hakeem Olajuwon, the Black Warrior",
             "Ra8": "Godzilla, the Black Queen-Side Rook",
             "Nb8": "the sexy Lara Croft, the Black Queen-Side Knight",
             "Bc8": "the Black Vampire, the Black Queen-Side Bishop",
@@ -4342,7 +4342,3 @@
         }
     }
 }
-
-
-
-
