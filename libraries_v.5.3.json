@@ -1296,7 +1296,7 @@
             "Pc2": "Conor McGregor, the White Warrior",
             "Pd2": "Donald Trump, the White Warrior",
             "Pe2": "Elon Musk, the White Warrior",
-            "Pf2": "Floyd Mayweather, the White Warrior",
+            "Pf2": "François Hollande, the White Warrior",
             "Pg2": "George Bush, the White Warrior",
             "Ph2": "Henry Kissinger, the White Warrior",
             "Ra1": "the Cyclops, the White Queen-Side Rook",
@@ -1312,7 +1312,7 @@
             "Pc7": "Clint Eastwood, the Black Warrior",
             "Pd7": "Daisy Dee, the Black Warrior",
             "Pe7": "Emmanuel Macron, the Black Warrior",
-            "Pf7": "François Hollande, the Black Warrior",
+            "Pf7": "Floyd Mayweather, the Black Warrior",
             "Pg7": "Greta Thunberg, the Black Warrior",
             "Ph7": "Hillary Clinton, the Black Warrior",
             "Ra8": "Godzilla, the Black Queen-Side Rook",
@@ -4342,6 +4342,7 @@
         }
     }
 }
+
 
 
 
