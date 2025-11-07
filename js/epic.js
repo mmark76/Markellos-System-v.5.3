@@ -91,7 +91,7 @@ for (let i = 0; i < rows.length; i++) {
 
   let sceneNumber = i + 1;
   const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
-  let phrase = `${t1Header}- ${opening} in the area of ${square}, where ${locus} ${action}. Then, ${pieceAssoc}, ${targetAssoc}.`;
+  let phrase = `${t1Header}- ${opening} in the area of ${square}, and ${locus} ${action}. Then, ${pieceAssoc}, ${targetAssoc}.`;
   if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
   stories.push(phrase.trim());
@@ -193,6 +193,7 @@ const textView = document.getElementById("epicTextView");
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
