@@ -7,7 +7,7 @@ let gameMoves = [];
 let selectedLang = 'en';
 
 /* ---------- Global Locus Mode ---------- */
-let locusMode = 'half'; // προεπιλογή: ανά ημικίνηση
+let locusMode = 'half';
 
 document.addEventListener('DOMContentLoaded', () => {
   const locusSelect = document.getElementById('locusMode');
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     locusSelect.value = locusMode;
     locusSelect.addEventListener('change', e => {
       locusMode = e.target.value;
-      // ανανέωση πινάκων για να εφαρμοστεί το νέο mode
+      
        window.locusMode = locusMode;
       if (gameMoves && gameMoves.length) {
         fillSanTable(gameMoves);
@@ -52,7 +52,7 @@ function s1Square(square){
   return (node[selectedLang] || node.el || node.en || '');
 }
 function p1PAO(d) {
-  const P = String(d.P);  // χωρίς -1
+  const P = String(d.P);
   const A = String(d.F);
   const O = String(d.R);
   const lib = libs?.["PAO 0-9"]?.Library_p1;
@@ -84,7 +84,7 @@ function v1Verse(pieceLetter, file, rank, side, moveNo){
 
 /* ---------- Locus ---------- */
 function locusForMove(m) {
-  const total = 80; // συνολικός αριθμός mnemonic loci (κυκλικός)
+  const total = 80;
   if (locusMode === 'full') {
     const idx = ((m.movePair - 1) % total) + 1;
     const label = t1Label(idx);
@@ -97,12 +97,12 @@ function locusForMove(m) {
 }
 
 // --- Χειροκίνητα Anchors ---
-let manualAnchors = {};  // π.χ. { "4": true, "12": true }
+let manualAnchors = {}; 
 
 function anchorForMove(index) {
   return manualAnchors[index] ? '⚓' : '';
 }
-// ✅ Συμβατότητα για τις υπόλοιπες συναρτήσεις
+
 function anchorForMovePair(n) {
   return anchorForMove(n);
 }
@@ -111,15 +111,15 @@ function anchorForMovePair(n) {
 function parsePGN(pgn){
 
 // 🧹 Καθαρισμός meta δεδομένων κινητήρων (π.χ. [%evp ...], [%clk ...], [%emt ...])
-pgn = String(pgn || '').replace(/\r\n/g, '\n'); // ενοποίηση line endings
-pgn = pgn.replace(/\{\[%[\s\S]*?\]\}/g, '');   // αφαιρεί {[%...]} blocks
-pgn = pgn.replace(/\[%[\s\S]*?\]/g, '');       // αφαιρεί σκέτα [%...]
-pgn = pgn.replace(/\{[^}]*\}/g, '');           // αφαιρεί περιγραφικά σχόλια {...}
+pgn = String(pgn || '').replace(/\r\n/g, '\n');
+pgn = pgn.replace(/\{\[%[\s\S]*?\]\}/g, '');
+pgn = pgn.replace(/\[%[\s\S]*?\]/g, '');
+pgn = pgn.replace(/\{[^}]*\}/g, '');
 pgn = pgn
-  .replace(/[ \t]+/g, ' ')                     // πολλαπλά κενά → ένα
-  .replace(/[ \t]*\n[ \t]*/g, '\n')            // καθαρισμός ανά γραμμή
-  .replace(/\n{3,}/g, '\n\n')                  // πάνω από 2 κενές → 2
-  .replace(/(\]\n)(?!\n)/g, '$1\n')            // εξασφαλίζει διπλό newline μετά τα tags
+  .replace(/[ \t]+/g, ' ')
+  .replace(/[ \t]*\n[ \t]*/g, '\n')
+  .replace(/\n{3,}/g, '\n\n')
+  .replace(/(\]\n)(?!\n)/g, '$1\n')
   .trim();
 
 	
@@ -182,7 +182,7 @@ function enableManualAnchors() {
             manualAnchors[moveIndex] = true;
           }
           renderAll();
-          enableManualAnchors(); // επανασύνδεση listeners
+          enableManualAnchors();
         };
       });
     });
@@ -239,8 +239,8 @@ function fillAssociationsTable(moves){
 
     // -------- S1/S2 στόχος + raw "text" στο ΤΕΛΕΥΤΑΙΟ κελί --------
     const node = (selectedLang === 'el' ? Ltarget2[m.to] : Ltarget1[m.to]) || null;
-    const targetAssoc = node?.['Target Square Association'] || m.to;  // ανθρώπινη περιγραφή
-    const storyText   = node?.text || '';                             // raw περιγραφή (key "text")
+    const targetAssoc = node?.['Target Square Association'] || m.to;
+    const storyText   = node?.text || '';
 
     // Δημιουργία γραμμής (FIX)
     const tr = document.createElement('tr');
@@ -253,7 +253,7 @@ function fillAssociationsTable(moves){
       `<td>${escapeHtml(m.to)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceAssoc)}</td>`+
-      `<td>${escapeHtml(storyText)}</td>`;     // ΤΕΛΕΥΤΑΙΑ: το κλειδί "text"
+      `<td>${escapeHtml(storyText)}</td>`;
     body.appendChild(tr);
   });
 }
@@ -403,7 +403,7 @@ function buildLibrariesBar(){
     if (sec) sec.style.display = 'none';
     return;
   }
-  // Αν το ξανανοίξεις (true), μπορείς να επαναφέρεις εδώ τον παλιό κώδικα
+  
 }
 
 /* ---------- Init ---------- */
@@ -447,7 +447,7 @@ function wirePGN(){
         const cleaned = cleanPGN(r.result);
         if(ta) ta.value = cleaned; 
         gameMoves = parsePGN(cleaned);
-        manualAnchors = {}; // καθαρισμός αγκυρών
+        manualAnchors = {};
         renderAll();
         enableManualAnchors();
       };
@@ -459,7 +459,7 @@ function wirePGN(){
     parseBtn.addEventListener('click', ()=>{
       const pgn = ta ? cleanPGN(ta.value) : '';
       gameMoves = parsePGN(pgn);
-      manualAnchors = {}; // καθαρισμός αγκυρών
+      manualAnchors = {};
       renderAll();
       enableManualAnchors();
     });
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   wirePGN();
   wireTableSelect();
 
-  // ✅ Refresh του PAO 00–99 όταν αλλάζει συλλογή
+  // Refresh του PAO 00–99 όταν αλλάζει συλλογή
   const pao99Sel = document.getElementById('pao99CollectionSelect');
   if(pao99Sel){
     pao99Sel.addEventListener('change', ()=>{
@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   lockDropdown('verseAnchorSelect','LibraryT2');
   lockDropdown('verseLibrarySelect','LibraryV1');
 
-  // ✅ Export dropdowns (CSV/TXT/JSON/PDF)
+  // Export dropdowns (CSV/TXT/JSON/PDF)
   document.querySelectorAll('.download-select').forEach(sel=>{
     sel.addEventListener('change', ()=>{
       if(sel.value){
