@@ -626,8 +626,8 @@
                 "Action": "crosses",
                 "Feeling": "caution",
                 "Object": "sword",
-                "Target Square Association": "the iron passage",
-                "text": "crosses the iron passage where the air smells of rust and fear"
+                "Target Square Association": "the iron bridge",
+                "text": "crosses the iron bridge where the air smells of rust and fear"
             },
             "e7": {
                 "Action": "fights",
@@ -4342,3 +4342,4 @@
         }
     }
 }
+
