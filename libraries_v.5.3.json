@@ -2,322 +2,482 @@
     "Temporal": {
         "LibraryT1": {
             "1": {
+                "locus_el": "είσοδος",
+                "locus_en": "entrance door",
                 "el": "μία μεγάλη και βαριά ξύλινη είσοδος",
                 "en": "a large heavy wooden entrance door"
             },
             "2": {
+                "locus_el": "γραμματοκιβώτιο",
+                "locus_en": "mailbox",
                 "el": "ένα γκρίζο γραμματοκιβώτιο",
                 "en": "a grey mailbox"
             },
             "3": {
+                "locus_el": "φοινικιά",
+                "locus_en": "palm tree",
                 "el": "μία ψηλή πλούσια φοινικιά",
                 "en": "a tall and rich palm tree"
             },
             "4": {
+                "locus_el": "πύλη",
+                "locus_en": "sliding iron gate",
                 "el": "μία βαριά συρόμενη σιδερένια πύλη",
                 "en": "a heavy sliding iron gate"
             },
             "5": {
+                "locus_el": "άμαξα",
+                "locus_en": "small grey car",
                 "el": "μία μικρή γκρίζα άμαξα",
                 "en": "a small grey car"
             },
             "6": {
+                "locus_el": "άμαξα",
+                "locus_en": "large red car",
                 "el": "μία μεγάλη κόκκινη άμαξα",
                 "en": "a large red car"
             },
             "7": {
+                "locus_el": "σχάρα",
+                "locus_en": "iron grill",
                 "el": "μία καυτή σιδερένια σχάρα",
                 "en": "a hot iron grill"
             },
             "8": {
+                "locus_el": "αποθήκη",
+                "locus_en": "storage shed",
                 "el": "μία μικρή λευκή αποθήκη",
                 "en": "a small white storage shed"
             },
             "9": {
+                "locus_el": "νεροπηγή",
+                "locus_en": "water tap",
                 "el": "μία σιδερένια νεροπηγή",
                 "en": "an iron water tap"
             },
             "10": {
+                "locus_el": "πορτοκαλιά",
+                "locus_en": "orange tree",
                 "el": "μία κοντή πορτοκαλιά",
                 "en": "a short orange tree"
             },
             "11": {
+                "locus_el": "λεμονιά",
+                "locus_en": "lemon tree",
                 "el": "μία ψηλή λεμονιά",
                 "en": "a tall lemon tree"
             },
             "12": {
+                "locus_el": "ελιά",
+                "locus_en": "olive tree",
                 "el": "μία τεράστια πλούσια ελιά",
                 "en": "a huge rich olive tree"
             },
             "13": {
+                "locus_el": "στεφάνι",
+                "locus_en": "basketball hoop",
                 "el": "ένα σιδερένιο στεφάνι κρεμασμένο ψηλά",
                 "en": "a hanging basketball hoop"
             },
             "14": {
+                "locus_el": "μανταρινόκηπος",
+                "locus_en": "mandarin grove",
                 "el": "ένας όμορφος δενδρόκηπος μανταρινιών",
                 "en": "a beautiful mandarin grove"
             },
             "15": {
+                "locus_el": "κούνια",
+                "locus_en": "swing",
                 "el": "μία μεγάλη σιδερένια κούνια",
                 "en": "a large iron swing"
             },
             "16": {
+                "locus_el": "αποθήκη",
+                "locus_en": "iron storage closet",
                 "el": "μία λευκή σιδερένια αποθήκη",
                 "en": "a white iron storage closet"
             },
             "17": {
+                "locus_el": "τραπέζι",
+                "locus_en": "glass table",
                 "el": "ένα μεγάλο γυάλινο τραπέζι",
                 "en": "a large glass table"
             },
             "18": {
+                "locus_el": "μπονσάι",
+                "locus_en": "bonsai",
                 "el": "ένα όμορφο μπονσάι",
                 "en": "a beautiful bonsai tree"
             },
             "19": {
+                "locus_el": "διάδρομος",
+                "locus_en": "treadmill",
                 "el": "ένας διάδρομος εκγύμνασης",
                 "en": "a treadmill"
             },
             "20": {
+                "locus_el": "νησίδα",
+                "locus_en": "kitchen island",
                 "el": "ένα νησάκι με φρούτα",
                 "en": "a kitchen island with fruit"
             },
             "21": {
+                "locus_el": "γούρνα",
+                "locus_en": "sink",
                 "el": "μία ανοξείδωτη γούρνα",
                 "en": "a stainless steel sink"
             },
             "22": {
+                "locus_el": "ντουλάπι",
+                "locus_en": "cupboard",
                 "el": "ένα ξύλινο ντουλάπι με τρόφιμα",
                 "en": "a wooden food cupboard"
             },
             "23": {
+                "locus_el": "περιοχή πάγων",
+                "locus_en": "refrigerator area",
                 "el": "η περιοχή των πάγων",
-                "en": "the freezing area"
+                "en": "the refrigerator area"
             },
             "24": {
+                "locus_el": "τραπέζι",
+                "locus_en": "wooden dining table",
                 "el": "ένα μεγάλο ξύλινο τραπέζι",
                 "en": "a large wooden dining table"
             },
             "25": {
+                "locus_el": "πιάνο",
+                "locus_en": "piano",
                 "el": "το πιάνο της μικρής όμορφης κόρης",
                 "en": "the piano of the young beautiful daughter"
             },
             "26": {
+                "locus_el": "τραπεζάκι",
+                "locus_en": "round coffee table",
                 "el": "ένα μικρό στρογγυλό τραπεζάκι",
                 "en": "a small round coffee table"
             },
             "27": {
+                "locus_el": "καναπές",
+                "locus_en": "sofa",
                 "el": "ένας μεγάλος καναπές",
                 "en": "a large sofa"
             },
             "28": {
+                "locus_el": "τηλεόραση",
+                "locus_en": "television",
                 "el": "μία τηλεόραση",
                 "en": "a television"
             },
             "29": {
+                "locus_el": "σκαμπό",
+                "locus_en": "stool",
                 "el": "ένα μικρό μωβ σκαμπό",
                 "en": "a small purple stool"
             },
             "30": {
+                "locus_el": "καθρέφτης",
+                "locus_en": "mirror",
                 "el": "ένας καθρέφτης καθιστικού",
                 "en": "a living room mirror"
             },
             "31": {
+                "locus_el": "βιβλιοθήκη",
+                "locus_en": "bookshelf",
                 "el": "η βιβλιοθήκη του καθιστικού",
                 "en": "the living room bookshelf"
             },
             "32": {
+                "locus_el": "αποθήκη",
+                "locus_en": "storage room",
                 "el": "μία σκοτεινή αποθήκη",
                 "en": "a dark storage room"
             },
             "33": {
+                "locus_el": "σκαλί",
+                "locus_en": "granite step",
                 "el": "ένα γρανιτένιο γκρίζο σκαλί",
                 "en": "a grey granite step"
             },
             "34": {
+                "locus_el": "πλατύσκαλο",
+                "locus_en": "marble landing",
                 "el": "ένα μαρμάρινο πλατύσκαλο",
                 "en": "a marble landing"
             },
             "35": {
+                "locus_el": "πλατύσκαλο",
+                "locus_en": "ceramic landing",
                 "el": "ένα κεραμικό μπεζ πλατύσκαλο",
                 "en": "a beige ceramic landing"
             },
             "36": {
+                "locus_el": "αποθήκη",
+                "locus_en": "cleaning closet",
                 "el": "μία ξύλινη αποθήκη με τα καθαριστικά",
                 "en": "a wooden cleaning closet"
             },
             "37": {
+                "locus_el": "πλυντήριο",
+                "locus_en": "washing machine",
                 "el": "το μέρος όπου πλένονται τα ρούχα",
                 "en": "the washing machine"
             },
             "38": {
+                "locus_el": "στεγνωτήριο",
+                "locus_en": "dryer machine",
                 "el": "το λευκό κουτί του αέρα",
                 "en": "the white dryer machine"
             },
             "39": {
+                "locus_el": "ντουλάπα υφασμάτων",
+                "locus_en": "towel closet",
                 "el": "η ντουλάπα των υφασμάτων",
                 "en": "the towel closet"
             },
             "40": {
+                "locus_el": "πόρτα",
+                "locus_en": "bedroom door",
                 "el": "η ξύλινη πόρτα του δωματίου",
                 "en": "the wooden bedroom door"
             },
             "41": {
+                "locus_el": "ντουλάπα",
+                "locus_en": "wardrobe",
                 "el": "η ντουλάπα με τα ρούχα",
                 "en": "the bedroom clothes wardrobe"
             },
             "42": {
+                "locus_el": "κομοδίνο",
+                "locus_en": "nightstand",
                 "el": "ένα μικρό κομοδίνο με ένα παλιό φωτιστικό",
                 "en": "a small nightstand with an old lamp"
             },
             "43": {
+                "locus_el": "κρεβάτι",
+                "locus_en": "bed",
                 "el": "το μεγάλο κρεβάτι",
                 "en": "the large bed"
             },
             "44": {
+                "locus_el": "κομοδίνο",
+                "locus_en": "nightstand",
                 "el": "το μικρό κομοδίνο με το λυχνάρι",
                 "en": "the small nightstand with the lantern lamp"
             },
             "45": {
+                "locus_el": "μπαλκονόπορτα",
+                "locus_en": "balcony door",
                 "el": "η τεράστια μπαλκονόπορτα",
                 "en": "the huge balcony door"
             },
             "46": {
+                "locus_el": "λουτρό",
+                "locus_en": "marble bathroom",
                 "el": "το μαρμάρινο λουτρό",
                 "en": "the marble ensuite bathroom"
             },
             "47": {
+                "locus_el": "αντανάκλαση",
+                "locus_en": "reflection",
                 "el": "μία αντανάκλαση μέσα από ένα καθρέφτη",
                 "en": "a reflection in a mirror"
             },
             "48": {
+                "locus_el": "πινάκας",
+                "locus_en": "glass panel",
                 "el": "ένας περίεργος γυάλινος πίνακας",
                 "en": "a strange glass television"
             },
             "49": {
+                "locus_el": "πόρτα",
+                "locus_en": "bathroom door",
                 "el": "η ξύλινη θύρα του λουτρού",
                 "en": "the girls' bathroom door"
             },
             "50": {
+                "locus_el": "νιπτήρες",
+                "locus_en": "marble sinks",
                 "el": "οι μαρμάρινοι νιπτήρες του λουτρού",
                 "en": "the girls' bathroom marble sinks"
             },
             "51": {
+                "locus_el": "καθρέφτης",
+                "locus_en": "mirror",
                 "el": "ο μεγάλος καθρέφτης του λουτρού",
                 "en": "the girls' bathroom large mirror"
             },
             "52": {
+                "locus_el": "φεγγίτης",
+                "locus_en": "bathroom window",
                 "el": "ένας μικρός φεγγίτης λουτρού",
                 "en": "a small bathroom window"
             },
             "53": {
+                "locus_el": "ντουζιέρα",
+                "locus_en": "shower",
                 "el": "μία μεγάλη ντουζιέρα",
                 "en": "a large shower"
             },
             "54": {
+                "locus_el": "μηχανή μασάζ",
+                "locus_en": "massage machine",
                 "el": "μία μηχανή χαλάρωσης",
                 "en": "a massage machine"
             },
             "55": {
+                "locus_el": "κοφίνι",
+                "locus_en": "basket",
                 "el": "ένα κοφίνι με βρώμικα υφάσματα",
                 "en": "a basket of dirty fabrics"
             },
             "56": {
+                "locus_el": "κάθισμα",
+                "locus_en": "toilet seat",
                 "el": "το λευκό κάθισμα στο λουτρό",
-                "en": "the white seat in the WC"
+                "en": "the white toilet seat"
             },
             "57": {
+                "locus_el": "πόρτα",
+                "locus_en": "office door",
                 "el": "η ξανθιά ξύλινη πόρτα του γραφείου",
-                "en": "the wooden office door"
+                "en": "the blonde wooden office door"
             },
             "58": {
+                "locus_el": "ντουλάπα",
+                "locus_en": "exercise closet",
                 "el": "η ντουλάπα με τα είδη εκγύμνασης",
                 "en": "the office exercise closet"
             },
             "59": {
+                "locus_el": "καναπές",
+                "locus_en": "sofa",
                 "el": "ένας μεγάλος γκρίζος καναπές",
                 "en": "a large grey office sofa"
             },
             "60": {
+                "locus_el": "παράθυρο",
+                "locus_en": "tilt window",
                 "el": "ένα λευκό ανακλινόμενο παράθυρο",
                 "en": "a white tilt window"
             },
             "61": {
+                "locus_el": "στάτης",
+                "locus_en": "clothes rack",
                 "el": "ένας στάτης για μπουρνούζια",
                 "en": "an office clothes rack"
             },
             "62": {
+                "locus_el": "βιβλιοθήκη",
+                "locus_en": "bookshelf",
                 "el": "η ξύλινη λευκή βιβλιοθήκη",
                 "en": "the white wooden bookshelf"
             },
             "63": {
+                "locus_el": "γραφείο",
+                "locus_en": "office desk",
                 "el": "το μεγάλο γραφείο με την κόκκινη καρέκλα",
                 "en": "the large office desk with the red chair"
             },
             "64": {
+                "locus_el": "εκτυπωτής",
+                "locus_en": "printer",
                 "el": "ένας μικρός λευκός εκτυπωτής",
                 "en": "a small white printer"
             },
             "65": {
+                "locus_el": "πόρτα",
+                "locus_en": "bedroom door",
                 "el": "η ξύλινη θύρα στο δωμάτιο της μεγάλης όμορφης κόρης",
                 "en": "the wooden door in loukia's bedroom"
             },
             "66": {
+                "locus_el": "ντουλάπα",
+                "locus_en": "wardrobe",
                 "el": "η ντουλάπα των ρούχων της μεγάλης όμορφης κόρης",
                 "en": "the clothes wardrobe in loukia's bedroom"
             },
             "67": {
+                "locus_el": "γραφείο",
+                "locus_en": "desk",
                 "el": "το μεγάλο γραφείο της μεγάλης όμορφης κόρης",
                 "en": "the large desk in loukia's bedroom"
             },
             "68": {
+                "locus_el": "κρεβάτι",
+                "locus_en": "bed",
                 "el": "το κρεβάτι της μεγάλης όμορφης κόρης",
                 "en": "the bed in loukia's bedroom"
             },
             "69": {
+                "locus_el": "παράθυρο",
+                "locus_en": "window",
                 "el": "το παράθυρο στο δωμάτιο της μεγάλης όμορφης κόρης",
                 "en": "the window in loukia's bedroom"
             },
             "70": {
+                "locus_el": "καρέκλα",
+                "locus_en": "chair",
                 "el": "η καρέκλα στο δωμάτιο της μεγάλης όμορφης κόρης",
                 "en": "the chair in loukia's bedroom"
             },
             "71": {
+                "locus_el": "σκαμπό",
+                "locus_en": "stool",
                 "el": "το σκαμπό στο δωμάτιο της μεγάλης όμορφης κόρης",
                 "en": "the stool in loukia's bedroom"
             },
             "72": {
+                "locus_el": "καθρέφτης",
+                "locus_en": "mirror",
                 "el": "ο καθρέφτης στο δωμάτιο της μεγάλης όμορφης κόρης",
                 "en": "the mirror in loukia's bedroom"
             },
             "73": {
+                "locus_el": "πόρτα",
+                "locus_en": "bedroom door",
                 "el": "η ξύλινη θύρα στο δωμάτιο της μικρής όμορφης κόρης",
                 "en": "the wooden door in maria's bedroom"
             },
             "74": {
+                "locus_el": "γραφείο",
+                "locus_en": "desk",
                 "el": "το γραφείο στο δωμάτιο της μικρής όμορφης κόρης",
                 "en": "the desk in maria's bedroom"
             },
             "75": {
+                "locus_el": "παράθυρο",
+                "locus_en": "window",
                 "el": "το παράθυρο στο δωμάτιο της μικρής όμορφης κόρης",
                 "en": "the window in maria's bedroom"
             },
             "76": {
+                "locus_el": "καθρέφτης",
+                "locus_en": "mirror",
                 "el": "ο καθρέφτης στο δωμάτιο της μικρής όμορφης κόρης",
                 "en": "the mirror in maria's bedroom"
             },
             "77": {
+                "locus_el": "κομοδίνο",
+                "locus_en": "nightstand",
                 "el": "το κομοδίνο της μικρής όμορφης κόρης",
                 "en": "the bedside table in maria's bedroom"
             },
             "78": {
+                "locus_el": "κρεβάτι",
+                "locus_en": "bed",
                 "el": "το κρεβάτι της μικρής όμορφης κόρης",
                 "en": "the bed in maria's bedroom"
             },
             "79": {
+                "locus_el": "ντουλάπα",
+                "locus_en": "wardrobe",
                 "el": "η ντουλάπα με τα ρούχα της μικρής όμορφης κόρης",
                 "en": "the clothes wardrobe in maria's bedroom"
             },
             "80": {
+                "locus_el": "ντουλάπα παπλωμάτων",
+                "locus_en": "blanket wardrobe",
                 "el": "η ντουλάπα με τα παπλώματα της μικρής όμορφης κόρης",
                 "en": "the blanket wardrobe in maria's bedroom"
             }
