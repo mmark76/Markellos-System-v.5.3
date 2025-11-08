@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // === Half-move only: one scene per half-move ===
 for (let i = 0; i < rows.length; i++) {
   const r = rows[i];
-  const [_, san, anchor, locus, targetSquare, color, pieceAssoc, storyText] =
+  const [_, san, anchor, locus_en, pieceAssoc, storyText] =
     [...r.children].map(td => td.innerText.trim());
   const square = targetSquare || getSquare(san);
 
@@ -91,7 +91,7 @@ for (let i = 0; i < rows.length; i++) {
 
   let sceneNumber = i + 1;
   const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
-  let phrase = `${t1Header}- ${opening} in the area of ${square}, and ${locus} ${action}. Then, ${pieceAssoc}, ${storyText}.`;
+  let phrase = `${t1Header}- ${opening} in the area of ${square}, and ${locus_en} ${action}. Then, ${pieceAssoc}, ${storyText}.`;
   if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
   stories.push(phrase.trim());
@@ -193,5 +193,6 @@ const textView = document.getElementById("epicTextView");
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
