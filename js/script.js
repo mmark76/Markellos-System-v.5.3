@@ -264,7 +264,6 @@ function fillAssociationsTable(moves){
   if(!body) return;
   body.innerHTML='';
 
-  // --- Libraries ---
   const Lpieces   = libs?.Characters?.LibraryC2 || {}; 
   const Ltarget1  = libs?.Spatial?.LibraryS1 || {}; // EN
   const Ltarget2  = libs?.Spatial?.LibraryS2 || {}; // EL
@@ -273,12 +272,13 @@ function fillAssociationsTable(moves){
   const assocBySquare = Object.create(null);
 
   const getAssocFor = (pieceLetter, fromSq) =>
-    (Lpieces[`${pieceLetter}${fromSq||''}`] || Lpieces[fromSq||''] || Lpieces[pieceLetter] || pieceGreek(pieceLetter));
+    (Lpieces[`${pieceLetter}${fromSq||''}`] || 
+     Lpieces[fromSq||''] || 
+     Lpieces[pieceLetter] || 
+     pieceGreek(pieceLetter));
 
   moves.forEach(m=>{
-
-    // locus_en ή fallback
-    const locus = Ltemporal[m.index]?.locus_en || locusForMove(m);
+    const locus  = Ltemporal[m.index]?.locus_en || locusForMove(m);
     const anchor = anchorForMove(m.index);
 
     let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
@@ -286,36 +286,30 @@ function fillAssociationsTable(moves){
 
     const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
 
-    // --- Castling ---
+    // Castling
     if(sanClean.startsWith('O-O')){
       const long  = sanClean.startsWith('O-O-O');
       const white = (m.side==='White');
       const rookFrom = white ? (long ? 'a1':'h1') : (long ? 'a8':'h8');
       const rookTo   = white ? (long ? 'd1':'f1') : (long ? 'd8':'f8');
-      if(assocBySquare[rookFrom]){
-        assocBySquare[rookTo] = assocBySquare[rookFrom];
-        delete assocBySquare[rookFrom];
-      }else{
-        assocBySquare[rookTo] = getAssocFor('R', rookFrom);
-      }
+      assocBySquare[rookTo] = assocBySquare[rookFrom] || getAssocFor('R', rookFrom);
+      delete assocBySquare[rookFrom];
     }
 
-    // --- En Passant ---
+    // En passant
     if((m.flags||'').includes('e') && /^[a-h][1-8]$/.test(m.to)){
       const toFile = m.to[0], toRank = parseInt(m.to[1],10);
       const capRank = (m.side==='White') ? (toRank-1) : (toRank+1);
       const capSq = `${toFile}${capRank}`;
-      if(assocBySquare[capSq]) delete assocBySquare[capSq];
+      delete assocBySquare[capSq];
     }
 
     assocBySquare[m.to] = pieceAssoc;
 
-    // --- Spatial Association + Story Text ---
+    // Target Square (ONLY the association — NO story text)
     const node = (selectedLang === 'el' ? Ltarget2[m.to] : Ltarget1[m.to]) || null;
     const targetAssoc = node?.['Target Square Association'] || '';
-    const storyText   = node?.text || '';
 
-    // --- Γραμμή πίνακα ---
     const tr = document.createElement('tr');
     tr.dataset.index = m.index;
     tr.innerHTML =
@@ -326,8 +320,8 @@ function fillAssociationsTable(moves){
       `<td>${escapeHtml(m.to)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceAssoc)}</td>`+
-      `<td>${escapeHtml(targetAssoc)}</td>`+  
-
+      `<td>${escapeHtml(targetAssoc)}</td>`;
+    
     body.appendChild(tr);
   });
 }
