@@ -44,7 +44,7 @@ function t1Label(idx){
 function t2Label(idx){
   const node = libs?.Temporal?.LibraryT2?.[String(idx)];
   if(!node) return '';
-  return (node[selectedLang] || node.el || node.en || '');
+  return (node.locus_en || node[selectedLang] || node.el || '');
 }
 function s1Square(square){
   const node = libs?.Spatial?.LibraryS1?.[square];
