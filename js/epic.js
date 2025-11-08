@@ -211,9 +211,42 @@ function updateEpicText() {
 
   const textView = document.getElementById("epicTextView");
 
-  // FIX: epicTextView is a DIV, use innerText (not value)
   if (textView) textView.innerText = fullText;
+
+  // Μετατροπή σε παραγράφους (Display with <p>)
+  const htmlText = fullText
+    .split(/\n{2,}/)
+    .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)
+    .join("");
+
+  // Εμφάνιση μορφοποιημένου κειμένου
+  textView.innerHTML = htmlText;
+
+  // === Copy Button ===
+  const copyBtn = document.getElementById("copyEpicBtn");
+  if (copyBtn) {
+    copyBtn.replaceWith(copyBtn.cloneNode(true));
+    const freshBtn = document.getElementById("copyEpicBtn");
+
+    freshBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(fullText);
+        freshBtn.innerText = "✅ Copied!";
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = fullText;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        freshBtn.innerText = "✅ Copied (fallback)!";
+      } finally {
+        setTimeout(() => (freshBtn.innerText = "📋 Copy Story"), 1500);
+      }
+    });
+  }
 }
+
 
 // Μετατροπή σε παραγράφους
     const htmlText = fullText
@@ -277,6 +310,7 @@ function updateEpicText() {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
