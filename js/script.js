@@ -188,7 +188,7 @@ function enableManualAnchors() {
     });
 }
 
-/* ------------ ASSOCIATIONS TABLE (labels move with pieces) --------------------
+/* ------- ASSOCIATIONS TABLE (labels move with pieces) ------ */
 function fillAssociationsTable(moves){
   const body = document.getElementById('assocBody'); 
   if(!body) return;
@@ -254,74 +254,6 @@ function fillAssociationsTable(moves){
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(pieceAssoc)}</td>`+
       `<td>${escapeHtml(storyText)}</td>`;
-    body.appendChild(tr);
-  });
-}
- ----------------------------------------------- */
-
-function fillAssociationsTable(moves){
-  const body = document.getElementById('assocBody'); 
-  if(!body) return;
-  body.innerHTML='';
-
-  const Lpieces   = libs?.Characters?.LibraryC2 || {}; 
-  const Ltarget1  = libs?.Spatial?.LibraryS1 || {}; // EN
-  const Ltarget2  = libs?.Spatial?.LibraryS2 || {}; // EL
-  const Ltemporal = libs?.Temporal?.LibraryT1 || {}; // <-- για locus_en
-
-  const assocBySquare = Object.create(null);
-
-  const getAssocFor = (pieceLetter, fromSq) =>
-    (Lpieces[`${pieceLetter}${fromSq||''}`] || 
-     Lpieces[fromSq||''] || 
-     Lpieces[pieceLetter] || 
-     pieceGreek(pieceLetter));
-
-  moves.forEach(m=>{
-    const locus  = Ltemporal[m.index]?.locus_en || locusForMove(m);
-    const anchor = anchorForMove(m.index);
-
-    let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
-    if(m.from) delete assocBySquare[m.from];
-
-    const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
-
-    // Castling
-    if(sanClean.startsWith('O-O')){
-      const long  = sanClean.startsWith('O-O-O');
-      const white = (m.side==='White');
-      const rookFrom = white ? (long ? 'a1':'h1') : (long ? 'a8':'h8');
-      const rookTo   = white ? (long ? 'd1':'f1') : (long ? 'd8':'f8');
-      assocBySquare[rookTo] = assocBySquare[rookFrom] || getAssocFor('R', rookFrom);
-      delete assocBySquare[rookFrom];
-    }
-
-    // En passant
-    if((m.flags||'').includes('e') && /^[a-h][1-8]$/.test(m.to)){
-      const toFile = m.to[0], toRank = parseInt(m.to[1],10);
-      const capRank = (m.side==='White') ? (toRank-1) : (toRank+1);
-      const capSq = `${toFile}${capRank}`;
-      delete assocBySquare[capSq];
-    }
-
-    assocBySquare[m.to] = pieceAssoc;
-
-    // Target Square (ONLY the association — NO story text)
-    const node = (selectedLang === 'el' ? Ltarget2[m.to] : Ltarget1[m.to]) || null;
-    const targetAssoc = node?.['Target Square Association'] || '';
-
-    const tr = document.createElement('tr');
-    tr.dataset.index = m.index;
-    tr.innerHTML =
-      `<td>${escapeHtml(m.moveNumDisplay)}</td>`+
-      `<td>${escapeHtml(m.san)}</td>`+
-      `<td>${escapeHtml(anchor)}</td>`+
-      `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml(m.to)}</td>`+
-      `<td>${escapeHtml(sideGR(m.side))}</td>`+
-      `<td>${escapeHtml(pieceAssoc)}</td>`+
-      `<td>${escapeHtml(targetAssoc)}</td>`;
-    
     body.appendChild(tr);
   });
 }
