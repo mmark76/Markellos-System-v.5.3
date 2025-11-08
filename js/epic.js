@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return match ? match[1] : "";
 }
    
-  /* ---------- Epic Story Generator ---------- 
+  /* ---------- Epic Story Generator 1 ---------- 
   function updateEpicText() {
     const tbody = document.querySelector(`#assocSection tbody`);
     if (!tbody) return;
@@ -131,7 +131,7 @@ const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]
 
 const textView = document.getElementById("epicTextView"); -----------*/
 
-/* ---------- Epic Story Generator ---------- */
+/* ---------- Epic Story Generator 2 ---------- */
 function updateEpicText() {
   const tbody = document.querySelector(`#assocSection tbody`);
   if (!tbody) return;
@@ -272,6 +272,7 @@ function updateEpicText() {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
