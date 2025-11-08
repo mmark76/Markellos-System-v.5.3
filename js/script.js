@@ -39,7 +39,7 @@ const FILE_TO_NUM = {a:1,b:2,c:3,d:4,e:5,f:6,g:7,h:8};
 function t1Label(idx){
   const node = libs?.Temporal?.LibraryT1?.[String(idx)];
   if(!node) return '';
-  return (node[selectedLang] || node.el || node.en || '');
+  return (node[selectedLang] || node.locus_en || node.en || '');
 }
 function t2Label(idx){
   const node = libs?.Temporal?.LibraryT2?.[String(idx)];
