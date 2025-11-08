@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return match ? match[1] : "";
 }
    
-  /* ---------- Epic Story Generator ---------- */
+  /* ---------- Epic Story Generator ---------- 
   function updateEpicText() {
     const tbody = document.querySelector(`#assocSection tbody`);
     if (!tbody) return;
@@ -129,7 +129,86 @@ const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]
   .filter(Boolean)
   .join("\n\n");
 
-const textView = document.getElementById("epicTextView");
+const textView = document.getElementById("epicTextView"); -----------*/
+
+/* ---------- Epic Story Generator ---------- */
+function updateEpicText() {
+  const tbody = document.querySelector(`#assocSection tbody`);
+  if (!tbody) return;
+
+  const rows = [...tbody.querySelectorAll("tr")];
+  if (!rows.length) return;
+
+  let stories = [];
+
+  // === Half-move only: one scene per half-move ===
+  for (let i = 0; i < rows.length; i++) {
+    const r = rows[i];
+    const cells = [...r.children].map(td => td.innerText.trim());
+
+    const san = cells[1];           // SAN move text
+    const locusIndex = cells[3];    // Index into LibraryT1
+    const pieceAssoc = cells[6];    // From LibraryC2
+    const square = getSquare(san);  // e.g., "e4"
+
+    if (!locusIndex) continue;
+
+    // --- Get data directly from JSON libraries ---
+    const locusNode = libraries.Temporal.LibraryT1[locusIndex];
+    const locusText = locusNode ? locusNode.en : "";
+
+    const squareNode = libraries.Spatial.LibraryS1[square];
+    const squareText = squareNode ? squareNode.text : "";
+
+    // --- Narrative formatting ---
+    let sceneNumber = i + 1;
+    const header = `Half-move ${sceneNumber}. ${sanToText(san)}.\n`;
+
+    const phrase = [
+      header,
+      locusText,
+      pieceAssoc,
+      squareText
+    ].filter(Boolean).join("\n");
+
+    stories.push(phrase.trim());
+  }
+
+  // === Combine Text ===
+  const narrativeText = stories.join("\n\n");
+
+  // === Game Info ===
+  const chess = new Chess();
+  chess.load_pgn(document.getElementById("pgnText").value, { sloppy: true });
+  const headers = chess.header();
+
+  const event = headers["Event"] || "";
+  const date = headers["Date"] || "";
+  const white = headers["White"] || "";
+  const black = headers["Black"] || "";
+  const result = headers["Result"] || "";
+
+  const [y, m, d] = date.split(".");
+  const formattedDate = new Date(`${y}-${m}-${d}`).toLocaleDateString("en-GB", {
+    day: "numeric", month: "long", year: "numeric"
+  });
+
+  const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
+
+  const prologue = `♟. "The old man calmly takes in his hands the large book of historic chess battles and says to the young chess player...\n\n Today we shall study a very interesting battle. He opens the cover, turns a few pages, and begins to read...\n\n ... it was late in the afternoon when the two Generals shook hands, and after the signal was given, the battle began..."`;
+
+  let finalMsg = "";
+  if (result === "1-0") finalMsg = "\n … and after the final move, the Black General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The old man closes the thick book. The game becomes memory, yet forever engraved in history.";
+  else if (result === "0-1") finalMsg = "\n … and after the final move, the White General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The old man closes the thick book. The game becomes memory, yet forever engraved in history.";
+  else if (result === "1/2-1/2") finalMsg = "\n … and after the final move, the two Generals understood that neither could claim victory. They shook hands, and the battle ended in a draw. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
+
+  const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]
+    .filter(Boolean)
+    .join("\n\n");
+
+  const textView = document.getElementById("epicTextView");
+  if (textView) textView.value = fullText;
+}
 
 // Μετατροπή σε παραγράφους
     const htmlText = fullText
@@ -193,5 +272,6 @@ const textView = document.getElementById("epicTextView");
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
