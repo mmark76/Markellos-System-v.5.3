@@ -877,7 +877,7 @@
                 "Action": "hides",
                 "Feeling": "terror",
                 "Object": "chest",
-                "Target Square Association": "a wooen box at the bottom of the river",
+                "Target Square Association": "a wooden box at the bottom of the river",
                 "text": "hides inside a wooden box at the bottom of the river and holds his breath"
             },
             "g4": {
@@ -4539,3 +4539,4 @@
         }
     }
 }
+
