@@ -237,7 +237,16 @@ const htmlText = fullText
   .map(p => `<p>${p.trim().replace(/\n/g, "<br>")}</p>`)
   .join("");
 
+  // === Convert final text to HTML without removing \n ===
+  const htmlText = fullText
+    .split(/\n{2,}/)        // \n\n = νέα παράγραφος
+    .map(p => `<p>${p.trim()}</p>`)
+    .join("");
+
   textView.innerHTML = htmlText;
+
+  // === Preserve single, double, triple line breaks ===
+  textView.style.whiteSpace = "pre-wrap";
 
   const copyBtn = document.getElementById("copyEpicBtn");
   if (copyBtn) {
@@ -294,6 +303,7 @@ const htmlText = fullText
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
