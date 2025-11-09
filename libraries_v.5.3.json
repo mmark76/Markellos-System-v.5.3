@@ -1483,6 +1483,43 @@
             "Bf8": "the terrifying Venom, the Black King-Side Bishop",
             "Ng8": "the sexy Catwoman, the Black King-Side Knight",
             "Rh8": "the Beast Werewolf, the Black King-Side Rook"
+        },
+		"LibraryC3": {
+            "Pa2_name": "Arnold Schwarzenegger",
+            "Pb2_name": "Brad Pitt",
+            "Pc2_name": "Conor McGregor",
+            "Pd2_name": "Donald Trump",
+            "Pe2_name": "Elon Musk",
+            "Pf2_name": "Franz Kafka",
+            "Pg2_name": "George Clooney",
+            "Ph2_name": "Hugh Grant",
+
+            "Ra1_name": "Cyclops",
+            "Nb1_name": "Otrera",
+            "Bc1_name": "Gandalf",
+            "Qd1_name": "Xena",
+            "Ke1_name": "Hercules",
+            "Bf1_name": "Sphinx",
+            "Ng1_name": "Hippolyta",
+            "Rh1_name": "Yeti",
+
+            "Pa7_name": "Muhammad Ali",
+            "Pb7_name": "Barack Obama",
+            "Pc7_name": "Chris Rock",
+            "Pd7_name": "Denzel Washington",
+            "Pe7_name": "Eddie Murphy",
+            "Pf7_name": "Floyd Mayweather",
+            "Pg7_name": "George Foreman",
+            "Ph7_name": "Hakeem Olajuwon",
+
+            "Ra8_name": "Godzilla",
+            "Nb8_name": "Lara Croft",
+            "Bc8_name": "Black Vampire",
+            "Qd8_name": "Hera",
+            "Ke8_name": "Zeus",
+            "Bf8_name": "Venom",
+            "Ng8_name": "Catwoman",
+            "Rh8_name": "Werewolf"
         }
     },
     "PAO 0-9": {
