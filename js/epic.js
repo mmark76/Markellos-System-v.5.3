@@ -217,7 +217,7 @@ function updateEpicText() {
 
   const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
 
-  const prologue = `♟. "The old man calmly takes in his hands the large book of historic chess battles and says to the young chess player ... Today we shall study a very interesting battle. He opens the cover, turns a few pages, and begins to read ... it was late in the afternoon when the two Generals shook hands, and after the signal was given, the battle began..."\n`;
+  const prologue = `♟. "The old man calmly takes in his hands the large book of historic chess battles and says to the young chess player ... Today we shall study a very interesting battle. He opens the cover, turns a few pages, and begins to read ... it was late in the afternoon when the two Generals shook hands, and after the signal was given, the battle began..."`;
 
   let finalMsg = "";
   if (result === "1-0") {
@@ -299,6 +299,7 @@ textView.style.whiteSpace = "pre-wrap";
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
