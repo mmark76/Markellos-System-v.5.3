@@ -232,10 +232,10 @@ function updateEpicText() {
     .filter(Boolean)
     .join("\n\n");
 
-  const htmlText = fullText
-    .split(/\n{2,}/)
-    .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)
-    .join("");
+const htmlText = fullText
+  .split(/\n{2,}/)
+  .map(p => `<p>${p.trim().replace(/\n/g, "<br>")}</p>`)
+  .join("");
 
   textView.innerHTML = htmlText;
 
@@ -294,6 +294,7 @@ function updateEpicText() {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
