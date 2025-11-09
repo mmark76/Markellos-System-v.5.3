@@ -214,7 +214,6 @@ const getAssocFor = (pieceLetter, fromSq) =>
   getPieceName(pieceLetter) ||
   pieceGreek(pieceLetter);
 
-
   moves.forEach(m=>{
     const locus  = locusForMove(m);
     const anchor = anchorForMove(m.index);
