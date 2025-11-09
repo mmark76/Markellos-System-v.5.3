@@ -72,59 +72,63 @@ document.addEventListener("DOMContentLoaded", () => {
     return node.en || node.locus_en || node[window.selectedLang] || node.el || "";
   }
 
-  /* ---------- Epic Story Generator (από JSON, όχι από πίνακα) ---------- */
-  function updateEpicText() {
-    const textView = document.getElementById("epicTextView");
-    if (!textView) return;
+ /* ---------- Epic Story Generator (from JSON) ---------- */
+function updateEpicText() {
+  const textView = document.getElementById("epicTextView");
+  if (!textView) return;
 
-    // Πρέπει να έχουν φορτωθεί βιβλιοθήκες + κινήσεις
-    if (!window.libs || !Array.isArray(window.gameMoves) || !window.gameMoves.length) {
-      textView.innerText = "No data available yet. Please load a PGN first.";
-      return;
+  const Lpieces  = libs?.Characters?.LibraryC2 || {};
+  const Ltarget1 = libs?.Spatial?.LibraryS1  || {};
+  const T1       = libs?.Temporal?.LibraryT1 || {};
+  const T2       = libs?.Temporal?.LibraryT2 || {};
+
+  // Locus: προτεραιότητα στο .en, μετά locus_en
+  function epicLocusForMove(m) {
+    const total = 80;
+    let idx;
+    if (locusMode === "full") {
+      idx = ((m.movePair - 1) % total) + 1;
+    } else {
+      idx = (m.index % total) + 1;
     }
+    const node = T1[String(idx)];
+    if (!node) return "";
+    return node.en || node.locus_en || node[selectedLang] || node.el || "";
+  }
 
-    const libs = window.libs;
-    const moves = window.gameMoves;
+  // Anchors από manualAnchors + Temporal.LibraryT2
+  const anchorMap = {};
+  const anchored = Object.keys(manualAnchors || {})
+    .map(n => parseInt(n, 10))
+    .filter(n => !Number.isNaN(n))
+    .sort((a, b) => a - b);
 
-    // Libraries
-    const Lpieces  = libs?.Characters?.LibraryC2 || {};
-    const Ltarget1 = libs?.Spatial?.LibraryS1 || {}; // EN (έχει Target Square Association + text)
-    const T2       = libs?.Temporal?.LibraryT2 || {};
+  anchored.forEach((moveIndex, idx) => {
+    const chapNo = idx + 1;
+    const node = T2[String(chapNo)] || {};
+    const label = node.en || node[selectedLang] || node.el || "";
+    if (label) {
+      anchorMap[moveIndex] = `${chapNo} — ${label}`;
+    }
+  });
 
-    // --- Anchors: manualAnchors -> Chapter 1/2/... από LibraryT2 ---
-    const anchorMap = {};
-    const anchoredIndices = Object.keys(window.manualAnchors || {})
-      .map(n => parseInt(n, 10))
-      .filter(n => !Number.isNaN(n))
-      .sort((a,b) => a - b);
+  const assocBySquare = Object.create(null);
+  const getAssocFor = (pieceLetter, fromSq) =>
+    (Lpieces[`${pieceLetter}${fromSq || ""}`] ||
+     Lpieces[fromSq || ""] ||
+     Lpieces[pieceLetter] ||
+     pieceGreek(pieceLetter));
 
-    anchoredIndices.forEach((moveIndex, idx) => {
-      const chapNo = idx + 1; // 1,2,3,...
-      const chapNode = T2[String(chapNo)] || {};
-      const label = chapNode.en || chapNode[window.selectedLang] || chapNode.el || "";
-      if (label) {
-        anchorMap[moveIndex] = `${chapNo} — ${label}`;
-      }
-    });
+  const stories = [];
 
-    // --- Piece associations (ίδιο logic με fillAssociationsTable, χωρίς DOM) ---
-    const assocBySquare = Object.create(null);
-    const getAssocFor = (pieceLetter, fromSq) =>
-      (Lpieces[`${pieceLetter}${fromSq || ''}`] ||
-       Lpieces[fromSq || ''] ||
-       Lpieces[pieceLetter] ||
-       pieceGreek(pieceLetter));
-
-    const stories = [];
-
-    moves.forEach((m, i) => {
+  if (Array.isArray(gameMoves)) {
+    gameMoves.forEach((m, i) => {
       const locus = epicLocusForMove(m);
       if (!locus) return;
 
       const anchorRaw = anchorMap[m.index] || "";
       const anchorTxt = cleanAnchor(anchorRaw);
 
-      // --- piece association tracking ---
       let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
       if (m.from) delete assocBySquare[m.from];
 
@@ -143,10 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // en passant
-      if ((m.flags || "").includes("e") && /^[a-h][1-8]$/.test(m.to)) {
-        const toFile = m.to[0];
-        const toRank = parseInt(m.to[1], 10);
+      // En passant
+      if ((m.flags || "").includes("e") && /^[a-h][1-8]$/.test(m.to || "")) {
+        const toFile = m.to[0], toRank = parseInt(m.to[1], 10);
         const capRank = (m.side === "White") ? (toRank - 1) : (toRank + 1);
         const capSq = `${toFile}${capRank}`;
         if (assocBySquare[capSq]) delete assocBySquare[capSq];
@@ -154,10 +157,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       assocBySquare[m.to] = pieceAssoc;
 
-      // --- Spatial info από LibraryS1 (Target Square Association + text) ---
+      // Spatial από LibraryS1:
+      // "Target Square Association" = όνομα περιοχής
+      // "text" = περιγραφή σκηνής
       const sqKey = (m.to || "").toLowerCase();
       const node = Ltarget1[sqKey] || {};
-      const areaName = node["Target Square Association"] || m.to || "";
+      const areaName = node["Target Square Association"] || (m.to || "");
       const storyText = node.text || "";
 
       const openings = [
@@ -165,12 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "A little later, the action continues",
         "After a while, the scene shifts",
       ];
-
-      const verbs = [
-        "appears",
-        "emerges",
-        "can be seen"
-      ];
+      const verbs = ["appears", "emerges", "can be seen"];
 
       const opening = i === 0
         ? "A trumpet sounds, and the battle begins"
@@ -184,87 +184,85 @@ document.addEventListener("DOMContentLoaded", () => {
       let phrase =
         `${t1Header}- ${opening} in the area of ${areaName}, ` +
         `and ${locus} ${action}. Then, ${pieceAssoc}, ${storyText}.`;
-
       if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
       stories.push(phrase.trim());
     });
+  }
 
-    const narrativeText = stories.join("\n\n");
+  const narrativeText = stories.join("\n\n");
 
-    // === Game Info (από το ίδιο PGN) ===
-    const chess = new Chess();
-    const pgnEl = document.getElementById("pgnText");
-    if (pgnEl && pgnEl.value.trim()) {
-      chess.load_pgn(pgnEl.value, { sloppy: true });
-    }
-    const headers = chess.header();
+  // === Game Info ===
+  const chess = new Chess();
+  const pgnEl = document.getElementById("pgnText");
+  if (pgnEl && pgnEl.value.trim()) {
+    chess.load_pgn(pgnEl.value, { sloppy: true });
+  }
+  const headers = chess.header();
 
-    const event = headers["Event"] || "";
-    const date  = headers["Date"]  || "";
-    const white = headers["White"] || "";
-    const black = headers["Black"] || "";
-    const result = headers["Result"] || "";
+  const event  = headers["Event"]  || "";
+  const date   = headers["Date"]   || "";
+  const white  = headers["White"]  || "";
+  const black  = headers["Black"]  || "";
+  const result = headers["Result"] || "";
 
-    let formattedDate = date;
-    if (date && date.includes(".")) {
-      const [y, m, d] = date.split(".");
-      const jsDate = new Date(`${y}-${m}-${d}`);
-      if (!isNaN(jsDate.getTime())) {
-        formattedDate = jsDate.toLocaleDateString("en-GB", {
-          day: "numeric", month: "long", year: "numeric"
-        });
-      }
-    }
-
-    const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
-
-    const prologue = `♟. "The old man calmly takes in his hands the large book of historic chess battles and says to the young chess player...\n\n Today we shall study a very interesting battle. He opens the cover, turns a few pages, and begins to read...\n\n ... it was late in the afternoon when the two Generals shook hands, and after the signal was given, the battle began..."`;
-
-    let finalMsg = "";
-    if (result === "1-0") {
-      finalMsg = "\n … and after the final move, the Black General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The old man closes the thick book. The game becomes memory, yet forever engraved in history.";
-    } else if (result === "0-1") {
-      finalMsg = "\n … and after the final move, the White General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The old man closes the thick book. The game becomes memory, yet forever engraved in history.";
-    } else if (result === "1/2-1/2") {
-      finalMsg = "\n … and after the final move, the two Generals understood that neither could claim victory. They shook hands, and the battle ended in a draw. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
-    }
-
-    const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]
-      .filter(Boolean)
-      .join("\n\n");
-
-    // Μετατροπή σε παραγράφους
-    const htmlText = fullText
-      .split(/\n{2,}/)
-      .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)
-      .join("");
-
-    textView.innerHTML = htmlText;
-
-    // === Copy Button ===
-    const copyBtn = document.getElementById("copyEpicBtn");
-    if (copyBtn) {
-      copyBtn.replaceWith(copyBtn.cloneNode(true));
-      const freshBtn = document.getElementById("copyEpicBtn");
-      freshBtn.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(fullText);
-          freshBtn.innerText = "✅ Copied!";
-        } catch {
-          const ta = document.createElement("textarea");
-          ta.value = fullText;
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand("copy");
-          document.body.removeChild(ta);
-          freshBtn.innerText = "✅ Copied (fallback)!";
-        } finally {
-          setTimeout(() => (freshBtn.innerText = "📋 Copy Story"), 1500);
-        }
+  let formattedDate = date;
+  if (date && date.includes(".")) {
+    const [y, m, d] = date.split(".");
+    const jsDate = new Date(`${y}-${m}-${d}`);
+    if (!isNaN(jsDate.getTime())) {
+      formattedDate = jsDate.toLocaleDateString("en-GB", {
+        day: "numeric", month: "long", year: "numeric"
       });
     }
   }
+
+  const gameHeader = `"${event}" \n ${white} vs ${black} \n ${formattedDate}`.trim();
+
+  const prologue = `♟. "The old man calmly takes in his hands the large book of historic chess battles and says to the young chess player...\n\n Today we shall study a very interesting battle. He opens the cover, turns a few pages, and begins to read...\n\n ... it was late in the afternoon when the two Generals shook hands, and after the signal was given, the battle began..."`;
+
+  let finalMsg = "";
+  if (result === "1-0") {
+    finalMsg = "\n … and after the final move, the Black General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The old man closes the thick book. The game becomes memory, yet forever engraved in history.";
+  } else if (result === "0-1") {
+    finalMsg = "\n … and after the final move, the White General understood that the battle was lost. He lowered his head slowly and, offering his hand to his opponent with dignity, accepted defeat. The old man closes the thick book. The game becomes memory, yet forever engraved in history.";
+  } else if (result === "1/2-1/2") {
+    finalMsg = "\n … and after the final move, the two Generals understood that neither could claim victory. They shook hands, and the battle ended in a draw. The Elder closes the thick book. The game becomes memory, yet forever engraved in history.";
+  }
+
+  const fullText = [gameHeader, prologue, narrativeText, finalMsg.trim()]
+    .filter(Boolean)
+    .join("\n\n");
+
+  const htmlText = fullText
+    .split(/\n{2,}/)
+    .map(p => `<p>${p.replace(/\n/g, " ")}</p>`)
+    .join("");
+
+  textView.innerHTML = htmlText;
+
+  const copyBtn = document.getElementById("copyEpicBtn");
+  if (copyBtn) {
+    copyBtn.replaceWith(copyBtn.cloneNode(true));
+    const freshBtn = document.getElementById("copyEpicBtn");
+    freshBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(fullText);
+        freshBtn.innerText = "✅ Copied!";
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = fullText;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        freshBtn.innerText = "✅ Copied (fallback)!";
+      } finally {
+        setTimeout(() => (freshBtn.innerText = "📋 Copy Story"), 1500);
+      }
+    });
+  }
+}
 
   function openEpicModal() {
     updateEpicText();
@@ -298,3 +296,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
