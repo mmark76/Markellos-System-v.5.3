@@ -128,3 +128,13 @@
 .epic-modal-content {
   background-image: radial-gradient(circle at top left, rgba(255,255,255,0.25), transparent 80%);
 }
+
+/* Epic Story – πιο «αέρας» ανάμεσα στα κομμάτια */
+.epic-text p {
+  line-height: 1.9;      /* άνετη απόσταση γραμμών */
+  margin: 0 0 0.9em;     /* κενό κάτω από κάθε παράγραφο */
+}
+
+.epic-text p:last-child {
+  margin-bottom: 0;      /* να μην αφήνει κενό στο τέλος */
+}
