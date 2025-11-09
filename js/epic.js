@@ -66,11 +66,16 @@ document.addEventListener("DOMContentLoaded", () => {
 // === Half-move only: one scene per half-move ===
 for (let i = 0; i < rows.length; i++) {
   const r = rows[i];
-  const [_, san, anchor, locus_en, pieceAssoc, storyText] =
+  
+// εδώ αλλάζουμε τα ονόματα των μεταβλητών
+  const [_, san, anchor, en, text, color, pieceAssoc, storyText] =
     [...r.children].map(td => td.innerText.trim());
-  const square = targetSquare || getSquare(san);
 
-  if (!locus) continue;
+  // text αντί για targetSquare
+  const square = text || getSquare(san);
+  
+  // en αντί για locus / locus_en
+  if (!en) continue;
   const anchorTxt = cleanAnchor(anchor);
   const sanText = sanToText(san);
 
@@ -91,7 +96,7 @@ for (let i = 0; i < rows.length; i++) {
 
   let sceneNumber = i + 1;
   const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
-  let phrase = `${t1Header}- ${opening} in the area of ${square}, and ${locus_en} ${action}. Then, ${pieceAssoc}, ${storyText}.`;
+  let phrase = `${t1Header}- ${opening} in the area of ${square}, and ${locus} ${action}. Then, ${pieceAssoc}, ${storyText}.`;
   if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
   stories.push(phrase.trim());
@@ -193,6 +198,5 @@ const textView = document.getElementById("epicTextView");
     if (event.target === modal) modal.style.display = "none";
   });
 });
-
 
 
