@@ -232,11 +232,6 @@ function updateEpicText() {
     .filter(Boolean)
     .join("\n\n");
 
-const htmlText = fullText
-  .split(/\n{2,}/)
-  .map(p => `<p>${p.trim().replace(/\n/g, "<br>")}</p>`)
-  .join("");
-
   // === Convert final text to HTML without removing \n ===
   const htmlText = fullText
     .split(/\n{2,}/)        // \n\n = νέα παράγραφος
@@ -303,6 +298,7 @@ const htmlText = fullText
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
