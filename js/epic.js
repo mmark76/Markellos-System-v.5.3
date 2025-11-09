@@ -188,7 +188,7 @@ function updateEpicText() {
     });
   }
 
-  const narrativeText = stories.join("\n\n");
+  const narrativeText = stories.join("\n");
 
   // === Game Info ===
   const chess = new Chess();
@@ -299,6 +299,7 @@ textView.style.whiteSpace = "pre-wrap";
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
