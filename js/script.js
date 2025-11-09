@@ -194,16 +194,26 @@ function fillAssociationsTable(moves){
   if(!body) return;
   body.innerHTML='';
 
-  // Libraries
-  const Lpieces  = libs?.Characters?.LibraryC2 || {}; 
-  const Ltarget1 = libs?.Spatial?.LibraryS1 || {}; // EN
-  const Ltarget2 = libs?.Spatial?.LibraryS2 || {}; // EL
+// Libraries
+const LpiecesC2 = libs?.Characters?.LibraryC2 || {};
+const LpiecesC3 = libs?.Characters?.LibraryC3 || {};
 
-  const assocBySquare = Object.create(null);
+function getPieceName(key) {
+  return LpiecesC3[key + "_name"] || LpiecesC2[key] || key;
+}
 
-  // Αντιστοίχιση κομματιού
-  const getAssocFor = (pieceLetter, fromSq) =>
-    (Lpieces[`${pieceLetter}${fromSq||''}`] || Lpieces[fromSq||''] || Lpieces[pieceLetter] || pieceGreek(pieceLetter));
+const Ltarget1 = libs?.Spatial?.LibraryS1 || {}; // EN
+const Ltarget2 = libs?.Spatial?.LibraryS2 || {}; // EL
+
+const assocBySquare = Object.create(null);
+
+// Αντιστοίχιση κομματιού
+const getAssocFor = (pieceLetter, fromSq) =>
+  getPieceName(pieceLetter + (fromSq || "")) ||
+  getPieceName(fromSq || "") ||
+  getPieceName(pieceLetter) ||
+  pieceGreek(pieceLetter);
+
 
   moves.forEach(m=>{
     const locus  = locusForMove(m);
