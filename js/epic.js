@@ -184,7 +184,7 @@ function updateEpicText() {
       let phrase =`\n${t1Header}- ${opening} in the area of ${areaName}, and ${locus} ${action}. Then, ${pieceAssoc}, ${storyText}.\n\n`;
       if (anchorTxt) phrase = `${anchorTxt} ${phrase}\n\n`;
 
-      stories.push(phrase.trim());
+      stories.push(phrase);
     });
   }
 
@@ -298,6 +298,7 @@ function updateEpicText() {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
