@@ -181,14 +181,14 @@ function updateEpicText() {
       const sceneNumber = i + 1;
       const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n\n`;
 
-      let phrase =`\n${t1Header}- ${opening} in the area of ${areaName}, and ${locus} ${action}. Then, ${pieceAssoc}, ${storyText}.\n\n`;
+      let phrase =`${t1Header}- ${opening} in the area of ${areaName}, and ${locus} ${action}. Then, ${pieceAssoc}, ${storyText}.\n\n`;
       if (anchorTxt) phrase = `${anchorTxt} ${phrase}\n\n`;
 
       stories.push(phrase);
     });
   }
 
-  const narrativeText = stories.join("\n\n");
+  const narrativeText = stories.join("\n\n\n");
 
   // === Game Info ===
   const chess = new Chess();
@@ -298,6 +298,7 @@ function updateEpicText() {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
