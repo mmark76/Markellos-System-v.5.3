@@ -179,11 +179,11 @@ function updateEpicText() {
 
       const sanText = sanToText(m.san);
       const sceneNumber = i + 1;
-      const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n`;
+      const t1Header = `Half-move ${sceneNumber}. ${sanText}.\n\n`;
 
       let phrase =
         `${t1Header}- ${opening} in the area of ${areaName}, ` +
-        `and ${locus} ${action}. Then, ${pieceAssoc}, ${storyText}.`;
+        `and ${locus} ${action}. Then, ${pieceAssoc}, ${storyText}.\n\n`;
       if (anchorTxt) phrase = `${anchorTxt} ${phrase}`;
 
       stories.push(phrase.trim());
@@ -296,4 +296,5 @@ function updateEpicText() {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
