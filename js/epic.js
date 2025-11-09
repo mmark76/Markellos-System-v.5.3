@@ -238,7 +238,8 @@ function updateEpicText() {
     .map(p => `<p>${p.trim()}</p>`)
     .join("");
 
-  textView.innerHTML = htmlText;
+textView.textContent = fullText;
+textView.style.whiteSpace = "pre-wrap";
 
   // === Preserve single, double, triple line breaks ===
   textView.style.whiteSpace = "pre-wrap";
@@ -298,6 +299,7 @@ function updateEpicText() {
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
