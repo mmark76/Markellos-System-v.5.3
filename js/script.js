@@ -500,6 +500,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
   await loadLibraries();
+  loadUserLibrariesIntoUI();
 
   if (LIBRARIES_BAR_ENABLED) buildLibrariesBar();
   else {
