@@ -4,6 +4,12 @@ async function loadSquaresTemplate() {
   return await resp.json();
 }
 
+function registerLibraryForSelection(name, type, path) {
+  const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
+  saved.push({ name, type, path });
+  localStorage.setItem("savedLibraries", JSON.stringify(saved));
+}
+
 function createBackdrop() {
   const backdrop = document.createElement("div");
   backdrop.className = "ul-backdrop";
@@ -493,6 +499,7 @@ function openPAOModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
+
 
 
 
