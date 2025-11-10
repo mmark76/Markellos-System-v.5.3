@@ -1,0 +1,108 @@
+/* Modal backdrop */
+.ul-backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal window */
+.ul-modal {
+  background: #1a1a1a;
+  width: 760px;
+  height: 85vh;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #555;
+}
+
+/* Header */
+.ul-modal-header {
+  padding: 12px 16px;
+  background: #222;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  font-weight: bold;
+  color: #eee;
+}
+
+.ul-close-btn {
+  background: none;
+  border: none;
+  color: #eee;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Body */
+.ul-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  color: #ddd;
+}
+
+/* Footer */
+.ul-modal-footer {
+  padding: 12px 16px;
+  background: #222;
+  border-top: 1px solid #444;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Buttons */
+.ul-btn, .ul-export-btn, .ul-cancel-btn, .ul-upload-btn {
+  cursor: pointer;
+  background: #444;
+  border: 1px solid #666;
+  padding: 4px 8px;
+  color: #eee;
+  border-radius: 4px;
+}
+
+.ul-btn:hover,
+.ul-export-btn:hover,
+.ul-cancel-btn:hover,
+.ul-upload-btn:hover {
+  background: #666;
+}
+
+/* Rows */
+.ul-square-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ul-square-label {
+  width: 30px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.ul-input {
+  width: 120px; /* όπως συμφωνήσαμε (A) */
+  padding: 4px;
+  background: #111;
+  border: 1px solid #444;
+  color: #eee;
+}
+
+.ul-input-notes {
+  flex: 1;
+  padding: 4px;
+  background: #111;
+  border: 1px solid #444;
+  color: #eee;
+}
