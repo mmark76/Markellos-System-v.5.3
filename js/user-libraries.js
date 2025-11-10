@@ -104,8 +104,19 @@ function openSquaresModal(data) {
 
 // Συνδέουμε το κουμπί στο UI
 document.getElementById("createLibraryBtn").addEventListener("click", async () => {
-  const data = await loadSquaresTemplate();
-  openSquaresModal(data);
+  const type = prompt("Which library?\n\ncharacters / squares");
+
+  if (!type) return;
+
+  if (type.toLowerCase() === "characters") {
+    const data = await loadCharactersTemplate();
+    openCharactersModal(data);
+  }
+
+  if (type.toLowerCase() === "squares") {
+    const data = await loadSquaresTemplate();
+    openSquaresModal(data);
+  }
 });
 
 async function loadCharactersTemplate() {
@@ -214,3 +225,4 @@ function openCharactersModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
+
