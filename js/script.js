@@ -194,60 +194,58 @@ function fillAssociationsTable(moves){
   if(!body) return;
   body.innerHTML='';
 
-// Libraries
-const userChars = libs?.User?.Characters;
+  // Libraries
+  const userChars = libs?.User?.Characters;
 
-let getPieceName;
+  let getPieceName;
 
-if (userChars) {
-  getPieceName = (square, piece) => {
-    return userChars?.white?.pawn?.[square]?.name ||
-           userChars?.white?.knight?.[square]?.name ||
-           userChars?.white?.bishop?.[square]?.name ||
-           userChars?.white?.rook?.[square]?.name ||
-           userChars?.white?.queen?.[square]?.name ||
-           userChars?.white?.king?.[square]?.name ||
+  if (userChars) {
+    getPieceName = (square, piece) => {
+      return userChars?.white?.pawn?.[square]?.name ||
+             userChars?.white?.knight?.[square]?.name ||
+             userChars?.white?.bishop?.[square]?.name ||
+             userChars?.white?.rook?.[square]?.name ||
+             userChars?.white?.queen?.[square]?.name ||
+             userChars?.white?.king?.[square]?.name ||
 
-           userChars?.black?.pawn?.[square]?.name ||
-           userChars?.black?.knight?.[square]?.name ||
-           userChars?.black?.bishop?.[square]?.name ||
-           userChars?.black?.rook?.[square]?.name ||
-           userChars?.black?.queen?.[square]?.name ||
-           userChars?.black?.king?.[square]?.name ||
+             userChars?.black?.pawn?.[square]?.name ||
+             userChars?.black?.knight?.[square]?.name ||
+             userChars?.black?.bishop?.[square]?.name ||
+             userChars?.black?.rook?.[square]?.name ||
+             userChars?.black?.queen?.[square]?.name ||
+             userChars?.black?.king?.[square]?.name ||
 
-           pieceGreek(piece);
-  };
-} else {
-  const C2 = libs?.Characters?.LibraryC2 || {};
-  const C3 = libs?.Characters?.LibraryC3 || {};
-  getPieceName = (square, piece) => C3[piece + square + "_name"] || C2[piece + square] || pieceGreek(piece);
-}
+             pieceGreek(piece);
+    };
+  } else {
+    const C2 = libs?.Characters?.LibraryC2 || {};
+    const C3 = libs?.Characters?.LibraryC3 || {};
+    getPieceName = (square, piece) =>
+      C3[piece + square + "_name"] ||
+      C2[piece + square] ||
+      pieceGreek(piece);
+  }
 
-function getPieceName(key) {
-  return LpiecesC3[key + "_name"] || LpiecesC2[key] || key;
-}
+  const Ltarget1 = libs?.Spatial?.LibraryS1 || {};
+  const Ltarget2 = libs?.Spatial?.LibraryS2 || {};
 
-const Ltarget1 = libs?.Spatial?.LibraryS1 || {}; // EN
-const Ltarget2 = libs?.Spatial?.LibraryS2 || {}; // EL
+  const assocBySquare = Object.create(null);
 
-const assocBySquare = Object.create(null);
-
-// Αντιστοίχιση κομματιού
-const getAssocFor = (pieceLetter, fromSq) =>
-  getPieceName(pieceLetter + (fromSq || "")) ||
-  getPieceName(fromSq || "") ||
-  getPieceName(pieceLetter) ||
-  pieceGreek(pieceLetter);
+  const getAssocFor = (pieceLetter, fromSq) =>
+    getPieceName(pieceLetter + (fromSq || "")) ||
+    getPieceName(fromSq || "") ||
+    getPieceName(pieceLetter) ||
+    pieceGreek(pieceLetter);
 
   moves.forEach(m=>{
     const locus  = locusForMove(m);
     const anchor = anchorForMove(m.index);
 
-	let pieceAssoc = assocBySquare[m.from] || getPieceName(m.from, m.piece);
+    let pieceAssoc = assocBySquare[m.from] || getPieceName(m.from, m.piece);
 
     if(m.from) delete assocBySquare[m.from];
 
-    // --- Ροκέ ---
+    // --- Castling
     const sanClean = (m.san||'').replace(/[+#?!]+/g,'');
     if(sanClean.startsWith('O-O')){
       const long  = sanClean.startsWith('O-O-O');
@@ -262,7 +260,7 @@ const getAssocFor = (pieceLetter, fromSq) =>
       }
     }
 
-    // --- En passant ---
+    // --- En passant
     if((m.flags||'').includes('e') && /^[a-h][1-8]$/.test(m.to)){
       const toFile = m.to[0], toRank = parseInt(m.to[1],10);
       const capRank = (m.side==='White') ? (toRank-1) : (toRank+1);
@@ -272,12 +270,9 @@ const getAssocFor = (pieceLetter, fromSq) =>
 
     assocBySquare[m.to] = pieceAssoc;
 
-    // -------- S1/S2 στόχος + raw "text" στο ΤΕΛΕΥΤΑΙΟ κελί --------
     const node = (selectedLang === 'el' ? Ltarget2[m.to] : Ltarget1[m.to]) || null;
     const targetAssoc = node?.['Target Square Association'] || m.to;
-    const storyText   = node?.text || '';
 
-    // Δημιουργία γραμμής (FIX)
     const tr = document.createElement('tr');
     tr.dataset.index = m.index;
     tr.innerHTML =
