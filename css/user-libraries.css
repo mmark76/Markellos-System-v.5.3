@@ -139,3 +139,14 @@
   background:#111;
   border:1px solid #555;
 }
+
+/* μικρότερο modal ειδικά για το Create Library */
+.ul-modal {
+  max-height: 420px !important;
+  overflow-y: auto;
+}
+
+.ul-modal-body button.epic-btn {
+  padding: 4px 0;
+  font-size: 14px;
+}
