@@ -71,3 +71,36 @@ async function chooseLibraryOnGameLoad() {
 
   openLibrarySelector(libraries);
 }
+
+function loadUserLibrariesIntoUI() {
+  const sel = document.getElementById("userLibrarySelect");
+  if (!sel) return;
+
+  sel.innerHTML = `<option value="">— none —</option>`;
+
+  const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
+  for (const lib of saved) {
+    const opt = document.createElement("option");
+    opt.value = lib.path;
+    opt.textContent = `${lib.name} (${lib.type})`;
+    sel.appendChild(opt);
+  }
+}
+
+// όταν διαλέγεται βιβλιοθήκη -> την φορτώνουμε
+document.getElementById("userLibrarySelect")?.addEventListener("change", async (e) => {
+  const path = e.target.value;
+  if (!path) return;
+
+  const resp = await fetch(path);
+  const json = await resp.json();
+
+  // το βάζουμε προσωρινά στο libs.User
+  libs.User = libs.User || {};
+  if (json.white && json.black) libs.User.Characters = json;
+  else if (json.palaces) libs.User.MemoryPalace = json;
+  else if (json["00"] || json["01"]) libs.User.PAO_00_99 = json;
+  else libs.User.Squares = json;
+
+  chooseLibraryOnGameLoad(); // ανανέωση εφαρμογής
+});
