@@ -52,7 +52,7 @@ header nav a:hover {
 }
 
 .header-links a {
-  display: inline-block;  /* ✅ Αυτό έλειπε */
+  display: inline-block;
   font-family: Georgia, serif;
   color: #fff;
   background: linear-gradient(180deg, #3a4f8a 0%, #1f2d60 100%);
@@ -84,7 +84,7 @@ header nav a:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* === Dark Modal Style (βελτιωμένο) === */
+/* === Dark Modal Style === */
 .modal-content {
   background: #1e1e1e;
   color: #f5f5f5;
@@ -301,8 +301,8 @@ select:hover {
 #paoSection label,
 #pao99Section label,
 #verseSection label {
-  font-size: 0.8em;      /* 🔹 μικρότερο μέγεθος γραμμάτων */
-  color: #ccc;           /* ελαφρώς πιο απαλό γκρι για οπτική ισορροπία */
+  font-size: 0.8em;      /* μέγεθος γραμμάτων */
+  color: #ccc;           
   margin-right: 6px;
   vertical-align: middle;
   font-weight: normal;
@@ -313,7 +313,7 @@ select:hover {
 #paoSection input[type="checkbox"],
 #pao99Section input[type="checkbox"],
 #verseSection input[type="checkbox"] {
-  transform: scale(1.05);  /* ελαφρώς μικρότερα checkbox */
+  transform: scale(1.05);  /* μέγεθος checkbox */
   margin-right: 3px;
   vertical-align: middle;
   accent-color: #3697ef;
