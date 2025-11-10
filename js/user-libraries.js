@@ -104,26 +104,29 @@ function openSquaresModal(data) {
 
 // Συνδέουμε το κουμπί στο UI
 document.getElementById("createLibraryBtn").addEventListener("click", async () => {
-  const type = prompt("Which library?\n\nCharacters Associations / Squares Associations / Memory Palace / PAO 00-99");
-
+  const type = prompt(
+    "Which library?\n\ncharacters / squares / palace / pao"
+  );
   if (!type) return;
 
-  if (type.toLowerCase() === "Characters Associations") {
+  const key = type.trim().toLowerCase();
+
+  if (key === "characters") {
     const data = await loadCharactersTemplate();
     openCharactersModal(data);
   }
 
-  if (type.toLowerCase() === "Squares Associations") {
+  if (key === "squares") {
     const data = await loadSquaresTemplate();
     openSquaresModal(data);
   }
 
-  if (type.toLowerCase() === "Memory Palace") {
+  if (key === "palace" || key === "memory palace") {
     const data = await loadMemoryPalacesTemplate();
     openMemoryPalaceModal(data);
   }
 
-  if (type.toLowerCase() === "PAO 00-99") {
+  if (key === "pao" || key === "pao 00-99") {
     const data = await loadPAOTemplate();
     openPAOModal(data);
   }
@@ -460,4 +463,5 @@ function openPAOModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
+
 
