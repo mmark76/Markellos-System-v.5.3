@@ -480,13 +480,17 @@ function openPAOModal(data) {
   const exportBtn = document.createElement("button");
   exportBtn.className = "ul-export-btn";
   exportBtn.textContent = "Export JSON";
-  exportBtn.onclick = () => {
-    const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = "user_pao.json";
-    a.click();
-  };
+exportBtn.onclick = () => {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = "user_squares.json";
+  a.click();
+
+  // ✅ Καταχώριση βιβλιοθήκης για μελλοντική χρήση
+  registerLibraryForSelection("My Squares", "squares", "user_squares.json");
+};
+
 
   const cancelBtn = document.createElement("button");
   cancelBtn.className = "ul-cancel-btn";
@@ -499,6 +503,7 @@ function openPAOModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
+
 
 
 
