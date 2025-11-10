@@ -201,7 +201,6 @@ let getPieceName;
 
 if (userChars) {
   getPieceName = (square, piece) => {
-    // Προσπαθούμε με square πρώτα (ισχυρότερο)
     return userChars?.white?.pawn?.[square]?.name ||
            userChars?.white?.knight?.[square]?.name ||
            userChars?.white?.bishop?.[square]?.name ||
@@ -216,10 +215,9 @@ if (userChars) {
            userChars?.black?.queen?.[square]?.name ||
            userChars?.black?.king?.[square]?.name ||
 
-           pieceGreek(piece); // fallback
+           pieceGreek(piece);
   };
 } else {
-  // default C2/C3 fallback
   const C2 = libs?.Characters?.LibraryC2 || {};
   const C3 = libs?.Characters?.LibraryC3 || {};
   getPieceName = (square, piece) => C3[piece + square + "_name"] || C2[piece + square] || pieceGreek(piece);
