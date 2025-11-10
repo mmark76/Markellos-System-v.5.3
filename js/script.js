@@ -691,6 +691,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  loadLibraries();  // ✅ Φορτώνει τα default JSON libraries
-});
