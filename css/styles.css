@@ -52,6 +52,7 @@ header nav a:hover {
 }
 
 .header-links a {
+  display: inline-block;  /* ✅ Αυτό έλειπε */
   font-family: Georgia, serif;
   color: #fff;
   background: linear-gradient(180deg, #3a4f8a 0%, #1f2d60 100%);
