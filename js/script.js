@@ -245,7 +245,8 @@ const getAssocFor = (pieceLetter, fromSq) =>
     const locus  = locusForMove(m);
     const anchor = anchorForMove(m.index);
 
-    let pieceAssoc = assocBySquare[m.from] || getAssocFor(m.piece, m.from);
+	let pieceAssoc = assocBySquare[m.from] || getPieceName(m.from, m.piece);
+
     if(m.from) delete assocBySquare[m.from];
 
     // --- Ροκέ ---
