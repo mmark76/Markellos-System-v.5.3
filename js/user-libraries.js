@@ -124,12 +124,10 @@ document.getElementById("createLibraryBtn").addEventListener("click", async () =
   }
 
   if (type.toLowerCase() === "PAO 00-99") {
-  const data = await loadPAOTemplate();
-  openPAOModal(data);
-}
-
+    const data = await loadPAOTemplate();
+    openPAOModal(data);
+  }
 });
-
 
 async function loadCharactersTemplate() {
   const resp = await fetch("user_libraries/user_characters_template.json");
@@ -462,3 +460,4 @@ function openPAOModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
+
