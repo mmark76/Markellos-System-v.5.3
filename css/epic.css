@@ -1,5 +1,5 @@
 /* =========================
-   Markellos CMS v5.3 — Epic Narrative Modal Styles
+   Markellos CMA v3.3 — Epic Narrative Modal Styles
    ========================= */
 
 /* Toolbar πάνω από πίνακες */
@@ -142,4 +142,5 @@
 .epic-text p:last-child {
   margin-bottom: 0;      /* να μην αφήνει κενό στο τέλος */
 }
+
 
