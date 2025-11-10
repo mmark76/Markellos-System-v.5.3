@@ -1,0 +1,158 @@
+{
+  "white": {
+    "pawn": {
+      "a2": {
+        "name": "",
+        "notes": ""
+      },
+      "b2": {
+        "name": "",
+        "notes": ""
+      },
+      "c2": {
+        "name": "",
+        "notes": ""
+      },
+      "d2": {
+        "name": "",
+        "notes": ""
+      },
+      "e2": {
+        "name": "",
+        "notes": ""
+      },
+      "f2": {
+        "name": "",
+        "notes": ""
+      },
+      "g2": {
+        "name": "",
+        "notes": ""
+      },
+      "h2": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "knight": {
+      "b1": {
+        "name": "",
+        "notes": ""
+      },
+      "g1": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "bishop": {
+      "c1": {
+        "name": "",
+        "notes": ""
+      },
+      "f1": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "rook": {
+      "a1": {
+        "name": "",
+        "notes": ""
+      },
+      "h1": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "queen": {
+      "d1": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "king": {
+      "e1": {
+        "name": "",
+        "notes": ""
+      }
+    }
+  },
+  "black": {
+    "pawn": {
+      "a7": {
+        "name": "",
+        "notes": ""
+      },
+      "b7": {
+        "name": "",
+        "notes": ""
+      },
+      "c7": {
+        "name": "",
+        "notes": ""
+      },
+      "d7": {
+        "name": "",
+        "notes": ""
+      },
+      "e7": {
+        "name": "",
+        "notes": ""
+      },
+      "f7": {
+        "name": "",
+        "notes": ""
+      },
+      "g7": {
+        "name": "",
+        "notes": ""
+      },
+      "h7": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "knight": {
+      "b8": {
+        "name": "",
+        "notes": ""
+      },
+      "g8": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "bishop": {
+      "c8": {
+        "name": "",
+        "notes": ""
+      },
+      "f8": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "rook": {
+      "a8": {
+        "name": "",
+        "notes": ""
+      },
+      "h8": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "queen": {
+      "d8": {
+        "name": "",
+        "notes": ""
+      }
+    },
+    "king": {
+      "e8": {
+        "name": "",
+        "notes": ""
+      }
+    }
+  }
+}
