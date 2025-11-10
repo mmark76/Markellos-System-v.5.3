@@ -41,7 +41,7 @@ The **libraries** form the heart of the Markellos System. They are stored in JSO
 
 * **Temporal** → `LibraryT1`, `LibraryT2`
 * **Spatial** → `LibraryS1`, `LibraryS2`
-* **Characters** → `LibraryC1`, `LibraryC2`
+* **Characters** → `LibraryC1`, `LibraryC2`,`LibraryC3`
 * **PAO 0–9** → `Library_p1`
 * **PAO 00–99** → `LibraryP1`–`LibraryP5`
 * **Verses** → `LibraryV1`
