@@ -195,8 +195,35 @@ function fillAssociationsTable(moves){
   body.innerHTML='';
 
 // Libraries
-const LpiecesC2 = libs?.Characters?.LibraryC2 || {};
-const LpiecesC3 = libs?.Characters?.LibraryC3 || {};
+const userChars = libs?.User?.Characters;
+
+let getPieceName;
+
+if (userChars) {
+  getPieceName = (square, piece) => {
+    // Προσπαθούμε με square πρώτα (ισχυρότερο)
+    return userChars?.white?.pawn?.[square]?.name ||
+           userChars?.white?.knight?.[square]?.name ||
+           userChars?.white?.bishop?.[square]?.name ||
+           userChars?.white?.rook?.[square]?.name ||
+           userChars?.white?.queen?.[square]?.name ||
+           userChars?.white?.king?.[square]?.name ||
+
+           userChars?.black?.pawn?.[square]?.name ||
+           userChars?.black?.knight?.[square]?.name ||
+           userChars?.black?.bishop?.[square]?.name ||
+           userChars?.black?.rook?.[square]?.name ||
+           userChars?.black?.queen?.[square]?.name ||
+           userChars?.black?.king?.[square]?.name ||
+
+           pieceGreek(piece); // fallback
+  };
+} else {
+  // default C2/C3 fallback
+  const C2 = libs?.Characters?.LibraryC2 || {};
+  const C3 = libs?.Characters?.LibraryC3 || {};
+  getPieceName = (square, piece) => C3[piece + square + "_name"] || C2[piece + square] || pieceGreek(piece);
+}
 
 function getPieceName(key) {
   return LpiecesC3[key + "_name"] || LpiecesC2[key] || key;
