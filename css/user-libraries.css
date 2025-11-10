@@ -106,3 +106,36 @@
   border: 1px solid #444;
   color: #eee;
 }
+
+.right-panel .libraries-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ΠΑΝΩ ΣΕΙΡΑ (default + create + load) */
+.right-panel .library,
+#createLibraryBtn,
+#loadLibraryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ΚΑΤΩ ΣΕΙΡΑ (Your Libraries) */
+#userLibrarySelect {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.right-panel label[for="userLibrarySelect"],
+#userLibrarySelect {
+  display: block;
+}
+
+#userLibrarySelect {
+  padding: 5px;
+  border-radius: 6px;
+  background:#111;
+  border:1px solid #555;
+}
