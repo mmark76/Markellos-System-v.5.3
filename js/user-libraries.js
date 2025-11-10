@@ -104,20 +104,26 @@ function openSquaresModal(data) {
 
 // Συνδέουμε το κουμπί στο UI
 document.getElementById("createLibraryBtn").addEventListener("click", async () => {
-  const type = prompt("Which library?\n\ncharacters / squares");
+  const type = prompt("Which library?\n\ncharacters / squares / palace");
 
   if (!type) return;
 
-  if (type.toLowerCase() === "characters") {
+  if (type.toLowerCase() === "Characters Associations") {
     const data = await loadCharactersTemplate();
     openCharactersModal(data);
   }
 
-  if (type.toLowerCase() === "squares") {
+  if (type.toLowerCase() === "Squares Associations") {
     const data = await loadSquaresTemplate();
     openSquaresModal(data);
   }
+
+  if (type.toLowerCase() === "Memory Palace") {
+    const data = await loadMemoryPalacesTemplate();
+    openMemoryPalaceModal(data);
+  }
 });
+
 
 async function loadCharactersTemplate() {
   const resp = await fetch("user_libraries/user_characters_template.json");
@@ -226,3 +232,119 @@ function openCharactersModal(data) {
   document.body.appendChild(backdrop);
 }
 
+async function loadMemoryPalacesTemplate() {
+  const resp = await fetch("user_libraries/user_memory_palaces_template.json");
+  return await resp.json();
+}
+
+function openMemoryPalaceModal(data) {
+  const backdrop = document.createElement("div");
+  backdrop.className = "ul-backdrop";
+
+  const modal = document.createElement("div");
+  modal.className = "ul-modal";
+
+  const palace = data.palaces[0]; // one palace for now
+
+  // Header
+  const header = document.createElement("div");
+  header.className = "ul-modal-header";
+  header.innerHTML = `<span>Memory Palace (100 loci)</span>`;
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "ul-close-btn";
+  closeBtn.textContent = "✖";
+  closeBtn.onclick = () => backdrop.remove();
+  header.appendChild(closeBtn);
+  modal.appendChild(header);
+
+  // Body
+  const body = document.createElement("div");
+  body.className = "ul-modal-body";
+
+  // Palace title field
+  const nameInput = document.createElement("input");
+  nameInput.className = "ul-input-notes";
+  nameInput.placeholder = "Palace Name";
+  nameInput.style.marginBottom = "10px";
+  nameInput.value = palace.name || "";
+  nameInput.oninput = () => palace.name = nameInput.value;
+  body.appendChild(nameInput);
+
+  // Palace desc field
+  const descInput = document.createElement("input");
+  descInput.className = "ul-input-notes";
+  descInput.placeholder = "Palace Description";
+  descInput.style.marginBottom = "20px";
+  descInput.value = palace.description || "";
+  descInput.oninput = () => palace.description = descInput.value;
+  body.appendChild(descInput);
+
+  // LOCI (A - single list)
+  for (const loc of palace.locations) {
+    const row = document.createElement("div");
+    row.className = "ul-square-row";
+
+    const label = document.createElement("div");
+    label.className = "ul-square-label";
+    label.textContent = loc.id;
+
+    const textInput = document.createElement("input");
+    textInput.className = "ul-input";
+    textInput.placeholder = "label";
+    textInput.value = loc.label || "";
+    textInput.oninput = () => loc.label = textInput.value;
+
+    const uploadBtn = document.createElement("button");
+    uploadBtn.className = "ul-upload-btn";
+    uploadBtn.textContent = "Upload";
+    uploadBtn.onclick = () => {
+      const picker = document.createElement("input");
+      picker.type = "file";
+      picker.accept = ".png,.jpg,.jpeg,.webp";
+      picker.onchange = () => {
+        const file = picker.files[0];
+        const reader = new FileReader();
+        reader.onload = () => loc.image = reader.result;
+        reader.readAsDataURL(file);
+      };
+      picker.click();
+    };
+
+    const notesInput = document.createElement("input");
+    notesInput.className = "ul-input-notes";
+    notesInput.placeholder = "notes";
+    notesInput.value = loc.notes || "";
+    notesInput.oninput = () => loc.notes = notesInput.value;
+
+    row.append(label, textInput, uploadBtn, notesInput);
+    body.appendChild(row);
+  }
+
+  modal.appendChild(body);
+
+  // Footer
+  const footer = document.createElement("div");
+  footer.className = "ul-modal-footer";
+
+  const exportBtn = document.createElement("button");
+  exportBtn.className = "ul-export-btn";
+  exportBtn.textContent = "Export JSON";
+  exportBtn.onclick = () => {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = "user_memory_palace.json";
+    a.click();
+  };
+
+  const cancelBtn = document.createElement("button");
+  cancelBtn.className = "ul-cancel-btn";
+  cancelBtn.textContent = "Cancel";
+  cancelBtn.onclick = () => backdrop.remove();
+
+  footer.append(exportBtn, cancelBtn);
+  modal.appendChild(footer);
+
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
+}
