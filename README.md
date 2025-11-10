@@ -21,7 +21,7 @@ It serves as both a **learning tool** and a **cognitive architecture**, designed
 | **Interface**      | `index.html`                     | Main UI, loads data and user logic.                                                         |
 | **Styling**        | `css/`                           | Contains `epic-ui.css`, `epic.css`, `styles.css` for visual design and responsive layout.   |
 | **Logic**          | `js/`                            | Contains all functional scripts controlling data flow, interactions, and dynamic rendering. |
-| **Knowledge Base** | `data/` + `libraries_v.5.3.json` | JSON-based libraries of mnemonic data, hierarchically organized.                            |
+| **Knowledge Base** | `data/` + `libraries_v.3.3.json` | JSON-based libraries of mnemonic data, hierarchically organized.                            |
 
 ### 2.2 Data Flow
 
@@ -108,9 +108,9 @@ By combining these dimensions, the user builds an **internal cognitive architect
 
 ---
 
-## 7. Version 5.3 Highlights
+## 7. Version 3.3 Highlights
 
-* Unified bilingual library (`libraries_v.5.3.json`)
+* Unified bilingual library (`libraries_v.3.3.json`)
 * Enhanced modular data structure
 * UI refinement through `epic-ui.css`
 * Simplified script architecture (three-layered JS logic)
@@ -121,9 +121,9 @@ By combining these dimensions, the user builds an **internal cognitive architect
 ## 8. Files Summary
 
 ```
-Markellos-System-v.5.3-main/
+Markellos-System-v.3.3-main/
 ├── index.html
-├── libraries_v.5.3.json
+├── libraries_v.3.3.json
 ├── css/
 │   ├── epic-ui.css
 │   ├── epic.css
@@ -134,7 +134,7 @@ Markellos-System-v.5.3-main/
 │   ├── script.js
 │   └── fonts/Roboto/
 ├── data/ (all mnemonic libraries)
-└── md/README v.5.3.md
+└── md/README v.3.3.md
 ```
 
 ---
@@ -154,7 +154,7 @@ Markellos-System-v.5.3-main/
 
 ## 1. Επισκόπηση
 
-Το **Σύστημα Markellos v.5.3** είναι ένα προηγμένο μνημονικό και γνωστικό πλαίσιο, κατασκευασμένο ως **δομοθετημένη διαδικτυακή εφαρμογή**. Ενοποιεί χρονικά, χωρικά και συνειρμικά επίπεδα μνήμης μέσω δομημένων οπτικών και γλωσσικών ερεθισμάτων.
+Το **Σύστημα Markellos v.3.3** είναι ένα προηγμένο μνημονικό και γνωστικό πλαίσιο, κατασκευασμένο ως **δομοθετημένη διαδικτυακή εφαρμογή**. Ενοποιεί χρονικά, χωρικά και συνειρμικά επίπεδα μνήμης μέσω δομημένων οπτικών και γλωσσικών ερεθισμάτων.
 
 Αποτελεί ταυτόχρονα **εργαλείο μάθησης** και **γνωστική αρχιτεκτονική**, σχεδιασμένο για την οργάνωση και ανάκληση σύνθετων πληροφοριών, συνδυάζοντας την τεχνική του «μνημονικού παλατιού», την PAO κωδικοποίηση και τη σημασιολογική σύνδεση.
 
@@ -169,7 +169,7 @@ Markellos-System-v.5.3-main/
 | **Διεπαφή**     | `index.html`                     | Κύρια διεπαφή χρήστη, φορτώνει δεδομένα και λογική χρήστη.                         |
 | **Εμφάνιση**    | `css/`                           | Περιλαμβάνει τα `epic-ui.css`, `epic.css`, `styles.css` για σχεδιασμό και διάταξη. |
 | **Λογική**      | `js/`                            | Περιέχει τα λειτουργικά scripts που ελέγχουν ροές δεδομένων και αλληλεπιδράσεις.   |
-| **Βάση Γνώσης** | `data/` + `libraries_v.5.3.json` | JSON βιβλιοθήκες οργανωμένες ιεραρχικά.                                            |
+| **Βάση Γνώσης** | `data/` + `libraries_v.3.3.json` | JSON βιβλιοθήκες οργανωμένες ιεραρχικά.                                            |
 
 ### 2.2 Ροή Δεδομένων
 
@@ -257,9 +257,9 @@ Markellos-System-v.5.3-main/
 
 ---
 
-## 7. Νέα Χαρακτηριστικά Έκδοσης 5.3
+## 7. Νέα Χαρακτηριστικά Έκδοσης 3.3
 
-* Ενοποιημένη δίγλωσση βιβλιοθήκη (`libraries_v.5.3.json`)
+* Ενοποιημένη δίγλωσση βιβλιοθήκη (`libraries_v.3.3.json`)
 * Βελτιωμένη ιεραρχική δομή δεδομένων
 * Ανανεωμένη διεπαφή με `epic-ui.css`
 * Απλοποιημένη αρχιτεκτονική λογικής (3 scripts)
@@ -270,9 +270,9 @@ Markellos-System-v.5.3-main/
 ## 8. Δομή Αρχείων
 
 ```
-Markellos-System-v.5.3-main/
+Markellos-System-v.3.3-main/
 ├── index.html
-├── libraries_v.5.3.json
+├── libraries_v.3.3.json
 ├── css/
 │   ├── epic-ui.css
 │   ├── epic.css
