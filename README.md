@@ -6,7 +6,7 @@
 
 ## 1. Overview
 
-The **Markellos System v.5.3** is an advanced mnemonic and cognitive framework built as a modular **web-based application**. It integrates temporal, spatial, and associative layers of memory through structured visual and linguistic cues.
+The **Markellos System v.3.3** is an advanced mnemonic and cognitive framework built as a modular **web-based application**. It integrates temporal, spatial, and associative layers of memory through structured visual and linguistic cues.
 
 It serves as both a **learning tool** and a **cognitive architecture**, designed to organize and retrieve complex information efficiently — combining traditional memory palace methods, PAO encoding, and semantic linking.
 
