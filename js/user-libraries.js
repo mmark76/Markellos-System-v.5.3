@@ -107,3 +107,110 @@ document.getElementById("createLibraryBtn").addEventListener("click", async () =
   const data = await loadSquaresTemplate();
   openSquaresModal(data);
 });
+
+async function loadCharactersTemplate() {
+  const resp = await fetch("user_libraries/user_characters_template.json");
+  return await resp.json();
+}
+
+function openCharactersModal(data) {
+  const backdrop = document.createElement("div");
+  backdrop.className = "ul-backdrop";
+
+  const modal = document.createElement("div");
+  modal.className = "ul-modal";
+
+  // Header
+  const header = document.createElement("div");
+  header.className = "ul-modal-header";
+  header.innerHTML = `<span>Characters Library</span>`;
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "ul-close-btn";
+  closeBtn.textContent = "✖";
+  closeBtn.onclick = () => backdrop.remove();
+  header.appendChild(closeBtn);
+  modal.appendChild(header);
+
+  // Body
+  const body = document.createElement("div");
+  body.className = "ul-modal-body";
+
+  function renderGroup(title, group) {
+    const titleEl = document.createElement("div");
+    titleEl.style.margin = "12px 0 6px 0";
+    titleEl.style.color = "#bbb";
+    titleEl.style.fontWeight = "bold";
+    titleEl.textContent = title;
+    body.appendChild(titleEl);
+
+    for (const square in group) {
+      const row = document.createElement("div");
+      row.className = "ul-square-row";
+
+      const label = document.createElement("div");
+      label.className = "ul-square-label";
+      label.textContent = square;
+
+      const nameInput = document.createElement("input");
+      nameInput.className = "ul-input";
+      nameInput.placeholder = "name";
+      nameInput.value = group[square].name || "";
+      nameInput.oninput = () => group[square].name = nameInput.value;
+
+      const notesInput = document.createElement("input");
+      notesInput.className = "ul-input-notes";
+      notesInput.placeholder = "notes";
+      notesInput.value = group[square].notes || "";
+      notesInput.oninput = () => group[square].notes = notesInput.value;
+
+      row.append(label, nameInput, notesInput);
+      body.appendChild(row);
+    }
+  }
+
+  // White pieces
+  body.appendChild(document.createElement("hr"));
+  renderGroup("White Pawns", data.white.pawn);
+  renderGroup("White Knights", data.white.knight);
+  renderGroup("White Bishops", data.white.bishop);
+  renderGroup("White Rooks", data.white.rook);
+  renderGroup("White Queen", data.white.queen);
+  renderGroup("White King", data.white.king);
+
+  // Black pieces
+  body.appendChild(document.createElement("hr"));
+  renderGroup("Black Pawns", data.black.pawn);
+  renderGroup("Black Knights", data.black.knight);
+  renderGroup("Black Bishops", data.black.bishop);
+  renderGroup("Black Rooks", data.black.rook);
+  renderGroup("Black Queen", data.black.queen);
+  renderGroup("Black King", data.black.king);
+
+  modal.appendChild(body);
+
+  // Footer
+  const footer = document.createElement("div");
+  footer.className = "ul-modal-footer";
+
+  const exportBtn = document.createElement("button");
+  exportBtn.className = "ul-export-btn";
+  exportBtn.textContent = "Export JSON";
+  exportBtn.onclick = () => {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = "user_characters.json";
+    a.click();
+  };
+
+  const cancelBtn = document.createElement("button");
+  cancelBtn.className = "ul-cancel-btn";
+  cancelBtn.textContent = "Cancel";
+  cancelBtn.onclick = () => backdrop.remove();
+
+  footer.append(exportBtn, cancelBtn);
+  modal.appendChild(footer);
+
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
+}
