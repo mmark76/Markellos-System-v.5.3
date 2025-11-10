@@ -150,3 +150,25 @@
   padding: 4px 0;
   font-size: 14px;
 }
+
+/* Modal Buttons Spacing */
+.ul-modal .epic-btn {
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* Grouping: Default Libraries & User Libraries */
+.right-panel .libraries-group {
+  margin-bottom: 14px;
+}
+
+#userLibrarySelect {
+  margin-top: 8px;
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  background: #222;
+  color: #ddd;
+  border: 1px solid #444;
+}
