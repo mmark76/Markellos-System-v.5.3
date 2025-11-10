@@ -103,33 +103,63 @@ function openSquaresModal(data) {
 }
 
 // Συνδέουμε το κουμπί στο UI
-document.getElementById("createLibraryBtn").addEventListener("click", async () => {
-  const type = prompt(
-    "Which library?\n\ncharacters / squares / palace / pao"
-  );
-  if (!type) return;
+document.getElementById("createLibraryBtn").addEventListener("click", () => {
+  const backdrop = createBackdrop();
 
-  const key = type.trim().toLowerCase();
+  const modal = document.createElement("div");
+  modal.className = "ul-modal";
+  modal.style.maxWidth = "350px";
 
-  if (key === "characters") {
+  const header = document.createElement("div");
+  header.className = "ul-modal-header";
+  header.innerHTML = `<span>Create Library</span>`;
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "ul-close-btn";
+  closeBtn.textContent = "✖";
+  closeBtn.onclick = () => backdrop.remove();
+  header.appendChild(closeBtn);
+  modal.appendChild(header);
+
+  const body = document.createElement("div");
+  body.className = "ul-modal-body";
+  body.style.display = "flex";
+  body.style.flexDirection = "column";
+  body.style.gap = "10px";
+
+  function option(label, callback) {
+    const btn = document.createElement("button");
+    btn.className = "epic-btn";
+    btn.textContent = label;
+    btn.onclick = async () => {
+      callback();
+      backdrop.remove();
+    };
+    body.appendChild(btn);
+  }
+
+  option("Characters", async () => {
     const data = await loadCharactersTemplate();
     openCharactersModal(data);
-  }
+  });
 
-  if (key === "squares") {
+  option("Squares", async () => {
     const data = await loadSquaresTemplate();
     openSquaresModal(data);
-  }
+  });
 
-  if (key === "palace" || key === "memory palace") {
+  option("Memory Palace", async () => {
     const data = await loadMemoryPalacesTemplate();
     openMemoryPalaceModal(data);
-  }
+  });
 
-  if (key === "pao" || key === "pao 00-99") {
+  option("PAO 00-99", async () => {
     const data = await loadPAOTemplate();
     openPAOModal(data);
-  }
+  });
+
+  modal.appendChild(body);
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
 });
 
 async function loadCharactersTemplate() {
@@ -463,5 +493,6 @@ function openPAOModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
+
 
 
