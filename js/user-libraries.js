@@ -473,38 +473,32 @@ function openPAOModal(data) {
 
   modal.appendChild(body);
 
-  // Footer
-  const footer = document.createElement("div");
-  footer.className = "ul-modal-footer";
+// Footer
+const footer = document.createElement("div");
+footer.className = "ul-modal-footer";
 
-  const exportBtn = document.createElement("button");
-  exportBtn.className = "ul-export-btn";
-  exportBtn.textContent = "Export JSON";
+const exportBtn = document.createElement("button");
+exportBtn.className = "ul-export-btn";
+exportBtn.textContent = "Export JSON";
 exportBtn.onclick = () => {
   const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = "user_squares.json";
+  a.download = "user_pao_00_99.json";  // ✅ σωστή ονομασία
   a.click();
 
-  // ✅ Καταχώριση βιβλιοθήκης για μελλοντική χρήση
-  registerLibraryForSelection("My Squares", "squares", "user_squares.json");
+  registerLibraryForSelection("My PAO 00-99", "pao", "user_pao_00_99.json");
 };
 
+const cancelBtn = document.createElement("button");
+cancelBtn.className = "ul-cancel-btn";
+cancelBtn.textContent = "Cancel";
+cancelBtn.onclick = () => backdrop.remove();
 
-  const cancelBtn = document.createElement("button");
-  cancelBtn.className = "ul-cancel-btn";
-  cancelBtn.textContent = "Cancel";
-  cancelBtn.onclick = () => backdrop.remove();
+footer.append(exportBtn, cancelBtn);
+modal.appendChild(footer);
 
-  footer.append(exportBtn, cancelBtn);
-  modal.appendChild(footer);
-
-  backdrop.appendChild(modal);
-  document.body.appendChild(backdrop);
+backdrop.appendChild(modal);
+document.body.appendChild(backdrop);
 }
-
-
-
-
 
