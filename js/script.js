@@ -690,3 +690,7 @@ document.addEventListener("DOMContentLoaded", () => {
     table.parentNode.insertBefore(toolbar, table);
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadLibraries();  // ✅ Φορτώνει τα default JSON libraries
+});
