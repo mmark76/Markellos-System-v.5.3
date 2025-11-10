@@ -142,7 +142,7 @@
 
 /* μικρότερο modal ειδικά για το Create Library */
 .ul-modal {
-  max-height: 420px !important;
+  max-height: 350px !important;
   overflow-y: auto;
 }
 
@@ -172,3 +172,4 @@
   color: #ddd;
   border: 1px solid #444;
 }
+
