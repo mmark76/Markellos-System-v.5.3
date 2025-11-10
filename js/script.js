@@ -458,7 +458,8 @@ function wirePGN(){
         gameMoves = parsePGN(cleaned);
         manualAnchors = {};
         renderAll();
-        enableManualAnchors();
+        chooseLibraryOnGameLoad();
+		enableManualAnchors();
       };
       r.readAsText(f);
     });
@@ -470,7 +471,8 @@ function wirePGN(){
       gameMoves = parsePGN(pgn);
       manualAnchors = {};
       renderAll();
-      enableManualAnchors();
+      chooseLibraryOnGameLoad();
+	  enableManualAnchors();
     });
   }
 
