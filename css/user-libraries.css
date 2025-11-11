@@ -216,3 +216,20 @@
   width: 100%;
   margin-bottom: 6px;
 }
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#librarySelect,
+#userLibrarySelect {
+  width: 100%;
+}
+
+#createLibraryBtn,
+#importLibraryBtn {
+  width: 100% !important;
+  margin-top: 6px;
+}
