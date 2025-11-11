@@ -205,13 +205,14 @@
 
 #createLibraryBtn,
 #importLibraryBtn {
-  display: block;       /* 👈 το κάνει να πιάνει ολόκληρη γραμμή */
-  width: 100%;          /* προαιρετικό – το κάνει καθαρή μπάρα */
-  margin-top: 6px;      /* μικρό κενό */
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  border-radius: 4px !important;
 }
 
-
-
-
-
-
+#userLibrarySelect {
+  display: block;
+  width: 100%;
+  margin-bottom: 6px;
+}
