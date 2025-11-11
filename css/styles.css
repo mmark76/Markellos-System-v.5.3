@@ -408,6 +408,6 @@ label[for="table-selection"] {
 @media (max-width: 600px) {
   .modal-content {
     top: 75% !important;
-    transform: translate(-50%, -25%) !important;
+    transform: translate(-50%, -15%) !important;
   }
 }
