@@ -88,26 +88,26 @@ header nav a:hover {
 .modal-content {
   background: #1e1e1e;
   color: #f5f5f5;
-  position: relative;
-  top: 50%;               /* ✅ για κατέβασμα κουτιού */
-  margin: 0 auto;         
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 20px 30px;
   border-radius: 10px;
-  width: 90%;             /* ✅ πιο άνετο σε κινητό */
+  width: 90%;
   max-width: 700px;
-  max-height: 80vh;       /* ✅ για αποφυγή απόκρυψης */
-  overflow-y: auto;       /* ✅ scroll αν χρειαστεί */
+  max-height: 80vh;
+  overflow-y: auto;
   border: 2px solid #3a3a3a;
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.05),
     0 8px 24px rgba(0, 0, 0, 0.6);
-  animation: fadeInModal 0.3s ease-out;
 }
 
 .modal-content h3 {
   color: #CFAF4A;
   margin-bottom: 10px;
-  border-bottom: 1px solid #333;      /* διαχωριστική γραμμή τίτλου */
+  border-bottom: 1px solid #333;
   padding-bottom: 6px;
 }
 
