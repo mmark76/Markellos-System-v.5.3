@@ -203,6 +203,13 @@
   border-color: #888 !important;
 }
 
+#createLibraryBtn,
+#importLibraryBtn {
+  display: block;       /* 👈 το κάνει να πιάνει ολόκληρη γραμμή */
+  width: 100%;          /* προαιρετικό – το κάνει καθαρή μπάρα */
+  margin-top: 6px;      /* μικρό κενό */
+}
+
 
 
 
