@@ -411,3 +411,13 @@ label[for="table-selection"] {
     transform: translate(-50%, -15%) !important;
   }
 }
+
+/* MOVE INSTRUCTIONS MODAL LOWER ONLY ON MOBILE */
+@media (max-width: 600px) {
+  #howToModal .modal-content {
+    position: fixed !important;
+    top: 78% !important;
+    left: 50% !important;
+    transform: translate(-50%, -30%) !important;
+  }
+}
