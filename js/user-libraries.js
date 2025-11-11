@@ -143,7 +143,7 @@ document.getElementById("createLibraryBtn").addEventListener("click", () => {
     body.appendChild(btn);
   }
 
-    option("1 - Memory Palace (House Route)", async () => {
+    option("1 - Memory Palace (Route)", async () => {
     const data = await loadMemoryPalacesTemplate();
     openMemoryPalaceModal(data);
   });
@@ -604,3 +604,4 @@ function loadUserLibrariesIntoUI() {
     select.appendChild(opt);
   });
 }
+
