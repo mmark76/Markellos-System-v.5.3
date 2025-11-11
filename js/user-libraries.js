@@ -502,4 +502,26 @@ backdrop.appendChild(modal);
 document.body.appendChild(backdrop);
 }
 
+// === Import Pre-made Library ===
+document.getElementById("importLibraryBtn").addEventListener("click", () => {
+  const picker = document.createElement("input");
+  picker.type = "file";
+  picker.accept = ".json";
+  picker.onchange = async () => {
+    const file = picker.files[0];
+    const text = await file.text();
+    const json = JSON.parse(text);
+
+    const name = prompt("Όνομα βιβλιοθήκης;", file.name.replace(".json",""));
+    if (!name) return;
+
+    const path = URL.createObjectURL(new Blob([text], {type:"application/json"}));
+
+    registerLibraryForSelection(name, "custom", path);
+    loadUserLibrariesIntoUI();
+    alert("✅ Η βιβλιοθήκη προστέθηκε!");
+  };
+  picker.click();
+});
+
 
