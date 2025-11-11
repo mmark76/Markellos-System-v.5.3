@@ -413,10 +413,3 @@ label[for="table-selection"] {
     transform: translate(-50%, -20%) !important; /* κατεβαίνει φυσικά */
   }
 }
-
-#createLibraryBtn,
-#importLibraryBtn {
-  display: block;       /* 👈 το κάνει να πιάνει ολόκληρη γραμμή */
-  width: 100%;          /* προαιρετικό – το κάνει καθαρή μπάρα */
-  margin-top: 6px;      /* μικρό κενό */
-}
