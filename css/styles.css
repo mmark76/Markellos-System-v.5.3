@@ -403,3 +403,11 @@ label[for="table-selection"] {
   margin-top: 0 !important;
   padding-top: 0 !important;
 }
+
+/* === Move the instructions modal lower ONLY on mobile === */
+@media (max-width: 600px) {
+  .modal-content {
+    top: 75% !important;
+    transform: translate(-50%, -25%) !important;
+  }
+}
