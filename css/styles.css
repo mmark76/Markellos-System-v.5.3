@@ -408,8 +408,8 @@ label[for="table-selection"] {
 @media (max-width: 600px) {
   #howToModal .modal-content {
     position: fixed !important;
-    top: 78% !important;
+    top: 60% !important;
     left: 50% !important;
-    transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -30%) !important;
   }
 }
