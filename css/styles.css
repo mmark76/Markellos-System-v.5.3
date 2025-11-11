@@ -89,7 +89,7 @@ header nav a:hover {
   background: #1e1e1e;
   color: #f5f5f5;
   position: relative;
-  top: 10%;               /* ✅ αντί για margin-top */
+  top: 30%;               /* ✅ αντί για margin-top */
   margin: 0 auto;         /* ✅ κεντράρισμα */
   padding: 20px 30px;
   border-radius: 10px;
