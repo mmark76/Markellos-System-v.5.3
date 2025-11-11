@@ -143,22 +143,22 @@ document.getElementById("createLibraryBtn").addEventListener("click", () => {
     body.appendChild(btn);
   }
 
-  option("Characters", async () => {
+    option("1 - Memory Palace (House Route)", async () => {
+    const data = await loadMemoryPalacesTemplate();
+    openMemoryPalaceModal(data);
+  });
+  
+  option("2 - Characters (Pieces + Pawns)", async () => {
     const data = await loadCharactersTemplate();
     openCharactersModal(data);
   });
 
-  option("Squares", async () => {
+  option("3 - Squares (Board Map)", async () => {
     const data = await loadSquaresTemplate();
     openSquaresModal(data);
   });
 
-  option("Memory Palace", async () => {
-    const data = await loadMemoryPalacesTemplate();
-    openMemoryPalaceModal(data);
-  });
-
-  option("PAO 00-99", async () => {
+  option("4 - PAO 00–99 (Numeric System)", async () => {
     const data = await loadPAOTemplate();
     openPAOModal(data);
   });
@@ -501,4 +501,5 @@ modal.appendChild(footer);
 backdrop.appendChild(modal);
 document.body.appendChild(backdrop);
 }
+
 
