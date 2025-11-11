@@ -406,14 +406,6 @@ label[for="table-selection"] {
 
 /* === Move the instructions modal lower ONLY on mobile === */
 @media (max-width: 600px) {
-  .modal-content {
-    top: 75% !important;
-    transform: translate(-50%, -15%) !important;
-  }
-}
-
-/* MOVE INSTRUCTIONS MODAL LOWER ONLY ON MOBILE */
-@media (max-width: 600px) {
   #howToModal .modal-content {
     position: fixed !important;
     top: 78% !important;
