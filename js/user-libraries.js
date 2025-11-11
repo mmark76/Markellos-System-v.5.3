@@ -604,19 +604,3 @@ function loadUserLibrariesIntoUI() {
     select.appendChild(opt);
   });
 }
-
-function loadUserLibrariesIntoUI() {
-  const list = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
-  const select = document.getElementById("userLibrarySelect");
-  if (!select) return; // safety
-
-  select.innerHTML = `<option value="">— none —</option>`;
-
-  list.forEach(lib => {
-    const opt = document.createElement("option");
-    opt.value = lib.path;
-    opt.textContent = lib.name;
-    select.appendChild(opt);
-  });
-}
-
