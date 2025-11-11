@@ -524,4 +524,70 @@ document.getElementById("importLibraryBtn").addEventListener("click", () => {
   picker.click();
 });
 
+function excelToJSON(file, callback) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const data = new Uint8Array(e.target.result);
+    const wb = XLSX.read(data, { type: "array" });
+    const sheet = wb.Sheets[wb.SheetNames[0]];
+    const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    callback(json);
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+/* === Import PAO 00–99 === */
+document.getElementById("importPAOExcelBtn").onclick = () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".xlsx,.xls";
+  input.onchange = () => excelToJSON(input.files[0], rows => {
+    // A1 Format: Number | Person | Action | Object
+    let result = {};
+    rows.forEach(r => {
+      const num = r[0];
+      if (!/^\d\d$/.test(num)) return;
+      result[num] = { person: r[1] || "", action: r[2] || "", object: r[3] || "" };
+    });
+
+    const jsonText = JSON.stringify(result, null, 2);
+    const name = prompt("Όνομα βιβλιοθήκης PAO:", "My PAO 00-99");
+    const blob = new Blob([jsonText], {type: "application/json"});
+    const path = URL.createObjectURL(blob);
+
+    registerLibraryForSelection(name, "pao_00_99", path);
+    loadUserLibrariesIntoUI();
+    alert("✅ PAO 00–99 imported!");
+  });
+};
+
+/* === Import Memory Palace === */
+document.getElementById("importPalaceExcelBtn").onclick = () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = ".xlsx,.xls";
+  input.onchange = () => excelToJSON(input.files[0], rows => {
+    // B1 Format: Locus# | Name | Description
+    let palace = { palaces: [] };
+    rows.forEach(r => {
+      const num = r[0];
+      if (!Number.isInteger(num)) return;
+      palace.palaces.push({
+        index: num,
+        name: r[1] || "",
+        description: r[2] || ""
+      });
+    });
+
+    const jsonText = JSON.stringify(palace, null, 2);
+    const name = prompt("Όνομα Memory Palace:", "My Palace");
+    const blob = new Blob([jsonText], {type: "application/json"});
+    const path = URL.createObjectURL(blob);
+
+    registerLibraryForSelection(name, "memory_palace", path);
+    loadUserLibrariesIntoUI();
+    alert("✅ Memory Palace imported!");
+  });
+};
+
 
