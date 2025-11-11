@@ -410,7 +410,7 @@ label[for="table-selection"] {
     position: fixed !important;
     top: 60% !important;
     left: 50% !important;
-    transform: translate(-50%, -10%) !important; /* κατεβαίνει φυσικά */
+    transform: translate(-50%, -20%) !important; /* κατεβαίνει φυσικά */
   }
 }
 
