@@ -74,7 +74,7 @@
 .ul-export-btn:hover,
 .ul-cancel-btn:hover,
 .ul-upload-btn:hover {
-  background: #666;
+  background: #667;
 }
 
 /* Rows */
@@ -92,7 +92,7 @@
 }
 
 .ul-input {
-  width: 120px; /* όπως συμφωνήσαμε (A) */
+  width: 120px; 
   padding: 4px;
   background: #111;
   border: 1px solid #444;
@@ -142,7 +142,7 @@
 
 /* μικρότερο modal ειδικά για το Create Library */
 .ul-modal {
-  max-height: 350px !important;
+  max-height: 300px !important;
   overflow-y: auto;
 }
 
@@ -172,4 +172,5 @@
   color: #ddd;
   border: 1px solid #444;
 }
+
 
