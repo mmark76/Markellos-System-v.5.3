@@ -88,15 +88,19 @@ header nav a:hover {
 .modal-content {
   background: #1e1e1e;
   color: #f5f5f5;
-  margin: 20% auto;
+  position: relative;
+  top: 10%;               /* ✅ αντί για margin-top */
+  margin: 0 auto;         /* ✅ κεντράρισμα */
   padding: 20px 30px;
   border-radius: 10px;
-  width: 60%;
+  width: 90%;             /* ✅ πιο άνετο σε κινητό */
   max-width: 700px;
-  border: 2px solid #3a3a3a;         /* λεπτή εξωτερική γραμμή */
+  max-height: 80vh;       /* ✅ για αποφυγή απόκρυψης */
+  overflow-y: auto;       /* ✅ scroll αν χρειαστεί */
+  border: 2px solid #3a3a3a;
   box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.05), /* εσωτερική λάμψη */
-    0 8px 24px rgba(0, 0, 0, 0.6);       /* εξωτερική σκιά */
+    0 0 0 2px rgba(255, 255, 255, 0.05),
+    0 8px 24px rgba(0, 0, 0, 0.6);
   animation: fadeInModal 0.3s ease-out;
 }
 
