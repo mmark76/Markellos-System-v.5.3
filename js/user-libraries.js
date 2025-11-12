@@ -561,47 +561,36 @@ document.getElementById("importPAOExcelBtn").onclick = () => {
   });
 };
 
-/* === Import Memory Palace === */
-document.getElementById("importPalaceExcelBtn").onclick = () => {
-  const input = document.createElement("input");
-  input.type = "file";
-  input.accept = ".xlsx,.xls";
-  input.onchange = () => excelToJSON(input.files[0], rows => {
-    // B1 Format: Locus# | Name | Description
-    let palace = { palaces: [] };
-    rows.forEach(r => {
-      const num = r[0];
-      if (!Number.isInteger(num)) return;
-      palace.palaces.push({
-        index: num,
-        name: r[1] || "",
-        description: r[2] || ""
+/* === Import Memory Palace (Fixed Safe Binding) === */
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("importPalaceExcelBtn");
+  if (!btn) return; // αν δεν υπάρχει κουμπί, δεν κάνει τίποτα
+
+  btn.onclick = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = ".xlsx,.xls";
+    input.onchange = () => excelToJSON(input.files[0], rows => {
+      // B1 Format: Locus# | Name | Description
+      let palace = { palaces: [] };
+      rows.forEach(r => {
+        const num = r[0];
+        if (!Number.isInteger(num)) return;
+        palace.palaces.push({
+          index: num,
+          name: r[1] || "",
+          description: r[2] || ""
+        });
       });
+
+      const jsonText = JSON.stringify(palace, null, 2);
+      const name = prompt("Όνομα Memory Palace:", "My Palace");
+      const blob = new Blob([jsonText], {type: "application/json"});
+      const path = URL.createObjectURL(blob);
+
+      registerLibraryForSelection(name, "memory_palace", path);
+      loadUserLibrariesIntoUI();
+      alert("✅ Memory Palace imported!");
     });
-
-    const jsonText = JSON.stringify(palace, null, 2);
-    const name = prompt("Όνομα Memory Palace:", "My Palace");
-    const blob = new Blob([jsonText], {type: "application/json"});
-    const path = URL.createObjectURL(blob);
-
-    registerLibraryForSelection(name, "memory_palace", path);
-    loadUserLibrariesIntoUI();
-    alert("✅ Memory Palace imported!");
-  });
-};
-
-function loadUserLibrariesIntoUI() {
-  const list = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
-  const select = document.getElementById("userLibrarySelect");
-  if (!select) return; // safety
-
-  select.innerHTML = `<option value="">— none —</option>`;
-
-  list.forEach(lib => {
-    const opt = document.createElement("option");
-    opt.value = lib.path;
-    opt.textContent = lib.name;
-    select.appendChild(opt);
-  });
-}
-
+  };
+});
