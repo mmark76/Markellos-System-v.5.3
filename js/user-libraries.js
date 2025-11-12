@@ -219,3 +219,306 @@ function openSquaresModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
+
+/* ====== ADD: Memory Palace / Characters / PAO 00–99 modals ====== */
+
+function openMemoryPalaceModal(data) {
+  const backdrop = createBackdrop();
+  const modal = document.createElement("div");
+  modal.className = "ul-modal";
+  modal.style.maxWidth = "600px";
+
+  // header
+  const header = document.createElement("div");
+  header.className = "ul-modal-header";
+  header.innerHTML = `<span>Memory Palace (Route)</span>`;
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "ul-close-btn";
+  closeBtn.textContent = "✖";
+  closeBtn.onclick = () => backdrop.remove();
+  header.appendChild(closeBtn);
+  modal.appendChild(header);
+
+  // body
+  const body = document.createElement("div");
+  body.className = "ul-modal-body";
+  const pal = data.palaces?.[0] || { name: "", description: "", locations: [] };
+
+  // name + description
+  const nameInp = document.createElement("input");
+  nameInp.className = "ul-input";
+  nameInp.placeholder = "Palace name";
+  nameInp.value = pal.name || "";
+  nameInp.oninput = () => (pal.name = nameInp.value);
+
+  const descInp = document.createElement("textarea");
+  descInp.className = "ul-input";
+  descInp.placeholder = "Description (optional)";
+  descInp.style.minHeight = "60px";
+  descInp.value = pal.description || "";
+  descInp.oninput = () => (pal.description = descInp.value);
+
+  // loci editor
+  const list = document.createElement("div");
+  list.style.maxHeight = "360px";
+  list.style.overflowY = "auto";
+  list.style.border = "1px solid #333";
+  list.style.padding = "8px";
+  list.style.borderRadius = "8px";
+  list.style.background = "#111";
+
+  if (!Array.isArray(pal.locations) || pal.locations.length === 0) {
+    // fallback: 100 κενά loci αν το template είναι άδειο
+    pal.locations = Array.from({ length: 100 }, (_, i) => ({
+      id: `L${i + 1}`,
+      label: "",
+      image: "",
+      notes: ""
+    }));
+  }
+
+  pal.locations.forEach((loc, i) => {
+    const row = document.createElement("div");
+    row.className = "ul-square-row";
+    row.style.alignItems = "center";
+
+    const idTag = document.createElement("div");
+    idTag.className = "ul-square-label";
+    idTag.textContent = loc.id || `L${i + 1}`;
+
+    const label = document.createElement("input");
+    label.className = "ul-input";
+    label.placeholder = `Label for ${loc.id}`;
+    label.value = loc.label || "";
+    label.oninput = () => (loc.label = label.value);
+
+    row.append(idTag, label);
+    list.appendChild(row);
+  });
+
+  // actions
+  const actions = document.createElement("div");
+  actions.style.display = "flex";
+  actions.style.gap = "8px";
+  actions.style.marginTop = "10px";
+
+  const useNowBtn = document.createElement("button");
+  useNowBtn.className = "epic-btn";
+  useNowBtn.textContent = "⚡ Use Now (apply to tables)";
+  useNowBtn.onclick = () => {
+    const labels = pal.locations.map(l => l.label || "");
+    if (typeof window.applyUserPalaceToTables === "function") {
+      window.applyUserPalaceToTables(labels, pal.name || "User Palace");
+      alert("✅ Applied to tables.");
+    } else {
+      alert("ℹ️ applyUserPalaceToTables() δεν βρέθηκε σε αυτή τη σελίδα.");
+    }
+  };
+
+  const saveBtn = document.createElement("button");
+  saveBtn.className = "epic-btn";
+  saveBtn.textContent = "💾 Save JSON";
+  saveBtn.onclick = () => {
+    const out = JSON.stringify({ palaces: [pal] }, null, 2);
+    const blob = new Blob([out], { type: "application/json" });
+    saveAs(blob, "user_memory_palaces.json");
+    alert("✅ Saved! Κάνε upload στο /user_libraries/ και μετά Import.");
+  };
+
+  actions.append(useNowBtn, saveBtn);
+
+  body.appendChild(nameInp);
+  body.appendChild(descInp);
+  body.appendChild(list);
+  body.appendChild(actions);
+
+  modal.appendChild(body);
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
+}
+
+function openCharactersModal(data) {
+  const backdrop = createBackdrop();
+  const modal = document.createElement("div");
+  modal.className = "ul-modal";
+  modal.style.maxWidth = "720px";
+
+  const header = document.createElement("div");
+  header.className = "ul-modal-header";
+  header.innerHTML = `<span>Characters (Pieces + Pawns)</span>`;
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "ul-close-btn";
+  closeBtn.textContent = "✖";
+  closeBtn.onclick = () => backdrop.remove();
+  header.appendChild(closeBtn);
+  modal.appendChild(header);
+
+  const body = document.createElement("div");
+  body.className = "ul-modal-body";
+
+  const container = document.createElement("div");
+  container.style.maxHeight = "420px";
+  container.style.overflowY = "auto";
+  container.style.border = "1px solid #333";
+  container.style.borderRadius = "8px";
+  container.style.padding = "8px";
+  container.style.background = "#111";
+  container.style.display = "grid";
+  container.style.gridTemplateColumns = "repeat(2, 1fr)";
+  container.style.gap = "8px";
+
+  function section(title, obj) {
+    const box = document.createElement("div");
+    box.style.border = "1px solid #444";
+    box.style.borderRadius = "8px";
+    box.style.padding = "8px";
+    const h = document.createElement("div");
+    h.style.fontWeight = "bold";
+    h.style.marginBottom = "6px";
+    h.textContent = title;
+    box.appendChild(h);
+
+    Object.keys(obj).forEach(square => {
+      const row = document.createElement("div");
+      row.className = "ul-square-row";
+      row.style.alignItems = "center";
+
+      const tag = document.createElement("div");
+      tag.className = "ul-square-label";
+      tag.textContent = square;
+
+      const name = document.createElement("input");
+      name.className = "ul-input";
+      name.placeholder = "Name";
+      name.value = obj[square].name || "";
+      name.oninput = () => (obj[square].name = name.value);
+
+      row.append(tag, name);
+      box.appendChild(row);
+    });
+
+    return box;
+  }
+
+  // White
+  const white = data.white || {};
+  const whiteWrap = document.createElement("div");
+  whiteWrap.style.gridColumn = "1 / -1";
+  whiteWrap.style.marginBottom = "4px";
+  whiteWrap.innerHTML = `<div style="font-weight:bold;color:#CFAF4A;">White</div>`;
+  container.appendChild(whiteWrap);
+  ["pawn", "knight", "bishop", "rook", "queen", "king"].forEach(p => {
+    if (white[p]) container.appendChild(section(`White ${p}`, white[p]));
+  });
+
+  // Black
+  const black = data.black || {};
+  const blackWrap = document.createElement("div");
+  blackWrap.style.gridColumn = "1 / -1";
+  blackWrap.style.marginTop = "8px";
+  blackWrap.innerHTML = `<div style="font-weight:bold;color:#CFAF4A;">Black</div>`;
+  container.appendChild(blackWrap);
+  ["pawn", "knight", "bishop", "rook", "queen", "king"].forEach(p => {
+    if (black[p]) container.appendChild(section(`Black ${p}`, black[p]));
+  });
+
+  const saveBtn = document.createElement("button");
+  saveBtn.className = "epic-btn";
+  saveBtn.style.marginTop = "10px";
+  saveBtn.textContent = "💾 Save JSON";
+  saveBtn.onclick = () => {
+    const out = JSON.stringify(data, null, 2);
+    const blob = new Blob([out], { type: "application/json" });
+    saveAs(blob, "user_characters.json");
+    alert("✅ Saved! Κάνε upload στο /user_libraries/ και μετά Import.");
+  };
+
+  body.appendChild(container);
+  body.appendChild(saveBtn);
+  modal.appendChild(body);
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
+}
+
+function openPAOModal(data) {
+  const backdrop = createBackdrop();
+  const modal = document.createElement("div");
+  modal.className = "ul-modal";
+  modal.style.maxWidth = "720px";
+
+  const header = document.createElement("div");
+  header.className = "ul-modal-header";
+  header.innerHTML = `<span>PAO 00–99</span>`;
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "ul-close-btn";
+  closeBtn.textContent = "✖";
+  closeBtn.onclick = () => backdrop.remove();
+  header.appendChild(closeBtn);
+  modal.appendChild(header);
+
+  const body = document.createElement("div");
+  body.className = "ul-modal-body";
+
+  const grid = document.createElement("div");
+  grid.style.display = "grid";
+  grid.style.gridTemplateColumns = "repeat(2, 1fr)";
+  grid.style.gap = "8px";
+  grid.style.maxHeight = "420px";
+  grid.style.overflowY = "auto";
+  grid.style.border = "1px solid #333";
+  grid.style.borderRadius = "8px";
+  grid.style.padding = "8px";
+  grid.style.background = "#111";
+
+  Object.keys(data).sort().forEach(code => {
+    const cell = document.createElement("div");
+    cell.style.border = "1px solid #444";
+    cell.style.borderRadius = "8px";
+    cell.style.padding = "8px";
+
+    const title = document.createElement("div");
+    title.style.fontWeight = "bold";
+    title.style.marginBottom = "4px";
+    title.textContent = code;
+    cell.appendChild(title);
+
+    const p = document.createElement("input");
+    p.className = "ul-input";
+    p.placeholder = "Person";
+    p.value = data[code].person || "";
+    p.oninput = () => (data[code].person = p.value);
+
+    const a = document.createElement("input");
+    a.className = "ul-input";
+    a.placeholder = "Action";
+    a.value = data[code].action || "";
+    a.oninput = () => (data[code].action = a.value);
+
+    const o = document.createElement("input");
+    o.className = "ul-input";
+    o.placeholder = "Object";
+    o.value = data[code].object || "";
+    o.oninput = () => (data[code].object = o.value);
+
+    cell.append(p, a, o);
+    grid.appendChild(cell);
+  });
+
+  const saveBtn = document.createElement("button");
+  saveBtn.className = "epic-btn";
+  saveBtn.style.marginTop = "10px";
+  saveBtn.textContent = "💾 Save JSON";
+  saveBtn.onclick = () => {
+    const out = JSON.stringify(data, null, 2);
+    const blob = new Blob([out], { type: "application/json" });
+    saveAs(blob, "user_pao_00_99.json");
+    alert("✅ Saved! Κάνε upload στο /user_libraries/ και μετά Import.");
+  };
+
+  body.appendChild(grid);
+  body.appendChild(saveBtn);
+  modal.appendChild(body);
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
+}
+/* ====== END ADD ====== */
