@@ -1,7 +1,7 @@
 // ===========================================================
-// library-switcher.js — v3.3.2
-// Διαχείριση επιλογής και φόρτωσης βιβλιοθηκών (Default & User)
-// Περιλαμβάνει inline διαγραφή User Libraries και σύνδεση με loci
+// library-switcher.js — v3.3
+// Επιλογή, φόρτωση και inline διαγραφή User Libraries
+// Συμβατό με user-locus-mapper.js (ενημέρωση loci στους πίνακες)
 // ===========================================================
 
 // 🧩 Αποθήκευση ενεργής βιβλιοθήκης
@@ -16,7 +16,7 @@ function getActiveLibrary() {
 }
 
 // ===========================================================
-// 🪟 Popup επιλογής βιβλιοθήκης με δυνατότητα διαγραφής User Libraries
+// 🪟 Popup επιλογής βιβλιοθήκης (με δυνατότητα διαγραφής πολλών χωρίς κλείσιμο)
 // ===========================================================
 function openLibrarySelector(libraries) {
   const backdrop = document.createElement("div");
@@ -51,68 +51,75 @@ function openLibrarySelector(libraries) {
   def.textContent = "Default System";
   def.onclick = () => {
     setActiveLibrary("default", null);
-    backdrop.remove();
+    console.log("✅ Default system activated");
   };
   body.appendChild(def);
 
   // 🔹 User Libraries (από το localStorage)
-  libraries.forEach((lib, idx) => {
-    const row = document.createElement("div");
-    row.style.display = "flex";
-    row.style.alignItems = "center";
-    row.style.justifyContent = "space-between";
-    row.style.gap = "8px";
+  const renderUserLibraries = () => {
+    body.querySelectorAll(".lib-row").forEach(r => r.remove());
+    const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
 
-    // Κουμπί επιλογής
-    const btn = document.createElement("button");
-    btn.className = "epic-btn";
-    btn.textContent = lib.name || "Unnamed Library";
-    btn.style.flex = "1";
-    btn.onclick = () => {
-      setActiveLibrary(lib.type, lib.path);
-      backdrop.remove();
-    };
+    saved.forEach((lib, idx) => {
+      const row = document.createElement("div");
+      row.className = "lib-row";
+      row.style.display = "flex";
+      row.style.alignItems = "center";
+      row.style.justifyContent = "space-between";
+      row.style.gap = "8px";
 
-    // ❌ Κουμπί διαγραφής από το ιστορικό (όχι από δίσκο)
-    const del = document.createElement("button");
-    del.textContent = "✖";
-    del.title = "Delete from local history";
-    del.style.cssText = `
-      background:none;
-      border:none;
-      color:#b23b3b;
-      font-size:1.1em;
-      font-weight:bold;
-      cursor:pointer;
-      padding:0 8px;
-      transition: color 0.2s ease;
-    `;
-    del.onmouseover = () => (del.style.color = "#ff5555");
-    del.onmouseout = () => (del.style.color = "#b23b3b");
+      // Κουμπί επιλογής βιβλιοθήκης
+      const btn = document.createElement("button");
+      btn.className = "epic-btn";
+      btn.textContent = lib.name || "Unnamed Library";
+      btn.style.flex = "1";
+      btn.onclick = () => {
+        setActiveLibrary(lib.type, lib.path);
+        console.log(`✅ Activated library: ${lib.name}`);
+      };
 
-    del.onclick = (ev) => {
-      ev.stopPropagation(); // αποφυγή ενεργοποίησης επιλογής
-      if (confirm(`Delete library "${lib.name}" from local history?`)) {
-        const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
-        saved.splice(idx, 1);
-        localStorage.setItem("savedLibraries", JSON.stringify(saved));
+      // ✖ Διαγραφή (μπλε)
+      const del = document.createElement("button");
+      del.textContent = "✖";
+      del.title = "Delete from local history";
+      del.style.cssText = `
+        background:none;
+        border:none;
+        color:#339CFF;
+        font-size:1.1em;
+        font-weight:bold;
+        cursor:pointer;
+        padding:0 8px;
+        transition: color 0.2s ease;
+      `;
+      del.onmouseover = () => (del.style.color = "#66BFFF");
+      del.onmouseout = () => (del.style.color = "#339CFF");
 
-        // Αν είναι η ενεργή, καθαρίζεται κι αυτή
-        const active = getActiveLibrary();
-        if (active && active.path === lib.path) {
-          localStorage.removeItem("activeLibrary");
+      del.onclick = (ev) => {
+        ev.stopPropagation(); // Μην ενεργοποιήσει επιλογή
+        if (confirm(`Delete library "${lib.name}" from local history?`)) {
+          saved.splice(idx, 1);
+          localStorage.setItem("savedLibraries", JSON.stringify(saved));
+
+          // Αν είναι η ενεργή, καθαρίζεται κι αυτή
+          const active = getActiveLibrary();
+          if (active && active.path === lib.path) {
+            localStorage.removeItem("activeLibrary");
+          }
+
+          console.log(`🗑️ Library "${lib.name}" deleted from history.`);
+          renderUserLibraries(); // ανανέωση λίστας χωρίς να κλείσει
+          loadUserLibrariesIntoUI(); // ανανέωση dropdown
         }
+      };
 
-        alert(`Library "${lib.name}" deleted from history.`);
-        backdrop.remove();
-        loadUserLibrariesIntoUI(); // ανανέωση dropdown
-      }
-    };
+      row.appendChild(btn);
+      row.appendChild(del);
+      body.appendChild(row);
+    });
+  };
 
-    row.appendChild(btn);
-    row.appendChild(del);
-    body.appendChild(row);
-  });
+  renderUserLibraries();
 
   modal.appendChild(body);
   backdrop.appendChild(modal);
@@ -169,7 +176,7 @@ document.getElementById("userLibrarySelect")?.addEventListener("change", async (
       console.log("✅ Loaded User Characters Library");
     } 
     else if (json.palaces) {
-      libs.User.MemoryPalaces = json; // ✅ Πληθυντικός
+      libs.User.MemoryPalaces = json;
       console.log("✅ Loaded User Memory Palace Library");
     } 
     else if (json["00"] || json["01"]) {
@@ -184,7 +191,7 @@ document.getElementById("userLibrarySelect")?.addEventListener("change", async (
     // Ενημέρωση UI
     chooseLibraryOnGameLoad();
 
-    // Αν η βιβλιοθήκη είναι τύπου Memory Palace → ενημέρωση Locus
+    // Αν είναι Memory Palace → ενημέρωση loci
     if (json.palaces?.length) {
       const palace = json.palaces[0];
       if (palace?.locations?.length) {
