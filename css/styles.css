@@ -1,9 +1,11 @@
-/* === Basic Reset === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* =============================================================
+   Chess Mnemonic Application & Epic Chess Stories Creator v3.3
+   Unified CSS (Clean + Conflict-free)
+   Author: Markellos Markides
+   ============================================================= */
+
+/* === Base Reset === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   background-color: #111;
@@ -22,35 +24,9 @@ header {
   top: 0;
   z-index: 1000;
 }
-
-header h1 {
-  margin-bottom: 10px;
-  font-size: 1.6em;
-}
-
-header nav {
-  margin-top: 6px;
-}
-
-header nav a {
-  color: #CFAF4A;
-  text-decoration: none;
-  font-family: Georgia, serif;
-  margin-right: 10px;
-  font-size: 1.1em;
-}
-
-header nav a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* === Header Links === */
-.header-links {
-  display: flex;
-  gap: 10px;
-}
-
+header h1 { margin-bottom: 10px; font-size: 1.6em; }
+header nav { margin-top: 6px; }
+.header-links { display: flex; gap: 10px; }
 .header-links a {
   display: inline-block;
   font-family: Georgia, serif;
@@ -65,309 +41,89 @@ header nav a:hover {
   box-shadow: 0 0 6px rgba(100, 150, 255, 0.3);
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
-
 .header-links a:hover {
   background: linear-gradient(180deg, #5b78ff 0%, #2f3f8a 100%);
   box-shadow: 0 0 10px rgba(120, 170, 255, 0.6);
   transform: translateY(-2px);
 }
 
-/* === Modal === */
+/* === Modal (General) === */
 .modal {
   display: none;
   position: fixed;
   z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
-
-/* === Dark Modal Style === */
 .modal-content {
   background: #1e1e1e;
   color: #f5f5f5;
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 50%; left: 50%;
   transform: translate(-50%, -30%);
   padding: 20px 30px;
   border-radius: 10px;
-  width: 90%;
-  max-width: 700px;
-  max-height: 80vh;
+  width: 90%; max-width: 700px; max-height: 80vh;
   overflow-y: auto;
   border: 2px solid #3a3a3a;
-  box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.05),
-    0 8px 24px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
 }
+.close { float: right; font-size: 24px; cursor: pointer; color: #aaa; }
+.close:hover { color: #fff; }
 
-.modal-content h3 {
-  color: #CFAF4A;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #333;
-  padding-bottom: 6px;
-}
-
-.modal-content strong {
-  color: #fff;
-}
-
-.modal-content p {
-  line-height: 1.7;
-  font-size: 0.95em;
-}
-
-.modal-content p::selection {
-  background: #3697ef;
-  color: #fff;
-}
-
-.close {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
-  color: #aaa;
-}
-
-.close:hover {
-  color: #fff;
-}
-
-/* === Fade-in animation === */
-@keyframes fadeInModal {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.modal.show {
-  display: block;
-  animation: fadeInModal 0.3s ease-out;
-}
-
-/* === Layout (3 στήλες) === */
+/* === Layout === */
 .layout-container {
   display: grid;
   grid-template-columns: 46% 17% 35%;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 5px;
   position: sticky;
   top: 63px;
-  z-index: 900;
   background: #111;
   padding: 10px 0;
 }
-
-.middle-panel {
-  min-width: 0;
-  overflow: hidden;
-}
-
-.left-panel,
-.middle-panel,
-.right-panel {
+.left-panel, .middle-panel, .right-panel {
   background: #1a1a1a;
   padding: 10px;
   border: 1px solid #333;
   border-radius: 6px;
 }
-
 .left-panel textarea {
-  width: 100%;
-  height: 220px;
-  background: #222;
-  color: #eee;
+  width: 100%; height: 220px;
+  background: #222; color: #eee;
   border: 1px solid #555;
-  padding: 8px;
-  resize: vertical;
+  padding: 8px; resize: vertical;
+  margin-bottom: 2px;
 }
 
-.middle-panel .button-group,
-.middle-panel .dropdown-group {
-  margin: 10px 0;
-}
-
-#google_translate_element {
-  margin: 10px 0;
-  text-align: center;
-}
-
-.goog-te-gadget {
-  font-size: 0.9em !important;
-  color: #eee !important;
-}
-
-.goog-te-gadget-simple {
-  background-color: #222 !important;
-  border: 1px solid #555 !important;
-  padding: 4px 8px !important;
-  border-radius: 4px;
-  color: #eee !important;
-}
-
-.middle-panel button,
-.right-panel button,
-select {
-  background: #333;
-  color: #eee;
+/* === Buttons & Inputs === */
+button, select {
+  background: #333; color: #eee;
   border: 1px solid #555;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 4px;
   margin: 2px 0;
+  transition: background 0.15s;
 }
-
-button:hover,
-select:hover {
-  background: #444;
-}
-
-/* === Βιβλιοθήκες σε 5 στήλες με scroll === */
-.right-panel {
-  height: auto;
-  max-height: none;
-  overflow: visible;
-  align-self: stretch;
-}
-
-.libraries-group {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 8px;
-}
-
-.library {
-  background: #1c1c1c;
-  border: 1px solid #333;
-  border-radius: 6px;
-  padding: 6px;
-}
-
-.library span {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 4px;
-  text-align: center;
-}
-
-.lib-btn {
-  display: block;
-  width: 100%;
-  margin: 2px 0;
-  padding: 4px;
-  font-size: 0.8em;
-  background: #333;
-  color: #eee;
-  border: 1px solid #555;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.lib-btn:hover {
-  background: #444;
-}
-
-/* === Mobile === */
-@media (max-width: 768px) {
-  .layout-container {
-    position: static;
-    top: auto;
-    z-index: auto;
-    grid-template-columns: 1fr;
-  }
-
-  .left-panel,
-  .middle-panel,
-  .right-panel {
-    width: 100%;
-  }
-
-  .left-panel textarea {
-    height: 180px;
-  }
-
-  .libraries-group {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* === Μικρότερο μέγεθος για τις λέξεις δίπλα στα checkbox === */
-#sanSection label,
-#assocSection label,
-#paoSection label,
-#pao99Section label,
-#verseSection label {
-  font-size: 0.8em;      /* μέγεθος γραμμάτων */
-  color: #ccc;           
-  margin-right: 6px;
-  vertical-align: middle;
-  font-weight: normal;
-}
-
-#sanSection input[type="checkbox"],
-#assocSection input[type="checkbox"],
-#paoSection input[type="checkbox"],
-#pao99Section input[type="checkbox"],
-#verseSection input[type="checkbox"] {
-  transform: scale(1.05);  /* μέγεθος checkbox */
-  margin-right: 3px;
-  vertical-align: middle;
-  accent-color: #3697ef;
-}
+button:hover, select:hover { background: #444; }
 
 /* === Tables === */
-.table-wrapper {
-  overflow-x: auto;
-  margin-bottom: 15px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 10px;
-}
-
-th,
-td {
+table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+th, td {
   border: 1px solid #444;
   padding: 6px 10px;
   text-align: center;
 }
-
 th {
   background: #333;
   color: #fff;
   position: sticky;
   top: 0;
-  z-index: 500;
-  font-size: 0.9em;
-  letter-spacing: 0.3px;
 }
-
-tr:nth-child(even) {
-  background: #1a1a1a;
-}
-
-tr:nth-child(odd) {
-  background: #111;
-}
-
-/* === Download Dropdown === */
-.download-select {
-  background: #333;
-  color: #eee;
-  border: 1px solid #555;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
+tr:nth-child(even) { background: #1a1a1a; }
+tr:nth-child(odd) { background: #111; }
 
 /* === Footer === */
 footer {
@@ -377,39 +133,82 @@ footer {
   color: #b3b3b3;
   font-size: 0.7em;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+  bottom: 0; left: 0; width: 100%;
 }
 
-/* === Μείωση κενού μεταξύ textarea και τίτλου Table selection === */
-.left-panel textarea {
-  margin-bottom: 2px !important;
+/* =============================================================
+   EPIC UI + PARCHMENT SECTION
+   ============================================================= */
+#epicSection, .epic-modal-content {
+  font-family: "Book Antiqua", Palatino, serif;
+  color: #2b1b0e;
+}
+.parchment {
+  background: linear-gradient(180deg, rgba(255,250,230,0.95), rgba(245,230,190,0.95));
+  border: 1px solid rgba(140,110,60,0.28);
+  box-shadow: 0 6px 20px rgba(30,20,10,0.25);
+  padding: 18px;
+  border-radius: 10px;
+  line-height: 1.8;
+  color: #2f2b1f;
+  white-space: pre-wrap;
+}
+#epicTextView, #epicText {
+  font-family: "Book Antiqua", Palatino, serif;
+  background: #f5f1e6;
+  color: #2b1b0e;
+  border-radius: 8px;
+  border: 1px solid #d0c7b5;
+  padding: 10px;
+  line-height: 1.8;
 }
 
-.middle-panel h2,
-.middle-panel h3,
-label[for="table-selection"] {
-  margin-top: 2px !important;
+/* === Epic Modal === */
+.epic-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(3px);
 }
-
-.layout-container {
-  gap: 10px !important;
-  margin-bottom: 5px !important;
-  padding-bottom: 0 !important;
+.epic-modal-content {
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #d0c7b5;
+  border-radius: 10px;
+  width: 70%; max-width: 800px; max-height: 80%;
+  overflow-y: auto;
+  background: #f5f1e6;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  font-size: 10.5pt;
 }
-
-.dropdown-group {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+.epic-close {
+  float: right; font-size: 26px; font-weight: bold;
+  cursor: pointer; color: #7b6b55;
 }
+.epic-close:hover { color: #a03a2b; }
 
-/* === Move the instructions modal lower ONLY on mobile === */
-@media (max-width: 600px) {
-  #howToModal .modal-content {
-    position: fixed !important;
-    top: 60% !important;
-    left: 50% !important;
-    transform: translate(-50%, -20%) !important; /* κατεβαίνει φυσικά */
-  }
+/* === Buttons (Epic) === */
+.btn { display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; padding:8px 14px; font-weight:600; border-radius:10px; box-shadow:0 6px 14px rgba(30,20,10,0.12); transition: transform .12s ease, box-shadow .12s ease; }
+.btn-primary { background: linear-gradient(180deg,#f4e0b8,#e8c77a); color:#2b1f08; }
+.btn-primary:hover { transform: translateY(-2px); }
+
+/* === User Libraries === */
+.ul-backdrop { position: fixed; top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);display:flex;justify-content:center;align-items:center;z-index:9999; }
+.ul-modal { background:#1a1a1a;width:760px;height:85vh;border-radius:8px;display:flex;flex-direction:column;overflow:hidden;border:1px solid #555; }
+.ul-modal-header { padding:12px 16px;background:#222;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #444;font-weight:bold;color:#eee; }
+.ul-modal-body { flex:1;overflow-y:auto;padding:12px 16px;color:#ddd; }
+.ul-modal-footer { padding:12px 16px;background:#222;border-top:1px solid #444;display:flex;justify-content:flex-end;gap:10px; }
+
+/* Buttons inside User Libraries */
+.ul-btn { cursor:pointer;background:#444;border:1px solid #666;padding:4px 8px;color:#eee;border-radius:4px; }
+.ul-btn:hover { background:#667; }
+
+/* === Responsive === */
+@media (max-width:768px) {
+  .layout-container { grid-template-columns:1fr; position:static; }
+  .left-panel textarea { height:180px; }
+  .epic-modal-content { width:90%; }
 }
