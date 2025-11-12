@@ -1,5 +1,5 @@
 // ===========================================================
-// library-switcher.js — v3.3
+// library-switcher.js — v3.3.2 (Stable)
 // Επιλογή, φόρτωση και inline διαγραφή User Libraries
 // Συμβατό με user-locus-mapper.js (ενημέρωση loci στους πίνακες)
 // ===========================================================
@@ -7,6 +7,7 @@
 // 🧩 Αποθήκευση ενεργής βιβλιοθήκης
 function setActiveLibrary(type, path) {
   localStorage.setItem("activeLibrary", JSON.stringify({ type, path }));
+  console.log(`📘 Active library set → ${type || "default"} (${path || "none"})`);
 }
 
 // 🧩 Ανάκτηση ενεργής βιβλιοθήκης
@@ -16,7 +17,7 @@ function getActiveLibrary() {
 }
 
 // ===========================================================
-// 🪟 Popup επιλογής βιβλιοθήκης (με δυνατότητα διαγραφής πολλών χωρίς κλείσιμο)
+// 🪟 Popup επιλογής βιβλιοθήκης (με διαγραφή πολλών χωρίς κλείσιμο)
 // ===========================================================
 function openLibrarySelector(libraries) {
   const backdrop = document.createElement("div");
@@ -52,6 +53,7 @@ function openLibrarySelector(libraries) {
   def.onclick = () => {
     setActiveLibrary("default", null);
     console.log("✅ Default system activated");
+    alert("✅ Default system activated!");
   };
   body.appendChild(def);
 
@@ -76,6 +78,7 @@ function openLibrarySelector(libraries) {
       btn.onclick = () => {
         setActiveLibrary(lib.type, lib.path);
         console.log(`✅ Activated library: ${lib.name}`);
+        alert(`✅ Activated: ${lib.name}`);
       };
 
       // ✖ Διαγραφή (μπλε)
@@ -121,6 +124,13 @@ function openLibrarySelector(libraries) {
 
   renderUserLibraries();
 
+  // --- δοκιμαστικός listener για έλεγχο κλικ ---
+  body.querySelectorAll("button.epic-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      console.log(`➡ Clicked: ${btn.textContent}`);
+    });
+  });
+
   modal.appendChild(body);
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
@@ -131,11 +141,8 @@ function openLibrarySelector(libraries) {
 // ===========================================================
 async function chooseLibraryOnGameLoad() {
   const libraries = [];
-
-  // Αν υπάρχουν αποθηκευμένες βιβλιοθήκες χρήστη
   const stored = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
   stored.forEach(lib => libraries.push(lib));
-
   openLibrarySelector(libraries);
 }
 
@@ -145,7 +152,6 @@ async function chooseLibraryOnGameLoad() {
 function loadUserLibrariesIntoUI() {
   const sel = document.getElementById("userLibrarySelect");
   if (!sel) return;
-
   sel.innerHTML = `<option value="">— none —</option>`;
 
   const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
@@ -160,47 +166,57 @@ function loadUserLibrariesIntoUI() {
 // ===========================================================
 // 🧠 Φόρτωση βιβλιοθήκης όταν επιλεγεί από dropdown
 // ===========================================================
-document.getElementById("userLibrarySelect")?.addEventListener("change", async (e) => {
-  const path = e.target.value;
-  if (!path) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const sel = document.getElementById("userLibrarySelect");
+  if (!sel) return;
 
-  try {
-    const resp = await fetch(path);
-    const json = await resp.json();
+  sel.addEventListener("change", async (e) => {
+    const path = e.target.value;
+    if (!path) return;
 
-    // Δημιουργία/ενημέρωση αντικειμένου libs.User
-    libs.User = libs.User || {};
+    try {
+      const resp = await fetch(path);
+      const json = await resp.json();
 
-    if (json.white && json.black) {
-      libs.User.Characters = json;
-      console.log("✅ Loaded User Characters Library");
-    } 
-    else if (json.palaces) {
-      libs.User.MemoryPalaces = json;
-      console.log("✅ Loaded User Memory Palace Library");
-    } 
-    else if (json["00"] || json["01"]) {
-      libs.User.PAO_00_99 = json;
-      console.log("✅ Loaded User PAO 00–99 Library");
-    } 
-    else {
-      libs.User.Squares = json;
-      console.log("✅ Loaded User Squares Library");
-    }
+      libs.User = libs.User || {};
 
-    // Ενημέρωση UI
-    chooseLibraryOnGameLoad();
-
-    // Αν είναι Memory Palace → ενημέρωση loci
-    if (json.palaces?.length) {
-      const palace = json.palaces[0];
-      if (palace?.locations?.length) {
-        const loci = palace.locations.map(l => l.label);
-        window.applyUserPalaceToTables?.(loci, palace.name);
+      if (json.white && json.black) {
+        libs.User.Characters = json;
+        console.log("✅ Loaded User Characters Library");
+      } else if (json.palaces) {
+        libs.User.MemoryPalaces = json;
+        console.log("✅ Loaded User Memory Palace Library");
+      } else if (json["00"] || json["01"]) {
+        libs.User.PAO_00_99 = json;
+        console.log("✅ Loaded User PAO 00–99 Library");
+      } else {
+        libs.User.Squares = json;
+        console.log("✅ Loaded User Squares Library");
       }
+
+      chooseLibraryOnGameLoad();
+
+      if (json.palaces?.length) {
+        const palace = json.palaces[0];
+        if (palace?.locations?.length) {
+          const loci = palace.locations.map(l => l.label);
+          window.applyUserPalaceToTables?.(loci, palace.name);
+        }
+      }
+    } catch (err) {
+      console.error("❌ Error loading user library:", err);
     }
-  } 
-  catch (err) {
-    console.error("❌ Error loading user library:", err);
+  });
+});
+
+// ===========================================================
+// 🎯 Ενεργοποίηση κουμπιού "Select Library" στο UI (safety)
+// ===========================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const openBtn = document.getElementById("openLibrarySelectorBtn");
+  if (openBtn) {
+    openBtn.addEventListener("click", () => {
+      chooseLibraryOnGameLoad();
+    });
   }
 });
