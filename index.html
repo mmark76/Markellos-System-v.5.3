@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- ✅ Basic Meta -->
   <meta charset="UTF-8">
@@ -13,7 +14,7 @@
   <!-- ✅ SEO Meta -->
   <meta name="description" content="Chess Mnemonic Application and Epic Chess Stories Creator v.3.3 — Chess mnemonic app with SAN, Associations, PAO, and Rhythm Tables.">
   <meta name="author" content="Markellos Markides">
-  <meta name="keywords" content="chess, , app, PGN, SAN, mnemonic, PAO, memory palace, chess training, chess notation">
+  <meta name="keywords" content="chess, app, PGN, SAN, mnemonic, PAO, memory palace, chess training, chess notation">
   
   <!-- ✅ Social / Open Graph -->
   <meta property="og:title" content="Chess Mnemonic Application and Epic Chess Stories Creator v.3.3">
@@ -30,21 +31,31 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/epic-ui.css">
   <link rel="stylesheet" href="css/user-libraries.css">
+  <link rel="stylesheet" href="css/epic.css">
 
   <!-- ✅ External Libraries -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+  <!-- ✅ jsPDF libraries (σωστή σειρά και global ορισμός) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>window.jsPDF = window.jspdf.jsPDF;</script>
+  <script src="fonts/Roboto-Regular-normal.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-	
+
   <!-- ✅ Project Scripts -->
   <script src="js/script.js" defer></script>
   <script src="js/epic-ui-init.js" defer></script>
   <script src="js/epic.js" defer></script>
+  <script src="js/user-libraries.js" defer></script>
+  <script src="js/library-switcher.js" defer></script>
+  <script src="js/user-locus-mapper.js" defer></script>
 
+  <!-- ✅ Inline minimal styling -->
   <style>
     .minimal-btn { background:#f8f8f8; border:2px solid #ccc; color:#222;
       font-size:16px; padding:6px 14px; border-radius:7px; cursor:pointer; margin:2px;
@@ -340,5 +351,6 @@
 	
 </body>
 </html>
+
 
 
