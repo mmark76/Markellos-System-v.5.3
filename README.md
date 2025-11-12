@@ -1,4 +1,4 @@
-# Chess Mnemonic Application and Epic Chess Stories Creator — v.3.3.1  
+# Chess Mnemonic Application and Epic Chess Stories Creator — v.3.3
 *(Updated Unified Documentation — English & Greek)*  
 
 ---
@@ -7,7 +7,7 @@
 
 ### 1. Overview  
 
-The **Chess-Mnemonic-Application-and-Epic-Chess-Stories-Creator-v.3.3.1** is an advanced mnemonic and cognitive framework built as a modular **web-based system**.  
+The **Chess-Mnemonic-Application-and-Epic-Chess-Stories-Creator-v.3.3** is an advanced mnemonic and cognitive framework built as a modular **web-based system**.  
 It integrates temporal, spatial, and associative layers of memory through structured visual and linguistic cues.  
 
 It serves as both a **learning environment** and a **cognitive architecture**, enabling users to organize and retrieve complex information efficiently — combining **memory palaces**, **PAO encoding**, and **semantic linking**.
