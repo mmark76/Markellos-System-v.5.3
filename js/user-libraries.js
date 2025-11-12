@@ -594,3 +594,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 });
+
+// === Safe event binding fix ===
+document.addEventListener("DOMContentLoaded", () => {
+  const bind = (id, fn) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("click", fn);
+  };
+
+  // Παράδειγμα: δένουμε όσα κουμπιά υπάρχουν στη σελίδα
+  bind("importPalaceExcelBtn", () => {
+    console.log("📘 Import Memory Palace clicked");
+  });
+
+  bind("createLibraryBtn", () => {
+    console.log("📗 Create Library clicked");
+  });
+
+  bind("importLibraryBtn", () => {
+    console.log("📙 Import Library clicked");
+  });
+
+  bind("openLibrarySelectorBtn", () => {
+    console.log("📒 Select Library clicked");
+  });
+});
