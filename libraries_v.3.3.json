@@ -1495,15 +1495,15 @@
             "Ph2_name": "Hugh Grant",
 
             "Ra1_name": "Cyclops",
-            "Nb1_name": "Otrera",
-            "Bc1_name": "Gandalf",
+            "Nb1_name": "Amazon Otrera",
+            "Bc1_name": "Gandalf the White",
             "Qd1_name": "Xena",
             "Ke1_name": "Hercules",
             "Bf1_name": "Sphinx",
-            "Ng1_name": "Hippolyta",
+            "Ng1_name": "Amazon Hippolyta",
             "Rh1_name": "Yeti",
 
-            "Pa7_name": "Muhammad Ali",
+            "Pa7_name": "Ali Muhammad",
             "Pb7_name": "Barack Obama",
             "Pc7_name": "Chris Rock",
             "Pd7_name": "Denzel Washington",
@@ -4539,5 +4539,6 @@
         }
     }
 }
+
 
 
