@@ -1,7 +1,6 @@
 // ===========================================================
-// library-switcher.js — v3.3.2 (Stable)
-// Επιλογή, φόρτωση και inline διαγραφή User Libraries
-// Συμβατό με user-locus-mapper.js (ενημέρωση loci στους πίνακες)
+// library-switcher.js — v3.3.1 (Safe Fetch Edition)
+// Επιλογή, φόρτωση και inline διαγραφή User Libraries (Pages-compatible)
 // ===========================================================
 
 // 🧩 Αποθήκευση ενεργής βιβλιοθήκης
@@ -52,12 +51,11 @@ function openLibrarySelector(libraries) {
   def.textContent = "Default System";
   def.onclick = () => {
     setActiveLibrary("default", null);
-    console.log("✅ Default system activated");
     alert("✅ Default system activated!");
   };
   body.appendChild(def);
 
-  // 🔹 User Libraries (από το localStorage)
+  // 🔹 User Libraries
   const renderUserLibraries = () => {
     body.querySelectorAll(".lib-row").forEach(r => r.remove());
     const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
@@ -70,18 +68,20 @@ function openLibrarySelector(libraries) {
       row.style.justifyContent = "space-between";
       row.style.gap = "8px";
 
-      // Κουμπί επιλογής βιβλιοθήκης
       const btn = document.createElement("button");
       btn.className = "epic-btn";
       btn.textContent = lib.name || "Unnamed Library";
       btn.style.flex = "1";
+
       btn.onclick = () => {
+        if (lib.path.startsWith("blob:")) {
+          alert("⚠️ Blob URLs δεν υποστηρίζονται στο GitHub Pages.\nΦόρτωσε βιβλιοθήκη από τον φάκελο /user_libraries/.");
+          return;
+        }
         setActiveLibrary(lib.type, lib.path);
-        console.log(`✅ Activated library: ${lib.name}`);
         alert(`✅ Activated: ${lib.name}`);
       };
 
-      // ✖ Διαγραφή (μπλε)
       const del = document.createElement("button");
       del.textContent = "✖";
       del.title = "Delete from local history";
@@ -99,38 +99,26 @@ function openLibrarySelector(libraries) {
       del.onmouseout = () => (del.style.color = "#339CFF");
 
       del.onclick = (ev) => {
-        ev.stopPropagation(); // Μην ενεργοποιήσει επιλογή
+        ev.stopPropagation();
         if (confirm(`Delete library "${lib.name}" from local history?`)) {
           saved.splice(idx, 1);
           localStorage.setItem("savedLibraries", JSON.stringify(saved));
-
-          // Αν είναι η ενεργή, καθαρίζεται κι αυτή
           const active = getActiveLibrary();
           if (active && active.path === lib.path) {
             localStorage.removeItem("activeLibrary");
           }
-
           console.log(`🗑️ Library "${lib.name}" deleted from history.`);
-          renderUserLibraries(); // ανανέωση λίστας χωρίς να κλείσει
-          loadUserLibrariesIntoUI(); // ανανέωση dropdown
+          renderUserLibraries();
+          loadUserLibrariesIntoUI();
         }
       };
 
-      row.appendChild(btn);
-      row.appendChild(del);
+      row.append(btn, del);
       body.appendChild(row);
     });
   };
 
   renderUserLibraries();
-
-  // --- δοκιμαστικός listener για έλεγχο κλικ ---
-  body.querySelectorAll("button.epic-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      console.log(`➡ Clicked: ${btn.textContent}`);
-    });
-  });
-
   modal.appendChild(body);
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
@@ -153,7 +141,6 @@ function loadUserLibrariesIntoUI() {
   const sel = document.getElementById("userLibrarySelect");
   if (!sel) return;
   sel.innerHTML = `<option value="">— none —</option>`;
-
   const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
   for (const lib of saved) {
     const opt = document.createElement("option");
@@ -175,9 +162,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!path) return;
 
     try {
+      if (path.startsWith("blob:")) {
+        alert("⚠️ Blob URLs δεν υποστηρίζονται στο GitHub Pages.\nΠαρακαλώ φόρτωσε βιβλιοθήκη από /user_libraries/.");
+        return;
+      }
+
       const resp = await fetch(path);
       const json = await resp.json();
-
       libs.User = libs.User || {};
 
       if (json.white && json.black) {
@@ -189,9 +180,11 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (json["00"] || json["01"]) {
         libs.User.PAO_00_99 = json;
         console.log("✅ Loaded User PAO 00–99 Library");
-      } else {
+      } else if (json.a1 || json.a2) {
         libs.User.Squares = json;
         console.log("✅ Loaded User Squares Library");
+      } else {
+        console.warn("⚠️ Unknown library type:", json);
       }
 
       chooseLibraryOnGameLoad();
@@ -205,12 +198,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } catch (err) {
       console.error("❌ Error loading user library:", err);
+      alert("❌ Failed to load the selected library. Check file path or network.");
     }
   });
 });
 
 // ===========================================================
-// 🎯 Ενεργοποίηση κουμπιού "Select Library" στο UI (safety)
+// 🎯 Ενεργοποίηση κουμπιού "Select Library" στο UI (safe)
 // ===========================================================
 document.addEventListener("DOMContentLoaded", () => {
   const openBtn = document.getElementById("openLibrarySelectorBtn");
