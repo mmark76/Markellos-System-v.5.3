@@ -50,8 +50,9 @@ function openLibrarySelector(libraries) {
   def.className = "epic-btn";
   def.textContent = "Default System";
   def.onclick = () => {
-    setActiveLibrary("default", null);
-    alert("✅ Default system activated!");
+   setActiveLibrary("default", null);
+   alert("✅ Default system activated!");
+   document.querySelector(".ul-backdrop")?.remove(); // ✅ κλείνει και το modal
   };
   body.appendChild(def);
 
@@ -214,3 +215,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
