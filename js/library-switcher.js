@@ -1,7 +1,7 @@
 // ===========================================================
-// library-switcher.js — v3.3.1
+// library-switcher.js — v3.3.2
 // Διαχείριση επιλογής και φόρτωσης βιβλιοθηκών (Default & User)
-// Περιλαμβάνει σύνδεση User Memory Palace -> Mnemonic Locus Tables
+// Περιλαμβάνει inline διαγραφή User Libraries και σύνδεση με loci
 // ===========================================================
 
 // 🧩 Αποθήκευση ενεργής βιβλιοθήκης
@@ -15,18 +15,21 @@ function getActiveLibrary() {
   return data ? JSON.parse(data) : null;
 }
 
-// 🪟 Popup επιλογής βιβλιοθήκης
+// ===========================================================
+// 🪟 Popup επιλογής βιβλιοθήκης με δυνατότητα διαγραφής User Libraries
+// ===========================================================
 function openLibrarySelector(libraries) {
   const backdrop = document.createElement("div");
   backdrop.className = "ul-backdrop";
 
   const modal = document.createElement("div");
   modal.className = "ul-modal";
-  modal.style.maxWidth = "380px";
+  modal.style.maxWidth = "420px";
 
   const header = document.createElement("div");
   header.className = "ul-modal-header";
   header.innerHTML = `<span>Select Active Mnemonic System</span>`;
+
   const closeBtn = document.createElement("button");
   closeBtn.className = "ul-close-btn";
   closeBtn.textContent = "✖";
@@ -38,9 +41,11 @@ function openLibrarySelector(libraries) {
   body.className = "ul-modal-body";
   body.style.display = "flex";
   body.style.flexDirection = "column";
-  body.style.gap = "10px";
+  body.style.gap = "8px";
+  body.style.maxHeight = "400px";
+  body.style.overflowY = "auto";
 
-  // Default System
+  // 🔹 Default System
   const def = document.createElement("button");
   def.className = "epic-btn";
   def.textContent = "Default System";
@@ -50,16 +55,63 @@ function openLibrarySelector(libraries) {
   };
   body.appendChild(def);
 
-  // User Libraries (saved στο localStorage)
-  libraries.forEach(lib => {
+  // 🔹 User Libraries (από το localStorage)
+  libraries.forEach((lib, idx) => {
+    const row = document.createElement("div");
+    row.style.display = "flex";
+    row.style.alignItems = "center";
+    row.style.justifyContent = "space-between";
+    row.style.gap = "8px";
+
+    // Κουμπί επιλογής
     const btn = document.createElement("button");
     btn.className = "epic-btn";
-    btn.textContent = lib.name;
+    btn.textContent = lib.name || "Unnamed Library";
+    btn.style.flex = "1";
     btn.onclick = () => {
       setActiveLibrary(lib.type, lib.path);
       backdrop.remove();
     };
-    body.appendChild(btn);
+
+    // ❌ Κουμπί διαγραφής από το ιστορικό (όχι από δίσκο)
+    const del = document.createElement("button");
+    del.textContent = "✖";
+    del.title = "Delete from local history";
+    del.style.cssText = `
+      background:none;
+      border:none;
+      color:#b23b3b;
+      font-size:1.1em;
+      font-weight:bold;
+      cursor:pointer;
+      padding:0 8px;
+      transition: color 0.2s ease;
+    `;
+    del.onmouseover = () => (del.style.color = "#ff5555");
+    del.onmouseout = () => (del.style.color = "#b23b3b");
+
+    del.onclick = (ev) => {
+      ev.stopPropagation(); // αποφυγή ενεργοποίησης επιλογής
+      if (confirm(`Delete library "${lib.name}" from local history?`)) {
+        const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
+        saved.splice(idx, 1);
+        localStorage.setItem("savedLibraries", JSON.stringify(saved));
+
+        // Αν είναι η ενεργή, καθαρίζεται κι αυτή
+        const active = getActiveLibrary();
+        if (active && active.path === lib.path) {
+          localStorage.removeItem("activeLibrary");
+        }
+
+        alert(`Library "${lib.name}" deleted from history.`);
+        backdrop.remove();
+        loadUserLibrariesIntoUI(); // ανανέωση dropdown
+      }
+    };
+
+    row.appendChild(btn);
+    row.appendChild(del);
+    body.appendChild(row);
   });
 
   modal.appendChild(body);
@@ -67,7 +119,9 @@ function openLibrarySelector(libraries) {
   document.body.appendChild(backdrop);
 }
 
+// ===========================================================
 // 🔄 Κλήση κατά τη φόρτωση παρτίδας ή επιλογής συστήματος
+// ===========================================================
 async function chooseLibraryOnGameLoad() {
   const libraries = [];
 
@@ -78,7 +132,9 @@ async function chooseLibraryOnGameLoad() {
   openLibrarySelector(libraries);
 }
 
-// 🔽 Εμφάνιση User Libraries στο dropdown της δεξιάς στήλης
+// ===========================================================
+// 🔽 Εμφάνιση User Libraries στο dropdown
+// ===========================================================
 function loadUserLibrariesIntoUI() {
   const sel = document.getElementById("userLibrarySelect");
   if (!sel) return;
@@ -95,7 +151,7 @@ function loadUserLibrariesIntoUI() {
 }
 
 // ===========================================================
-// 🧠 Φόρτωση βιβλιοθήκης όταν επιλεγεί από τον χρήστη
+// 🧠 Φόρτωση βιβλιοθήκης όταν επιλεγεί από dropdown
 // ===========================================================
 document.getElementById("userLibrarySelect")?.addEventListener("change", async (e) => {
   const path = e.target.value;
@@ -113,7 +169,7 @@ document.getElementById("userLibrarySelect")?.addEventListener("change", async (
       console.log("✅ Loaded User Characters Library");
     } 
     else if (json.palaces) {
-      libs.User.MemoryPalaces = json; // ✅ ΠΛΗΘΥΝΤΙΚΟ
+      libs.User.MemoryPalaces = json; // ✅ Πληθυντικός
       console.log("✅ Loaded User Memory Palace Library");
     } 
     else if (json["00"] || json["01"]) {
@@ -125,18 +181,15 @@ document.getElementById("userLibrarySelect")?.addEventListener("change", async (
       console.log("✅ Loaded User Squares Library");
     }
 
-    // Ενημέρωση UI / ανανέωση εφαρμογής
+    // Ενημέρωση UI
     chooseLibraryOnGameLoad();
 
-    // =======================================================
-    // 📌 Αν η βιβλιοθήκη είναι τύπου Memory Palace → Ενημέρωση Locus
-    // =======================================================
+    // Αν η βιβλιοθήκη είναι τύπου Memory Palace → ενημέρωση Locus
     if (json.palaces?.length) {
       const palace = json.palaces[0];
       if (palace?.locations?.length) {
         const loci = palace.locations.map(l => l.label);
-        console.log(`🏛️ Active Memory Palace: ${palace.name || "Unnamed"} (${loci.length} loci)`);
-		window.applyUserPalaceToTables?.(loci); // καλεί το user-locus-mapper.js
+        window.applyUserPalaceToTables?.(loci, palace.name);
       }
     }
   } 
