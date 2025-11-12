@@ -1,12 +1,20 @@
-// user-locus-mapper.js
+// ===========================================================
+// user-locus-mapper.js — v3.3.1
+// Συνδέει User Memory Palace με τη στήλη “Mnemonic Locus”
+// και εμφανίζει οπτικό μήνυμα επιτυχίας στο UI.
+// ===========================================================
+
 (() => {
-  // IDs των 5 πινάκων (προσάρμοσέ τα αν διαφέρουν)
   const TABLE_IDS = ["sanTable", "assocTable", "paoTable", "pao99Table", "verseTable"];
   const LOCUS_COL = 3; // 4η στήλη (0-based)
 
+  // ---------------------------------------------------------
+  // Ενημέρωση συγκεκριμένης στήλης (μόνο Mnemonic Locus)
+  // ---------------------------------------------------------
   function updateLocusColumn(tableId, lociArray) {
     const table = document.getElementById(tableId);
     if (!table || !table.tBodies.length) return;
+
     const tbody = table.tBodies[0];
     const rows = Array.from(tbody.rows);
 
@@ -20,7 +28,6 @@
       let row = rows[i];
       if (!row) {
         row = tbody.insertRow();
-        // εξασφαλίζουμε ότι υπάρχουν τουλάχιστον 4 κελιά
         while (row.cells.length <= LOCUS_COL) row.insertCell();
       }
       row.cells[LOCUS_COL].textContent = label;
@@ -29,16 +36,32 @@
     console.log(`✅ Locus column updated in #${tableId} with ${lociArray.length} loci`);
   }
 
-  // Δημόσια συνάρτηση για κλήση μετά την επιλογή user palace
-  window.applyUserPalaceToTables = function(lociArray) {
+  // ---------------------------------------------------------
+  // Δημόσια συνάρτηση που καλείται μετά την επιλογή User Palace
+  // ---------------------------------------------------------
+  window.applyUserPalaceToTables = function(lociArray, palaceName = "Unnamed") {
     if (!Array.isArray(lociArray) || !lociArray.length) return;
     TABLE_IDS.forEach(id => updateLocusColumn(id, lociArray));
+
+    // -------------------------------------------------------
+    // Οπτική επιβεβαίωση στο UI
+    // -------------------------------------------------------
+    let info = document.getElementById("activePalaceInfo");
+    if (!info) {
+      info = document.createElement("div");
+      info.id = "activePalaceInfo";
+      info.style.cssText = `
+        color:#CFAF4A;
+        text-align:center;
+        margin:8px 0 6px 0;
+        font-size:0.9em;
+        font-family:Georgia, 'Times New Roman', serif;
+      `;
+      document.body.prepend(info);
+    }
+
+    const now = new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+    info.innerHTML = `🏛️ <b>${palaceName}</b> — ${lociArray.length} loci loaded 
+                      <span style="color:#888;">(${now})</span>`;
   };
 })();
-
-document.body.insertAdjacentHTML(
-  "afterbegin",
-  `<div style="text-align:center;color:#CFAF4A;margin:6px 0;font-size:0.9em;">
-     ✅ Loaded ${lociArray.length} Mnemonic Loci from User Memory Palace
-   </div>`
-);
