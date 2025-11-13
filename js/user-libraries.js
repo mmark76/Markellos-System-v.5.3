@@ -586,11 +586,18 @@ function openPAOModal(data) {
 }
 
 function updateUserLibraryStatus(text) {
-  const status = document.getElementById("userLibraryStatus");
-  if (status) {
+  function write() {
+    const status = document.getElementById("userLibraryStatus");
+    if (!status) {
+      // retry every 100ms until HTML is ready
+      return setTimeout(write, 100);
+    }
     status.innerHTML = text;
   }
+  write();
 }
+
+
 
 
 
