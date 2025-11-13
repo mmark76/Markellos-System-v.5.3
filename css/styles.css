@@ -216,8 +216,8 @@ footer {
   background:rgba(0,0,0,0.55);
   display:flex;
   justify-content:center;
-  align-items:flex-start;     /* FIX */
-  padding-top:40px;           /* FIX */
+  align-items:flex-start;
+  padding-top:40px;
   z-index:9999;
 }
 
@@ -225,9 +225,12 @@ footer {
   background:#1a1a1a;
   width:90%;
   max-width:450px;
-  height:auto;
-  max-height:55vh;       /* FIX */
-  overflow-y:auto;
+
+  height:auto;             /* μεγαλώνει φυσικά */
+
+  max-height: calc(100vh - 120px); /* δεν ξεπερνά την οθόνη */
+  overflow-y:auto;         /* scroll μόνο όταν ξεπεράσει */
+
   border-radius:8px;
   display:flex;
   flex-direction:column;
