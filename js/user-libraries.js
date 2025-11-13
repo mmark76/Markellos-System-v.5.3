@@ -599,6 +599,7 @@ function updateUserLibraryStatus(text) {
   write();
 }
 
+}); 
 
 
 
