@@ -199,6 +199,8 @@ if (importBtn) {
   });
 }
 
+  });   // <-- END DOMContentLoaded
+
 // ===========================================================
 // === Existing Modal Functions (unchanged) ===
 // ===========================================================
@@ -596,6 +598,7 @@ function updateUserLibraryStatus(text) {
   }
   write();
 }
+
 
 
 
