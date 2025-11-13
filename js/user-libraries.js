@@ -172,6 +172,8 @@ if (importBtn) {
     picker.click();
   });
 }
+  
+});  // <-- ΤΕΛΟΣ DOMContentLoaded
 
 // ===========================================================
 // === Existing Modal Functions (unchanged) ===
@@ -559,4 +561,5 @@ function openPAOModal(data) {
   document.body.appendChild(backdrop);
 }
 /* ====== END ADD ====== */
+
 
