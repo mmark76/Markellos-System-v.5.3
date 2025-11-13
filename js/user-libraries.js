@@ -3,7 +3,9 @@
 // Δημιουργία, Εξαγωγή και Φόρτωση User Libraries (Palace, Characters, Squares, PAO)
 // ===========================================================
 
+// -----------------------------------------------------------
 // 🔹 Helper: Load templates from /user_libraries
+// -----------------------------------------------------------
 async function loadSquaresTemplate() {
   const resp = await fetch("user_libraries/user_squares_template.json");
   return await resp.json();
@@ -21,7 +23,9 @@ async function loadPAOTemplate() {
   return await resp.json();
 }
 
+// -----------------------------------------------------------
 // 🔹 Register library for later selection
+// -----------------------------------------------------------
 function registerLibraryForSelection(name, type, path) {
   const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
   saved.push({ name, type, path });
@@ -29,7 +33,9 @@ function registerLibraryForSelection(name, type, path) {
   console.log(`✅ Registered: ${name} (${type})`);
 }
 
+// -----------------------------------------------------------
 // 🔹 Backdrop factory
+// -----------------------------------------------------------
 function createBackdrop() {
   const b = document.createElement("div");
   b.className = "ul-backdrop";
@@ -105,106 +111,108 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-// ========================
-// IMPORT LIBRARY BUTTON
-// ========================
-const importBtn = document.getElementById("importLibraryBtn");
-if (importBtn) {
-  importBtn.addEventListener("click", () => {
-    const picker = document.createElement("input");
-    picker.type = "file";
-    picker.accept = ".json";
-    
-    picker.onchange = (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
+  // ========================
+  // IMPORT LIBRARY BUTTON
+  // ========================
+  const importBtn = document.getElementById("importLibraryBtn");
+  if (importBtn) {
+    importBtn.addEventListener("click", () => {
+      const picker = document.createElement("input");
+      picker.type = "file";
+      picker.accept = ".json";
 
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        try {
-          const json = JSON.parse(ev.target.result);
-          const name = file.name.replace(".json", "");
+      picker.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
 
-          // Δημιουργία root libs.User
-          libs = libs || {};
-          libs.User = libs.User || {};
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            const json = JSON.parse(ev.target.result);
+            const name = file.name.replace(".json", "");
 
-          // ========================
-          // Detect type
-          // ========================
-          if (json.palaces) {
-            libs.User.MemoryPalaces = json;
+            // Δημιουργία root libs.User
+            libs = libs || {};
+            libs.User = libs.User || {};
 
-            const p = json.palaces[0];
-            if (p?.locations?.length) {
-              const loci = p.locations.map(l => l.label || "");
-              window.applyUserPalaceToTables?.(loci, p.name || name);
+            // ========================
+            // Detect type
+            // ========================
+            if (json.palaces) {
+              libs.User.MemoryPalaces = json;
+
+              const p = json.palaces[0];
+              if (p?.locations?.length) {
+                const loci = p.locations.map(l => l.label || "");
+                window.applyUserPalaceToTables?.(loci, p.name || name);
+              }
+
+              updateUserLibraryStatus(
+                `🏛️ <b>${p.name || name}</b> — ${p.locations.length} loci loaded 
+                 <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+              );
+
+              alert("🏛️ User Memory Palace loaded!");
+            }
+            else if (json.white && json.black) {
+              libs.User.Characters = json;
+
+              updateUserLibraryStatus(
+                `♟️ <b>User Characters</b> loaded 
+                 <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+              );
+
+              alert("♟️ User Characters loaded!");
+            }
+            else if (json["00"] || json["01"]) {
+              libs.User.PAO_00_99 = json;
+
+              updateUserLibraryStatus(
+                `🔢 <b>PAO 00–99</b> loaded 
+                 <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+              );
+
+              alert("🔢 User PAO 00–99 loaded!");
+            }
+            else if (json.a1 || json.a2) {
+              libs.User.Squares = json;
+
+              const count = Object.keys(json).length;
+
+              updateUserLibraryStatus(
+                `🗺️ <b>Squares Map</b> — ${count} squares loaded 
+                 <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+              );
+
+              alert("🗺️ User Squares loaded!");
+            }
+            else {
+              alert("⚠️ Unknown JSON format.");
+              return;
             }
 
-            updateUserLibraryStatus(
-              `🏛️ <b>${p.name || name}</b> — ${p.locations.length} loci loaded 
-               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
-            );
+            console.log("📘 Loaded library:", json);
 
-            alert("🏛️ User Memory Palace loaded!");
+          } catch (err) {
+            alert("❌ Invalid JSON file");
           }
-          else if (json.white && json.black) {
-            libs.User.Characters = json;
+        };
 
-            updateUserLibraryStatus(
-              `♟️ <b>User Characters</b> loaded 
-               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
-            );
-
-            alert("♟️ User Characters loaded!");
-          }
-          else if (json["00"] || json["01"]) {
-            libs.User.PAO_00_99 = json;
-
-            updateUserLibraryStatus(
-              `🔢 <b>PAO 00–99</b> loaded 
-               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
-            );
-
-            alert("🔢 User PAO 00–99 loaded!");
-          }
-          else if (json.a1 || json.a2) {
-            libs.User.Squares = json;
-
-            const count = Object.keys(json).length;
-
-            updateUserLibraryStatus(
-              `🗺️ <b>Squares Map</b> — ${count} squares loaded 
-               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
-            );
-
-            alert("🗺️ User Squares loaded!");
-          }
-          else {
-            alert("⚠️ Unknown JSON format.");
-            return;
-          }
-
-          console.log("📘 Loaded library:", json);
-
-        } catch (err) {
-          alert("❌ Invalid JSON file");
-        }
+        reader.readAsText(file);
       };
 
-      reader.readAsText(file);
-    };
+      picker.click();
+    });
+  }
 
-    picker.click();
-  });
-}
+}); // === END DOMContentLoaded ===
 
-  });   // <-- END DOMContentLoaded
 
 // ===========================================================
-// === Existing Modal Functions (unchanged) ===
+// === Modal Functions (unchanged logic)
 // ===========================================================
 
+// ------------------ Squares Modal --------------------------
 function openSquaresModal(data) {
   const backdrop = createBackdrop();
   const modal = document.createElement("div");
@@ -265,6 +273,7 @@ function openSquaresModal(data) {
 
   const footer = document.createElement("div");
   footer.className = "ul-modal-footer";
+
   const exportBtn = document.createElement("button");
   exportBtn.className = "ul-export-btn";
   exportBtn.textContent = "Export JSON";
@@ -275,25 +284,26 @@ function openSquaresModal(data) {
     a.download = "user_squares.json";
     a.click();
   };
+
   const cancelBtn = document.createElement("button");
   cancelBtn.className = "ul-cancel-btn";
   cancelBtn.textContent = "Cancel";
   cancelBtn.onclick = () => backdrop.remove();
+
   footer.append(exportBtn, cancelBtn);
   modal.appendChild(footer);
+
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
 
-/* ====== ADD: Memory Palace / Characters / PAO 00–99 modals ====== */
-
+// ---------------- Memory Palace Modal ----------------------
 function openMemoryPalaceModal(data) {
   const backdrop = createBackdrop();
   const modal = document.createElement("div");
   modal.className = "ul-modal";
   modal.style.maxWidth = "600px";
 
-  // header
   const header = document.createElement("div");
   header.className = "ul-modal-header";
   header.innerHTML = `<span>Memory Palace (Route)</span>`;
@@ -304,12 +314,11 @@ function openMemoryPalaceModal(data) {
   header.appendChild(closeBtn);
   modal.appendChild(header);
 
-  // body
   const body = document.createElement("div");
   body.className = "ul-modal-body";
+
   const pal = data.palaces?.[0] || { name: "", description: "", locations: [] };
 
-  // name + description
   const nameInp = document.createElement("input");
   nameInp.className = "ul-input";
   nameInp.placeholder = "Palace name";
@@ -323,7 +332,6 @@ function openMemoryPalaceModal(data) {
   descInp.value = pal.description || "";
   descInp.oninput = () => (pal.description = descInp.value);
 
-  // loci editor
   const list = document.createElement("div");
   list.style.maxHeight = "360px";
   list.style.overflowY = "auto";
@@ -333,7 +341,6 @@ function openMemoryPalaceModal(data) {
   list.style.background = "#111";
 
   if (!Array.isArray(pal.locations) || pal.locations.length === 0) {
-    // fallback: 100 κενά loci αν το template είναι άδειο
     pal.locations = Array.from({ length: 100 }, (_, i) => ({
       id: `L${i + 1}`,
       label: "",
@@ -345,11 +352,10 @@ function openMemoryPalaceModal(data) {
   pal.locations.forEach((loc, i) => {
     const row = document.createElement("div");
     row.className = "ul-square-row";
-    row.style.alignItems = "center";
 
     const idTag = document.createElement("div");
     idTag.className = "ul-square-label";
-    idTag.textContent = loc.id || `L${i + 1}`;
+    idTag.textContent = loc.id;
 
     const label = document.createElement("input");
     label.className = "ul-input";
@@ -361,7 +367,6 @@ function openMemoryPalaceModal(data) {
     list.appendChild(row);
   });
 
-  // actions
   const actions = document.createElement("div");
   actions.style.display = "flex";
   actions.style.gap = "8px";
@@ -372,12 +377,8 @@ function openMemoryPalaceModal(data) {
   useNowBtn.textContent = "⚡ Use Now (apply to tables)";
   useNowBtn.onclick = () => {
     const labels = pal.locations.map(l => l.label || "");
-    if (typeof window.applyUserPalaceToTables === "function") {
-      window.applyUserPalaceToTables(labels, pal.name || "User Palace");
-      alert("✅ Applied to tables.");
-    } else {
-      alert("ℹ️ applyUserPalaceToTables() δεν βρέθηκε σε αυτή τη σελίδα.");
-    }
+    window.applyUserPalaceToTables?.(labels, pal.name || "User Palace");
+    alert("✅ Applied to tables.");
   };
 
   const saveBtn = document.createElement("button");
@@ -387,7 +388,7 @@ function openMemoryPalaceModal(data) {
     const out = JSON.stringify({ palaces: [pal] }, null, 2);
     const blob = new Blob([out], { type: "application/json" });
     saveAs(blob, "user_memory_palaces.json");
-    alert("✅ Saved! Κάνε upload στο /user_libraries/ και μετά Import.");
+    alert("✅ Saved! Κάνε upload και μετά Import.");
   };
 
   actions.append(useNowBtn, saveBtn);
@@ -398,10 +399,12 @@ function openMemoryPalaceModal(data) {
   body.appendChild(actions);
 
   modal.appendChild(body);
+
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
 
+// ---------------- Characters Modal -------------------------
 function openCharactersModal(data) {
   const backdrop = createBackdrop();
   const modal = document.createElement("div");
@@ -437,6 +440,7 @@ function openCharactersModal(data) {
     box.style.border = "1px solid #444";
     box.style.borderRadius = "8px";
     box.style.padding = "8px";
+
     const h = document.createElement("div");
     h.style.fontWeight = "bold";
     h.style.marginBottom = "6px";
@@ -446,7 +450,6 @@ function openCharactersModal(data) {
     Object.keys(obj).forEach(square => {
       const row = document.createElement("div");
       row.className = "ul-square-row";
-      row.style.alignItems = "center";
 
       const tag = document.createElement("div");
       tag.className = "ul-square-label";
@@ -465,24 +468,24 @@ function openCharactersModal(data) {
     return box;
   }
 
-  // White
   const white = data.white || {};
   const whiteWrap = document.createElement("div");
   whiteWrap.style.gridColumn = "1 / -1";
   whiteWrap.style.marginBottom = "4px";
   whiteWrap.innerHTML = `<div style="font-weight:bold;color:#CFAF4A;">White</div>`;
   container.appendChild(whiteWrap);
+
   ["pawn", "knight", "bishop", "rook", "queen", "king"].forEach(p => {
     if (white[p]) container.appendChild(section(`White ${p}`, white[p]));
   });
 
-  // Black
   const black = data.black || {};
   const blackWrap = document.createElement("div");
   blackWrap.style.gridColumn = "1 / -1";
   blackWrap.style.marginTop = "8px";
   blackWrap.innerHTML = `<div style="font-weight:bold;color:#CFAF4A;">Black</div>`;
   container.appendChild(blackWrap);
+
   ["pawn", "knight", "bishop", "rook", "queen", "king"].forEach(p => {
     if (black[p]) container.appendChild(section(`Black ${p}`, black[p]));
   });
@@ -495,16 +498,18 @@ function openCharactersModal(data) {
     const out = JSON.stringify(data, null, 2);
     const blob = new Blob([out], { type: "application/json" });
     saveAs(blob, "user_characters.json");
-    alert("✅ Saved! Κάνε upload στο /user_libraries/ και μετά Import.");
+    alert("✅ Saved! Κάνε upload και μετά Import.");
   };
 
   body.appendChild(container);
   body.appendChild(saveBtn);
+
   modal.appendChild(body);
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
 
+// ---------------- PAO Modal -------------------------
 function openPAOModal(data) {
   const backdrop = createBackdrop();
   const modal = document.createElement("div");
@@ -577,33 +582,26 @@ function openPAOModal(data) {
     const out = JSON.stringify(data, null, 2);
     const blob = new Blob([out], { type: "application/json" });
     saveAs(blob, "user_pao_00_99.json");
-    alert("✅ Saved! Κάνε upload στο /user_libraries/ και μετά Import.");
+    alert("✅ Saved! Κάνε upload και μετά Import.");
   };
 
   body.appendChild(grid);
   body.appendChild(saveBtn);
+
   modal.appendChild(body);
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
 
+// -----------------------------------------------------------
+// Update status under the buttons
+// -----------------------------------------------------------
 function updateUserLibraryStatus(text) {
   function write() {
     const status = document.getElementById("userLibraryStatus");
-    if (!status) {
-      // retry every 100ms until HTML is ready
-      return setTimeout(write, 100);
-    }
+    if (!status) return setTimeout(write, 100);
     status.innerHTML = text;
   }
   write();
 }
-
-}); 
-
-
-
-
-
-
 
