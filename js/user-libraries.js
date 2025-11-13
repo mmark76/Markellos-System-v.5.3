@@ -105,9 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ========================
-  // IMPORT LIBRARY BUTTON
-  // ========================
+// ========================
+// IMPORT LIBRARY BUTTON
+// ========================
 const importBtn = document.getElementById("importLibraryBtn");
 if (importBtn) {
   importBtn.addEventListener("click", () => {
@@ -129,29 +129,55 @@ if (importBtn) {
           libs = libs || {};
           libs.User = libs.User || {};
 
-          // ---- Detect type ----
+          // ========================
+          // Detect type
+          // ========================
           if (json.palaces) {
             libs.User.MemoryPalaces = json;
 
-            // φορτώνει loci στους πίνακες
             const p = json.palaces[0];
             if (p?.locations?.length) {
               const loci = p.locations.map(l => l.label || "");
               window.applyUserPalaceToTables?.(loci, p.name || name);
             }
 
+            updateUserLibraryStatus(
+              `🏛️ <b>${p.name || name}</b> — ${p.locations.length} loci loaded 
+               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+            );
+
             alert("🏛️ User Memory Palace loaded!");
           }
           else if (json.white && json.black) {
             libs.User.Characters = json;
+
+            updateUserLibraryStatus(
+              `♟️ <b>User Characters</b> loaded 
+               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+            );
+
             alert("♟️ User Characters loaded!");
           }
           else if (json["00"] || json["01"]) {
             libs.User.PAO_00_99 = json;
+
+            updateUserLibraryStatus(
+              `🔢 <b>PAO 00–99</b> loaded 
+               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+            );
+
             alert("🔢 User PAO 00–99 loaded!");
           }
           else if (json.a1 || json.a2) {
             libs.User.Squares = json;
+
+            const count = Object.keys(json).length;
+
+            updateUserLibraryStatus(
+              `🗺️ <b>Squares Map</b> — ${count} squares loaded 
+               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+            );
+
             alert("🗺️ User Squares loaded!");
           }
           else {
@@ -172,8 +198,6 @@ if (importBtn) {
     picker.click();
   });
 }
-  
-});  // <-- ΤΕΛΟΣ DOMContentLoaded
 
 // ===========================================================
 // === Existing Modal Functions (unchanged) ===
@@ -567,6 +591,7 @@ function updateUserLibraryStatus(text) {
     status.innerHTML = text;
   }
 }
+
 
 
 
