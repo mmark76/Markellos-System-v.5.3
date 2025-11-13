@@ -207,21 +207,31 @@ footer {
 .btn-primary:hover { transform: translateY(-2px); }
 
 /* === User Libraries === */
-.ul-backdrop { position: fixed; top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);display:flex;justify-content:center;align-items:center;z-index:9999; }
+.ul-backdrop {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.55);
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;     /* FIX */
+  padding-top:40px;           /* FIX */
+  z-index:9999;
+}
+
 .ul-modal {
-  background: #1a1a1a;
-
-  width: 90%;          /* responsive */
-  max-width: 450px;    /* μικρό, όμορφο modal */
-
-  height: auto;        /* παίρνει μόνο όσο χρειάζεται */
-  max-height: 70vh;    /* όριο */
-  overflow-y: auto;    /* scroll αν ξεπεράσει */
-
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #555;
+  background:#1a1a1a;
+  width:90%;
+  max-width:450px;
+  height:auto;
+  max-height:55vh;       /* FIX */
+  overflow-y:auto;
+  border-radius:8px;
+  display:flex;
+  flex-direction:column;
+  border:1px solid #555;
 }
 
 .ul-modal-header { padding:12px 16px;background:#222;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #444;font-weight:bold;color:#eee; }
