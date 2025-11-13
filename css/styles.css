@@ -212,3 +212,7 @@ footer {
   .left-panel textarea { height:180px; }
   .epic-modal-content { width:90%; }
 }
+
+body {
+  padding-bottom: 80px; /* χώρο όσο το ύψος του footer */
+}
