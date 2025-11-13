@@ -560,6 +560,14 @@ function openPAOModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
-/* ====== END ADD ====== */
+
+function updateUserLibraryStatus(text) {
+  const status = document.getElementById("userLibraryStatus");
+  if (status) {
+    status.innerHTML = text;
+  }
+}
+
+
 
 
