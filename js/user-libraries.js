@@ -108,33 +108,70 @@ document.addEventListener("DOMContentLoaded", () => {
   // ========================
   // IMPORT LIBRARY BUTTON
   // ========================
-  const importBtn = document.getElementById("importLibraryBtn");
-  if (importBtn) {
-    importBtn.addEventListener("click", () => {
-      const picker = document.createElement("input");
-      picker.type = "file";
-      picker.accept = ".json";
-      picker.onchange = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          try {
-            const json = JSON.parse(ev.target.result);
-            const name = file.name.replace(".json", "");
-            registerLibraryForSelection(name, "custom", `user_libraries/${file.name}`);
-            alert(`✅ Imported: ${name}`);
-            console.log("📘 Imported user library:", json);
-          } catch (err) {
-            alert("❌ Invalid JSON file");
+const importBtn = document.getElementById("importLibraryBtn");
+if (importBtn) {
+  importBtn.addEventListener("click", () => {
+    const picker = document.createElement("input");
+    picker.type = "file";
+    picker.accept = ".json";
+    
+    picker.onchange = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const json = JSON.parse(ev.target.result);
+          const name = file.name.replace(".json", "");
+
+          // Δημιουργία root libs.User
+          libs = libs || {};
+          libs.User = libs.User || {};
+
+          // ---- Detect type ----
+          if (json.palaces) {
+            libs.User.MemoryPalaces = json;
+
+            // φορτώνει loci στους πίνακες
+            const p = json.palaces[0];
+            if (p?.locations?.length) {
+              const loci = p.locations.map(l => l.label || "");
+              window.applyUserPalaceToTables?.(loci, p.name || name);
+            }
+
+            alert("🏛️ User Memory Palace loaded!");
           }
-        };
-        reader.readAsText(file);
+          else if (json.white && json.black) {
+            libs.User.Characters = json;
+            alert("♟️ User Characters loaded!");
+          }
+          else if (json["00"] || json["01"]) {
+            libs.User.PAO_00_99 = json;
+            alert("🔢 User PAO 00–99 loaded!");
+          }
+          else if (json.a1 || json.a2) {
+            libs.User.Squares = json;
+            alert("🗺️ User Squares loaded!");
+          }
+          else {
+            alert("⚠️ Unknown JSON format.");
+            return;
+          }
+
+          console.log("📘 Loaded library:", json);
+
+        } catch (err) {
+          alert("❌ Invalid JSON file");
+        }
       };
-      picker.click();
-    });
-  }
-});
+
+      reader.readAsText(file);
+    };
+
+    picker.click();
+  });
+}
 
 // ===========================================================
 // === Existing Modal Functions (unchanged) ===
@@ -522,3 +559,4 @@ function openPAOModal(data) {
   document.body.appendChild(backdrop);
 }
 /* ====== END ADD ====== */
+
