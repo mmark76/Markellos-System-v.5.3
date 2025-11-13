@@ -1,0 +1,278 @@
+/* ======================================================
+   Markellos Flashcards - Libraries v.3.3
+   Main Stylesheet
+   ====================================================== */
+
+/* === 1. Βασικές Ρυθμίσεις === */
+body {
+  background: #0b1020;
+  color: #e8ecf1;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  scroll-padding-top: 120px;
+}
+
+/* === 2. Header === */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 800;
+  background: linear-gradient(180deg, #0b1020 0%, #162247 100%);
+  padding: 6px 16px 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 0 0 12px 12px;
+  text-align: left;
+}
+
+header h1 {
+  font-size: 2em;
+  font-weight: 900;
+  color: #e8ecf1;
+  margin: 2px 0 6px; /* μικρό κενό πάνω και κάτω */
+  text-shadow: 0 0 8px rgba(100, 150, 255, 0.25);
+}
+
+/* === Κάτω γραμμή: Κουμπιά & Google Translate === */
+.header-bottom {
+  display: flex;
+  align-items: center;       
+  justify-content: space-between;
+  min-height: 40px;           
+  margin-top: 4px;
+}
+
+/* === 3. Header Links === */
+.header-links {
+  display: flex;
+  gap: 10px;
+}
+
+.header-links a {
+  font-family: Georgia, serif;
+  color: #fff;
+  background: linear-gradient(180deg, #3a4f8a 0%, #1f2d60 100%);
+  text-decoration: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 1.05em;
+  font-weight: 600;
+  border: 1px solid #5b78ff;
+  box-shadow: 0 0 6px rgba(100, 150, 255, 0.3);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.header-links a:hover {
+  background: linear-gradient(180deg, #5b78ff 0%, #2f3f8a 100%);
+  box-shadow: 0 0 10px rgba(120, 170, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* === 4. Google Translate === */
+#google_translate_element {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  font-size: 1em;
+}
+
+/* === Copyrighted-badge === */
+.copyrighted-badge {
+  position: absolute;
+  right: 20px;
+  top: 20px;   /* ↓ ρυθμίζει το ύψος  */
+  z-index: 1000;
+}
+
+/* === 5. Διάταξη (3 στήλες) === */
+.app {
+  width: min(1400px, 100%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+/* === 6. Κάρτες === */
+.card {
+  border: 1px solid #26324d;
+  border-radius: 16px;
+  padding: 20px;
+  background: #121a33;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.title {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.status {
+  font-size: 15px;
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+/* === 7. Flashcards Box === */
+#cardBox {
+  border: 1px dashed #324569;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+}
+#front {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+#back {
+  font-size: 22px;
+  display: none;
+  white-space: pre-line;
+  text-align: left;
+}
+
+/* === 8. Βιβλιοθήκες === */
+.libraries-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.library {
+  background: #121a33;
+  border: 1px solid #26324d;
+  border-radius: 10px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.library span {
+  display: block;
+  font-weight: 600;
+  color: #a8c3ff;
+  margin-bottom: 8px;
+}
+
+/* === 9. Κουμπιά και Φόρμες === */
+.lib-btn,
+button,
+select,
+label {
+  background: #1a2750;
+  border: 1px solid #2c3f66;
+  color: #e8ecf1;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  margin: 3px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.lib-btn:hover,
+button:hover,
+select:hover {
+  background: #223166;
+  transform: translateY(-2px);
+}
+.lib-btn:focus,
+button:focus,
+select:focus {
+  outline: 2px solid #5ca9ff;
+  outline-offset: 2px;
+}
+
+/* === 10. Textarea (readonly) === */
+#libraryText {
+  background: #10182c;
+  color: #e8ecf1;
+  border: 1px solid #26324d;
+  border-radius: 12px;
+  padding: 12px;
+  font-family: monospace;
+  white-space: pre;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  width: 93%;
+  height: 90%;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* === 11. Πίνακας Κωδικοποίησης === */
+#codingBox {
+  grid-column: 1 / span 3;
+  background: linear-gradient(145deg, #10182c, #182444);
+  padding: 24px;
+  border-radius: 16px;
+}
+#codingTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 17px;
+}
+#codingTable th,
+#codingTable td {
+  border: 1px solid #324569;
+  padding: 10px 14px;
+  text-align: center;
+}
+#codingTable th {
+  background: #223166;
+  font-weight: 700;
+  color: #e8ecf1;
+}
+#codingTable tr:nth-child(even) {
+  background: #1a2540;
+}
+#codingTable tr:nth-child(odd) {
+  background: #121a33;
+}
+#codingTable td {
+  color: #cfd8f3;
+}
+
+/* === 12. Responsive Σχεδίαση === */
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+  #codingBox {
+    grid-column: 1;
+  }
+  header h1 {
+    font-size: 1.6em;
+  }
+  .header-bottom {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* === Footer === */
+footer {
+  background: #222;
+  padding: 7px;
+  text-align: center;
+  color: #b3b3b3;
+  font-size: 0.7em;
+  position: fixed;
+  bottom: 0;
+  left: 0;       /* <-- αυτό λείπει */
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

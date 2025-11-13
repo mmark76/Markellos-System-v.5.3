@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flashcards_v.3.3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header>
+  <h1 class="main-title">Flashcards – a help to learn the libraries of the Chess Mnemonic Application</h1>
+
+  <div class="header-bottom">
+    <nav class="header-links">
+      <a href="https://markellos-chess-mnemonic-system.blogspot.com/" target="_blank">⬅ Back to the main page of the Blog</a>
+      <a href="https://mmark76.github.io/Chess-Mnemonic-Application/index.html" target="_blank">⬅ Chess Mnemonic Application and Epic Chess Stories Creator_v.3.3</a>
+    </nav>
+    <div id="google_translate_element"></div>
+  </div>
+
+<!-- 🔹 Copyrighted-badge -->
+<a class="copyrighted-badge" title="Copyrighted.com Registered & Protected" target="_blank"
+   href="https://app.copyrighted.com/work/RGtOgUdXWU6GZIGU/">
+   <img alt="Copyrighted.com Registered & Protected" border="0" width="125" height="25"
+   srcset="https://static.copyrighted.com/badges/125x25/03_1_2x.png 2x"
+   src="https://static.copyrighted.com/badges/125x25/03_1.png">
+</a>
+<script src="https://static.copyrighted.com/badges/helper.js"></script>
+</header>
+
+<div class="app">
+
+  <!-- Στήλη 1: Flashcards -->
+  <div class="card">
+    <h1 class="title">Flashcards for the default libraries_v.3.3</h1>
+    <div class="status" id="status">No libraries loaded yet</div>
+    <div class="grid">
+      <div class="row">
+        <input id="file" type="file" accept=".json,application/json" style="display:none" />
+        <label for="file">Choose file JSON</label>
+      </div>
+      <div class="row">
+        <label for="librarySelect">Libraries:</label>
+        <select id="librarySelect">
+          <option value="Temporal/LibraryT1">Temporal T1</option>
+          <option value="Temporal/LibraryT2">Temporal T2</option>
+          <option value="Characters/LibraryC1">Characters C1</option>
+          <option value="Characters/LibraryC2">Characters C2</option>
+          <option value="Characters/LibraryC3">Characters C3</option>
+          <option value="Spatial/LibraryS1">Spatial S1</option>
+          <option value="Spatial/LibraryS2">Spatial S2</option>
+          <option value="PAO 00-99/LibraryP1">PAO 00-99 (P1)</option>
+          <option value="PAO 00-99/LibraryP2">PAO 00-99 (P2)</option>
+          <option value="PAO 00-99/LibraryP3">PAO 00-99 (P3)</option>
+          <option value="PAO 00-99/LibraryP4">PAO 00-99 (P4)</option>
+          <option value="PAO 00-99/LibraryP5">PAO 00-99 (P5)</option>
+          <option value="PAO 0-9/Library_p1">PAO 0-9 (p1)</option>
+          <option value="Verses/LibraryV1">Rhythm R1</option>
+        </select>
+      </div>
+
+      <div id="cardBox">
+        <div id="front">—</div>
+        <div id="back">
+          <div id="back-code"></div>
+          <div id="back-left"></div>
+          <div id="back-loci"></div>
+          <div id="back-right"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button id="btnShow">Show answer</button>
+        <button id="btnNext">Next card</button>
+        <button disabled>... or press Space</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Στήλη 2: Βιβλιοθήκες -->
+  <div class="card">
+    <h2 class="title">For now, it works only for default Libraries</h2>
+    <div class="libraries-group">
+      <div class="library"><span>Temporal:</span><button class="lib-btn" data-lib="Temporal/LibraryT1">LibraryT1</button><button class="lib-btn" data-lib="Temporal/LibraryT2">LibraryT2</button></div>
+      <div class="library"><span>Characters:</span><button class="lib-btn" data-lib="Characters/LibraryC1">LibraryC1</button><button class="lib-btn" data-lib="Characters/LibraryC2">LibraryC2</button><button class="lib-btn" data-lib="Characters/LibraryC3">LibraryC3</button></div>
+      <div class="library"><span>Spatial:</span><button class="lib-btn" data-lib="Spatial/LibraryS1">LibraryS1</button><button class="lib-btn" data-lib="Spatial/LibraryS2">LibraryS2</button></div>
+      <div class="library"><span>PAO 0–9:</span><button class="lib-btn" data-lib="PAO 0-9/Library_p1">Library_p1</button></div>
+      <div class="library"><span>PAO 00–99:</span>
+        <button class="lib-btn" data-lib="PAO 00-99/LibraryP1">P1</button>
+        <button class="lib-btn" data-lib="PAO 00-99/LibraryP2">P2</button>
+        <button class="lib-btn" data-lib="PAO 00-99/LibraryP3">P3</button>
+        <button class="lib-btn" data-lib="PAO 00-99/LibraryP4">P4</button>
+        <button class="lib-btn" data-lib="PAO 00-99/LibraryP5">P5</button>
+      </div>
+      <div class="library"><span>Rhythm:</span><button class="lib-btn" data-lib="Verses/LibraryV1">LibraryR1</button></div>
+    </div>
+  </div>
+
+  <!-- Στήλη 3: Textarea -->
+  <div class="card">
+    <h2 class="title">Contents</h2>
+<textarea id="libraryText" rows="25" readonly></textarea>
+ </div>
+
+  <!-- Κάτω σειρά: Κωδικοποίηση -->
+  <div id="codingBox" class="card">
+    <h2 class="title">Some ideas, guidelines & help to build your own PAO 00–99</h2>
+    <table id="codingTable">
+      <thead><tr><th>Number</th><th>Person<br>(Dominic System)</th><th>Action<br>(Major System)</th><th>Object<br>(Shape System)</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td>O</td><td>S,Z</td><td>Donut</td></tr>
+        <tr><td>1</td><td>A</td><td>T,D</td><td>Pencil</td></tr>
+        <tr><td>2</td><td>B</td><td>N</td><td>Swan</td></tr>
+        <tr><td>3</td><td>C</td><td>M</td><td>Handcuffs</td></tr>
+        <tr><td>4</td><td>D</td><td>R</td><td>Chair</td></tr>
+        <tr><td>5</td><td>E</td><td>L</td><td>Hook</td></tr>
+        <tr><td>6</td><td>S</td><td>J,Sh,Ch</td><td>Cherry</td></tr>
+        <tr><td>7</td><td>G</td><td>K,G</td><td>Sickle</td></tr>
+        <tr><td>8</td><td>H</td><td>F,V</td><td>Glasses</td></tr>
+        <tr><td>9</td><td>N</td><td>P,B</td><td>Ballon</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<!-- 🔹 Translate.google -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {pageLanguage: 'el', includedLanguages: 'en,el,fr,de,it,es,ru'},
+      'google_translate_element'
+    );
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<footer>
+  <h4>© Markellos Markides 2025 - Flashcards_v.3.3</h4>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
