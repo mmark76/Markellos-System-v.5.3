@@ -147,8 +147,27 @@ async function chooseLibraryOnGameLoad() {
 function loadUserLibrariesIntoUI() {
   const sel = document.getElementById("userLibrarySelect");
   if (!sel) return;
+
   sel.innerHTML = `<option value="">— none —</option>`;
+
+  // --- Empty Templates ---
+  const templates = [
+    { name: "Template: Characters", path: "user_libraries/user_characters_template.json" },
+    { name: "Template: Memory Palaces", path: "user_libraries/user_memory_palaces_template.json" },
+    { name: "Template: PAO 00–99", path: "user_libraries/user_pao_00_99_template.json" },
+    { name: "Template: Squares", path: "user_libraries/user_squares_template.json" }
+  ];
+
+  for (const tpl of templates) {
+    const opt = document.createElement("option");
+    opt.value = tpl.path;
+    opt.textContent = `${tpl.name} (empty)`;
+    sel.appendChild(opt);
+  }
+
+  // --- Saved User Libraries ---
   const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
+
   for (const lib of saved) {
     const opt = document.createElement("option");
     opt.value = lib.path;
@@ -221,5 +240,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 
 
