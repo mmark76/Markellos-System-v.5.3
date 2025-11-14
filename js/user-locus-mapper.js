@@ -5,7 +5,7 @@
 // ===========================================================
 
 (() => {
-  const TABLE_IDS = ["sanTable", "assocTable", "paoTable", "pao99Table", "verseTable"];
+  const TABLE_IDS = ["sanBody", "assocBody", "paoBody", "pao99Body", "verseBody"];
   const LOCUS_COL = 3; // 4η στήλη (0-based)
 
   // ---------------------------------------------------------
@@ -72,5 +72,6 @@
                       <span style="color:#888;">(${now})</span>`;
   }
 })();
+
 
 
