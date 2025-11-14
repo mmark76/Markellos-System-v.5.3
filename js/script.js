@@ -722,19 +722,3 @@ document.addEventListener("DOMContentLoaded", () => {
     table.parentNode.insertBefore(toolbar, table);
   });
 });
-
-/* ---------- User Libraries Loader (placeholder) ---------- */
-function loadUserLibrariesIntoUI() {
-  // Διαβάζουμε τι έχει αποθηκευτεί (αν υπάρχει)
-  const saved = JSON.parse(localStorage.getItem("savedLibraries") || "[]");
-
-  // Αν δεν υπάρχουν custom βιβλιοθήκες, σταματάμε εδώ.
-  if (!saved.length) {
-    console.log("No user libraries found — using default libraries only.");
-    return;
-  }
-
-  // Προς το παρόν απλά ενημερώνουμε ότι υπάρχουν.
-  // Αργότερα εδώ θα μπει UI επιλογής.
-  console.log("✅ Loaded user libraries list:", saved);
-}
