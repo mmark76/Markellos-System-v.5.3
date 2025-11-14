@@ -116,31 +116,34 @@
 	<div class="libraries-group">
       <div class="library">
     <!-- 1) Default Libraries -->
-	  <div class="row">
-        <label for="librarySelect">Default libraries:</label>
-        <select id="librarySelect">
-          <option value="Temporal/LibraryT1">Temporal T1</option>
-          <option value="Temporal/LibraryT2">Temporal T2</option>
-		  <option value="Characters/LibraryC1">Characters C1</option>
-          <option value="Characters/LibraryC2">Characters C2</option>
-		  <option value="Spatial/LibraryS1">Spatial S1</option>
-          <option value="Spatial/LibraryS2">Spatial S2</option>
-		  <option value="PAO 0-9/Library_p1">PAO 0-9 (p1)</option>
-		  <option value="PAO 00-99/LibraryP1">PAO 00-99 (P1)</option>
-          <option value="PAO 00-99/LibraryP2">PAO 00-99 (P2)</option>
-          <option value="PAO 00-99/LibraryP3">PAO 00-99 (P3)</option>
-          <option value="PAO 00-99/LibraryP4">PAO 00-99 (P4)</option>
-          <option value="PAO 00-99/LibraryP5">PAO 00-99 (P5)</option>
-          <option value="Verses/LibraryV1">Rhythm R1</option>
-        </select>
- 
-	 <div style="margin-top:12px;">
-		 <label style="font-weight:bold; display:block;">Your Libraries:</label>
-		 <select id="userLibrarySelect"><option value="">— none —</option></select>
-	 </div>
-			  
-    </div>
+<div class="row" style="display:flex; gap:20px; align-items:flex-start;">
+  <div>
+    <label for="librarySelect">Default libraries:</label>
+    <select id="librarySelect">
+      <option value="Temporal/LibraryT1">Temporal T1</option>
+      <option value="Temporal/LibraryT2">Temporal T2</option>
+      <option value="Characters/LibraryC1">Characters C1</option>
+      <option value="Characters/LibraryC2">Characters C2</option>
+      <option value="Spatial/LibraryS1">Spatial S1</option>
+      <option value="Spatial/LibraryS2">Spatial S2</option>
+      <option value="PAO 0-9/Library_p1">PAO 0-9 (p1)</option>
+      <option value="PAO 00-99/LibraryP1">PAO 00-99 (P1)</option>
+      <option value="PAO 00-99/LibraryP2">PAO 00-99 (P2)</option>
+      <option value="PAO 00-99/LibraryP3">PAO 00-99 (P3)</option>
+      <option value="PAO 00-99/LibraryP4">PAO 00-99 (P4)</option>
+      <option value="PAO 00-99/LibraryP5">PAO 00-99 (P5)</option>
+      <option value="Verses/LibraryV1">Rhythm R1</option>
+    </select>
+  </div>
 
+  <div style="margin-top:12px;">
+    <label style="font-weight:bold; display:block;">Your Libraries:</label>
+    <select id="userLibrarySelect">
+      <option value="">— none —</option>
+    </select>
+  </div>
+
+</div>
 
 <div class="user-lib-controls">
   <button id="openLibrarySelectorBtn" class="epic-btn">Select Library</button>
@@ -346,6 +349,7 @@
 	
 </body>
 </html>
+
 
 
 
