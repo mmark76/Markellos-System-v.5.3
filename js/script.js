@@ -574,9 +574,9 @@ const demoPGN = `[Event "Paris"]
 
   const demoBtn = document.createElement("button");
   demoBtn.id = "loadDemoBtn";
-  demoBtn.textContent = "📌 Load Demo Game<br>(Morphy 1858)";
+  demoBtn.textContent = "📌 Load Demo Game (Morphy 1858)";
   demoBtn.className = "minimal-btn";
-  demoBtn.style.marginTop = "9px";
+  demoBtn.style.marginTop = "7px";
 
   // Τοποθέτηση κάτω από τα κουμπιά PGN
   const midPanel = document.querySelector(".middle-panel .button-group");
