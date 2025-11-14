@@ -287,7 +287,6 @@ function fillAssociationsTable(moves){
     body.appendChild(tr);
   });
 }
-
 /* ---------- PAO 0–9 TABLE ---------- */
 function toPFR(m){
   const P = PIECE_TO_P[m.piece] || 0;
@@ -507,7 +506,6 @@ function wirePGN(){
     });
   }
 }
-
 /* ---------- Init (ενιαίο) ---------- */
 document.addEventListener('DOMContentLoaded', async ()=>{
   // Γλώσσα
@@ -624,7 +622,6 @@ const demoPGN = `[Event "Paris"]
     });
   });
 });
-
 /* ---------- Fixed dropdown locker ---------- */
 function lockDropdown(id, value){
   const el=document.getElementById(id); if(!el) return;
