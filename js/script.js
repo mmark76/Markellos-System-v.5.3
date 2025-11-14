@@ -574,7 +574,7 @@ const demoPGN = `[Event "Paris"]
 
   const demoBtn = document.createElement("button");
   demoBtn.id = "loadDemoBtn";
-  demoBtn.textContent = "📌 Load Demo Game (Morphy 1858)";
+  demoBtn.textContent = "📌 Load Demo Game<br>(Morphy 1858)";
   demoBtn.className = "minimal-btn";
   demoBtn.style.marginTop = "9px";
 
