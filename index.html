@@ -116,8 +116,10 @@
 	<div class="libraries-group">
       <div class="library">
     <!-- 1) Default Libraries -->
-<div class="row" style="display:flex; gap:20px; align-items:flex-start;">
-  <div>
+<div class="row" style="display:flex; gap:20px; align-items:center;">
+
+  <!-- Default libraries -->
+  <div style="display:flex; flex-direction:column;">
     <label for="librarySelect">Default libraries:</label>
     <select id="librarySelect">
       <option value="Temporal/LibraryT1">Temporal T1</option>
@@ -136,8 +138,9 @@
     </select>
   </div>
 
-  <div style="margin-top:12px;">
-    <label style="font-weight:bold; display:block;">Your Libraries:</label>
+  <!-- Your libraries -->
+  <div style="display:flex; flex-direction:column;">
+    <label style="font-weight:bold;">Your Libraries:</label>
     <select id="userLibrarySelect">
       <option value="">— none —</option>
     </select>
@@ -349,6 +352,7 @@
 	
 </body>
 </html>
+
 
 
 
