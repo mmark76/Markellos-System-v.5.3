@@ -2,6 +2,12 @@
 // library-switcher.js — v3.3.1 (Safe Fetch Edition)
 // Επιλογή, φόρτωση και inline διαγραφή User Libraries (Pages-compatible)
 // ===========================================================
+const TEMPLATE_LIBRARIES = [
+  { name: "Template: Characters", path: "user_libraries/user_characters_template.json" },
+  { name: "Template: Memory Palaces", path: "user_libraries/user_memory_palaces_template.json" },
+  { name: "Template: PAO 00–99", path: "user_libraries/user_pao_00_99_template.json" },
+  { name: "Template: Squares", path: "user_libraries/user_squares_template.json" }
+];
 
 // 🧩 Αποθήκευση ενεργής βιβλιοθήκης
 function setActiveLibrary(type, path) {
@@ -215,4 +221,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 
