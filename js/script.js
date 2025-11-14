@@ -557,6 +557,47 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     fenBtn.addEventListener('click', ()=> window.open('https://lichess.org/editor','_blank'));
   }
 
+/* ---------- Demo Game Loader (Morphy Opera Game 1858) ---------- */
+const demoPGN = `[Event "Paris"]
+[Site "Paris FRA"]
+[Date "1858.??.??"]
+[Round "?"]
+[White "Paul Morphy"]
+[Black "Duke Karl / Count Isouard"]
+[Result "1-0"]
+[ECO "C41"]
+[PlyCount "33"]
+
+1. e4 e5 2. Nf3 d6 3. d4 Bg4 4. dxe5 Bxf3 5. Qxf3 dxe5
+6. Bc4 Nf6 7. Qb3 Qe7 8. Nc3 c6 9. Bg5 b5
+10. Nxb5 cxb5 11. Bxb5+ Nbd7 12. O-O-O Rd8
+13. Rxd7 Rxd7 14. Rd1 Qe6 15. Bxd7+ Nxd7
+16. Qb8+ Nxb8 17. Rd8# 1-0`;
+
+  const demoBtn = document.createElement("button");
+  demoBtn.id = "loadDemoBtn";
+  demoBtn.textContent = "📌 Load Demo Game (Morphy 1858)";
+  demoBtn.className = "minimal-btn";
+  demoBtn.style.marginTop = "10px";
+
+  // Τοποθέτηση κάτω από τα κουμπιά PGN
+  const midPanel = document.querySelector(".middle-panel .button-group");
+  if (midPanel) {
+    midPanel.appendChild(demoBtn);
+  }
+
+  demoBtn.addEventListener("click", () => {
+    const ta = document.getElementById("pgnText");
+    ta.value = demoPGN.trim();
+
+    gameMoves = parsePGN(ta.value);
+    manualAnchors = {};
+    renderAll();
+    enableManualAnchors();
+
+    alert("🎉 Loaded: Morphy's Opera Game (1858)");
+  });
+
   // Κλειδώνουμε τα dropdowns
   lockDropdown('sanLocusSelect','LibraryT1');
   lockDropdown('sanAnchorSelect','LibraryT2');
