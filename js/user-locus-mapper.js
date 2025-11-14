@@ -36,7 +36,7 @@
   // ---------------------------------------------------------
   // Δημόσια συνάρτηση που καλείται μετά την επιλογή User Palace
   // ---------------------------------------------------------
-  window.applyUserPalaceToTables = function(lociArray, palaceName = "Memory Palace") {
+  window.applyUserPalaceToTables = function(lociArray, palaceName = "Unnamed") {
     if (!Array.isArray(lociArray) || !lociArray.length) return;
 
     setTimeout(() => {
@@ -72,4 +72,5 @@
                       <span style="color:#888;">(${now})</span>`;
   }
 })();
+
 
