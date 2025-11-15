@@ -1417,6 +1417,7 @@ document.addEventListener("DOMContentLoaded", () => {
    =========================================================== */
 
 document.addEventListener('DOMContentLoaded', async ()=>{
+
   // Γλώσσα
   const langSel = document.getElementById('langSelect');
   if(langSel){
@@ -1480,7 +1481,34 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     fenBtn.addEventListener('click', ()=> window.open('https://lichess.org/editor','_blank'));
   }
 
-  // εδώ μπορείς να κρατήσεις / προσθέσεις το Demo Game Loader όπως στο αρχικό script σου
+
+
+  /* ===========================================================
+     DOWNLOAD TEMPLATES BUTTON
+     =========================================================== */
+
+  const tplBtn = document.getElementById("downloadTemplatesBtn");
+  if (tplBtn) {
+    tplBtn.addEventListener("click", async () => {
+
+      const templates = [
+        { filename: "template_characters.json", path: "user_libraries/user_characters_template.json" },
+        { filename: "template_memory_palaces.json", path: "user_libraries/user_memory_palaces_template.json" },
+        { filename: "template_pao_00_99.json", path: "user_libraries/user_pao_00_99_template.json" },
+        { filename: "template_squares.json", path: "user_libraries/user_squares_template.json" }
+      ];
+
+      for (const tpl of templates) {
+        const resp = await fetch(tpl.path);
+        const json = await resp.json();
+        const blob = new Blob([JSON.stringify(json, null, 2)], { type: "application/json" });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = tpl.filename;
+        a.click();
+      }
+
+      alert("📥 All template files have been downloaded!");
+    });
+  }
 });
-
-
