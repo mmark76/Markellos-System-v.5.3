@@ -1481,8 +1481,6 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     fenBtn.addEventListener('click', ()=> window.open('https://lichess.org/editor','_blank'));
   }
 
-
-
   /* ===========================================================
      DOWNLOAD TEMPLATES BUTTON
      =========================================================== */
@@ -1512,3 +1510,4 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     });
   }
 });
+
