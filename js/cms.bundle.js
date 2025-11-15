@@ -1433,7 +1433,6 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 
   wirePGN();
   wireTableSelect();
-  wireCreateLibraryButton();
   wireImportLibraryButton();
   wireUserLibraryDropdown();
 
@@ -1506,3 +1505,4 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); 
+
