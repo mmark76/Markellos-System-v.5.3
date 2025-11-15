@@ -120,12 +120,6 @@ button, select {
 }
 button:hover, select:hover { background: #444; }
 
-#demoGamesBtn {
-  background-color: white;
-  color: red;
-  font-size: 12px;
-}
-
 /* === Tables === */
 table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
 th, td {
