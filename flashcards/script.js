@@ -249,6 +249,11 @@ function loadFromFile(file) {
   reader.readAsText(file,"utf-8");
 }
 
+function refreshDefaults() {
+  autoFetch();
+  setStatus("Defaults refreshed.");
+}
+
 document.getElementById("file").addEventListener("change", e=>{
   const file = e.target.files?.[0];
   if (file) loadFromFile(file);
@@ -284,4 +289,6 @@ document.querySelectorAll(".lib-btn").forEach(btn=>{
 });
 
 window.addEventListener("DOMContentLoaded", ()=>autoFetch());
+
+document.getElementById("btnRefresh").addEventListener("click", refreshDefaults);
 
