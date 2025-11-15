@@ -950,6 +950,12 @@ function openCreateLibraryChooser() {
     body.appendChild(btn);
   }
 
+     // Memory Palace
+  addBtn("Memory Palace", async () => {
+    const data = await loadMemoryPalacesTemplate();
+    openMemoryPalaceModal(data);
+  });
+   
   // Characters
   addBtn("Characters Library", async () => {
     const data = await loadCharactersTemplate();
@@ -960,12 +966,6 @@ function openCreateLibraryChooser() {
   addBtn("Squares Library", async () => {
     const data = await loadSquaresTemplate();
     openSquaresModal(data);
-  });
-
-  // Memory Palace
-  addBtn("Memory Palace", async () => {
-    const data = await loadMemoryPalacesTemplate();
-    openMemoryPalaceModal(data);
   });
 
   // PAO 00–99
@@ -1598,6 +1598,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); // END DOMContentLoaded
+
 
 
 
