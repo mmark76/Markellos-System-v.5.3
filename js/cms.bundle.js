@@ -1009,8 +1009,8 @@ function wireImportLibraryButton() {
     });
 
     picker.click();
-  });
-}
+  });  // <-- τέλος importBtn.addEventListener
+}       // <-- τέλος wireImportLibraryButton
 
 /* ===========================================================
    11. LIBRARY SWITCHER (MODAL + DROPDOWN CHANGE)
@@ -1506,4 +1506,5 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); 
+
 
