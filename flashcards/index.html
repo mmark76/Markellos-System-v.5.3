@@ -46,9 +46,9 @@
         <select id="librarySelect">
           <option value="Temporal/LibraryT1">Temporal T1</option>
           <option value="Temporal/LibraryT2">Temporal T2</option>
-          <option value="Characters/LibraryC1">Characters C1</option>
-          <option value="Characters/LibraryC2">Characters C2</option>
-          <option value="Characters/LibraryC3">Characters C3</option>
+          <!--   <option value="Characters/LibraryC1">Characters C1</option>-->
+          <option value="Characters/LibraryC2">Characters C1</option>
+          <option value="Characters/LibraryC3">Characters C2</option>
           <option value="Spatial/LibraryS1">Spatial S1</option>
           <option value="Spatial/LibraryS2">Spatial S2</option>
           <option value="PAO 00-99/LibraryP1">PAO 00-99 (P1)</option>
@@ -83,10 +83,27 @@
   <div class="card">
     <h2 class="title">For now, it works only for default Libraries</h2>
     <div class="libraries-group">
-      <div class="library"><span>Temporal:</span><button class="lib-btn" data-lib="Temporal/LibraryT1">LibraryT1</button><button class="lib-btn" data-lib="Temporal/LibraryT2">LibraryT2</button></div>
-      <div class="library"><span>Characters:</span><button class="lib-btn" data-lib="Characters/LibraryC1">LibraryC1</button><button class="lib-btn" data-lib="Characters/LibraryC2">LibraryC2</button><button class="lib-btn" data-lib="Characters/LibraryC3">LibraryC3</button></div>
-      <div class="library"><span>Spatial:</span><button class="lib-btn" data-lib="Spatial/LibraryS1">LibraryS1</button><button class="lib-btn" data-lib="Spatial/LibraryS2">LibraryS2</button></div>
-      <div class="library"><span>PAO 0–9:</span><button class="lib-btn" data-lib="PAO 0-9/Library_p1">Library_p1</button></div>
+      
+      <div class="library"><span>Temporal:</span>
+        <button class="lib-btn" data-lib="Temporal/LibraryT1">LibraryT1</button>
+        <button class="lib-btn" data-lib="Temporal/LibraryT2">LibraryT2</button>
+      </div>
+      
+      <div class="library"><span>Characters:</span>
+        <!--<button class="lib-btn" data-lib="Characters/LibraryC1">LibraryC1</button>-->
+        <button class="lib-btn" data-lib="Characters/LibraryC2">LibraryC2</button>
+        <button class="lib-btn" data-lib="Characters/LibraryC3">LibraryC3</button>
+      </div>
+      
+      <div class="library"><span>Spatial:</span>
+        <button class="lib-btn" data-lib="Spatial/LibraryS1">LibraryS1</button>
+        <button class="lib-btn" data-lib="Spatial/LibraryS2">LibraryS2</button>
+      </div>
+      
+      <div class="library"><span>PAO 0–9:</span>
+        <button class="lib-btn" data-lib="PAO 0-9/Library_p1">Library_p1</button>
+      </div>
+      
       <div class="library"><span>PAO 00–99:</span>
         <button class="lib-btn" data-lib="PAO 00-99/LibraryP1">P1</button>
         <!-- <button class="lib-btn" data-lib="PAO 00-99/LibraryP2">P2</button>
@@ -94,7 +111,11 @@
         <button class="lib-btn" data-lib="PAO 00-99/LibraryP4">P4</button>-->
         <button class="lib-btn" data-lib="PAO 00-99/LibraryP5">P2</button>
       </div>
-      <div class="library"><span>Rhythm:</span><button class="lib-btn" data-lib="Verses/LibraryV1">LibraryR1</button></div>
+      
+      <div class="library"><span>Rhythm:</span>
+        <button class="lib-btn" data-lib="Verses/LibraryV1">LibraryR1</button>
+      </div>
+    
     </div>
   </div>
 
@@ -144,6 +165,7 @@
 
 </body>
 </html>
+
 
 
 
