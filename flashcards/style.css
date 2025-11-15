@@ -263,6 +263,10 @@ footer {
   width: 100%;
 }
 
+body {
+  padding-bottom: 80px;   /* ➜ αφήνει κενό ώστε να μην ακουμπά ο πίνακας στο footer */
+}
+
 
 
 
