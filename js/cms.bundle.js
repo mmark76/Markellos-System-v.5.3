@@ -1257,27 +1257,30 @@ function wireUserLibraryDropdown() {
   const TABLE_IDS = ["sanBody", "assocBody", "paoBody", "pao99Body", "verseBody"];
   const LOCUS_COL = 3;
 
-  function updateLocusColumn(tableId, lociArray) {
-    const table = document.getElementById(tableId);
-    if (!table || !table.tBodies.length) return;
+function updateLocusColumn(bodyId, lociArray) {
+  const tbody = document.getElementById(bodyId);
+  if (!tbody) return;
 
-    const tbody = table.tBodies[0];
-    const rows = Array.from(tbody.rows);
-    if (!rows.length) return;
+  const rows = Array.from(tbody.rows);
+  if (!rows.length) return;
 
-    rows.forEach(row => {
-      if (row.cells[LOCUS_COL]) row.cells[LOCUS_COL].textContent = "";
-    });
+  // καθάρισμα παλιών loci
+  rows.forEach(row => {
+    if (row.cells[LOCUS_COL]) {
+      row.cells[LOCUS_COL].textContent = "";
+    }
+  });
 
-    lociArray.forEach((label, i) => {
-      const row = rows[i];
-      if (row && row.cells[LOCUS_COL]) {
-        row.cells[LOCUS_COL].textContent = label;
-      }
-    });
+  // γέμισμα με τα labels του user palace
+  lociArray.forEach((label, i) => {
+    const row = rows[i];
+    if (row && row.cells[LOCUS_COL]) {
+      row.cells[LOCUS_COL].textContent = label;
+    }
+  });
 
-    console.log(`✅ Locus column updated in #${tableId} with ${lociArray.length} loci`);
-  }
+  console.log(`✅ Locus column updated in #${bodyId} with ${lociArray.length} loci`);
+}
 
   function showPalaceInfo(palaceName, count) {
     let info = document.getElementById("activePalaceInfo");
@@ -1598,6 +1601,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); // END DOMContentLoaded
+
 
 
 
