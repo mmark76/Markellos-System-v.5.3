@@ -1506,6 +1506,3 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); 
-
-
-
