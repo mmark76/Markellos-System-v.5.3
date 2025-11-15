@@ -192,7 +192,6 @@ function fillSanTable(moves){
     body.appendChild(tr);
   });
 }
-
 function enableManualAnchors() {
   document.querySelectorAll('#sanBody, #assocBody, #paoBody, #pao99Body, #verseBody')
     .forEach(table => {
@@ -376,7 +375,6 @@ function fillPaoTable_00_99(moves){
     body.appendChild(tr);
   }
 }
-
 /* ----- VERSE TABLE ----- */
 
 function fillVerseTable(moves){
@@ -593,7 +591,6 @@ function openSquaresModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
-
 /* ===========================================================
    10.2 Memory Palace Modal
    =========================================================== */
@@ -820,7 +817,6 @@ function openCharactersModal(data) {
   backdrop.appendChild(modal);
   document.body.appendChild(backdrop);
 }
-
 /* ===========================================================
    10.4 PAO 00–99 Modal
    =========================================================== */
@@ -910,6 +906,88 @@ function openPAOModal(data) {
 }
 
 /* ===========================================================
+   10.6 Create Library Chooser (NEW)
+   =========================================================== */
+
+function openCreateLibraryChooser() {
+  const backdrop = createBackdrop();
+  const modal = document.createElement("div");
+  modal.className = "ul-modal";
+  modal.style.maxWidth = "420px";
+
+  const header = document.createElement("div");
+  header.className = "ul-modal-header";
+  header.innerHTML = `<span>Create User Library</span>`;
+
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "ul-close-btn";
+  closeBtn.textContent = "✖";
+  closeBtn.onclick = () => backdrop.remove();
+  header.appendChild(closeBtn);
+  modal.appendChild(header);
+
+  const body = document.createElement("div");
+  body.className = "ul-modal-body";
+  body.style.display = "flex";
+  body.style.flexDirection = "column";
+  body.style.gap = "8px";
+
+  const info = document.createElement("div");
+  info.style.fontSize = "0.9em";
+  info.style.opacity = "0.8";
+  info.textContent =
+    "Choose the type of user library you want to create. A template will open for you to edit and then export as JSON.";
+  body.appendChild(info);
+
+  function addBtn(label, onClick) {
+    const btn = document.createElement("button");
+    btn.className = "epic-btn";
+    btn.textContent = label;
+    btn.onclick = async () => {
+      await onClick();
+      backdrop.remove();
+    };
+    body.appendChild(btn);
+  }
+
+  // Characters
+  addBtn("Characters Library", async () => {
+    const data = await loadCharactersTemplate();
+    openCharactersModal(data);
+  });
+
+  // Squares
+  addBtn("Squares Library", async () => {
+    const data = await loadSquaresTemplate();
+    openSquaresModal(data);
+  });
+
+  // Memory Palace
+  addBtn("Memory Palace", async () => {
+    const data = await loadMemoryPalacesTemplate();
+    openMemoryPalaceModal(data);
+  });
+
+  // PAO 00–99
+  addBtn("PAO 00–99", async () => {
+    const data = await loadPAOTemplate();
+    openPAOModal(data);
+  });
+
+  modal.appendChild(body);
+  backdrop.appendChild(modal);
+  document.body.appendChild(backdrop);
+}
+
+/* ---- Wire Create Library button ---- */
+
+function wireCreateLibraryButton() {
+  const btn = document.getElementById("createLibraryBtn");
+  if (!btn) return;
+  btn.addEventListener("click", openCreateLibraryChooser);
+}
+
+/* ===========================================================
    10.5 Import Button (FULLY FIXED)
    =========================================================== */
 
@@ -948,7 +1026,6 @@ function wireImportLibraryButton() {
 
         libs = libs || {};
         libs.User = libs.User || {};
-
         /* Memory Palace */
         if (json.palaces && Array.isArray(json.palaces)) {
           libs.User.MemoryPalaces = json;
@@ -1141,7 +1218,6 @@ function wireUserLibraryDropdown() {
       const json = await resp.json();
       libs = libs || {};
       libs.User = libs.User || {};
-
       if (json.white && json.black) {
         libs.User.Characters = json;
         console.log("✅ Loaded User Characters Library");
@@ -1313,23 +1389,7 @@ const demoMorphyPGN = `[Event "Paris Opera"]
 
 1.e4 e5 2.Nf3 d6 3.d4 Bg4 4.dxe5 Bxf3 5.Qxf3 dxe5 
 6.Bc4 Nf6 7.Qb3 Qe7 8.Nc3 c6 9.Bg5 b5 10.Nxb5 cxb5 
-11.Bxb5+ Nbd7 12.O-O-O Rd8 13.Rxd7 Rxd7 14.Rd1 Qe6 
-15.Bxd7+ Nxd7 16.Qb8+ Nxb8 17.Rd8# 1-0`;
-
-const demoImmortalPGN = `[Event "Immortal Game"]
-[Site "London ENG"]
-[Date "1851.06.21"]
-[Round "?"]
-[White "Adolf Anderssen"]
-[Black "Lionel Kieseritzky"]
-[Result "1-0"]
-
-1.e4 e5 2.f4 exf4 3.Bc4 Qh4+ 4.Kf1 b5 5.Bxb5 Nf6 
-6.Nf3 Qh6 7.d3 Nh5 8.Nh4 Qg5 9.Nf5 c6 10.g4 Nf6 
-11.Rg1 cxb5 12.h4 Qg6 13.h5 Qg5 14.Qf3 Ng8 15.Bxf4 Qf6 
-16.Nc3 Bc5 17.Nd5 Qxb2 18.Bd6 Qxa1+ 19.Ke2 Bxg1 
-20.e5 Na6 21.Nxg7+ Kd8 22.Qf6+ Nxf6 23.Be7# 1-0`;
-
+11.Bxb5+ Nbd7 12.O-O-O
 const demoCapaPGN = `[Event "Simul Exhibition"]
 [Site "USA"]
 [Date "1918.??.??"]
@@ -1434,6 +1494,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   wirePGN();
   wireTableSelect();
   wireImportLibraryButton();
+  wireCreateLibraryButton();
   wireUserLibraryDropdown();
 
   const openBtn = document.getElementById("openLibrarySelectorBtn");
@@ -1505,4 +1566,3 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); 
-
