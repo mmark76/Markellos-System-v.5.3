@@ -906,7 +906,7 @@ function openPAOModal(data) {
 }
 
 /* ===========================================================
-   10.6 Create Library Chooser (NEW)
+   10.5 Create Library Chooser (NEW)
    =========================================================== */
 
 function openCreateLibraryChooser() {
@@ -988,7 +988,7 @@ function wireCreateLibraryButton() {
 }
 
 /* ===========================================================
-   10.5 Import Button (FULLY FIXED)
+   10.6 Import Button (FULLY FIXED)
    =========================================================== */
 
 function wireImportLibraryButton() {
@@ -1598,6 +1598,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); // END DOMContentLoaded
+
 
 
 
