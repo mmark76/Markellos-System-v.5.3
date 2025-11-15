@@ -469,25 +469,32 @@ function updateUserLibraryStatus(text) {
 }
 
 /* ===========================================================
-   10. USER LIBRARY MODALS & IMPORT (from user-libraries.js)
+   10. USER LIBRARY MODALS & IMPORT (Rebuilt, Clean & Stable)
    =========================================================== */
+
+/* ---------- Templates Loader ---------- */
 
 async function loadSquaresTemplate() {
   const resp = await fetch("user_libraries/user_squares_template.json");
   return await resp.json();
 }
+
 async function loadCharactersTemplate() {
   const resp = await fetch("user_libraries/user_characters_template.json");
   return await resp.json();
 }
+
 async function loadMemoryPalacesTemplate() {
   const resp = await fetch("user_libraries/user_memory_palaces_template.json");
   return await resp.json();
 }
+
 async function loadPAOTemplate() {
   const resp = await fetch("user_libraries/user_pao_00_99_template.json");
   return await resp.json();
 }
+
+/* ---------- Backdrop ---------- */
 
 function createBackdrop() {
   const b = document.createElement("div");
@@ -495,14 +502,20 @@ function createBackdrop() {
   return b;
 }
 
+/* ===========================================================
+   10.1 Squares Modal
+   =========================================================== */
+
 function openSquaresModal(data) {
   const backdrop = createBackdrop();
   const modal = document.createElement("div");
   modal.className = "ul-modal";
 
+  /* Header */
   const header = document.createElement("div");
   header.className = "ul-modal-header";
   header.innerHTML = `<span>Squares Library</span>`;
+
   const closeBtn = document.createElement("button");
   closeBtn.className = "ul-close-btn";
   closeBtn.textContent = "✖";
@@ -510,6 +523,7 @@ function openSquaresModal(data) {
   header.appendChild(closeBtn);
   modal.appendChild(header);
 
+  /* Body */
   const body = document.createElement("div");
   body.className = "ul-modal-body";
 
@@ -529,7 +543,7 @@ function openSquaresModal(data) {
     const uploadBtn = document.createElement("button");
     uploadBtn.className = "ul-upload-btn";
     uploadBtn.textContent = "Upload";
-    uploadBtn.onclick = async () => {
+    uploadBtn.onclick = () => {
       const picker = document.createElement("input");
       picker.type = "file";
       picker.accept = ".png,.jpg,.jpeg,.webp";
@@ -553,6 +567,7 @@ function openSquaresModal(data) {
 
   modal.appendChild(body);
 
+  /* Footer */
   const footer = document.createElement("div");
   footer.className = "ul-modal-footer";
 
@@ -579,15 +594,21 @@ function openSquaresModal(data) {
   document.body.appendChild(backdrop);
 }
 
+/* ===========================================================
+   10.2 Memory Palace Modal
+   =========================================================== */
+
 function openMemoryPalaceModal(data) {
   const backdrop = createBackdrop();
   const modal = document.createElement("div");
   modal.className = "ul-modal";
   modal.style.maxWidth = "600px";
 
+  /* Header */
   const header = document.createElement("div");
   header.className = "ul-modal-header";
   header.innerHTML = `<span>Memory Palace (Route)</span>`;
+
   const closeBtn = document.createElement("button");
   closeBtn.className = "ul-close-btn";
   closeBtn.textContent = "✖";
@@ -595,24 +616,28 @@ function openMemoryPalaceModal(data) {
   header.appendChild(closeBtn);
   modal.appendChild(header);
 
+  /* Body */
   const body = document.createElement("div");
   body.className = "ul-modal-body";
 
   const pal = data.palaces?.[0] || { name: "", description: "", locations: [] };
 
+  /* Name */
   const nameInp = document.createElement("input");
   nameInp.className = "ul-input";
   nameInp.placeholder = "Palace name";
   nameInp.value = pal.name || "";
-  nameInp.oninput = () => (pal.name = nameInp.value);
+  nameInp.oninput = () => pal.name = nameInp.value;
 
+  /* Description */
   const descInp = document.createElement("textarea");
   descInp.className = "ul-input";
   descInp.placeholder = "Description (optional)";
   descInp.style.minHeight = "60px";
   descInp.value = pal.description || "";
-  descInp.oninput = () => (pal.description = descInp.value);
+  descInp.oninput = () => pal.description = descInp.value;
 
+  /* Locations List */
   const list = document.createElement("div");
   list.style.maxHeight = "360px";
   list.style.overflowY = "auto";
@@ -630,7 +655,7 @@ function openMemoryPalaceModal(data) {
     }));
   }
 
-  pal.locations.forEach((loc) => {
+  pal.locations.forEach(loc => {
     const row = document.createElement("div");
     row.className = "ul-square-row";
 
@@ -642,12 +667,13 @@ function openMemoryPalaceModal(data) {
     label.className = "ul-input";
     label.placeholder = `Label for ${loc.id}`;
     label.value = loc.label || "";
-    label.oninput = () => (loc.label = label.value);
+    label.oninput = () => loc.label = label.value;
 
     row.append(idTag, label);
     list.appendChild(row);
   });
 
+  /* Actions */
   const actions = document.createElement("div");
   actions.style.display = "flex";
   actions.style.gap = "8px";
@@ -684,6 +710,10 @@ function openMemoryPalaceModal(data) {
   document.body.appendChild(backdrop);
 }
 
+/* ===========================================================
+   10.3 Characters Modal
+   =========================================================== */
+
 function openCharactersModal(data) {
   const backdrop = createBackdrop();
   const modal = document.createElement("div");
@@ -693,6 +723,7 @@ function openCharactersModal(data) {
   const header = document.createElement("div");
   header.className = "ul-modal-header";
   header.innerHTML = `<span>Characters (Pieces + Pawns)</span>`;
+
   const closeBtn = document.createElement("button");
   closeBtn.className = "ul-close-btn";
   closeBtn.textContent = "✖";
@@ -738,7 +769,7 @@ function openCharactersModal(data) {
       name.className = "ul-input";
       name.placeholder = "Name";
       name.value = obj[square].name || "";
-      name.oninput = () => (obj[square].name = name.value);
+      name.oninput = () => obj[square].name = name.value;
 
       row.append(tag, name);
       box.appendChild(row);
@@ -747,6 +778,7 @@ function openCharactersModal(data) {
     return box;
   }
 
+  /* White */
   const white = data.white || {};
   const whiteWrap = document.createElement("div");
   whiteWrap.style.gridColumn = "1 / -1";
@@ -758,6 +790,7 @@ function openCharactersModal(data) {
     if (white[p]) container.appendChild(section(`White ${p}`, white[p]));
   });
 
+  /* Black */
   const black = data.black || {};
   const blackWrap = document.createElement("div");
   blackWrap.style.gridColumn = "1 / -1";
@@ -788,6 +821,10 @@ function openCharactersModal(data) {
   document.body.appendChild(backdrop);
 }
 
+/* ===========================================================
+   10.4 PAO 00–99 Modal
+   =========================================================== */
+
 function openPAOModal(data) {
   const backdrop = createBackdrop();
   const modal = document.createElement("div");
@@ -797,6 +834,7 @@ function openPAOModal(data) {
   const header = document.createElement("div");
   header.className = "ul-modal-header";
   header.innerHTML = `<span>PAO 00–99</span>`;
+
   const closeBtn = document.createElement("button");
   closeBtn.className = "ul-close-btn";
   closeBtn.textContent = "✖";
@@ -834,19 +872,19 @@ function openPAOModal(data) {
     p.className = "ul-input";
     p.placeholder = "Person";
     p.value = data[code].person || "";
-    p.oninput = () => (data[code].person = p.value);
+    p.oninput = () => data[code].person = p.value;
 
     const a = document.createElement("input");
     a.className = "ul-input";
     a.placeholder = "Action";
     a.value = data[code].action || "";
-    a.oninput = () => (data[code].action = a.value);
+    a.oninput = () => data[code].action = a.value;
 
     const o = document.createElement("input");
     o.className = "ul-input";
     o.placeholder = "Object";
     o.value = data[code].object || "";
-    o.oninput = () => (data[code].object = o.value);
+    o.oninput = () => data[code].object = o.value;
 
     cell.append(p, a, o);
     grid.appendChild(cell);
@@ -871,7 +909,9 @@ function openPAOModal(data) {
   document.body.appendChild(backdrop);
 }
 
-/* ----- Import Button logic ----- */
+/* ===========================================================
+   10.5 Import Button (FULLY FIXED)
+   =========================================================== */
 
 function wireImportLibraryButton() {
   const importBtn = document.getElementById("importLibraryBtn");
@@ -888,132 +928,87 @@ function wireImportLibraryButton() {
 
       const reader = new FileReader();
       reader.onload = (ev) => {
+        let json;
+
+        /* Safe JSON Parse */
         try {
-          const json = JSON.parse(ev.target.result);
-          const name = file.name.replace(".json", "");
-
-          libs = libs || {};
-          libs.User = libs.User || {};
-
-          if (json.palaces) {
-            libs.User.MemoryPalaces = json;
-            const p = json.palaces[0];
-            if (p?.locations?.length) {
-              const loci = p.locations.map(l => l.label || "");
-              window.applyUserPalaceToTables?.(loci, p.name || name);
-            }
-            updateUserLibraryStatus(
-              `🏛️ <b>${p.name || name}</b> — ${p.locations.length} loci loaded 
-               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
-            );
-            alert("🏛️ User Memory Palace loaded!");
-          }
-          else if (json.white && json.black) {
-            libs.User.Characters = json;
-            updateUserLibraryStatus(
-              `♟️ <b>User Characters</b> loaded 
-               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
-            );
-            alert("♟️ User Characters loaded!");
-          }
-          else if (json["00"] || json["01"]) {
-            libs.User.PAO_00_99 = json;
-            updateUserLibraryStatus(
-              `🔢 <b>PAO 00–99</b> loaded 
-               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
-            );
-            alert("🔢 User PAO 00–99 loaded!");
-          }
-          else if (json.a1 || json.a2) {
-            libs.User.Squares = json;
-            const count = Object.keys(json).length;
-            updateUserLibraryStatus(
-              `🗺️ <b>Squares Map</b> — ${count} squares loaded 
-               <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
-            );
-            alert("🗺️ User Squares loaded!");
-          }
-          else {
-            alert("⚠️ Unknown JSON format.");
-            return;
-          }
-
-          console.log("📘 Loaded library:", json);
-
+          json = JSON.parse(ev.target.result);
         } catch (err) {
-          alert("❌ Invalid JSON file");
+          alert("❌ Invalid JSON file: Cannot parse.");
+          return;
         }
+
+        /* Validate JSON Object */
+        if (!json || typeof json !== "object") {
+          alert("❌ Invalid JSON structure.");
+          return;
+        }
+
+        const name = file.name.replace(".json", "");
+
+        libs = libs || {};
+        libs.User = libs.User || {};
+
+        /* Memory Palace */
+        if (json.palaces && Array.isArray(json.palaces)) {
+          libs.User.MemoryPalaces = json;
+
+          const p = json.palaces[0];
+          if (p?.locations?.length) {
+            const loci = p.locations.map(l => l.label || "");
+            window.applyUserPalaceToTables?.(loci, p.name || name);
+          }
+
+          updateUserLibraryStatus(
+            `🏛️ <b>${p.name || name}</b> — ${p.locations.length} loci loaded 
+             <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+          );
+          alert("🏛️ User Memory Palace loaded!");
+          return;
+        }
+
+        /* Characters Library */
+        if (json.white && json.black) {
+          libs.User.Characters = json;
+          updateUserLibraryStatus(
+            `♟️ <b>User Characters</b> loaded 
+             <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+          );
+          alert("♟️ User Characters loaded!");
+          return;
+        }
+
+        /* PAO 00-99 */
+        if (json["00"] || json["01"]) {
+          libs.User.PAO_00_99 = json;
+          updateUserLibraryStatus(
+            `🔢 <b>PAO 00–99</b> loaded 
+             <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+          );
+          alert("🔢 User PAO 00–99 loaded!");
+          return;
+        }
+
+        /* Squares Library */
+        if (json.a1 || json.a2) {
+          libs.User.Squares = json;
+          const count = Object.keys(json).length;
+          updateUserLibraryStatus(
+            `🗺️ <b>Squares Map</b> — ${count} squares loaded 
+             <span style="opacity:0.6;">(${new Date().toLocaleTimeString()})</span>`
+          );
+          alert("🗺️ User Squares loaded!");
+          return;
+        }
+
+        /* Unknown Format */
+        alert("⚠️ Unknown library format.");
       };
 
       reader.readAsText(file);
-    };
+    });
 
     picker.click();
-  });
-}
-
-/* ----- Create Library Button ----- */
-
-function wireCreateLibraryButton() {
-  const createBtn = document.getElementById("createLibraryBtn");
-  if (!createBtn) return;
-
-  createBtn.addEventListener("click", async () => {
-    const backdrop = createBackdrop();
-    const modal = document.createElement("div");
-    modal.className = "ul-modal";
-    modal.style.maxWidth = "350px";
-
-    const header = document.createElement("div");
-    header.className = "ul-modal-header";
-    header.innerHTML = `<span>Create Library</span>`;
-    const closeBtn = document.createElement("button");
-    closeBtn.className = "ul-close-btn";
-    closeBtn.textContent = "✖";
-    closeBtn.onclick = () => backdrop.remove();
-    header.appendChild(closeBtn);
-    modal.appendChild(header);
-
-    const body = document.createElement("div");
-    body.className = "ul-modal-body";
-    body.style.display = "flex";
-    body.style.flexDirection = "column";
-    body.style.gap = "10px";
-
-    function option(label, callback) {
-      const btn = document.createElement("button");
-      btn.className = "epic-btn";
-      btn.textContent = label;
-      btn.onclick = async () => {
-        await callback();
-        backdrop.remove();
-      };
-      body.appendChild(btn);
-    }
-
-    option("1 - Memory Palace (Route)", async () => {
-      const data = await loadMemoryPalacesTemplate();
-      openMemoryPalaceModal(data);
-    });
-
-    option("2 - Characters (Pieces + Pawns)", async () => {
-      const data = await loadCharactersTemplate();
-      openCharactersModal(data);
-    });
-
-    option("3 - Squares (Board Map)", async () => {
-      const data = await loadSquaresTemplate();
-      openSquaresModal(data);
-    });
-
-    option("4 - PAO 00–99 (Numeric System)", async () => {
-      const data = await loadPAOTemplate();
-      openPAOModal(data);
-    });
-
-    modal.appendChild(body);
-    backdrop.appendChild(modal);
-    document.body.appendChild(backdrop);
   });
 }
 
@@ -1511,3 +1506,4 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); 
+
