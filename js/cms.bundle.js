@@ -472,6 +472,11 @@ function updateUserLibraryStatus(text) {
 
 /* ---------- Templates Loader ---------- */
 
+async function loadMemoryPalacesTemplate() {
+  const resp = await fetch("user_libraries/user_memory_palaces_template.json");
+  return await resp.json();
+}
+
 async function loadSquaresTemplate() {
   const resp = await fetch("user_libraries/user_squares_template.json");
   return await resp.json();
@@ -479,11 +484,6 @@ async function loadSquaresTemplate() {
 
 async function loadCharactersTemplate() {
   const resp = await fetch("user_libraries/user_characters_template.json");
-  return await resp.json();
-}
-
-async function loadMemoryPalacesTemplate() {
-  const resp = await fetch("user_libraries/user_memory_palaces_template.json");
   return await resp.json();
 }
 
@@ -1598,4 +1598,5 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); // END DOMContentLoaded
+
 
