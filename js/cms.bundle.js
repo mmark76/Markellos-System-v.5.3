@@ -1006,7 +1006,7 @@ function wireImportLibraryButton() {
       };
 
       reader.readAsText(file);
-    });
+    };
 
     picker.click();
   });  // <-- τέλος importBtn.addEventListener
@@ -1506,5 +1506,6 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); 
+
 
 
