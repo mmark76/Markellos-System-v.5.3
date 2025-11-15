@@ -477,13 +477,13 @@ async function loadMemoryPalacesTemplate() {
   return await resp.json();
 }
 
-async function loadSquaresTemplate() {
-  const resp = await fetch("user_libraries/user_squares_template.json");
+async function loadCharactersTemplate() {
+  const resp = await fetch("user_libraries/user_characters_template.json");
   return await resp.json();
 }
 
-async function loadCharactersTemplate() {
-  const resp = await fetch("user_libraries/user_characters_template.json");
+async function loadSquaresTemplate() {
+  const resp = await fetch("user_libraries/user_squares_template.json");
   return await resp.json();
 }
 
@@ -1598,5 +1598,6 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); // END DOMContentLoaded
+
 
 
