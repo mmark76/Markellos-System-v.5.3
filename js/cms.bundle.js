@@ -1565,4 +1565,20 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     }); 
   }
 
-}); 
+  /* ===========================================================
+     16. REFRESH LOCI (SAFE INTEGRATION)
+     =========================================================== */
+  const refreshBtn = document.getElementById("refreshLociBtn");
+  if (refreshBtn) {
+    refreshBtn.addEventListener("click", () => {
+      try {
+        renderAll();
+        enableManualAnchors();
+        console.log("🔄 Loci refreshed.");
+      } catch (err) {
+        console.error("Refresh Loci error:", err);
+      }
+    });
+  }
+
+}); // END DOMContentLoaded
