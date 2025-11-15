@@ -148,8 +148,8 @@
             "25": {
                 "locus_el": "πιάνο",
                 "locus_en": "piano",
-                "el": "το πιάνο της μικρής όμορφης κόρης",
-                "en": "the piano of the young beautiful daughter"
+                "el": "το πιάνο της μικρής κόρης",
+                "en": "the piano of the young daughter"
             },
             "26": {
                 "locus_el": "τραπεζάκι",
@@ -4539,6 +4539,7 @@
         }
     }
 }
+
 
 
 
