@@ -1510,6 +1510,10 @@ if (tplBtn) {
     a.download = "CMA_Templates.zip";
     a.click();
 
-    alert("📦 Templates ZIP downloaded!");
+  alert("📦 Templates ZIP downloaded!");
   }); 
-}
+} // <-- αυτό κλείνει το if (tplBtn)
+
+}); // <-- ΠΡΕΠΕΙ να υπάρχει αυτό που κλείνει το DOMContentLoaded
+
+
