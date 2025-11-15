@@ -1403,15 +1403,6 @@ function openDemoGamesModal() {
   document.body.appendChild(backdrop);
 }
 
-/* ---- WIRE BUTTON ---- */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const demoBtn = document.getElementById("demoGamesBtn");
-  if (demoBtn) {
-    demoBtn.addEventListener("click", openDemoGamesModal);
-  }
-});
-
 /* ===========================================================
    15. μοναδικό DOMContentLoaded
    =========================================================== */
@@ -1481,39 +1472,42 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     fenBtn.addEventListener('click', ()=> window.open('https://lichess.org/editor','_blank'));
   }
 
-/* ===========================================================
-   DOWNLOAD TEMPLATES AS ZIP
-   =========================================================== */
+  const demoBtn = document.getElementById("demoGamesBtn");
+  if (demoBtn) {
+    demoBtn.addEventListener("click", openDemoGamesModal);
+  }
 
-const tplBtn = document.getElementById("downloadTemplatesBtn");
-if (tplBtn) {
-  tplBtn.addEventListener("click", async () => {
+  /* ===========================================================
+     DOWNLOAD TEMPLATES AS ZIP
+     =========================================================== */
 
-    const templates = [
-      { filename: "template_characters.json", path: "user_libraries/user_characters_template.json" },
-      { filename: "template_memory_palaces.json", path: "user_libraries/user_memory_palaces_template.json" },
-      { filename: "template_pao_00_99.json", path: "user_libraries/user_pao_00_99_template.json" },
-      { filename: "template_squares.json", path: "user_libraries/user_squares_template.json" }
-    ];
+  const tplBtn = document.getElementById("downloadTemplatesBtn");
+  if (tplBtn) {
+    tplBtn.addEventListener("click", async () => {
 
-    const zip = new JSZip();
+      const templates = [
+        { filename: "template_characters.json", path: "user_libraries/user_characters_template.json" },
+        { filename: "template_memory_palaces.json", path: "user_libraries/user_memory_palaces_template.json" },
+        { filename: "template_pao_00_99.json", path: "user_libraries/user_pao_00_99_template.json" },
+        { filename: "template_squares.json", path: "user_libraries/user_squares_template.json" }
+      ];
 
-    for (const tpl of templates) {
-      const resp = await fetch(tpl.path);
-      const json = await resp.json();
-      zip.file(tpl.filename, JSON.stringify(json, null, 2));
-    }
+      const zip = new JSZip();
 
-    const content = await zip.generateAsync({ type: "blob" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(content);
-    a.download = "CMA_Templates.zip";
-    a.click();
+      for (const tpl of templates) {
+        const resp = await fetch(tpl.path);
+        const json = await resp.json();
+        zip.file(tpl.filename, JSON.stringify(json, null, 2));
+      }
 
-  alert("📦 Templates ZIP downloaded!");
-  }); 
-} // <-- αυτό κλείνει το if (tplBtn)
+      const content = await zip.generateAsync({ type: "blob" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(content);
+      a.download = "CMA_Templates.zip";
+      a.click();
 
-}); // <-- ΠΡΕΠΕΙ να υπάρχει αυτό που κλείνει το DOMContentLoaded
+      alert("📦 Templates ZIP downloaded!");
+    }); 
+  }
 
-
+}); 
