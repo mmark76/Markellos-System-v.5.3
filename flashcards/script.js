@@ -4,6 +4,10 @@ let currentKey = null;
 let showingAnswer = false;
 window.lastData = null;
 
+function isPlainObject(obj) {
+  return obj && typeof obj === "object" && !Array.isArray(obj);
+}
+
 function setStatus(msg, isError=false) {
   const el = document.getElementById("status");
   el.textContent = msg;
@@ -11,48 +15,109 @@ function setStatus(msg, isError=false) {
 }
 
 function normalizeData(data) {
-  const path = document.getElementById("librarySelect").value.split("/");
+  const select = document.getElementById("librarySelect");
+  const path = select && select.value ? select.value.split("/") : [];
   let obj = data;
+  let traversed = true;
+
   for (let key of path) {
-    if (obj && obj[key]) obj = obj[key];
-    else return null;
+    if (obj && typeof obj === "object" && key in obj) {
+      obj = obj[key];
+    } else {
+      traversed = false;
+      break;
+    }
   }
 
-  // PAO 0–9
-  if (obj.persons && obj.actions && obj.objects) {
-    const combined = {};
-    for (let i = 0; i <= 9; i++) {
-      combined[i] = {
-        person: obj.persons[i].el || obj.persons[i].en || obj.persons[i],
-        action: obj.actions[i].el || obj.actions[i].en || obj.actions[i],
-        object: obj.objects[i].el || obj.objects[i].en || obj.objects[i]
-      };
+  // Αν βρήκαμε κανονικά το path (default libraries case)
+  if (traversed) {
+
+    // PAO 0–9 (persons/actions/objects arrays)
+    if (obj.persons && obj.actions && obj.objects) {
+      const combined = {};
+      for (let i = 0; i <= 9; i++) {
+        combined[i] = {
+          person: obj.persons[i].el || obj.persons[i].en || obj.persons[i],
+          action: obj.actions[i].el || obj.actions[i].en || obj.actions[i],
+          object: obj.objects[i].el || obj.objects[i].en || obj.objects[i]
+        };
+      }
+      return combined;
     }
+
+    // PAO 00–99 (Persons/Actions/Objects maps)
+    if (obj.Persons && obj.Actions && obj.Objects) {
+      const combined = {};
+      for (let k of Object.keys(obj.Persons)) {
+        combined[k] = {
+          person: obj.Persons[k].el || obj.Persons[k].en || obj.Persons[k],
+          action: obj.Actions[k].el || obj.Actions[k].en || obj.Actions[k],
+          object: obj.Objects[k].el || obj.Objects[k].en || obj.Objects[k]
+        };
+      }
+      return combined;
+    }
+
+    // Οτιδήποτε άλλο default library
+    return obj;
+  }
+
+  // =========================
+  // Fallbacks για user templates
+  // =========================
+
+  // Memory Palaces template:
+  // { palaces: [ { name, description, locations:[{id,label,image,notes},...] }, ... ] }
+  if (data && Array.isArray(data.palaces)) {
+    const combined = {};
+    data.palaces.forEach((palace, pIndex) => {
+      const palaceName = palace.name || `Palace ${pIndex + 1}`;
+      const description = palace.description || "";
+      (palace.locations || []).forEach(loc => {
+        const key = `${palaceName} – ${loc.id || ""}`.trim();
+        combined[key] = {
+          palace: palaceName,
+          description: description,
+          id: loc.id || "",
+          label: loc.label || "",
+          image: loc.image || "",
+          notes: loc.notes || ""
+        };
+      });
+    });
     return combined;
   }
 
-  // PAO 00–99
-  if (obj.Persons && obj.Actions && obj.Objects) {
+  // Characters template:
+  // { white: { piece: {square:{name,notes},...}, ... }, black: {...} }
+  if (data && isPlainObject(data.white || null)) {
     const combined = {};
-    for (let k of Object.keys(obj.Persons)) {
-      combined[k] = {
-        person: obj.Persons[k].el || obj.Persons[k].en || obj.Persons[k],
-        action: obj.Actions[k].el || obj.Actions[k].en || obj.Actions[k],
-        object: obj.Objects[k].el || obj.Objects[k].en || obj.Objects[k]
-      };
-    }
-    return combined;
+    ["white","black"].forEach(color => {
+      if (!data[color]) return;
+      Object.keys(data[color]).forEach(piece => {
+        const squares = data[color][piece];
+        if (!isPlainObject(squares)) return;
+        Object.keys(squares).forEach(square => {
+          const entry = squares[square] || {};
+          const key = `${color} ${piece} ${square}`;
+          combined[key] = entry;
+        });
+      });
+    });
+    if (Object.keys(combined).length) return combined;
   }
 
-  return obj;
-}
+  // Generic flat-map template (PAO 00–99 template, squares template κ.λπ.)
+  // Σχήμα: { "00": {...}, "01": {...} } ή { "a1": {...}, "a2": {...} }
+  if (isPlainObject(data)) {
+    const keys = Object.keys(data);
+    if (keys.length && isPlainObject(data[keys[0]])) {
+      return data;
+    }
+  }
 
-function loadPAOObject(obj) {
-  pao = obj || {};
-  keys = Object.keys(pao).sort((a,b)=>Number(a)-Number(b));
-  if (!keys.length) throw new Error("No data in JSON file.");
-  setStatus(`Loaded ${keys.length} cards.`);
-  nextCard();
+  // Δεν αναγνωρίστηκε η δομή
+  return null;
 }
 
 function renderEntry(key, entry) {
@@ -75,6 +140,19 @@ function renderEntry(key, entry) {
   return JSON.stringify(entry,null,2);
 }
 
+function loadPAOObject(obj) {
+  pao = obj || {};
+  keys = Object.keys(pao).sort((a,b)=>{
+    const na = Number(a);
+    const nb = Number(b);
+    if (!isNaN(na) && !isNaN(nb)) return na - nb;
+    return String(a).localeCompare(String(b));
+  });
+  if (!keys.length) throw new Error("No data in JSON file.");
+  setStatus(`Loaded ${keys.length} cards.`);
+  nextCard();
+}
+
 function nextCard() {
   if (!keys.length) { setStatus("No JSON file was loaded.", true); return; }
   showingAnswer = false;
@@ -92,12 +170,11 @@ function nextCard() {
 }
 
 function showAnswer() {
-  if (!keys.length) return;
-  document.getElementById("back").style.display = "block";
+  if (!keys.length || !currentKey) return;
   showingAnswer = true;
+  document.getElementById("back").style.display = "block";
 }
 
-// ✅ Ενημερωμένο για online φόρτωση από GitHub Pages
 async function autoFetch() {
   try {
     setStatus("Automatic loading…");
@@ -106,6 +183,7 @@ async function autoFetch() {
     const data = await res.json();
     window.lastData = data;
     const normalized = normalizeData(data);
+    if (!normalized) throw new Error("No library was found in JSON.");
     loadPAOObject(normalized);
   } catch (err) {
     console.warn("Failed to load automatically:", err.message);
@@ -122,6 +200,10 @@ function loadFromFile(file) {
       const data = JSON.parse(reader.result);
       window.lastData = data;
       const normalized = normalizeData(data);
+      if (!normalized) {
+        setStatus("Non supported JSON structure.", true);
+        return;
+      }
       loadPAOObject(normalized);
     } catch(e){ setStatus("Non valid JSON.", true); }
   };
@@ -163,8 +245,3 @@ document.querySelectorAll(".lib-btn").forEach(btn=>{
 });
 
 window.addEventListener("DOMContentLoaded", ()=>autoFetch());
-
-
-
-
-
