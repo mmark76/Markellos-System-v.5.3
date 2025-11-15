@@ -122,23 +122,62 @@ function normalizeData(data) {
 
 function renderEntry(key, entry) {
   if (!entry) return "—";
+
+  // 1) PAO (Person–Action–Object)
   if (entry.person && entry.action && entry.object) {
     const lociEntries = window.lastData?.Temporal?.LibraryT1 || {};
     const lociKeys = Object.keys(lociEntries);
     const randomLoci = lociEntries[lociKeys[Math.floor(Math.random()*lociKeys.length)]];
     const lociValue = randomLoci?.el || randomLoci?.en || "";
     const loci = "Random Locus: " + lociValue;
+
     const left = `Person: ${entry.person}\nAction: ${entry.action}\nObject: ${entry.object}`;
+
     document.getElementById("back-code").textContent = `Κωδικός: ${key}`;
     document.getElementById("back-left").textContent = left;
     document.getElementById("back-loci").textContent = loci;
     document.getElementById("back-right").textContent = "";
     return "";
   }
+
+  // 2) Memory palace locations – δείχνουμε μόνο το label (π.χ. "Maska")
+  if (entry.palace && typeof entry.label === "string") {
+    document.getElementById("back-code").textContent = `Code: ${key}`;
+    document.getElementById("back-left").textContent = entry.label || "";
+    document.getElementById("back-loci").textContent = "";
+    document.getElementById("back-right").textContent = "";
+    return "";
+  }
+
+  // 3) Default libraries (el / en)
   if (entry.el && entry.en) return `${entry.el}\n${entry.en}`;
+
+  // 4) Απλό string
   if (typeof entry === "string") return entry;
-  return JSON.stringify(entry,null,2);
+
+  // 5) Ό,τι άλλο μένει – JSON
+  return JSON.stringify(entry, null, 2);
 }
+
+// function renderEntry(key, entry) {
+// if (!entry) return "—";
+// if (entry.person && entry.action && entry.object) {
+// const lociEntries = window.lastData?.Temporal?.LibraryT1 || {};
+// const lociKeys = Object.keys(lociEntries);
+// const randomLoci = lociEntries[lociKeys[Math.floor(Math.random()*lociKeys.length)]];
+// const lociValue = randomLoci?.el || randomLoci?.en || "";
+// const loci = "Random Locus: " + lociValue;
+// const left = `Person: ${entry.person}\nAction: ${entry.action}\nObject: ${entry.object}`;
+// document.getElementById("back-code").textContent = `Κωδικός: ${key}`;
+// document.getElementById("back-left").textContent = left;
+// document.getElementById("back-loci").textContent = loci;
+// document.getElementById("back-right").textContent = "";
+// return "";
+// }
+//if (entry.el && entry.en) return `${entry.el}\n${entry.en}`;
+//if (typeof entry === "string") return entry;
+// return JSON.stringify(entry,null,2);
+// } 
 
 function loadPAOObject(obj) {
   pao = obj || {};
@@ -245,3 +284,4 @@ document.querySelectorAll(".lib-btn").forEach(btn=>{
 });
 
 window.addEventListener("DOMContentLoaded", ()=>autoFetch());
+
