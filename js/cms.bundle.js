@@ -1600,13 +1600,41 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     });
   }
 
+  /* ===========================================================
+     17. ΕΜΦΑΝΙΣΗ / ΑΠΟΚΡΥΨΗ ΣΤΗΛΩΝ ΓΙΑ ΟΛΟΥΣ ΤΟΥΣ ΠΙΝΑΚΕΣ
+     =========================================================== */
+  document.querySelectorAll("table").forEach((table) => {
+    const headers = table.querySelectorAll("th");
+    if (!headers.length) return; // αν δεν έχει κεφαλίδες, το προσπερνάμε
+
+    const toolbar = document.createElement("div");
+    toolbar.className = "table-toolbar";
+    toolbar.style.marginBottom = "8px";
+
+    headers.forEach((th, idx) => {
+      const colName = th.textContent.trim() || `Στήλη ${idx + 1}`;
+      const label = document.createElement("label");
+      label.style.marginRight = "8px";
+
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = true;
+
+      cb.addEventListener("change", () => {
+        const show = cb.checked;
+        table.querySelectorAll("tr").forEach(row => {
+          const cell = row.children[idx];
+          if (cell) cell.style.display = show ? "" : "none";
+        });
+      });
+
+      label.append(cb, " " + colName);
+      toolbar.appendChild(label);
+    });
+
+    if (table.parentNode) {
+      table.parentNode.insertBefore(toolbar, table);
+    }
+  });
+
 }); // END DOMContentLoaded
-
-
-
-
-
-
-
-
-
