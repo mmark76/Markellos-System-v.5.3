@@ -3,7 +3,7 @@
    Libraries Loader + Active Library Engine + Renderer + User Libs + Palace Mapper
    =========================================================== */
 
-/* ---------- Global State ---------- */
+/* ---------- Global State --------- */
 let libs = null;
 let gameMoves = [];
 let selectedLang = 'en';
@@ -1638,3 +1638,4 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   });
 
 }); // END DOMContentLoaded
+
