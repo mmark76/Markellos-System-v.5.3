@@ -17,8 +17,8 @@ let manualAnchors = {};
 function sideGR(side){ return side==='White' ? 'White' : 'Black'; }
 
 const PIECE_GREEK = {
-  P:'Στρατιώτης', N:'Ίππος', B:'Αξιωματικός',
-  R:'Πύργος', Q:'Βασίλισσα', K:'Βασιλιάς'
+  P:'Pawn', N:'Knight', B:'Bishop',
+  R:'Rook', Q:'Queen', K:'King'
 };
 function pieceGreek(letter){ return PIECE_GREEK[letter] || letter; }
 
@@ -1601,6 +1601,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); // END DOMContentLoaded
+
 
 
 
