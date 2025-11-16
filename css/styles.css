@@ -355,3 +355,47 @@ header {
     padding-right: 80px;
   }
 }
+
+/* === MOBILE LAYOUT FIX FOR HEADER === */
+@media (max-width: 600px) {
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   /* Τίτλος αριστερά */
+    padding-bottom: 10px;
+    padding-right: 0;
+    position: relative;
+  }
+
+  /* ΤΙΤΛΟΣ ΣΕ ΚΟΥΤΙ */
+  header h1 {
+    font-size: 1.1em;
+    line-height: 1.3;
+    background: #333;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  /* Η ΕΙΚΟΝΑ ΚΑΤΩ ΑΠΟ ΤΟΝ ΤΙΤΛΟ */
+  .header-img {
+    position: relative;   /* 🔥 ΚΑΤΑΡΓΟΥΜΕ το absolute στο mobile */
+    width: 90px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    margin-left: auto;    /* ΔΕΞΙΑ */
+    margin-right: 0;
+    opacity: 0.9;
+  }
+
+  /* Κουμπιά / links από κάτω */
+  .header-links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+}
