@@ -328,3 +328,30 @@ header {
     padding-right: 90px; /* 🔥 αφήνουμε χώρο για την εικόνα */
   }
 }
+
+@media (max-width: 600px) {
+
+  /* Μικρότερος τίτλος μέσα σε “κουτί” */
+  header h1 {
+    font-size: 1em;
+    background: #333;
+    padding: 6px 10px;
+    border-radius: 6px;
+    max-width: 65%;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  /* Μικρότερη εικόνα + σωστή θέση */
+  .header-img {
+    width: 70px;
+    top: 8px;
+    right: 8px;
+    opacity: 0.85;
+  }
+
+  /* Αφήνουμε χώρο για την εικόνα */
+  header {
+    padding-right: 80px;
+  }
+}
