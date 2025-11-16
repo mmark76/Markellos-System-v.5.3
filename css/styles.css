@@ -313,3 +313,18 @@ header {
   opacity: 1;
   transform: scale(1.03);
 }
+
+/* === Mobile fix for header image === */
+@media (max-width: 600px) {
+  .header-img {
+    width: 80px;       /* 🔥 μικρότερη εικόνα */
+    top: 5px;
+    right: 5px;
+    opacity: 0.85;
+  }
+
+  header h1 {
+    font-size: 1.2em;  /* λίγο μικρότερος τίτλος για σωστή συνύπαρξη */
+    padding-right: 90px; /* 🔥 αφήνουμε χώρο για την εικόνα */
+  }
+}
