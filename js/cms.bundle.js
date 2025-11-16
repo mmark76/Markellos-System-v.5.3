@@ -367,7 +367,7 @@ function fillPaoTable_00_99(moves){
       `<td>${escapeHtml(`${wm.san}  ${bm.san}`)}</td>`+
       `<td>${escapeHtml(anchor)}</td>`+
       `<td>${escapeHtml(locus)}</td>`+
-      `<td>${escapeHtml('Πλήρης κίνηση')}</td>`+
+      `<td>${escapeHtml('Full move')}</td>`+
       `<td>${escapeHtml(parts.all)}</td>`+
       `<td>${escapeHtml(`Person: ${P}`)}<br>`+
           `${escapeHtml(`Action: ${A}`)}<br>`+
@@ -1601,6 +1601,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); // END DOMContentLoaded
+
 
 
 
