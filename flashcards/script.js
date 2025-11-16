@@ -133,7 +133,7 @@ function renderEntry(key, entry) {
 
     const left = `Person: ${entry.person}\nAction: ${entry.action}\nObject: ${entry.object}`;
 
-    document.getElementById("back-code").textContent = `Κωδικός: ${key}`;
+    document.getElementById("back-code").textContent = `Code: ${key}`;
     document.getElementById("back-left").textContent = left;
     document.getElementById("back-loci").textContent = loci;
     document.getElementById("back-right").textContent = "";
@@ -291,4 +291,5 @@ document.querySelectorAll(".lib-btn").forEach(btn=>{
 window.addEventListener("DOMContentLoaded", ()=>autoFetch());
 
 document.getElementById("btnRefresh").addEventListener("click", refreshDefaults);
+
 
