@@ -125,17 +125,17 @@ function renderEntry(key, entry) {
 
   // 1) PAO (Person–Action–Object)
   if (entry.person && entry.action && entry.object) {
-    const lociEntries = window.lastData?.Temporal?.LibraryT1 || {};
-    const lociKeys = Object.keys(lociEntries);
-    const randomLoci = lociEntries[lociKeys[Math.floor(Math.random()*lociKeys.length)]];
-    const lociValue = randomLoci?.el || randomLoci?.en || "";
-    const loci = "Random Locus: " + lociValue;
+   // const lociEntries = window.lastData?.Temporal?.LibraryT1 || {};
+   // const lociKeys = Object.keys(lociEntries);
+   // const randomLoci = lociEntries[lociKeys[Math.floor(Math.random()*lociKeys.length)]];
+  // const lociValue = randomLoci?.el || randomLoci?.en || "";
+   // const loci = "Random Locus: " + lociValue;
 
     const left = `Person: ${entry.person}\nAction: ${entry.action}\nObject: ${entry.object}`;
 
     document.getElementById("back-code").textContent = `Code: ${key}`;
     document.getElementById("back-left").textContent = left;
-    document.getElementById("back-loci").textContent = loci;
+   // document.getElementById("back-loci").textContent = loci;
     document.getElementById("back-right").textContent = "";
     return "";
   }
@@ -291,5 +291,6 @@ document.querySelectorAll(".lib-btn").forEach(btn=>{
 window.addEventListener("DOMContentLoaded", ()=>autoFetch());
 
 document.getElementById("btnRefresh").addEventListener("click", refreshDefaults);
+
 
 
