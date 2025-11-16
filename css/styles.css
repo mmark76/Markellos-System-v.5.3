@@ -284,3 +284,32 @@ footer {
 body {
   padding-bottom: 100px;
 }
+
+/* === Header with image === */
+header {
+  background: #222;
+  padding: 10px;
+  margin-bottom: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  position: relative;  /* 🔥 απαραίτητο για να επιπλέει η εικόνα */
+}
+
+/* === The small top-right image === */
+.header-img {
+  position: absolute;
+  top: 8px;        /* απόσταση από πάνω */
+  right: 12px;      /* απόσταση από δεξιά */
+  width: 130px;     /* 🔥 ιδανικό μέγεθος για το δικό σου header */
+  border-radius: 6px;
+  opacity: 0.95;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  pointer-events: none;    /* 🔥 δεν μπλοκάρει κλικ στα links */
+  transition: 0.25s ease;
+}
+
+.header-img:hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
