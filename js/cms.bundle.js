@@ -331,7 +331,7 @@ function fillPaoTable_0_9(moves){
       `<td>${escapeHtml(locus)}</td>`+
       `<td>${escapeHtml(sideGR(m.side))}</td>`+
       `<td>${escapeHtml(`${code} (${m.san})`)}</td>`+
-      `<td>${escapeHtml(`Κωδικός: ${code}`)}<br>`+
+      `<td>${escapeHtml(`Code: ${code}`)}<br>`+
         `${escapeHtml('P: '+person)} | ${escapeHtml('A: '+action)} | ${escapeHtml('O: '+object)}</td>`;
     body.appendChild(tr);
   });
@@ -1601,6 +1601,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   }
 
 }); // END DOMContentLoaded
+
 
 
 
