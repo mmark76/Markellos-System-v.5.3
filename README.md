@@ -243,5 +243,3 @@ Chess-Mnemonic-Application-and-Epic-Chess-Stories-Creator-v.3.3/
 ---
 
 © 2025 Μάρκελλος. Με επιφύλαξη παντός δικαιώματος.
-* να προσθέσω **badges**,
-* ή να σου φτιάξω **Wiki structure** για GitHub.
