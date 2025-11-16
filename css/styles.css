@@ -455,14 +455,32 @@ footer {
 @media (min-width: 1024px) {
   header {
     padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  header nav {
+    margin-top: 0;
+  }
+
+  .header-links {
+    margin-top: 0;
   }
 
   header h1 {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
   .header-img {
-    width: 80px;
+    width: 70px;
+  }
+
+  .header-links a,
+  #howToBtn {
+    padding: 5px 10px;
+    font-size: 0.95em;
   }
 }
 
