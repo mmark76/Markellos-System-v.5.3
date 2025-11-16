@@ -23,11 +23,16 @@ body {
 /* === Header === */
 header {
   background: #222;
-  padding: 10px;
+  padding: 6px 8px;      /* ήταν 10px */
   margin-bottom: 5px;
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.3em;      /* ήταν 1.6em */
 }
 
 /* Πάνω σειρά: τίτλος + εικόνα */
@@ -36,11 +41,6 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.6em;
 }
 
 /* Εικόνα στο header */
@@ -451,8 +451,8 @@ footer {
   }
 }
 
-/* Πιο χαμηλό header για laptop / desktop */
-@media (min-width: 1024px) {
+/* Πιο χαμηλό header για tablet / laptop / desktop */
+@media (min-width: 768px) {
   header {
     padding: 4px 10px;
     display: flex;
@@ -470,17 +470,17 @@ footer {
   }
 
   header h1 {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
 
   .header-img {
-    width: 70px;
+    width: 60px;
   }
 
   .header-links a,
   #howToBtn {
-    padding: 5px 10px;
-    font-size: 0.95em;
+    padding: 4px 8px;
+    font-size: 0.9em;
   }
 }
 
