@@ -450,3 +450,18 @@ footer {
     margin-top: 4px;
   }
 }
+
+/* Πιο χαμηλό header για laptop / desktop */
+@media (min-width: 1024px) {
+  header {
+    padding: 4px 10px;
+  }
+
+  header h1 {
+    font-size: 1.2em;
+  }
+
+  .header-img {
+    width: 80px;
+  }
+}
