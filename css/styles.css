@@ -399,3 +399,43 @@ header {
     gap: 6px;
   }
 }
+
+/* === Perfect Mobile Header Layout === */
+@media (max-width: 600px) {
+
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  header h1 {
+    font-size: 0.95em;
+    background: #333;
+    padding: 6px 8px;
+    border-radius: 6px;
+    line-height: 1.25;
+    flex: 1;              /* 🔥 ο τίτλος πιάνει τον αριστερό χώρο */
+    max-width: 65%;
+    text-align: left;
+    margin: 0;
+  }
+
+  .header-img {
+    position: relative !important;  /* 🔥 σταματάει τις συγκρούσεις */
+    width: 70px;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    opacity: 0.9;
+  }
+
+  .header-links,
+  #howToBtn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
