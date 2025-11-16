@@ -465,3 +465,28 @@ footer {
     width: 80px;
   }
 }
+
+/* Table selection + Memory Palace Mode row */
+.dropdown-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0 4px;
+  font-size: 0.9em;
+}
+
+.dropdown-group h4 {
+  margin: 0;
+  display: inline;
+  font-size: 1em;
+}
+
+.dropdown-group label {
+  font-weight: bold;
+}
+
+.dropdown-group select {
+  padding: 5px 10px;      /* ίδιο ύψος στα δύο dropdowns */
+  border-radius: 4px;
+}
