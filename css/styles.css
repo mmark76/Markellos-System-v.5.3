@@ -439,3 +439,57 @@ header {
     margin-top: 10px;
   }
 }
+
+/* === FINAL MOBILE HEADER FIX === */
+@media (max-width: 600px) {
+
+  /* Make header stack nicely */
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  /* Row 1: title + image side-by-side */
+  .header-top-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  header h1 {
+    font-size: 1em;
+    line-height: 1.3;
+    background: #333;
+    padding: 8px;
+    border-radius: 6px;
+    margin: 0;
+    flex: 1;
+  }
+
+  .header-img {
+    width: 70px;
+    height: auto;
+    border-radius: 6px;
+    opacity: 0.9;
+    position: relative !important;
+    margin: 0;
+  }
+
+  /* Row 2: buttons in column layout */
+  .header-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+
+  #howToBtn {
+    width: 100%;
+    margin-top: 4px;
+  }
+}
