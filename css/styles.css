@@ -5,7 +5,11 @@
    ============================================================= */
 
 /* === Base Reset === */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   background-color: #111;
@@ -13,6 +17,7 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   padding: 10px;
+  padding-bottom: 100px;
 }
 
 /* === Header === */
@@ -24,9 +29,38 @@ header {
   top: 0;
   z-index: 1000;
 }
-header h1 { margin-bottom: 10px; font-size: 1.6em; }
-header nav { margin-top: 6px; }
-.header-links { display: flex; gap: 10px; }
+
+/* Πάνω σειρά: τίτλος + εικόνα */
+.header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6em;
+}
+
+/* Εικόνα στο header */
+.header-img {
+  width: 120px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Links */
+header nav {
+  margin-top: 6px;
+}
+
+.header-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .header-links a {
   display: inline-block;
   font-family: Georgia, serif;
@@ -41,6 +75,7 @@ header nav { margin-top: 6px; }
   box-shadow: 0 0 6px rgba(100, 150, 255, 0.3);
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
+
 .header-links a:hover {
   background: linear-gradient(180deg, #5b78ff 0%, #2f3f8a 100%);
   box-shadow: 0 0 10px rgba(120, 170, 255, 0.6);
@@ -52,36 +87,41 @@ header nav { margin-top: 6px; }
   display: none;
   position: fixed;
   z-index: 999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
   background: #1e1e1e;
   color: #f5f5f5;
-
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   padding: 20px 30px;
   border-radius: 10px;
-
   width: 90%;
   max-width: 350px;
-
   height: auto;        /* modal παίρνει ακριβώς όσο ύψος χρειάζεται */
   max-height: 70vh;    /* μικρότερο limit */
   overflow-y: auto;    /* scroll μόνο αν ξεπεραστεί */
-
   border: 2px solid #3a3a3a;
   box-shadow: 0 8px 24px rgba(0,0,0,0.6);
 }
 
-.close { float: right; font-size: 24px; cursor: pointer; color: #aaa; }
-.close:hover { color: #fff; }
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover {
+  color: #fff;
+}
 
 /* === Layout === */
 .layout-container {
@@ -94,23 +134,32 @@ header nav { margin-top: 6px; }
   background: #111;
   padding: 10px 0;
 }
-.left-panel, .middle-panel, .right-panel {
+
+.left-panel,
+.middle-panel,
+.right-panel {
   background: #1a1a1a;
   padding: 10px;
   border: 1px solid #333;
   border-radius: 6px;
 }
+
 .left-panel textarea {
-  width: 100%; height: 220px;
-  background: #222; color: #eee;
+  width: 100%;
+  height: 220px;
+  background: #222;
+  color: #eee;
   border: 1px solid #555;
-  padding: 8px; resize: vertical;
+  padding: 8px;
+  resize: vertical;
   margin-bottom: 2px;
 }
 
 /* === Buttons & Inputs === */
-button, select {
-  background: #333; color: #eee;
+button,
+select {
+  background: #333;
+  color: #eee;
   border: 1px solid #555;
   padding: 5px 10px;
   cursor: pointer;
@@ -118,23 +167,40 @@ button, select {
   margin: 2px 0;
   transition: background 0.15s;
 }
-button:hover, select:hover { background: #444; }
+
+button:hover,
+select:hover {
+  background: #444;
+}
 
 /* === Tables === */
-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
-th, td {
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+th,
+td {
   border: 1px solid #444;
   padding: 6px 10px;
   text-align: center;
 }
+
 th {
   background: #333;
   color: #fff;
   position: sticky;
   top: 0;
 }
-tr:nth-child(even) { background: #1a1a1a; }
-tr:nth-child(odd) { background: #111; }
+
+tr:nth-child(even) {
+  background: #1a1a1a;
+}
+
+tr:nth-child(odd) {
+  background: #111;
+}
 
 /* === Footer === */
 footer {
@@ -144,16 +210,20 @@ footer {
   color: #b3b3b3;
   font-size: 0.7em;
   position: fixed;
-  bottom: 0; left: 0; width: 100%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 /* =============================================================
    EPIC UI + PARCHMENT SECTION
    ============================================================= */
-#epicSection, .epic-modal-content {
+#epicSection,
+.epic-modal-content {
   font-family: "Book Antiqua", Palatino, serif;
   color: #2b1b0e;
 }
+
 .parchment {
   background: linear-gradient(180deg, rgba(255,250,230,0.95), rgba(245,230,190,0.95));
   border: 1px solid rgba(140,110,60,0.28);
@@ -164,7 +234,9 @@ footer {
   color: #2f2b1f;
   white-space: pre-wrap;
 }
-#epicTextView, #epicText {
+
+#epicTextView,
+#epicText {
   font-family: "Book Antiqua", Palatino, serif;
   background: #f5f1e6;
   color: #2b1b0e;
@@ -179,32 +251,62 @@ footer {
   display: none;
   position: fixed;
   z-index: 2000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.75);
   backdrop-filter: blur(3px);
 }
+
 .epic-modal-content {
   margin: 5% auto;
   padding: 20px;
   border: 1px solid #d0c7b5;
   border-radius: 10px;
-  width: 70%; max-width: 800px; max-height: 80%;
+  width: 70%;
+  max-width: 800px;
+  max-height: 80%;
   overflow-y: auto;
   background: #f5f1e6;
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
   font-size: 10.5pt;
 }
+
 .epic-close {
-  float: right; font-size: 26px; font-weight: bold;
-  cursor: pointer; color: #7b6b55;
+  float: right;
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #7b6b55;
 }
-.epic-close:hover { color: #a03a2b; }
+
+.epic-close:hover {
+  color: #a03a2b;
+}
 
 /* === Buttons (Epic) === */
-.btn { display:inline-flex; align-items:center; gap:8px; border:none; cursor:pointer; padding:8px 14px; font-weight:600; border-radius:10px; box-shadow:0 6px 14px rgba(30,20,10,0.12); transition: transform .12s ease, box-shadow .12s ease; }
-.btn-primary { background: linear-gradient(180deg,#f4e0b8,#e8c77a); color:#2b1f08; }
-.btn-primary:hover { transform: translateY(-2px); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(30,20,10,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg,#f4e0b8,#e8c77a);
+  color:#2b1f08;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
 
 /* === User Libraries === */
 .ul-backdrop {
@@ -216,8 +318,8 @@ footer {
   background:rgba(0,0,0,0.55);
   display:flex;
   justify-content:center;
-  align-items:center;     /* ⬅ Κέντρο κάθετα (ήταν flex-start) */
-  padding-top:0;          /* ⬅ Δεν χρειάζεται πια */
+  align-items:center;
+  padding-top:0;
   z-index:9999;
 }
 
@@ -225,11 +327,9 @@ footer {
   background:#1a1a1a;
   width:90%;
   max-width:450px;
-
   height:auto;
-  max-height:85vh;        /* ⬅ Πιο ασφαλές για κινητό */
+  max-height:85vh;
   overflow-y:auto;
-
   border-radius:8px;
   display:flex;
   flex-direction:column;
@@ -272,220 +372,77 @@ footer {
   color:#eee;
   border-radius:4px;
 }
-.ul-btn:hover { background:#667; }
 
-/* === Responsive === */
+.ul-btn:hover {
+  background:#667;
+}
+
+/* === Instructions in modal === */
+.instructions h4 {
+  margin-top: 12px;
+  font-size: 1.15em;
+  color: #ffd27b;
+}
+
+.instructions h5 {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #ffefc2;
+}
+
+.instructions p,
+.instructions li {
+  margin-bottom: 6px;
+  font-size: 0.9em;
+}
+
+.instructions ul,
+.instructions ol {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+/* === Responsive layout for main panels === */
 @media (max-width:768px) {
-  .layout-container { grid-template-columns:1fr; position:static; }
-  .left-panel textarea { height:180px; }
-  .epic-modal-content { width:90%; }
-}
-
-body {
-  padding-bottom: 100px;
-}
-
-/* === Header with image === */
-header {
-  background: #222;
-  padding: 10px;
-  margin-bottom: 5px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  position: relative;  /* 🔥 απαραίτητο για να επιπλέει η εικόνα */
-}
-
-/* === The small top-right image === */
-.header-img {
-  position: absolute;
-  top: 8px;        /* απόσταση από πάνω */
-  right: 12px;      /* απόσταση από δεξιά */
-  width: 130px;     /* 🔥 ιδανικό μέγεθος για το δικό σου header */
-  border-radius: 6px;
-  opacity: 0.95;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  pointer-events: none;    /* 🔥 δεν μπλοκάρει κλικ στα links */
-  transition: 0.25s ease;
-}
-
-.header-img:hover {
-  opacity: 1;
-  transform: scale(1.03);
-}
-
-/* === Mobile fix for header image === */
-@media (max-width: 600px) {
-  .header-img {
-    width: 80px;       /* 🔥 μικρότερη εικόνα */
-    top: 5px;
-    right: 5px;
-    opacity: 0.85;
+  .layout-container {
+    grid-template-columns:1fr;
+    position:static;
   }
-
-  header h1 {
-    font-size: 1.2em;  /* λίγο μικρότερος τίτλος για σωστή συνύπαρξη */
-    padding-right: 90px; /* 🔥 αφήνουμε χώρο για την εικόνα */
+  .left-panel textarea {
+    height:180px;
+  }
+  .epic-modal-content {
+    width:90%;
   }
 }
 
+/* === Mobile header layout === */
 @media (max-width: 600px) {
 
-  /* Μικρότερος τίτλος μέσα σε “κουτί” */
+  header {
+    padding: 8px;
+  }
+
+  .header-top-row {
+    gap: 6px;
+  }
+
   header h1 {
     font-size: 1em;
-    background: #333;
-    padding: 6px 10px;
-    border-radius: 6px;
-    max-width: 65%;
     line-height: 1.3;
-    margin-bottom: 6px;
-  }
-
-  /* Μικρότερη εικόνα + σωστή θέση */
-  .header-img {
-    width: 70px;
-    top: 8px;
-    right: 8px;
-    opacity: 0.85;
-  }
-
-  /* Αφήνουμε χώρο για την εικόνα */
-  header {
-    padding-right: 80px;
-  }
-}
-
-/* === MOBILE LAYOUT FIX FOR HEADER === */
-@media (max-width: 600px) {
-
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;   /* Τίτλος αριστερά */
-    padding-bottom: 10px;
-    padding-right: 0;
-    position: relative;
-  }
-
-  /* ΤΙΤΛΟΣ ΣΕ ΚΟΥΤΙ */
-  header h1 {
-    font-size: 1.1em;
-    line-height: 1.3;
-    background: #333;
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    max-width: 100%;
-    text-align: left;
-  }
-
-  /* Η ΕΙΚΟΝΑ ΚΑΤΩ ΑΠΟ ΤΟΝ ΤΙΤΛΟ */
-  .header-img {
-    position: relative;   /* 🔥 ΚΑΤΑΡΓΟΥΜΕ το absolute στο mobile */
-    width: 90px;
-    margin-top: 4px;
-    margin-bottom: 10px;
-    margin-left: auto;    /* ΔΕΞΙΑ */
-    margin-right: 0;
-    opacity: 0.9;
-  }
-
-  /* Κουμπιά / links από κάτω */
-  .header-links {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-}
-
-/* === Perfect Mobile Header Layout === */
-@media (max-width: 600px) {
-
-  header {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 8px;
-    gap: 6px;
-  }
-
-  header h1 {
-    font-size: 0.95em;
     background: #333;
     padding: 6px 8px;
     border-radius: 6px;
-    line-height: 1.25;
-    flex: 1;              /* 🔥 ο τίτλος πιάνει τον αριστερό χώρο */
-    max-width: 65%;
-    text-align: left;
-    margin: 0;
-  }
-
-  .header-img {
-    position: relative !important;  /* 🔥 σταματάει τις συγκρούσεις */
-    width: 70px;
-    height: auto;
-    margin: 0;
-    padding: 0;
-    opacity: 0.9;
-  }
-
-  .header-links,
-  #howToBtn {
-    width: 100%;
-    margin-top: 10px;
-  }
-}
-
-/* === FINAL MOBILE HEADER FIX === */
-@media (max-width: 600px) {
-
-  /* Make header stack nicely */
-  header {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px;
-    gap: 8px;
-  }
-
-  /* Row 1: title + image side-by-side */
-  .header-top-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  header h1 {
-    font-size: 1em;
-    line-height: 1.3;
-    background: #333;
-    padding: 8px;
-    border-radius: 6px;
-    margin: 0;
-    flex: 1;
   }
 
   .header-img {
     width: 70px;
-    height: auto;
-    border-radius: 6px;
-    opacity: 0.9;
-    position: relative !important;
-    margin: 0;
   }
 
-  /* Row 2: buttons in column layout */
   .header-links {
-    display: flex;
     flex-direction: column;
     gap: 6px;
-    width: 100%;
+    margin-top: 8px;
   }
 
   #howToBtn {
