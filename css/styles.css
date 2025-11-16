@@ -508,3 +508,10 @@ footer {
   padding: 5px 10px;      /* ίδιο ύψος στα δύο dropdowns */
   border-radius: 4px;
 }
+
+/* Πιο μεγάλη εικόνα στο laptop / desktop */
+@media (min-width: 1024px) {
+  .header-img {
+    width: 90px;   /* δοκίμασε 90 – αν τη θες μεγαλύτερη βάλε 100 ή 110 */
+  }
+}
