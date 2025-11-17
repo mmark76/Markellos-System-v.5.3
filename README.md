@@ -1,4 +1,4 @@
-# 🇬🇧 **README — Chess Mnemonic Application & Epic Chess Stories Creator — v3.3**
+# 🇬🇧 **README — Chess Mnemonic Application & Epic Chess Stories Creator_v.3.3**
 
 A modular **web-based mnemonic system** that transforms chess moves into structured **Mnemonic Histories** using Temporal, Spatial, Character-based, PAO, Verse, and Foundational memory layers.
 The application helps users encode games, study patterns, and build personalized mnemonic structures.
