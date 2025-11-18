@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* --- isolation ONLY on modal-content + pre (safe) --- */
 #sanTextModal .san-modal-content,
 #sanTextOut.san-text {
-    all: revert !important;
+    all: revert;
     box-sizing: border-box !important;
 }
 
@@ -414,3 +414,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
