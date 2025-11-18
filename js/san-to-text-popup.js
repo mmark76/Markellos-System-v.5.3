@@ -1,5 +1,5 @@
 /* ===========================================================
-   CMS v3.4 — SAN to Text js (with Loci support)
+   CMS v3.4 — SAN to Text js (with Loci support + responsive)
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${piece} ${action} ${square}`;
   }
 
-  /* ---------- Popup (centered, with numbering modes & result) ---------- */
+  /* ---------- Popup (centered, responsive, with loci + modes) ---------- */
   function openSanToTextPopup() {
     if (!Array.isArray(gameMoves) || gameMoves.length === 0) {
       alert("Load a game first (Demo Games or Parse PGN).");
@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const payloadJson = JSON.stringify(payload).replace(/</g, "\\u003c");
 
-    /* --- Center the popup --- */
-    const popupWidth = 850;
-    const popupHeight = 600;
+    /* --- Responsive popup sizing --- */
+    const popupWidth = Math.min(850, window.innerWidth - 40);
+    const popupHeight = Math.min(600, window.innerHeight - 40);
 
     const dualLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
     const dualTop  = window.screenTop  !== undefined ? window.screenTop  : window.screenY;
@@ -139,6 +139,20 @@ document.addEventListener("DOMContentLoaded", () => {
             overflow: auto;
             box-sizing: border-box;
           }
+
+          /* --- Responsive for mobile --- */
+          @media (max-width: 600px) {
+            body { padding: 8px; }
+            .toolbar {
+              flex-direction: column;
+              align-items: stretch;
+            }
+            button { width: 100%; }
+            pre {
+              font-size: 14px;
+              max-height: calc(100vh - 140px);
+            }
+          }
         </style>
       </head>
 
@@ -176,8 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return "";
           }
 
-          // Διαβάζουμε τα loci από τον πίνακα SAN του parent window
-          // ώστε να χρησιμοποιείται ΠΑΝΤΑ το εκάστοτε Memory Palace
+          // Διαβάζουμε Loci από τον parent πίνακα SAN
           function buildLociArrayFromParent() {
             const loci = [];
             try {
@@ -188,12 +201,10 @@ document.addEventListener("DOMContentLoaded", () => {
               const rows = sanBody.querySelectorAll("tr");
               rows.forEach(row => {
                 const cells = row.children;
-                const locusCell = cells && cells[3]; // 4η στήλη = Locus
+                const locusCell = cells && cells[3]; // 4η στήλη
                 loci.push(locusCell ? locusCell.textContent.trim() : "");
               });
-            } catch (e) {
-              // σιωπηλή αποτυχία, απλώς δεν βάζουμε loci
-            }
+            } catch (e) {}
             return loci;
           }
 
