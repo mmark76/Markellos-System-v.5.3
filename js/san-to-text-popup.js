@@ -266,8 +266,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* -- EXACT Demo Games Style -- */
     sanBtn.style.background = "white";
-    sanBtn.style.color = "red";
-    sanBtn.style.border = "1px solid red";
+    sanBtn.style.color = "blue";
+    sanBtn.style.border = "0px solid red";
     sanBtn.style.padding = "6px 12px";
     sanBtn.style.borderRadius = "4px";
     sanBtn.style.marginLeft = "10px";
@@ -312,6 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
