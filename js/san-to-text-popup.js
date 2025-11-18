@@ -113,17 +113,19 @@ document.addEventListener("DOMContentLoaded", () => {
   background: #fff;
   cursor: pointer;
   font-size: 14px;
+  color: #000 !important;   /* ← ΑΥΤΟ μόνο χρειάζεται */
 }
 
 #sanTextToolbar button.primary {
   border-color: #c00;
-  color: #c00;
+  color: #c00 !important;
   font-weight: bold;
 }
 
 #sanTextToolbar button.mode-active {
   background: #dbe9ff;
   border-color: #3a6edc;
+  color: #000 !important;
 }
 
 /* --- Text area --- */
@@ -414,4 +416,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
