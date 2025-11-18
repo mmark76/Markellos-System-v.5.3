@@ -46,124 +46,118 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
   document.body.appendChild(sanModal);
 
-  // --- SAN-specific CSS (ίδια δομή με Epic modal, άλλα με SAN χρώματα) ---
-  const sanStyle = document.createElement("style");
-  sanStyle.textContent = `
-    /* Overlay, ίδιο σαν Epic modal */
-    #sanTextModal.san-modal-overlay {
-      display: none;
-      position: fixed;
-      z-index: 1050;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.5);
-    }
+// --- SAN-specific CSS (ίδια δομή με Epic modal, άλλα με SAN χρώματα) ---
+const sanStyle = document.createElement("style");
+sanStyle.textContent = `
 
-    /* Κουτί modal - δομή σαν Epic, χρώματα SAN */
-    #sanTextModal .san-modal-content {
-      background: #e9f4ff; /* light blue, όπως SAN popup */
-      margin: 40px auto;
-      padding: 16px;
-      border-radius: 8px;
-      max-width: 850px;
-      width: 90%;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      box-sizing: border-box;
-      font-family: system-ui, sans-serif;
-      font-size: 15px;
-    }
+#sanTextModal * {
+    all: revert !important;
+    box-sizing: border-box !important;
+}
 
-    /* Close button, ίδιο feeling με Epic */
-    #sanTextModal .san-close {
-      align-self: flex-end;
-      font-size: 24px;
-      cursor: pointer;
-      margin-bottom: 8px;
-      line-height: 1;
-    }
+/* === RE-APPLY SAN styles μετά το reset === */
 
-    /* Toolbar με κουμπιά σε μία σειρά (όπου χωράει) */
-    #sanTextToolbar {
-      margin-bottom: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
+/* Overlay */
+#sanTextModal.san-modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
 
-    #sanTextToolbar button {
-      padding: 6px 10px;
-      border-radius: 4px;
-      border: 1px solid #888;
-      background: #fff;
-      cursor: pointer;
-      font-size: 14px;
-    }
+/* Modal box */
+#sanTextModal .san-modal-content {
+  background: #e9f4ff;
+  margin: 40px auto;
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 850px;
+  width: 90%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  font-family: system-ui, sans-serif;
+  font-size: 15px;
+}
 
-    #sanTextToolbar button.primary {
-      border-color: #c00;
-      color: #c00;
-      font-weight: bold;
-    }
+/* Close button */
+#sanTextModal .san-close {
+  align-self: flex-end;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  line-height: 1;
+}
 
-    #sanTextToolbar button.mode-active {
-      background: #dbe9ff;
-      border-color: #3a6edc;
-    }
+/* Toolbar */
+#sanTextToolbar {
+  margin-bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+#sanTextToolbar button {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #888;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+#sanTextToolbar button.primary {
+  border-color: #c00;
+  color: #c00;
+  font-weight: bold;
+}
+#sanTextToolbar button.mode-active {
+  background: #dbe9ff;
+  border-color: #3a6edc;
+}
 
-    /* Περιοχή κειμένου SAN → Text */
-    #sanTextOut.san-text {
-      white-space: pre-wrap;
-      border: 1px solid #ccc;
-      padding: 12px;
-      border-radius: 6px;
-      background: #ffffffcf;
-      backdrop-filter: blur(2px);
-      max-height: calc(90vh - 120px);
-      overflow: auto;
-      box-sizing: border-box;
-      font-size: 15px;
-      color: #000 !important;    /* ← ΑΥΤΟ */
-    }
+/* Text area */
+#sanTextOut.san-text {
+  white-space: pre-wrap;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 6px;
+  background: #ffffffcf;
+  font-size: 15px;
+  color: #000 !important;
+  max-height: calc(90vh - 120px);
+  overflow: auto;
+  backdrop-filter: blur(2px);
+}
 
-    /* Responsive tweaks, αλλά ΔΕΝ κάνουμε κάθετα τα κουμπιά */
-    @media (max-width: 768px) {
-      #sanTextModal .san-modal-content {
-        margin: 20px auto;
-        padding: 12px;
-      }
-      #sanTextToolbar {
-        gap: 6px;
-      }
-      #sanTextToolbar button {
-        font-size: 14px;
-      }
-      #sanTextOut.san-text {
-        max-height: calc(90vh - 110px);
-      }
-    }
+/* Responsive */
+@media (max-width: 768px) {
+  #sanTextModal .san-modal-content {
+    margin: 20px auto;
+    padding: 12px;
+  }
+  #sanTextOut.san-text {
+    max-height: calc(90vh - 110px);
+  }
+}
+@media (max-width: 600px) {
+  #sanTextModal .san-modal-content {
+    margin: 10px auto;
+    padding: 10px;
+    width: 95%;
+  }
+  #sanTextOut.san-text {
+    font-size: 16px;
+  }
+}
 
-    @media (max-width: 600px) {
-      #sanTextModal .san-modal-content {
-        margin: 10px auto;
-        padding: 10px;
-        width: 95%;
-      }
-      #sanTextToolbar button {
-        font-size: 15px;
-      }
-      #sanTextOut.san-text {
-        font-size: 16px;
-      }
-    }
-  `;
-  document.head.appendChild(sanStyle);
+`;
+document.head.appendChild(sanStyle);
 
   // --- State για modal λογική (mode / loci / payload) ---
   let sanMode = "half";
@@ -439,4 +433,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
