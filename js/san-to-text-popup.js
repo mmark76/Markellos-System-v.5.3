@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <body>
         <div class="toolbar">
           <button id="modeHalfBtn" class="mode-active">Number: 1 half-move</button>
-          <button id="modeFullBtn">Number: 2 half-moves (full move)</button>
+          <button id="modeFullBtn">Number: 2 full-move</button>
           <button id="copyBtn" class="primary">Copy</button>
         </div>
 
@@ -310,3 +310,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
