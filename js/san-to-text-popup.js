@@ -1,7 +1,5 @@
 /* ===========================================================
-   Markellos CMS v3.3 — SAN to Text (Middle Panel, Demo Style)
-   Centered popup, light-blue background, half/full move modes,
-   and final result ("White wins", "Black wins", "The game is draw")
+   CMS v3.4 — SAN to Text js
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -312,6 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
