@@ -1,5 +1,5 @@
 /* ===========================================================
-   CMS v3.4 — SAN to Text js
+   CMS v3.4 — SAN to Text js (with Loci support)
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    /* --- Moves payload --- */
+    /* --- Moves payload (μόνο ό,τι χρειαζόμαστε) --- */
     const payload = {
       header: { event, white, black, date: formatted, result },
       moves: gameMoves.map(m => ({
@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <button id="modeFullBtn">Full-move</button>
           <button id="modeHalfBtn" class="mode-active">Half-move</button>
           <button id="copyBtn" class="primary">Copy</button>
+          <button id="lociBtn">Loci: OFF</button>
         </div>
 
         <pre id="out"></pre>
@@ -175,6 +176,27 @@ document.addEventListener("DOMContentLoaded", () => {
             return "";
           }
 
+          // Διαβάζουμε τα loci από τον πίνακα SAN του parent window
+          // ώστε να χρησιμοποιείται ΠΑΝΤΑ το εκάστοτε Memory Palace
+          function buildLociArrayFromParent() {
+            const loci = [];
+            try {
+              const parentDoc = window.opener && window.opener.document;
+              if (!parentDoc) return loci;
+              const sanBody = parentDoc.getElementById("sanBody");
+              if (!sanBody) return loci;
+              const rows = sanBody.querySelectorAll("tr");
+              rows.forEach(row => {
+                const cells = row.children;
+                const locusCell = cells && cells[3]; // 4η στήλη = Locus
+                loci.push(locusCell ? locusCell.textContent.trim() : "");
+              });
+            } catch (e) {
+              // σιωπηλή αποτυχία, απλώς δεν βάζουμε loci
+            }
+            return loci;
+          }
+
           function buildText(mode) {
             const h = payload.header;
             const headerLine =
@@ -184,19 +206,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const moves = payload.moves;
             const out = [];
+            const lociArray = lociOn ? buildLociArrayFromParent() : [];
 
             if (mode === "half") {
               for (let i=0;i<moves.length;i++){
                 const side = moves[i].side === "White" ? "White" : "Black";
-                out.push("Half-move " + (i+1) + " (" + side + "): " + sanToTextInner(moves[i].san) + ".");
+                const locus = lociOn ? (lociArray[i] || "") : "";
+                const prefix = locus ? "[" + locus + "] " : "";
+                out.push(
+                  prefix +
+                  "Half-move " + (i+1) + " (" + side + "): " +
+                  sanToTextInner(moves[i].san) + "."
+                );
               }
-              
+
             } else {
               for (let i=0;i<moves.length;i+=2){
                 const full = (i/2)+1;
+                const locusW = lociOn ? (lociArray[i]   || "") : "";
+                const locusB = lociOn ? (lociArray[i+1] || "") : "";
+
                 let block = "Move " + full + ".\\n";
-                if (moves[i])   block += "  White: " + sanToTextInner(moves[i].san) + ".\\n";
-                if (moves[i+1]) block += "  Black: " + sanToTextInner(moves[i+1].san) + ".\\n";
+                if (moves[i]) {
+                  const prefixW = locusW ? "[" + locusW + "] " : "";
+                  block += "  " + prefixW + "White: " + sanToTextInner(moves[i].san) + ".\\n";
+                }
+                if (moves[i+1]) {
+                  const prefixB = locusB ? "[" + locusB + "] " : "";
+                  block += "  " + prefixB + "Black: " + sanToTextInner(moves[i+1].san) + ".\\n";
+                }
                 out.push(block.trim());
               }
             }
@@ -205,10 +243,13 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           let mode="half";
-          const outEl = document.getElementById("out");
+          let lociOn = false;
+
+          const outEl   = document.getElementById("out");
           const halfBtn = document.getElementById("modeHalfBtn");
           const fullBtn = document.getElementById("modeFullBtn");
           const copyBtn = document.getElementById("copyBtn");
+          const lociBtn = document.getElementById("lociBtn");
 
           function render(){ outEl.textContent = buildText(mode); }
 
@@ -222,6 +263,12 @@ document.addEventListener("DOMContentLoaded", () => {
             mode="full";
             fullBtn.classList.add("mode-active");
             halfBtn.classList.remove("mode-active");
+            render();
+          };
+
+          lociBtn.onclick = () => {
+            lociOn = !lociOn;
+            lociBtn.textContent = lociOn ? "Loci: ON" : "Loci: OFF";
             render();
           };
 
@@ -310,15 +357,3 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
