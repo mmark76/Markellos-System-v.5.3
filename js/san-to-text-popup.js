@@ -129,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       overflow: auto;
       box-sizing: border-box;
       font-size: 15px;
+      color: #000 !important;    /* ← ΑΥΤΟ */
     }
 
     /* Responsive tweaks, αλλά ΔΕΝ κάνουμε κάθετα τα κουμπιά */
@@ -438,3 +439,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
