@@ -64,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const payloadJson = JSON.stringify(payload).replace(/</g, "\\u003c");
 
-    /* --- Responsive popup sizing --- */
     /* --- Responsive popup sizing (desktop + mobile) --- */
     const viewportW = Math.min(
       window.innerWidth || document.documentElement.clientWidth,
@@ -395,5 +394,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
