@@ -161,6 +161,17 @@ document.addEventListener("DOMContentLoaded", () => {
               max-height: calc(100vh - 140px);
             }
           }
+                    @media (max-width: 600px) {
+            body {
+              font-size: 17px;
+            }
+            button {
+              font-size: 16px;
+            }
+            pre {
+              font-size: 17px;
+            }
+          }
         </style>
       </head>
 
@@ -376,3 +387,4 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
