@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <html>
       <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SAN to Text</title>
 
         <style>
@@ -103,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
             padding: 16px;
             margin: 0;
             background: #e9f4ff;   /* light blue */
+            font-size: 15px;
           }
           .toolbar {
             margin-bottom: 12px;
@@ -117,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
             border: 1px solid #888;
             background: #fff;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 14px;
           }
           button.primary {
             border-color: #c00;
@@ -135,21 +137,27 @@ document.addEventListener("DOMContentLoaded", () => {
             border-radius: 6px;
             background: #ffffffcf;
             backdrop-filter: blur(2px);
-            max-height: calc(100vh - 90px);
+            max-height: calc(100vh - 100px);
             overflow: auto;
             box-sizing: border-box;
+            font-size: 15px;
           }
 
-          /* --- Responsive for mobile --- */
-          @media (max-width: 600px) {
-            body { padding: 8px; }
+          /* --- Responsive for mobile / tablets --- */
+          @media (max-width: 768px) {
+            body {
+              padding: 10px;
+            }
             .toolbar {
               flex-direction: column;
               align-items: stretch;
+              gap: 6px;
             }
-            button { width: 100%; }
+            button {
+              width: 100%;
+            }
             pre {
-              font-size: 14px;
+              font-size: 15px;
               max-height: calc(100vh - 140px);
             }
           }
