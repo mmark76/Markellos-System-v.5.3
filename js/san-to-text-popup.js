@@ -189,7 +189,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (mode === "half") {
               for (let i=0;i<moves.length;i++){
-                out.push("Half-move " + (i+1) + ". " + sanToTextInner(moves[i].san) + ".");
+            const side = moves[i].side === "w" ? "White" : "Black";
+              out.push("Half-move " + (i+1) + " (" + side + "): " + sanToTextInner(moves[i].san) + ".");
+
               }
             } else {
               for (let i=0;i<moves.length;i+=2){
@@ -310,5 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
