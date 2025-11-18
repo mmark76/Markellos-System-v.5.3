@@ -65,16 +65,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const payloadJson = JSON.stringify(payload).replace(/</g, "\\u003c");
 
     /* --- Responsive popup sizing --- */
-    const popupWidth = Math.min(850, window.innerWidth - 40);
-    const popupHeight = Math.min(600, window.innerHeight - 40);
+    /* --- Responsive popup sizing (desktop + mobile) --- */
+    const viewportW = Math.min(
+      window.innerWidth || document.documentElement.clientWidth,
+      window.screen && window.screen.width ? window.screen.width : Infinity
+    );
+    const viewportH = Math.min(
+      window.innerHeight || document.documentElement.clientHeight,
+      window.screen && window.screen.height ? window.screen.height : Infinity
+    );
+
+    const popupWidth  = Math.min(850, viewportW - 20);
+    const popupHeight = Math.min(600, viewportH - 40);
 
     const dualLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
     const dualTop  = window.screenTop  !== undefined ? window.screenTop  : window.screenY;
-    const W = window.innerWidth  || document.documentElement.clientWidth;
-    const Ht = window.innerHeight || document.documentElement.clientHeight;
 
-    const left = dualLeft + (W - popupWidth) / 2;
-    const top  = dualTop  + (Ht - popupHeight) / 2;
+    const left = dualLeft + (viewportW - popupWidth) / 2;
+    const top  = dualTop  + (viewportH - popupHeight) / 2;
 
     const win = window.open(
       "",
@@ -387,4 +395,5 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
