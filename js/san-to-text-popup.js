@@ -1,10 +1,10 @@
 /* ===========================================================
-   CMS v3.4 — SAN to Text js (with Loci support + responsive)
+   CMS v3.4 — SAN to Text js (with Loci support + MODAL UI)
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ---------- SAN → English text ---------- */
+  /* ---------- SAN → English text (βασική λογική, όπως πριν) ---------- */
   function sanToText(san) {
     if (!san) return "";
     if (san === "O-O") return "King Castles Short Side";
@@ -22,14 +22,163 @@ document.addEventListener("DOMContentLoaded", () => {
     return `${piece} ${action} ${square}`;
   }
 
-  /* ---------- Popup (centered, responsive, with loci + modes) ---------- */
-  function openSanToTextPopup() {
-    if (!Array.isArray(gameMoves) || gameMoves.length === 0) {
-      alert("Load a game first (Demo Games or Parse PGN).");
-      return;
+  /* ============================================================
+     SAN → Text MODAL (όπως το Epic modal, άλλα με SAN χρώματα)
+     ============================================================ */
+
+  // --- Δημιουργία modal DOM ---
+  const sanModal = document.createElement("div");
+  sanModal.id = "sanTextModal";
+  sanModal.className = "san-modal-overlay";
+  sanModal.innerHTML = `
+    <div class="san-modal-content">
+      <span class="san-close" id="sanTextCloseBtn">&times;</span>
+
+      <div class="san-toolbar" id="sanTextToolbar">
+        <button id="sanModeFullBtn">Full-move</button>
+        <button id="sanModeHalfBtn" class="mode-active">Half-move</button>
+        <button id="sanCopyBtn" class="primary">Copy</button>
+        <button id="sanLociBtn">Loci: OFF</button>
+      </div>
+
+      <pre id="sanTextOut" class="san-text"></pre>
+    </div>
+  `;
+  document.body.appendChild(sanModal);
+
+  // --- SAN-specific CSS (ίδια δομή με Epic modal, άλλα με SAN χρώματα) ---
+  const sanStyle = document.createElement("style");
+  sanStyle.textContent = `
+    /* Overlay, ίδιο σαν Epic modal */
+    #sanTextModal.san-modal-overlay {
+      display: none;
+      position: fixed;
+      z-index: 1050;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
     }
 
-    /* --- Extract PGN header info --- */
+    /* Κουτί modal - δομή σαν Epic, χρώματα SAN */
+    #sanTextModal .san-modal-content {
+      background: #e9f4ff; /* light blue, όπως SAN popup */
+      margin: 40px auto;
+      padding: 16px;
+      border-radius: 8px;
+      max-width: 850px;
+      width: 90%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      box-sizing: border-box;
+      font-family: system-ui, sans-serif;
+      font-size: 15px;
+    }
+
+    /* Close button, ίδιο feeling με Epic */
+    #sanTextModal .san-close {
+      align-self: flex-end;
+      font-size: 24px;
+      cursor: pointer;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    /* Toolbar με κουμπιά σε μία σειρά (όπου χωράει) */
+    #sanTextToolbar {
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    #sanTextToolbar button {
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px solid #888;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #sanTextToolbar button.primary {
+      border-color: #c00;
+      color: #c00;
+      font-weight: bold;
+    }
+
+    #sanTextToolbar button.mode-active {
+      background: #dbe9ff;
+      border-color: #3a6edc;
+    }
+
+    /* Περιοχή κειμένου SAN → Text */
+    #sanTextOut.san-text {
+      white-space: pre-wrap;
+      border: 1px solid #ccc;
+      padding: 12px;
+      border-radius: 6px;
+      background: #ffffffcf;
+      backdrop-filter: blur(2px);
+      max-height: calc(90vh - 120px);
+      overflow: auto;
+      box-sizing: border-box;
+      font-size: 15px;
+    }
+
+    /* Responsive tweaks, αλλά ΔΕΝ κάνουμε κάθετα τα κουμπιά */
+    @media (max-width: 768px) {
+      #sanTextModal .san-modal-content {
+        margin: 20px auto;
+        padding: 12px;
+      }
+      #sanTextToolbar {
+        gap: 6px;
+      }
+      #sanTextToolbar button {
+        font-size: 14px;
+      }
+      #sanTextOut.san-text {
+        max-height: calc(90vh - 110px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      #sanTextModal .san-modal-content {
+        margin: 10px auto;
+        padding: 10px;
+        width: 95%;
+      }
+      #sanTextToolbar button {
+        font-size: 15px;
+      }
+      #sanTextOut.san-text {
+        font-size: 16px;
+      }
+    }
+  `;
+  document.head.appendChild(sanStyle);
+
+  // --- State για modal λογική (mode / loci / payload) ---
+  let sanMode = "half";
+  let sanLociOn = false;
+  let sanPayload = null;   // header + moves
+
+  const sanOutEl   = document.getElementById("sanTextOut");
+  const sanHalfBtn = document.getElementById("sanModeHalfBtn");
+  const sanFullBtn = document.getElementById("sanModeFullBtn");
+  const sanCopyBtn = document.getElementById("sanCopyBtn");
+  const sanLociBtn = document.getElementById("sanLociBtn");
+  const sanCloseBtn = document.getElementById("sanTextCloseBtn");
+
+  /* --- Φτιάχνουμε payload (header + moves) όπως πριν --- */
+  function buildSanPayload() {
+    // PGN header
     const chess = new Chess();
     const pgnEl = document.getElementById("pgnText");
     if (pgnEl && pgnEl.value.trim()) {
@@ -53,295 +202,184 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    /* --- Moves payload (μόνο ό,τι χρειαζόμαστε) --- */
-    const payload = {
+    // Moves from gameMoves (όπως πριν)
+    const moves = Array.isArray(gameMoves)
+      ? gameMoves.map(m => ({
+          san: m.san,
+          side: m.side || ""
+        }))
+      : [];
+
+    return {
       header: { event, white, black, date: formatted, result },
-      moves: gameMoves.map(m => ({
-        san: m.san,
-        side: m.side || ""
-      }))
+      moves
     };
-
-    const payloadJson = JSON.stringify(payload).replace(/</g, "\\u003c");
-
-    /* --- Responsive popup sizing (desktop + mobile) --- */
-    const viewportW = Math.min(
-      window.innerWidth || document.documentElement.clientWidth,
-      window.screen && window.screen.width ? window.screen.width : Infinity
-    );
-    const viewportH = Math.min(
-      window.innerHeight || document.documentElement.clientHeight,
-      window.screen && window.screen.height ? window.screen.height : Infinity
-    );
-
-    const popupWidth  = Math.min(850, viewportW - 20);
-    const popupHeight = Math.min(600, viewportH - 40);
-
-    const dualLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
-    const dualTop  = window.screenTop  !== undefined ? window.screenTop  : window.screenY;
-
-    const left = dualLeft + (viewportW - popupWidth) / 2;
-    const top  = dualTop  + (viewportH - popupHeight) / 2;
-
-    const win = window.open(
-      "",
-      "sanToTextPopup",
-      `width=${popupWidth},height=${popupHeight},top=${top},left=${left},scrollbars=yes,resizable=yes`
-    );
-
-    if (!win) {
-      alert("Popup blocked. Allow popups.");
-      return;
-    }
-
-    try { win.moveTo(left, top); } catch(e){}
-
-    /* --- POPUP CONTENT --- */
-    win.document.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-           html, body {
-             -webkit-text-size-adjust: 100% !important;
-      }
-         </style>
-
-        <title>SAN to Text</title>
-
-        <style>
-          body {
-            font-family: system-ui, sans-serif;
-            padding: 16px;
-            margin: 0;
-            background: #e9f4ff;   /* light blue */
-            font-size: 15px;
-          }
-          .toolbar {
-            margin-bottom: 12px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-          }
-          button {
-            padding: 6px 10px;
-            border-radius: 4px;
-            border: 1px solid #888;
-            background: #fff;
-            cursor: pointer;
-            font-size: 14px;
-          }
-          button.primary {
-            border-color: #c00;
-            color: #c00;
-            font-weight: bold;
-          }
-          button.mode-active {
-            background: #dbe9ff;
-            border-color: #3a6edc;
-          }
-          pre {
-            white-space: pre-wrap;
-            border: 1px solid #ccc;
-            padding: 12px;
-            border-radius: 6px;
-            background: #ffffffcf;
-            backdrop-filter: blur(2px);
-            max-height: calc(100vh - 100px);
-            overflow: auto;
-            box-sizing: border-box;
-            font-size: 15px;
-          }
-
-          /* --- Responsive for mobile / tablets --- */
-          @media (max-width: 768px) {
-            body {
-              padding: 10px;
-            }
-            .toolbar {
-              flex-direction: column;
-              align-items: stretch;
-              gap: 6px;
-            }
-            button {
-              width: 100%;
-            }
-            pre {
-              font-size: 15px;
-              max-height: calc(100vh - 140px);
-            }
-          }
-                    @media (max-width: 600px) {
-            body {
-              font-size: 17px;
-            }
-            button {
-              font-size: 16px;
-            }
-            pre {
-              font-size: 17px;
-            }
-          }
-        </style>
-      </head>
-
-      <body>
-        <div class="toolbar">
-          <button id="modeFullBtn">Full-move</button>
-          <button id="modeHalfBtn" class="mode-active">Half-move</button>
-          <button id="copyBtn" class="primary">Copy</button>
-          <button id="lociBtn">Loci: OFF</button>
-        </div>
-
-        <pre id="out"></pre>
-
-        <script>
-          const payload = ${payloadJson};
-
-          function sanToTextInner(s) {
-            if (!s) return "";
-            if (s === "O-O") return "King Castles Short Side";
-            if (s === "O-O-O") return "King Castles Long Side";
-            const map = { N:"Knight", B:"Bishop", R:"Rook", Q:"Queen", K:"King" };
-            let move = s.replace(/[+#?!]/g, "");
-            let piece = map[move[0]] ? map[move[0]] : "Pawn";
-            move = map[move[0]] ? move.slice(1) : move;
-            const parts = move.split("x");
-            const sq = parts[parts.length - 1];
-            const act = move.includes("x") ? "takes" : "moves to";
-            return piece + " " + act + " " + sq;
-          }
-
-          function resultText(res) {
-            if (res === "1-0") return "\\n\\nWhite wins.";
-            if (res === "0-1") return "\\n\\nBlack wins.";
-            if (res === "1/2-1/2") return "\\n\\nThe game is draw.";
-            return "";
-          }
-
-          // Διαβάζουμε Loci από τον parent πίνακα SAN
-          function buildLociArrayFromParent() {
-            const loci = [];
-            try {
-              const parentDoc = window.opener && window.opener.document;
-              if (!parentDoc) return loci;
-              const sanBody = parentDoc.getElementById("sanBody");
-              if (!sanBody) return loci;
-              const rows = sanBody.querySelectorAll("tr");
-              rows.forEach(row => {
-                const cells = row.children;
-                const locusCell = cells && cells[3]; // 4η στήλη
-                loci.push(locusCell ? locusCell.textContent.trim() : "");
-              });
-            } catch (e) {}
-            return loci;
-          }
-
-          function buildText(mode) {
-            const h = payload.header;
-            const headerLine =
-              ('"' + (h.event||'') + '"\\n ' +
-               (h.white||'') + ' vs ' + (h.black||'') + ' \\n ' +
-               (h.date||'')).trim();
-
-            const moves = payload.moves;
-            const out = [];
-            const lociArray = lociOn ? buildLociArrayFromParent() : [];
-
-            if (mode === "half") {
-              for (let i=0;i<moves.length;i++){
-                const side = moves[i].side === "White" ? "White" : "Black";
-                const locus = lociOn ? (lociArray[i] || "") : "";
-                const prefix = locus ? "[" + locus + "] " : "";
-                out.push(
-                  prefix +
-                  "Half-move " + (i+1) + " (" + side + "): " +
-                  sanToTextInner(moves[i].san) + "."
-                );
-              }
-
-            } else {
-              for (let i=0;i<moves.length;i+=2){
-                const full = (i/2)+1;
-                const locusW = lociOn ? (lociArray[i]   || "") : "";
-                const locusB = lociOn ? (lociArray[i+1] || "") : "";
-
-                let block = "Move " + full + ".\\n";
-                if (moves[i]) {
-                  const prefixW = locusW ? "[" + locusW + "] " : "";
-                  block += "  " + prefixW + "White: " + sanToTextInner(moves[i].san) + ".\\n";
-                }
-                if (moves[i+1]) {
-                  const prefixB = locusB ? "[" + locusB + "] " : "";
-                  block += "  " + prefixB + "Black: " + sanToTextInner(moves[i+1].san) + ".\\n";
-                }
-                out.push(block.trim());
-              }
-            }
-
-            return headerLine + "\\n\\n" + out.join("\\n\\n") + resultText(payload.header.result);
-          }
-
-          let mode="half";
-          let lociOn = false;
-
-          const outEl   = document.getElementById("out");
-          const halfBtn = document.getElementById("modeHalfBtn");
-          const fullBtn = document.getElementById("modeFullBtn");
-          const copyBtn = document.getElementById("copyBtn");
-          const lociBtn = document.getElementById("lociBtn");
-
-          function render(){ outEl.textContent = buildText(mode); }
-
-          halfBtn.onclick = () => {
-            mode="half";
-            halfBtn.classList.add("mode-active");
-            fullBtn.classList.remove("mode-active");
-            render();
-          };
-          fullBtn.onclick = () => {
-            mode="full";
-            fullBtn.classList.add("mode-active");
-            halfBtn.classList.remove("mode-active");
-            render();
-          };
-
-          lociBtn.onclick = () => {
-            lociOn = !lociOn;
-            lociBtn.textContent = lociOn ? "Loci: ON" : "Loci: OFF";
-            render();
-          };
-
-          copyBtn.onclick = async () => {
-            const txt = buildText(mode);
-            try {
-              await navigator.clipboard.writeText(txt);
-              copyBtn.textContent="Copied!";
-            } catch(e){
-              const ta=document.createElement("textarea");
-              ta.value=txt; document.body.appendChild(ta);
-              ta.select(); document.execCommand("copy");
-              document.body.removeChild(ta);
-              copyBtn.textContent="Copied (fallback)";
-            }
-            setTimeout(()=>copyBtn.textContent="Copy",1200);
-          };
-
-          render();
-        <\/script>
-
-      </body>
-      </html>
-    `);
-
-    win.document.close();
   }
 
+  /* --- Loci από sanBody (ίδιο concept, χωρίς window.opener πλέον) --- */
+  function buildLociArrayFromTable() {
+    const loci = [];
+    try {
+      const sanBody = document.getElementById("sanBody");
+      if (!sanBody) return loci;
+      const rows = sanBody.querySelectorAll("tr");
+      rows.forEach(row => {
+        const cells = row.children;
+        const locusCell = cells && cells[3]; // 4η στήλη
+        loci.push(locusCell ? locusCell.textContent.trim() : "");
+      });
+    } catch (e) {}
+    return loci;
+  }
+
+  function sanToTextInner(s) {
+    if (!s) return "";
+    if (s === "O-O") return "King Castles Short Side";
+    if (s === "O-O-O") return "King Castles Long Side";
+    const map = { N:"Knight", B:"Bishop", R:"Rook", Q:"Queen", K:"King" };
+    let move = s.replace(/[+#?!]/g, "");
+    let piece = map[move[0]] ? map[move[0]] : "Pawn";
+    move = map[move[0]] ? move.slice(1) : move;
+    const parts = move.split("x");
+    const sq = parts[parts.length - 1];
+    const act = move.includes("x") ? "takes" : "moves to";
+    return piece + " " + act + " " + sq;
+  }
+
+  function resultText(res) {
+    if (res === "1-0") return "\n\nWhite wins.";
+    if (res === "0-1") return "\n\nBlack wins.";
+    if (res === "1/2-1/2") return "\n\nThe game is draw.";
+    return "";
+  }
+
+  /* --- Χτίσιμο κειμένου (ίδιο με το popup script) --- */
+  function buildSanText() {
+    if (!sanPayload) return "";
+    const h = sanPayload.header;
+    const headerLine =
+      (`"` + (h.event || "") + `"` + "\n " +
+       (h.white || "") + " vs " + (h.black || "") + " \n " +
+       (h.date || "")).trim();
+
+    const moves = sanPayload.moves || [];
+    const out = [];
+    const lociArray = sanLociOn ? buildLociArrayFromTable() : [];
+
+    if (sanMode === "half") {
+      for (let i = 0; i < moves.length; i++) {
+        const side = moves[i].side === "White" ? "White" : "Black";
+        const locus = sanLociOn ? (lociArray[i] || "") : "";
+        const prefix = locus ? "[" + locus + "] " : "";
+        out.push(
+          prefix +
+          "Half-move " + (i + 1) + " (" + side + "): " +
+          sanToTextInner(moves[i].san) + "."
+        );
+      }
+    } else {
+      for (let i = 0; i < moves.length; i += 2) {
+        const full = (i / 2) + 1;
+        const locusW = sanLociOn ? (lociArray[i]   || "") : "";
+        const locusB = sanLociOn ? (lociArray[i+1] || "") : "";
+
+        let block = "Move " + full + ".\n";
+        if (moves[i]) {
+          const prefixW = locusW ? "[" + locusW + "] " : "";
+          block += "  " + prefixW + "White: " + sanToTextInner(moves[i].san) + ".\n";
+        }
+        if (moves[i+1]) {
+          const prefixB = locusB ? "[" + locusB + "] " : "";
+          block += "  " + prefixB + "Black: " + sanToTextInner(moves[i+1].san) + ".\n";
+        }
+        out.push(block.trim());
+      }
+    }
+
+    return headerLine + "\n\n" + out.join("\n\n") + resultText(sanPayload.header.result);
+  }
+
+  function renderSanText() {
+    if (!sanOutEl) return;
+    sanOutEl.textContent = buildSanText();
+  }
+
+  /* --- Άνοιγμα modal (αντί για popup) --- */
+  function openSanToTextModal() {
+    if (!Array.isArray(gameMoves) || gameMoves.length === 0) {
+      alert("Load a game first (Demo Games or Parse PGN).");
+      return;
+    }
+    sanPayload = buildSanPayload();
+    sanMode = "half";
+    sanLociOn = false;
+
+    if (sanHalfBtn && sanFullBtn && sanLociBtn) {
+      sanHalfBtn.classList.add("mode-active");
+      sanFullBtn.classList.remove("mode-active");
+      sanLociBtn.textContent = "Loci: OFF";
+    }
+
+    renderSanText();
+    sanModal.style.display = "block";
+  }
+
+  /* --- Event handlers για τα κουμπιά του modal --- */
+
+  if (sanHalfBtn && sanFullBtn) {
+    sanHalfBtn.onclick = () => {
+      sanMode = "half";
+      sanHalfBtn.classList.add("mode-active");
+      sanFullBtn.classList.remove("mode-active");
+      renderSanText();
+    };
+    sanFullBtn.onclick = () => {
+      sanMode = "full";
+      sanFullBtn.classList.add("mode-active");
+      sanHalfBtn.classList.remove("mode-active");
+      renderSanText();
+    };
+  }
+
+  if (sanLociBtn) {
+    sanLociBtn.onclick = () => {
+      sanLociOn = !sanLociOn;
+      sanLociBtn.textContent = sanLociOn ? "Loci: ON" : "Loci: OFF";
+      renderSanText();
+    };
+  }
+
+  if (sanCopyBtn) {
+    sanCopyBtn.onclick = async () => {
+      const txt = buildSanText();
+      try {
+        await navigator.clipboard.writeText(txt);
+        sanCopyBtn.textContent = "Copied!";
+      } catch (e) {
+        const ta = document.createElement("textarea");
+        ta.value = txt; document.body.appendChild(ta);
+        ta.select(); document.execCommand("copy");
+        document.body.removeChild(ta);
+        sanCopyBtn.textContent = "Copied (fallback)";
+      }
+      setTimeout(() => sanCopyBtn.textContent = "Copy", 1200);
+    };
+  }
+
+  if (sanCloseBtn) {
+    sanCloseBtn.onclick = () => {
+      sanModal.style.display = "none";
+    };
+  }
+
+  window.addEventListener("click", (ev) => {
+    if (ev.target === sanModal) {
+      sanModal.style.display = "none";
+    }
+  });
+
   /* ============================================================
-     Insert button NEXT to Demo Games (Demo Style)
+     Insert button NEXT to Demo Games (Demo Style) — όπως πριν
      ============================================================ */
 
   const demoBtn = document.getElementById("demoGamesBtn");
@@ -373,11 +411,11 @@ document.addEventListener("DOMContentLoaded", () => {
     sanBtn.style.cursor="not-allowed";
 
     demoBtn.parentNode.insertBefore(sanBtn, demoBtn.nextSibling);
-    sanBtn.onclick = openSanToTextPopup;
+    sanBtn.onclick = openSanToTextModal;
   }
 
   /* ============================================================
-     Auto-enable when SAN table fills
+     Auto-enable when SAN table fills — όπως πριν
      ============================================================ */
 
   function enableSanButtonIfReady() {
@@ -400,7 +438,3 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
-
-
-
-
