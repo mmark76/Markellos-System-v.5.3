@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sanBtn.style.borderRadius = "4px";
     sanBtn.style.marginLeft = "10px";
     sanBtn.style.cursor = "pointer";
-    sanBtn.style.fontSize = "14px";
+    sanBtn.style.fontSize = "12px";
     sanBtn.style.fontWeight = "bold";
     sanBtn.style.verticalAlign = "middle";
     sanBtn.style.transition = "background .18s";
@@ -310,6 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
