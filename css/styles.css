@@ -523,3 +523,41 @@ footer {
 .table-toolbar {
   font-size: 14px;
 }
+
+/* === Final Header Grid Layout === */
+header {
+  display: grid;
+  grid-template-columns: 46% 17% 35%;
+  align-items: center;
+}
+
+/* Force logo + title fully left inside column #1 */
+.header-top-row {
+  justify-content: flex-start;
+}
+
+/* Keep center buttons perfectly centered */
+.header-links {
+  display: flex;
+  justify-content: center;
+}
+
+#howToBtn {
+  font-size: 0.75em !important;
+  padding: 3px 6px !important;
+  border-radius: 5px !important;
+  width: auto !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+
+/* Ensure the Instructions button stays only as wide as its text */
+#howToBtn {
+  display: inline-flex !important;
+  width: auto !important;
+  max-width: max-content !important;
+}
+
+#howToBtn {
+  margin-left: 150px !important; 
+}
