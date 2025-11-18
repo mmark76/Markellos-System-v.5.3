@@ -103,6 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+           html, body {
+             -webkit-text-size-adjust: 100% !important;
+      }
+         </style>
+
         <title>SAN to Text</title>
 
         <style>
@@ -394,6 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
