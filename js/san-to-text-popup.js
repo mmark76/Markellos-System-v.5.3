@@ -266,7 +266,7 @@ function buildSanText() {
   const out = [];
   const lociArray = sanLociOn ? buildLociArrayFromTable() : [];
 
-  /* HALF MODE */
+  /* ============== HALF MODE ===========================*/
   if (sanMode === "half") {
     for (let i = 0; i < moves.length; i++) {
       const side = moves[i].side === "White" ? "White" : "Black";
@@ -282,7 +282,7 @@ function buildSanText() {
     }
   }
 
-/* FULL MODE */
+/*===================== FULL MODE ====================== */
 else {
   for (let i = 0; i < moves.length; i += 2) {
     const full = (i/2) + 1;
@@ -294,15 +294,13 @@ else {
 
     if (moves[i]) {
       block += `  ${
-        locus ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> ` : ""
-      }White: ${sanToTextInner(moves[i].san)}.\n`;
+        locus ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> \n` : ""
+      }  White: ${sanToTextInner(moves[i].san)}.\n`;
     }
 
-    if (moves[i+1]) {
-      block += `  ${
-        locus ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> ` : ""
-      }Black: ${sanToTextInner(moves[i+1].san)}.\n`;
-    }
+if (moves[i+1]) {
+  block += `  Black: ${sanToTextInner(moves[i+1].san)}.\n`;
+}
 
     out.push(block.trim());
   }
@@ -333,7 +331,7 @@ function renderSanText() {
     sanModal.style.display = "block";
   }
 
-  /* Controls */
+  /* ===================== Controls ===========================*/
   sanHalfBtn.onclick = () => {
     sanMode = "half";
     sanHalfBtn.classList.add("mode-active");
@@ -435,6 +433,7 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
