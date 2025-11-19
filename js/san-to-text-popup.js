@@ -288,7 +288,7 @@ else {
     const full = (i/2) + 1;
 
     // ίδιο Loci για White και Black
-    const locus = sanLociOn ? (lociArray[i] || "") : "";
+    const locus = sanLociOn ? (lociArray[i/2] || "") : "";
 
     let block = `Move ${full}.\n`;
 
@@ -435,6 +435,7 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
