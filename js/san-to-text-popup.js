@@ -282,30 +282,31 @@ function buildSanText() {
     }
   }
 
-  /* FULL MODE */
-  else {
-    for (let i = 0; i < moves.length; i += 2) {
-      const full = (i/2)+1;
-      const locusW = sanLociOn ? (lociArray[i]   || "") : "";
-      const locusB = sanLociOn ? (lociArray[i+1] || "") : "";
+/* FULL MODE */
+else {
+  for (let i = 0; i < moves.length; i += 2) {
+    const full = (i/2) + 1;
 
-      let block = `Move ${full}.\n`;
+    // ίδιο Loci για White και Black
+    const locus = sanLociOn ? (lociArray[i] || "") : "";
 
-      if (moves[i]) {
-        block += `  ${
-          locusW ? `<span style="color:#b30000; font-weight:bold;">[${locusW}]</span> ` : ""
-        }White: ${sanToTextInner(moves[i].san)}.\n`;
-      }
+    let block = `Move ${full}.\n`;
 
-      if (moves[i+1]) {
-        block += `  ${
-          locusB ? `<span style="color:#b30000; font-weight:bold;">[${locusB}]</span> ` : ""
-        }Black: ${sanToTextInner(moves[i+1].san)}.\n`;
-      }
-
-      out.push(block.trim());
+    if (moves[i]) {
+      block += `  ${
+        locus ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> ` : ""
+      }White: ${sanToTextInner(moves[i].san)}.\n`;
     }
+
+    if (moves[i+1]) {
+      block += `  ${
+        locus ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> ` : ""
+      }Black: ${sanToTextInner(moves[i+1].san)}.\n`;
+    }
+
+    out.push(block.trim());
   }
+}
 
     return headerLine + "\n\n" + out.join("\n\n") + resultText(h.result);
   }
@@ -434,5 +435,6 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
