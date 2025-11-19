@@ -254,47 +254,65 @@ document.addEventListener("DOMContentLoaded", () => {
     return "";
   }
 
-  function buildSanText() {
-    if (!sanPayload) return "";
-    const h = sanPayload.header;
-    const headerLine =
-      (`"` + (h.event || "") + `"` + "\n " +
-       (h.white || "") + " vs " + (h.black || "") + " \n " +
-       (h.date || "")).trim();
+function buildSanText() {
+  if (!sanPayload) return "";
+  const h = sanPayload.header;
+  const headerLine =
+    (`"` + (h.event || "") + `"` + "\n " +
+     (h.white || "") + " vs " + (h.black || "") + " \n " +
+     (h.date || "")).trim();
 
-    const moves = sanPayload.moves || [];
-    const out = [];
-    const lociArray = sanLociOn ? buildLociArrayFromTable() : [];
+  const moves = sanPayload.moves || [];
+  const out = [];
+  const lociArray = sanLociOn ? buildLociArrayFromTable() : [];
 
-    if (sanMode === "half") {
-      for (let i = 0; i < moves.length; i++) {
-        const side = moves[i].side === "White" ? "White" : "Black";
-        const locus = sanLociOn ? (lociArray[i] || "") : "";
-        const prefix = locus ? `[${locus}] ` : "";
-        out.push(
-          `${prefix}Half-move ${i+1} (${side}): ${sanToTextInner(moves[i].san)}.`
-        );
-      }
-    } else {
-      for (let i = 0; i < moves.length; i += 2) {
-        const full = (i/2)+1;
-        const locusW = sanLociOn ? (lociArray[i]   || "") : "";
-        const locusB = sanLociOn ? (lociArray[i+1] || "") : "";
+  /* HALF MODE */
+  if (sanMode === "half") {
+    for (let i = 0; i < moves.length; i++) {
+      const side = moves[i].side === "White" ? "White" : "Black";
+      const locus = sanLociOn ? (lociArray[i] || "") : "";
 
-        let block = `Move ${full}.\n`;
-        if (moves[i])   block += `  ${locusW?`[${locusW}] `:""}White: ${sanToTextInner(moves[i].san)}.\n`;
-        if (moves[i+1]) block += `  ${locusB?`[${locusB}] `:""}Black: ${sanToTextInner(moves[i+1].san)}.\n`;
+      const prefix = locus
+        ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> `
+        : "";
 
-        out.push(block.trim());
-      }
+      out.push(
+        `${prefix}Half-move ${i+1} (${side}): ${sanToTextInner(moves[i].san)}.`
+      );
     }
+  }
+
+  /* FULL MODE */
+  else {
+    for (let i = 0; i < moves.length; i += 2) {
+      const full = (i/2)+1;
+      const locusW = sanLociOn ? (lociArray[i]   || "") : "";
+      const locusB = sanLociOn ? (lociArray[i+1] || "") : "";
+
+      let block = `Move ${full}.\n`;
+
+      if (moves[i]) {
+        block += `  ${
+          locusW ? `<span style="color:#b30000; font-weight:bold;">[${locusW}]</span> ` : ""
+        }White: ${sanToTextInner(moves[i].san)}.\n`;
+      }
+
+      if (moves[i+1]) {
+        block += `  ${
+          locusB ? `<span style="color:#b30000; font-weight:bold;">[${locusB}]</span> ` : ""
+        }Black: ${sanToTextInner(moves[i+1].san)}.\n`;
+      }
+
+      out.push(block.trim());
+    }
+  }
 
     return headerLine + "\n\n" + out.join("\n\n") + resultText(h.result);
   }
 
-  function renderSanText() {
-    sanOutEl.textContent = buildSanText();
-  }
+function renderSanText() {
+    sanOutEl.innerHTML = buildSanText();
+}
 
   function openSanToTextModal() {
     if (!Array.isArray(gameMoves) || gameMoves.length === 0) {
