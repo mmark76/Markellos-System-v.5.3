@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
      LOGIC / STATE
   ============================================================ */
 
-  let sanMode = "half";
+  let sanMode = "full";
   let sanLociOn = false;
   let sanPayload = null;
 
@@ -330,7 +330,7 @@ function renderSanText() {
     sanPayload = buildSanPayload();
     sanMode = "half";
     sanLociOn = false;
-
+   
     sanHalfBtn.classList.add("mode-active");
     sanFullBtn.classList.remove("mode-active");
     sanLociBtn.textContent = "Loci: OFF";
@@ -441,6 +441,7 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
