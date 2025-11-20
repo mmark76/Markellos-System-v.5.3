@@ -567,7 +567,7 @@ footer {
     justify-content: center;
   }
 
-  /* Desktop-only tuning for the Instructions button */
+  /* Desktop-only tuning for the Instructions button 
   #howToBtn {
     font-size: 0.85em;
     padding: 3px 6px;
@@ -578,4 +578,4 @@ footer {
     max-width: max-content;
     margin-left: 150px;
   }
-}
+}*/
