@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <button id="sanModeHalfBtn" class="mode-active">Half-move</button>
         <button id="sanCopyBtn" class="primary">Copy</button>
         <button id="sanLociBtn">Loci: OFF</button>
-        <span class="tts-hint">Listen to the game with a TTS Tool (i.e. Read Aloud MSWord etc.)</span>
+        <span>Listen to the game with a TTS Tool (i.e. Read Aloud MSWord etc.)</span>
       </div>
 
       <pre id="sanTextOut" class="san-text"></pre>
@@ -434,6 +434,7 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
