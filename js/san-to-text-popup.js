@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
   background: #fff;
   cursor: pointer;
   font-size: 14px;
-  color: #000 !important;   /* ← ΑΥΤΟ μόνο χρειάζεται */
+  color: #000 !important;
 }
 
 #sanTextToolbar button.primary {
@@ -129,9 +129,10 @@ document.addEventListener("DOMContentLoaded", () => {
   color: #000 !important;
 }
 
+/* inactive buttons πάντα καθαρά */
 #sanTextToolbar button:not(.mode-active) {
   background: #fff !important;
-  border-color: #888;
+  border-color: #888 !important;
 }
 
 /* --- Text area --- */
@@ -267,64 +268,64 @@ document.addEventListener("DOMContentLoaded", () => {
     return "";
   }
 
-function buildSanText() {
-  if (!sanPayload) return "";
-  const h = sanPayload.header;
-  const headerLine =
-    (`"` + (h.event || "") + `"` + "\n " +
-     (h.white || "") + " vs " + (h.black || "") + " \n " +
-     (h.date || "")).trim();
+  function buildSanText() {
+    if (!sanPayload) return "";
+    const h = sanPayload.header;
+    const headerLine =
+      (`"` + (h.event || "") + `"` + "\n " +
+       (h.white || "") + " vs " + (h.black || "") + " \n " +
+       (h.date || "")).trim();
 
-  const moves = sanPayload.moves || [];
-  const out = [];
-  const lociArray = sanLociOn ? buildLociArrayFromTable() : [];
+    const moves = sanPayload.moves || [];
+    const out = [];
+    const lociArray = sanLociOn ? buildLociArrayFromTable() : [];
 
-  /* ============== HALF MODE ===========================*/
-  if (sanMode === "half") {
-    for (let i = 0; i < moves.length; i++) {
-      const side = moves[i].side === "White" ? "White" : "Black";
-      const locus = sanLociOn ? (lociArray[i] || "") : "";
+    /* ============== HALF MODE ===========================*/
+    if (sanMode === "half") {
+      for (let i = 0; i < moves.length; i++) {
+        const side = moves[i].side === "White" ? "White" : "Black";
+        const locus = sanLociOn ? (lociArray[i] || "") : "";
 
-      const prefix = locus
-        ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> `
-        : "";
+        const prefix = locus
+          ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> `
+          : "";
 
-      out.push(
-        `${prefix}Half-move ${i+1} (${side}): ${sanToTextInner(moves[i].san)}.`
-      );
-    }
-  }
-
-/*===================== FULL MODE ====================== */
-else {
-  for (let i = 0; i < moves.length; i += 2) {
-    const full = (i/2) + 1;
-
-    // ίδιο Loci για White και Black
-    const locus = sanLociOn ? (lociArray[i/2] || "") : "";
-
-    let block = `Move ${full}.\n`;
-
-    if (moves[i]) {
-      block += `  ${
-        locus ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> \n` : ""
-      }  White: ${sanToTextInner(moves[i].san)}.\n`;
+        out.push(
+          `${prefix}Half-move ${i+1} (${side}): ${sanToTextInner(moves[i].san)}.`
+        );
+      }
     }
 
-if (moves[i+1]) {
-  block += `  Black: ${sanToTextInner(moves[i+1].san)}.\n`;
-}
+    /*===================== FULL MODE ====================== */
+    else {
+      for (let i = 0; i < moves.length; i += 2) {
+        const full = (i/2) + 1;
 
-    out.push(block.trim());
-  }
-}
+        // ίδιο Loci για White και Black
+        const locus = sanLociOn ? (lociArray[i/2] || "") : "";
+
+        let block = `Move ${full}.\n`;
+
+        if (moves[i]) {
+          block += `  ${
+            locus ? `<span style="color:#b30000; font-weight:bold;">[${locus}]</span> \n` : ""
+          }  White: ${sanToTextInner(moves[i].san)}.\n`;
+        }
+
+        if (moves[i+1]) {
+          block += `  Black: ${sanToTextInner(moves[i+1].san)}.\n`;
+        }
+
+        out.push(block.trim());
+      }
+    }
 
     return headerLine + "\n\n" + out.join("\n\n") + resultText(h.result);
   }
 
-function renderSanText() {
+  function renderSanText() {
     sanOutEl.innerHTML = buildSanText();
-}
+  }
 
   function openSanToTextModal() {
     if (!Array.isArray(gameMoves) || gameMoves.length === 0) {
@@ -335,7 +336,7 @@ function renderSanText() {
     sanPayload = buildSanPayload();
     sanMode = "full";
     sanLociOn = false;
-   
+
     sanFullBtn.classList.add("mode-active");
     sanHalfBtn.classList.remove("mode-active");
     sanLociBtn.textContent = "Loci: OFF";
@@ -446,17 +447,3 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
