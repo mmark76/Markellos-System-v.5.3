@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <button id="sanModeHalfBtn" class="mode-active">Half-move</button>
         <button id="sanCopyBtn" class="primary">Copy</button>
         <button id="sanLociBtn">Loci: OFF</button>
-        <button>Listen to the game with a TTS Tool (i.e. Read Aloud MSWord etc.)</button>
+        <p class="tts-hint">Listen to the game with a TTS Tool (i.e. Read Aloud MSWord etc.)</p>
       </div>
 
       <pre id="sanTextOut" class="san-text"></pre>
@@ -163,6 +163,13 @@ document.addEventListener("DOMContentLoaded", () => {
   #sanTextOut.san-text {
     font-size: 16px;
   }
+}
+
+.tts-hint {
+  color: #000;
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
 }
 
   `;
@@ -434,6 +441,7 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
