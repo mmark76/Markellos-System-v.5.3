@@ -100,3 +100,17 @@ footer {
   justify-content: center; /* ή space-between */
   gap: 12px;
 }
+
+/* Header buttons same background as header */
+.header-links a,
+#howToBtn {
+  background: #222 !important;
+  border: 1px solid #333 !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+
+.header-links a:hover,
+#howToBtn:hover {
+  background: #333 !important;
+}
