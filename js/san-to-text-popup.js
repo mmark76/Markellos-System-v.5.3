@@ -129,6 +129,11 @@ document.addEventListener("DOMContentLoaded", () => {
   color: #000 !important;
 }
 
+#sanTextToolbar button:not(.mode-active) {
+  background: #fff !important;
+  border-color: #888;
+}
+
 /* --- Text area --- */
 #sanTextOut.san-text {
   white-space: pre-wrap;
@@ -441,6 +446,7 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
