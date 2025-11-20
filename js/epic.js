@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <span class="epic-close" id="epicCloseBtn">&times;</span>
       <div class="epic-copy-toolbar">
         <button id="copyEpicBtn" class="btn btn-primary">📋 Copy Story</button>
+        <span class="tts-hint">Listen to the story with a TTS Tool (i.e. Read Aloud MSWord etc.)</span>
       </div>
       <div id="epicTextView" class="epic-text"></div>
     </div>
@@ -299,6 +300,7 @@ textView.style.whiteSpace = "pre-wrap";
     if (event.target === modal) modal.style.display = "none";
   });
 });
+
 
 
 
