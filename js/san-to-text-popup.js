@@ -331,8 +331,8 @@ function renderSanText() {
     sanMode = "full";
     sanLociOn = false;
    
-    sanHalfBtn.classList.add("mode-active");
-    sanFullBtn.classList.remove("mode-active");
+    sanFullBtn.classList.add("mode-active");
+    sanHalfBtn.classList.remove("mode-active");
     sanLociBtn.textContent = "Loci: OFF";
 
     renderSanText();
@@ -441,6 +441,7 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
