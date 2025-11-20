@@ -328,7 +328,7 @@ function renderSanText() {
     }
 
     sanPayload = buildSanPayload();
-    sanMode = "half";
+    sanMode = "full";
     sanLociOn = false;
    
     sanHalfBtn.classList.add("mode-active");
@@ -441,6 +441,7 @@ function renderSanText() {
   setTimeout(enableSanButtonIfReady, 200);
 
 });
+
 
 
 
