@@ -73,7 +73,7 @@ header nav {
   display: inline-block;
   font-family: Georgia, serif;
   color: #fff;
-  background: #000;
+  background: #222 !important;
   text-decoration: none;
   padding: 9px 16px;
   border-radius: 8px;
