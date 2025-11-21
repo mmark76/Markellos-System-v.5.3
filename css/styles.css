@@ -866,4 +866,64 @@ table td:nth-child(7) {
   min-width: 90px;
 }
 
+/* ============================================================
+   CMA v3.4 — Override Pack v6
+   Ultra-Compact Table Columns (Mobile + Desktop)
+   ============================================================ */
+
+/* Move # */
+table th:nth-child(1),
+table td:nth-child(1) {
+  width: 50px !important;
+  min-width: 50px !important;
+  max-width: 50px !important;
+}
+
+/* SAN */
+table th:nth-child(2),
+table td:nth-child(2) {
+  width: 70px !important;
+  min-width: 70px !important;
+  max-width: 70px !important;
+}
+
+/* Anchor */
+table th:nth-child(3),
+table td:nth-child(3) {
+  width: 35px !important;
+  min-width: 35px !important;
+  max-width: 35px !important;
+  text-align: center;
+}
+
+/* Mnemonic Locus (elastic column) */
+table th:nth-child(4),
+table td:nth-child(4) {
+  min-width: 120px !important;
+}
+
+/* Color-Turn */
+table th:nth-child(5),
+table td:nth-child(5) {
+  width: 75px !important;
+  min-width: 75px !important;
+  max-width: 75px !important;
+}
+
+/* Piece */
+table th:nth-child(6),
+table td:nth-child(6) {
+  width: 80px !important;
+  min-width: 80px !important;
+  max-width: 80px !important;
+}
+
+/* Target Square */
+table th:nth-child(7),
+table td:nth-child(7) {
+  width: 60px !important;
+  min-width: 60px !important;
+  max-width: 60px !important;
+}
+
 /* END OF FILE */
