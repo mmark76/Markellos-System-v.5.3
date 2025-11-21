@@ -408,12 +408,12 @@
   window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
 </script>
 
+<script> 
 // =======================================================
 //  AUTO-CLASS TRANSFER: <th class=""> → αντίστοιχα <td>
 //  Λειτουργεί για ΟΛΟΥΣ τους πίνακες, ανεξαρτήτως σειράς
 // =======================================================
 
-<script> 
 function applyColumnClasses() {
   document.querySelectorAll("table").forEach(table => {
     const ths = table.querySelectorAll("thead th");
@@ -437,6 +437,7 @@ window.applyColumnClasses = applyColumnClasses;
 	
 </body>
 </html>
+
 
 
 
