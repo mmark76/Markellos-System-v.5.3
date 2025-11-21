@@ -413,6 +413,7 @@
 //  Λειτουργεί για ΟΛΟΥΣ τους πίνακες, ανεξαρτήτως σειράς
 // =======================================================
 
+<script> 
 function applyColumnClasses() {
   document.querySelectorAll("table").forEach(table => {
     const ths = table.querySelectorAll("thead th");
@@ -432,9 +433,11 @@ function applyColumnClasses() {
 
 // Τρέχει ξανά μετά από κάθε γέμισμα πίνακα
 window.applyColumnClasses = applyColumnClasses;
-
+</script>
+	
 </body>
 </html>
+
 
 
 
