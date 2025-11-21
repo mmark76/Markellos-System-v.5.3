@@ -62,7 +62,7 @@ header nav {
 }
 
 /* =============================================================
-   HEADER BUTTONS — FINAL OPTIMAL VERSION
+   HEADER BUTTONS — VERSION v3.4.x
    font-size: 16px
    background: #000 (blends into header)
    soft hover: #111
@@ -286,8 +286,12 @@ input:checked + .slider:before {
 }
 
 /* =============================================================
-   TABLES
+   TABLES (BASE)
    ============================================================= */
+
+.table-wrapper {
+  /* θα ξαναρυθμιστεί στο τέλος για scroll */
+}
 
 table {
   width: 100%;
@@ -685,296 +689,69 @@ footer {
 }
 
 /* ============================================================
-   CMA v3.4 — MOBILE OPTIMIZATION PACK (MERGED)
+   CMA v3.4 — TABLE LAYOUT & MOBILE TUNING (v7)
    ============================================================ */
+
+/* Base: narrow Anchor column on all devices */
+table th:nth-child(3),
+table td:nth-child(3) {
+  width: 40px;
+  text-align: center;
+}
+
+/* Base: allow table wrapper to scroll horizontally if ever needed */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile: compact tables so they fit nicely on small screens */
 @media (max-width: 600px) {
 
-  /* 1) Tables: horizontal scroll, no vertical word-break */
-  .table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
   table {
-    min-width: 650px;
-    table-layout: auto;
+    width: 100%;
+    table-layout: fixed;
   }
 
   table th,
   table td {
-    padding: 4px 6px;
-    font-size: 0.75rem;
-    white-space: nowrap;
+    padding: 3px 4px;
+    font-size: 0.72rem;
+    word-wrap: break-word;
   }
 
-  /* Move # column narrower */
+  /* Move # */
   table th:nth-child(1),
   table td:nth-child(1) {
-    width: 52px;
+    width: 12%;
   }
 
-  /* SAN / Associations */
+  /* SAN */
   table th:nth-child(2),
   table td:nth-child(2) {
-    max-width: 120px;
+    width: 14%;
   }
 
-  /* Anchor & Locus */
-  table th:nth-child(3),
-  table td:nth-child(3),
-  table th:nth-child(4),
-  table td:nth-child(4) {
-    width: 60px;
-  }
-
-  /* PAO 00–99 dense text */
-  #pao99Section table td:nth-child(6),
-  #pao99Section table td:nth-child(7) {
-    font-size: 0.7rem;
-  }
-
-  /* Panels — stacking & padding */
-  .layout-container {
-    grid-template-columns: 1fr;
-    gap: 6px;
-    padding: 0;
-  }
-
-  .left-panel,
-  .middle-panel,
-  .right-panel {
-    padding: 8px;
-  }
-
-  .left-panel textarea {
-    height: 150px;
-  }
-
-  /* Header refinement for mobile */
-  header {
-    padding: 6px !important;
-  }
-
-  .header-top-row {
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-  }
-
-  header h1 {
-    font-size: 0.85em !important;
-    padding: 4px 6px;
-  }
-
-  .header-img {
-    width: 58px !important;
-  }
-
-  #howToBtn,
-  .header-links a {
-    font-size: 0.75em !important;
-    padding: 6px 10px !important;
-  }
-
-  /* Dropdown compact */
-  .dropdown-group label {
-    font-size: 0.85em;
-  }
-
-  .dropdown-group select {
-    font-size: 0.85em;
-    padding: 4px 6px;
-  }
-
-  /* Footer */
-  footer {
-    font-size: 0.65em;
-    padding: 4px;
-  }
-}
-
-/* ============================================================
-   CMA v3.4 — FINAL CORRECTIONS & OVERRIDES
-   These rules override previous styles where needed.
-   Place all patch/fix CSS below this section.
-   ============================================================ */
-
-/* Force Anchor column to be very narrow */
-th:nth-child(3),
-td:nth-child(3) {
-  width: 40px !important;
-  max-width: 40px !important;
-  min-width: 40px !important;
-  text-align: center;
-}
-
-/* ============================================================
-   CMA v3.4 — TABLE COMPACT MODE (Desktop)
-   ============================================================ */
-
-/* Move # */
-table th:nth-child(1),
-table td:nth-child(1) {
-  width: 70px;
-  max-width: 70px;
-  min-width: 70px;
-}
-
-/* SAN */
-table th:nth-child(2),
-table td:nth-child(2) {
-  width: 90px;
-  max-width: 90px;
-  min-width: 90px;
-}
-
-/* Anchor (already overridden, keep highest priority) */
-table th:nth-child(3),
-table td:nth-child(3) {
-  width: 40px !important;
-  max-width: 40px !important;
-  min-width: 40px !important;
-}
-
-/* Mnemonic Locus (give generous width) */
-table th:nth-child(4),
-table td:nth-child(4) {
-  min-width: 180px;
-}
-
-/* Color-Turn */
-table th:nth-child(5),
-table td:nth-child(5) {
-  width: 90px;
-  max-width: 90px;
-  min-width: 90px;
-}
-
-/* Piece */
-table th:nth-child(6),
-table td:nth-child(6) {
-  width: 120px;
-  max-width: 120px;
-  min-width: 120px;
-}
-
-/* Target Square */
-table th:nth-child(7),
-table td:nth-child(7) {
-  width: 90px;
-  max-width: 90px;
-  min-width: 90px;
-}
-
-/* ============================================================
-   CMA v3.4 — Override Pack v6
-   Ultra-Compact Table Columns (Mobile + Desktop)
-   ============================================================ */
-
-/* Move # */
-table th:nth-child(1),
-table td:nth-child(1) {
-  width: 50px !important;
-  min-width: 50px !important;
-  max-width: 50px !important;
-}
-
-/* SAN */
-table th:nth-child(2),
-table td:nth-child(2) {
-  width: 70px !important;
-  min-width: 70px !important;
-  max-width: 70px !important;
-}
-
-/* Anchor */
-table th:nth-child(3),
-table td:nth-child(3) {
-  width: 35px !important;
-  min-width: 35px !important;
-  max-width: 35px !important;
-  text-align: center;
-}
-
-/* Mnemonic Locus (elastic column) */
-table th:nth-child(4),
-table td:nth-child(4) {
-  min-width: 120px !important;
-}
-
-/* Color-Turn */
-table th:nth-child(5),
-table td:nth-child(5) {
-  width: 75px !important;
-  min-width: 75px !important;
-  max-width: 75px !important;
-}
-
-/* Piece */
-table th:nth-child(6),
-table td:nth-child(6) {
-  width: 80px !important;
-  min-width: 80px !important;
-  max-width: 80px !important;
-}
-
-/* Target Square */
-table th:nth-child(7),
-table td:nth-child(7) {
-  width: 60px !important;
-  min-width: 60px !important;
-  max-width: 60px !important;
-}
-
-/* ============================================================
-   CMA v3.4 — Override Pack v7
-   Mobile Table Shrink (no forced 650px)
-   ============================================================ */
-
-@media (max-width: 600px) {
-
-  /* Το wrapper δεν επιβάλλει πια οριζόντιο scroll */
-  .table-wrapper {
-    overflow-x: visible !important;
-  }
-
-  /* Το table δεν έχει min-width 650px πλέον */
-  table {
-    width: 100% !important;
-    min-width: 0 !important;
-    table-layout: fixed !important;
-  }
-
-  /* Ακόμη πιο compact κελιά για να χωράνε όλες οι στήλες */
-  table th,
-  table td {
-    padding: 2px 3px !important;
-    font-size: 0.7rem !important;
-  }
-}
-
-/* ============================================================
-   CMA v3.4 — Override Pack v8
-   Desktop table reset (κρατάμε στενή μόνο την Anchor)
-   ============================================================ */
-
-@media (min-width: 769px) {
-
-  /* Ξεφορτωνόμαστε τα fixed widths του v6 στο desktop */
-  table th,
-  table td {
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: none !important;
-  }
-
-  /* Κρατάμε μόνο την Anchor στενή στο desktop */
+  /* Anchor */
   table th:nth-child(3),
   table td:nth-child(3) {
-    width: 40px !important;
-    min-width: 40px !important;
-    max-width: 40px !important;
-    text-align: center;
+    width: 8%;
+  }
+
+  /* Mnemonic Locus / main text column */
+  table th:nth-child(4),
+  table td:nth-child(4) {
+    width: auto;
+  }
+
+  /* Remaining numeric/text columns */
+  table th:nth-child(5),
+  table td:nth-child(5),
+  table th:nth-child(6),
+  table td:nth-child(6),
+  table th:nth-child(7),
+  table td:nth-child(7) {
+    width: 12%;
   }
 }
 
