@@ -1,6 +1,6 @@
 /* =============================================================
-   Chess Mnemonic Application & Epic Chess Stories Creator v3.3
-   Unified CSS (Clean + Conflict-free)
+   Chess Mnemonic Application & Epic Chess Stories Creator v3.4
+   Unified CSS (Optimized, Clean, Conflict-free)
    Author: Markellos Markides
    ============================================================= */
 
@@ -23,7 +23,7 @@ body {
 /* === Header === */
 header {
   background: #222;
-  padding: 6px 8px;      /* ήταν 10px */
+  padding: 6px 8px;
   margin-bottom: 5px;
   position: sticky;
   top: 0;
@@ -32,10 +32,10 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 1.3em;      /* ήταν 1.6em */
+  font-size: 1.3em;
 }
 
-/* Πάνω σειρά: τίτλος + εικόνα */
+/* Top row: logo + title */
 .header-top-row {
   display: flex;
   align-items: center;
@@ -43,14 +43,14 @@ header h1 {
   gap: 10px;
 }
 
-/* Εικόνα στο header */
+/* Header image */
 .header-img {
   width: 120px;
   border-radius: 6px;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
-/* Links */
+/* Navigation */
 header nav {
   margin-top: 6px;
 }
@@ -61,52 +61,40 @@ header nav {
   flex-wrap: wrap;
 }
 
-.header-links a {
-  display: inline-block;
-  font-family: Georgia, serif;
-  color: #fff;
-  background: linear-gradient(180deg, #3a4f8a 0%, #1f2d60 100%);
-  text-decoration: none;
-  padding: 9px 16px;
-  border-radius: 8px;
-  font-size: 1.05em;
-  font-weight: 600;
-  border: 1px solid #5b78ff;
-  box-shadow: 0 0 6px rgba(100, 150, 255, 0.3);
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-}
+/* =============================================================
+   HEADER BUTTONS — VERSION v3.4.x
+   font-size: 16px
+   background: #000 (blends into header)
+   soft hover: #111
+   ============================================================= */
 
-.header-links a:hover {
-  background: linear-gradient(180deg, #5b78ff 0%, #2f3f8a 100%);
-  box-shadow: 0 0 10px rgba(120, 170, 255, 0.6);
-  transform: translateY(-2px);
-}
-
-/* Make the howToBtn look exactly like the header links */
+.header-links a,
 #howToBtn {
   display: inline-block;
   font-family: Georgia, serif;
   color: #fff;
-  background: linear-gradient(180deg, #3a4f8a 0%, #1f2d60 100%);
+  background: #000;
   text-decoration: none;
   padding: 9px 16px;
   border-radius: 8px;
-  font-size: 1.05em;
+  font-size: 16px;
   font-weight: 600;
-  border: 1px solid #5b78ff;
-  box-shadow: 0 0 6px rgba(100, 150, 255, 0.3);
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  border: 1px solid #111;
+  box-shadow: none;
   cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
 }
 
-/* Hover identical to links */
+.header-links a:hover,
 #howToBtn:hover {
-  background: linear-gradient(180deg, #5b78ff 0%, #2f3f8a 100%);
-  box-shadow: 0 0 10px rgba(120, 170, 255, 0.6);
-  transform: translateY(-2px);
+  background: #111;
+  transform: translateY(-1px);
 }
 
-/* === Modal (General) === */
+/* =============================================================
+   GENERAL MODAL
+   ============================================================= */
+
 .modal {
   display: none;
   position: fixed;
@@ -129,9 +117,8 @@ header nav {
   border-radius: 10px;
   width: 90%;
   max-width: 350px;
-  height: auto;        /* modal παίρνει ακριβώς όσο ύψος χρειάζεται */
-  max-height: 70vh;    /* μικρότερο limit */
-  overflow-y: auto;    /* scroll μόνο αν ξεπεραστεί */
+  max-height: 70vh;
+  overflow-y: auto;
   border: 2px solid #3a3a3a;
   box-shadow: 0 8px 24px rgba(0,0,0,0.6);
 }
@@ -147,7 +134,10 @@ header nav {
   color: #fff;
 }
 
-/* === Layout === */
+/* =============================================================
+   MAIN LAYOUT
+   ============================================================= */
+
 .layout-container {
   display: grid;
   grid-template-columns: 46% 17% 35%;
@@ -179,7 +169,10 @@ header nav {
   margin-bottom: 2px;
 }
 
-/* === Buttons & Inputs === */
+/* =============================================================
+   GENERIC BUTTONS + INPUTS
+   ============================================================= */
+
 button,
 select {
   background: #333;
@@ -197,7 +190,109 @@ select:hover {
   background: #444;
 }
 
-/* === Tables === */
+/* FROM HEAD INLINE STYLE — MERGED CLEANLY */
+.minimal-btn {
+  background: #f8f8f8;
+  border: 2px solid #ccc;
+  color: #222;
+  font-size: 16px;
+  padding: 6px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 2px;
+  transition: background .17s, border .17s;
+}
+
+.minimal-btn:hover {
+  background: #ececec;
+  border: 1px solid #999;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #e2e5eb;
+  border-radius: 20px;
+  transition: .3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 3px;
+  bottom: 2.3px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px 0 #aaa;
+  transition: .3s;
+}
+
+input:checked + .slider {
+  background: #3697ef;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+/* Side button (User Libraries) */
+.side-btn {
+  background: #f6f8fa;
+  border: 1px solid #bcd3ea;
+  color: #222;
+  font-size: 15px;
+  padding: 6px 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .16s, border .16s;
+}
+
+.side-btn.selected,
+.side-btn:hover {
+  background: #3697ef;
+  color: #fff;
+  border: 1.5px solid #3697ef;
+}
+
+/* Table row highlighting */
+.row-hover {
+  background: #f0f8ff;
+}
+
+.row-selected {
+  background: #cfe2ff;
+}
+
+/* =============================================================
+   TABLES (BASE)
+   ============================================================= */
+
+.table-wrapper {
+  /* θα ξαναρυθμιστεί στο τέλος για scroll */
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -214,7 +309,6 @@ td {
 th {
   background: #333;
   color: #fff;
-  top: 0;
 }
 
 tr:nth-child(even) {
@@ -225,22 +319,35 @@ tr:nth-child(odd) {
   background: #111;
 }
 
-/* === Footer === */
+/* Column titles smaller */
+.table-wrapper table thead th {
+  font-size: 0.8rem;
+}
+
+/* =============================================================
+   FOOTER
+   ============================================================= */
+
 footer {
   background: #222;
   padding: 7px;
-  text-align: center;
   color: #b3b3b3;
   font-size: 0.7em;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
 }
 
 /* =============================================================
    EPIC UI + PARCHMENT SECTION
    ============================================================= */
+
 #epicSection,
 .epic-modal-content {
   font-family: "Book Antiqua", Palatino, serif;
@@ -248,7 +355,11 @@ footer {
 }
 
 .parchment {
-  background: linear-gradient(180deg, rgba(255,250,230,0.95), rgba(245,230,190,0.95));
+  background: linear-gradient(
+    180deg,
+    rgba(255,250,230,0.95),
+    rgba(245,230,190,0.95)
+  );
   border: 1px solid rgba(140,110,60,0.28);
   box-shadow: 0 6px 20px rgba(30,20,10,0.25);
   padding: 18px;
@@ -269,7 +380,10 @@ footer {
   line-height: 1.8;
 }
 
-/* === Epic Modal === */
+/* =============================================================
+   EPIC MODAL
+   ============================================================= */
+
 .epic-modal {
   display: none;
   position: fixed;
@@ -308,7 +422,10 @@ footer {
   color: #a03a2b;
 }
 
-/* === Buttons (Epic) === */
+/* =============================================================
+   EPIC BUTTONS
+   ============================================================= */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -331,7 +448,10 @@ footer {
   transform: translateY(-2px);
 }
 
-/* === User Libraries === */
+/* =============================================================
+   USER LIBRARIES UI
+   ============================================================= */
+
 .ul-backdrop {
   position: fixed;
   top:0;
@@ -400,7 +520,7 @@ footer {
   background:#667;
 }
 
-/* === Instructions in modal === */
+/* Instructions inside modal */
 .instructions h4 {
   margin-top: 12px;
   font-size: 1.15em;
@@ -425,7 +545,10 @@ footer {
   margin-bottom: 10px;
 }
 
-/* === Responsive layout for main panels === */
+/* =============================================================
+   RESPONSIVE LAYOUTS
+   ============================================================= */
+
 @media (max-width:768px) {
   .layout-container {
     grid-template-columns:1fr;
@@ -439,7 +562,7 @@ footer {
   }
 }
 
-/* === Mobile header layout === */
+/* Mobile header layout */
 @media (max-width: 600px) {
 
   header {
@@ -474,7 +597,7 @@ footer {
   }
 }
 
-/* Πιο χαμηλό header για tablet / laptop / desktop */
+/* Tablet / Laptop / Desktop */
 @media (min-width: 768px) {
   header {
     padding: 4px 10px;
@@ -503,11 +626,21 @@ footer {
   .header-links a,
   #howToBtn {
     padding: 4px 8px;
-    font-size: 0.9em;
+    font-size: 16px;
   }
 }
 
-/* Table selection + Memory Palace Mode row */
+/* Larger desktops */
+@media (min-width: 1024px) {
+  .header-img {
+    width: 90px;
+  }
+}
+
+/* =============================================================
+   DROPDOWNS (Table selection, Memory Palace mode)
+   ============================================================= */
+
 .dropdown-group {
   display: flex;
   flex-wrap: wrap;
@@ -528,27 +661,14 @@ footer {
 }
 
 .dropdown-group select {
-  padding: 5px 10px;      /* ίδιο ύψος στα δύο dropdowns */
+  padding: 5px 10px;
   border-radius: 4px;
 }
 
-/* Πιο μεγάλη εικόνα στο laptop / desktop */
-@media (min-width: 1024px) {
-  .header-img {
-    width: 90px;   /* δοκίμασε 90 – αν τη θες μεγαλύτερη βάλε 100 ή 110 */
-  }
-}
+/* =============================================================
+   FINAL HEADER GRID LAYOUT (Desktop only)
+   ============================================================= */
 
-/* Μικρότερη γραμματοσειρά στους τίτλους των στηλών και στο toolbar */
-.table-wrapper table thead th {
-  font-size: 0.8rem;   /* παίξε με 0.75–0.9 ανάλογα πώς το θες */
-}
-
-.table-toolbar {
-  font-size: 14px;
-}
-
-/* === Final Header Grid Layout (desktop only) === */
 @media (min-width: 1024px) {
   header {
     display: grid;
@@ -556,26 +676,162 @@ footer {
     align-items: center;
   }
 
-  /* Force logo + title fully left inside column #1 */
+  /* Left side: logo + title */
   .header-top-row {
     justify-content: flex-start;
   }
 
-  /* Keep center buttons perfectly centered */
+  /* Center: User Guide / Flashcards */
   .header-links {
     display: flex;
     justify-content: center;
   }
+}
 
-  /* Desktop-only tuning for the Instructions button 
-  #howToBtn {
-    font-size: 0.85em;
-    padding: 3px 6px;
-    border-radius: 5px;
-    white-space: nowrap;
-    display: inline-flex;
-    width: auto;
-    max-width: max-content;
-    margin-left: 150px;
+/* ============================================================
+   CMA v3.4 — TABLE LAYOUT & MOBILE TUNING (v7)
+   ============================================================ */
+
+/* Base: narrow Anchor column on all devices */
+table th:nth-child(3),
+table td:nth-child(3) {
+  width: 40px;
+  text-align: center;
+}
+
+/* Base: allow table wrapper to scroll horizontally if ever needed */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile: compact tables so they fit nicely on small screens */
+@media (max-width: 600px) {
+
+  table {
+    width: 100%;
+    table-layout: fixed;
   }
-}*/
+
+  table th,
+  table td {
+    padding: 3px 4px;
+    font-size: 0.72rem;
+    word-wrap: break-word;
+  }
+
+  /* Move # */
+  table th:nth-child(1),
+  table td:nth-child(1) {
+    width: 12%;
+  }
+
+  /* SAN */
+  table th:nth-child(2),
+  table td:nth-child(2) {
+    width: 14%;
+  }
+
+  /* Anchor */
+  table th:nth-child(3),
+  table td:nth-child(3) {
+    width: 8%;
+  }
+
+  /* Mnemonic Locus / main text column */
+  table th:nth-child(4),
+  table td:nth-child(4) {
+    width: auto;
+  }
+
+  /* Remaining numeric/text columns */
+  table th:nth-child(5),
+  table td:nth-child(5),
+  table th:nth-child(6),
+  table td:nth-child(6),
+  table th:nth-child(7),
+  table td:nth-child(7) {
+    width: 12%;
+  }
+}
+
+/* Compact Mnemonic Locus width (works on all screens) */
+table th:nth-child(4),
+table td:nth-child(4) {
+  min-width: 110px !important;   /* μικρό αλλά ασφαλές */
+  max-width: 150px !important;   /* δεν θα απλώνεται άλλο */
+  width: 18% !important;          /* λογικό ποσοστό */
+  white-space: nowrap;            /* δεν σπάει σε γραμμές */
+  overflow: hidden;
+  text-overflow: ellipsis;        /* ... αν ποτέ χρειαστεί */
+}
+
+/* ============================================================
+   CMA v3.4 — PATCH: NATURAL AUTO-WIDTH TABLES
+   Removes all forced column widths and restores natural sizing
+   ============================================================ */
+
+/* 1) Allow tables to auto-size naturally */
+table {
+  table-layout: auto !important;
+}
+
+/* 2) Remove previous column width constraints */
+table th,
+table td {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  /* Keeps layout tidy */
+}
+
+/* 3) Mobile fix — keep horizontal scroll working */
+@media (max-width: 600px) {
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 100% !important;
+  }
+}
+
+/* ============================================================
+   CMA v3.4 — Patch v10: Enable wrapping in table cells
+   ============================================================ */
+
+table th,
+table td {
+  white-space: normal !important;     /* επιτρέπουμε πολλές γραμμές */
+  overflow: visible !important;       /* μην κόβεις το περιεχόμενο */
+  text-overflow: clip !important;     /* χωρίς ... */
+  word-break: break-word;             /* αν χρειαστεί, σπάει λέξεις */
+}
+
+/* ============================================================
+   CMA v3.4 — TABLE WRAP PATCH v11
+   Επιτρέπει κανονικό wrapping στα κελιά των πινάκων
+   ============================================================ */
+
+table th,
+table td {
+  white-space: normal !important;   /* σπάει σε πολλές γραμμές */
+  overflow: visible !important;     /* δεν κρύβει περιεχόμενο */
+  text-overflow: clip !important;   /* χωρίς ... */
+  word-break: break-word;           /* αν χρειαστεί, σπάει λέξεις */
+}
+
+/* ============================================================
+   CMA v3.4 — Patch: Allow wrapping for table headers v.12
+   ============================================================ */
+
+table th {
+  white-space: normal !important;   /* επιτρέπει wrap */
+  word-break: break-word !important;
+  text-overflow: clip !important;
+}
+
+/* END OF FILE */
