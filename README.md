@@ -1,4 +1,4 @@
-# 🇬🇧 **README — Chess Mnemonic Application & Epic Chess Stories Creator_v.3.3**
+# 🇬🇧 **README — Chess Mnemonic Application & Epic Chess Stories Creator_v.3.4**
 
 A modular **web-based mnemonic system** that transforms chess moves into structured **Mnemonic Histories** using Temporal, Spatial, Character-based, PAO, Verse, and Foundational memory layers.
 The application helps users encode games, study patterns, and build personalized mnemonic structures.
@@ -22,7 +22,7 @@ All logic runs locally in the browser — no database, no server.
 ## **2. Folder Structure**
 
 ```
-Chess-Mnemonic-Application-and-Epic-Chess-Stories-Creator-v.3.3/
+Chess-Mnemonic-Application-and-Epic-Chess-Stories-Creator-v.3.4/
 │
 ├── index.html
 ├── css/
@@ -210,7 +210,7 @@ Chess-Mnemonic-Application-and-Epic-Chess-Stories-Creator-v.3.3/
 
 ## **4. Flashcards Trainer**
 
-Αυτόνομο περιβάλλον μελέτης για Temporal, Spatial, Characters, PAO, Verses & Foundations.
+Αυτόνομο περιβάλλον μελέτης για Temporal, Spatial, Characters, PAO & Verses.
 
 Ζωντανή έκδοση:
 [https://mmark76.github.io/flashcards/index.html](https://mmark76.github.io/flashcards/index.html)
