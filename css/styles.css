@@ -766,4 +766,37 @@ table td:nth-child(4) {
   text-overflow: ellipsis;        /* ... αν ποτέ χρειαστεί */
 }
 
+/* ============================================================
+   CMA v3.4 — PATCH: NATURAL AUTO-WIDTH TABLES
+   Removes all forced column widths and restores natural sizing
+   ============================================================ */
+
+/* 1) Allow tables to auto-size naturally */
+table {
+  table-layout: auto !important;
+}
+
+/* 2) Remove previous column width constraints */
+table th,
+table td {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  /* Keeps layout tidy */
+}
+
+/* 3) Mobile fix — keep horizontal scroll working */
+@media (max-width: 600px) {
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 100% !important;
+  }
+}
+
 /* END OF FILE */
