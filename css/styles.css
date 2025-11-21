@@ -808,4 +808,62 @@ td:nth-child(3) {
   text-align: center;
 }
 
+/* ============================================================
+   CMA v3.4 — TABLE COMPACT MODE (Desktop)
+   ============================================================ */
+
+/* Move # */
+table th:nth-child(1),
+table td:nth-child(1) {
+  width: 70px;
+  max-width: 70px;
+  min-width: 70px;
+}
+
+/* SAN */
+table th:nth-child(2),
+table td:nth-child(2) {
+  width: 90px;
+  max-width: 90px;
+  min-width: 90px;
+}
+
+/* Anchor (already overridden, keep highest priority) */
+table th:nth-child(3),
+table td:nth-child(3) {
+  width: 40px !important;
+  max-width: 40px !important;
+  min-width: 40px !important;
+}
+
+/* Mnemonic Locus (give generous width) */
+table th:nth-child(4),
+table td:nth-child(4) {
+  min-width: 180px;
+}
+
+/* Color-Turn */
+table th:nth-child(5),
+table td:nth-child(5) {
+  width: 90px;
+  max-width: 90px;
+  min-width: 90px;
+}
+
+/* Piece */
+table th:nth-child(6),
+table td:nth-child(6) {
+  width: 120px;
+  max-width: 120px;
+  min-width: 120px;
+}
+
+/* Target Square */
+table th:nth-child(7),
+table td:nth-child(7) {
+  width: 90px;
+  max-width: 90px;
+  min-width: 90px;
+}
+
 /* END OF FILE */
