@@ -793,6 +793,12 @@ footer {
   }
 }
 
+/* ============================================================
+   CMA v3.4 — FINAL CORRECTIONS & OVERRIDES
+   These rules override previous styles where needed.
+   Place all patch/fix CSS below this section.
+   ============================================================ */
+
 /* Force Anchor column to be very narrow */
 th:nth-child(3),
 td:nth-child(3) {
