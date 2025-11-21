@@ -684,4 +684,113 @@ footer {
   }
 }
 
+/* ============================================================
+   CMA v3.4 — MOBILE OPTIMIZATION PACK (Markellos Edition)
+   ============================================================ */
+@media (max-width: 600px) {
+
+  /* 1) Fix για tables που ξεφεύγουν από την οθόνη */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    max-width: 100%;
+    table-layout: fixed;
+  }
+
+  table th, 
+  table td {
+    padding: 4px 6px;
+    font-size: 0.75rem;
+    word-break: break-word;
+  }
+
+  /* 2) Η “Move #” στήλη να είναι πιο στενή */
+  table th:nth-child(1),
+  table td:nth-child(1) {
+    width: 52px;
+  }
+
+  /* 3) Οι στήλες SAN και Associations να χωράνε */
+  table th:nth-child(2),
+  table td:nth-child(2) {
+    max-width: 120px;
+  }
+
+  /* 4) Anchor & Locus πιο μικρά */
+  table th:nth-child(3),
+  table td:nth-child(3),
+  table th:nth-child(4),
+  table td:nth-child(4) {
+    width: 60px;
+  }
+
+  /* 5) Ζωντανή διαχείριση space στα πολύ μεγάλα tables */
+  #pao99Section table td:nth-child(6),
+  #pao99Section table td:nth-child(7) {
+    font-size: 0.7rem;
+  }
+
+  /* 6) Panels — σωστό stacking & padding σε mobiles */
+  .layout-container {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 0;
+  }
+
+  .left-panel,
+  .middle-panel,
+  .right-panel {
+    padding: 8px;
+  }
+
+  .left-panel textarea {
+    height: 150px;
+  }
+
+  /* 7) Header optimization για mobile */
+  header {
+    padding: 6px !important;
+  }
+
+  .header-top-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  header h1 {
+    font-size: 0.85em !important;
+    padding: 4px 6px;
+  }
+
+  .header-img {
+    width: 58px !important;
+  }
+
+  #howToBtn,
+  .header-links a {
+    font-size: 0.75em !important;
+    padding: 6px 10px !important;
+  }
+
+  /* 8) Dropdown group compact */
+  .dropdown-group label {
+    font-size: 0.85em;
+  }
+
+  .dropdown-group select {
+    font-size: 0.85em;
+    padding: 4px 6px;
+  }
+
+  /* 9) Footers */
+  footer {
+    font-size: 0.65em;
+    padding: 4px;
+  }
+}
+
 /* END OF FILE */
