@@ -799,4 +799,16 @@ table td {
   }
 }
 
+/* ============================================================
+   CMA v3.4 — Patch v10: Enable wrapping in table cells
+   ============================================================ */
+
+table th,
+table td {
+  white-space: normal !important;     /* επιτρέπουμε πολλές γραμμές */
+  overflow: visible !important;       /* μην κόβεις το περιεχόμενο */
+  text-overflow: clip !important;     /* χωρίς ... */
+  word-break: break-word;             /* αν χρειαστεί, σπάει λέξεις */
+}
+
 /* END OF FILE */
