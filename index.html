@@ -407,9 +407,35 @@
   span.onclick = () => modal.style.display = "none";
   window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
 </script>
-	
+
+// =======================================================
+//  AUTO-CLASS TRANSFER: <th class=""> → αντίστοιχα <td>
+//  Λειτουργεί για ΟΛΟΥΣ τους πίνακες, ανεξαρτήτως σειράς
+// =======================================================
+
+function applyColumnClasses() {
+  document.querySelectorAll("table").forEach(table => {
+    const ths = table.querySelectorAll("thead th");
+    const rows = table.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+      const cells = row.querySelectorAll("td");
+      cells.forEach((td, i) => {
+        const th = ths[i];
+        if (th && th.classList.length > 0) {
+          th.classList.forEach(cls => td.classList.add(cls));
+        }
+      });
+    });
+  });
+}
+
+// Τρέχει ξανά μετά από κάθε γέμισμα πίνακα
+window.applyColumnClasses = applyColumnClasses;
+
 </body>
 </html>
+
 
 
 
