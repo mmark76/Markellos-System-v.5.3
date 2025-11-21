@@ -793,4 +793,13 @@ footer {
   }
 }
 
+/* Force Anchor column to be very narrow */
+th:nth-child(3),
+td:nth-child(3) {
+  width: 40px !important;
+  max-width: 40px !important;
+  min-width: 40px !important;
+  text-align: center;
+}
+
 /* END OF FILE */
