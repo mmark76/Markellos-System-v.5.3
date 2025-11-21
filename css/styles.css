@@ -61,48 +61,27 @@ header nav {
   flex-wrap: wrap;
 }
 
-.header-links a {
+/* Header buttons (User Guide, Flashcards, How-to) */
+.header-links a,
+#howToBtn {
   display: inline-block;
   font-family: Georgia, serif;
   color: #fff;
-  background: linear-gradient(180deg, #3a4f8a 0%, #1f2d60 100%);
+  background: #222;                /* ίδιο με το header */
   text-decoration: none;
   padding: 9px 16px;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
-  border: 1px solid #5b78ff;
-  box-shadow: 0 0 6px rgba(100, 150, 255, 0.3);
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-}
-
-.header-links a:hover {
-  background: linear-gradient(180deg, #5b78ff 0%, #2f3f8a 100%);
-  box-shadow: 0 0 10px rgba(120, 170, 255, 0.6);
-  transform: translateY(-2px);
-}
-
-/* Make the howToBtn look exactly like the header links */
-#howToBtn {
-  display: inline-block;
-  font-family: Georgia, serif;
-  color: #fff;
-  background: linear-gradient(180deg, #3a4f8a 0%, #1f2d60 100%);
-  text-decoration: none;
-  padding: 9px 16px;
-  border-radius: 8px;
-  font-size: 1.05em;
-  font-weight: 600;
-  border: 1px solid #5b78ff;
-  box-shadow: 0 0 6px rgba(100, 150, 255, 0.3);
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  border: 1px solid #333;
+  box-shadow: none;
   cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
 }
 
-/* Hover identical to links */
+.header-links a:hover,
 #howToBtn:hover {
-  background: linear-gradient(180deg, #5b78ff 0%, #2f3f8a 100%);
-  box-shadow: 0 0 10px rgba(120, 170, 255, 0.6);
+  background: #333;
   transform: translateY(-2px);
 }
 
@@ -179,7 +158,7 @@ header nav {
   margin-bottom: 2px;
 }
 
-/* === Buttons & Inputs === */
+/* === Buttons & Inputs (γενικά) === */
 button,
 select {
   background: #333;
@@ -195,6 +174,102 @@ select {
 button:hover,
 select:hover {
   background: #444;
+}
+
+/* ============================================================
+   HEAD MICRO-STYLES (από inline <style>)
+   minimal buttons, switches, footer layout
+   ============================================================ */
+
+.minimal-btn {
+  background: #f8f8f8;
+  border: 2px solid #ccc;
+  color: #222;
+  font-size: 16px;
+  padding: 6px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 2px;
+  transition: background .17s, border .17s;
+}
+
+.minimal-btn:hover {
+  background: #ececec;
+  border: 1px solid #999;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #e2e5eb;
+  border-radius: 20px;
+  transition: .3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 3px;
+  bottom: 2.3px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px 0 #aaa;
+  transition: .3s;
+}
+
+input:checked + .slider {
+  background: #3697ef;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+.side-btn {
+  background: #f6f8fa;
+  border: 1px solid #bcd3ea;
+  color: #222;
+  font-size: 15px;
+  padding: 6px 26px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .16s, border .16s;
+}
+
+.side-btn.selected,
+.side-btn:hover {
+  background: #3697ef;
+  color: #fff;
+  border: 1.5px solid #3697ef;
+}
+
+.row-hover {
+  background: #f0f8ff;
+}
+
+.row-selected {
+  background: #cfe2ff;
 }
 
 /* === Tables === */
@@ -229,18 +304,22 @@ tr:nth-child(odd) {
 footer {
   background: #222;
   padding: 7px;
-  text-align: center;
   color: #b3b3b3;
   font-size: 0.7em;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ή space-between */
+  gap: 12px;
+  text-align: center;
 }
 
-/* =============================================================
+/* ============================================================
    EPIC UI + PARCHMENT SECTION
-   ============================================================= */
+   ============================================================ */
 #epicSection,
 .epic-modal-content {
   font-family: "Book Antiqua", Palatino, serif;
@@ -285,7 +364,7 @@ footer {
 .epic-modal-content {
   margin: 5% auto;
   padding: 20px;
-  border: 1px solid #d0c7b5;
+  border: 1px солид #d0c7b5;
   border-radius: 10px;
   width: 70%;
   max-width: 800px;
@@ -567,8 +646,8 @@ footer {
     justify-content: center;
   }
 
-  /* Desktop-only tuning for the Instructions button 
-  #howToBtn {
+  /* Desktop-only tuning for the Instructions button (αν χρειαστεί) */
+  /*#howToBtn {
     font-size: 0.85em;
     padding: 3px 6px;
     border-radius: 5px;
@@ -577,5 +656,5 @@ footer {
     width: auto;
     max-width: max-content;
     margin-left: 150px;
-  }
-}*/
+  }*/
+}
