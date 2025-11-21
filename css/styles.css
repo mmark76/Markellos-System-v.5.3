@@ -834,4 +834,13 @@ table th {
   text-overflow: clip !important;
 }
 
+/* Mobile fix — allow wrapping ONLY for the Mnemonic Locus title */
+@media (max-width: 600px) {
+  table th:nth-child(4) {
+    white-space: normal !important;
+    word-break: break-word !important;
+    text-overflow: clip !important;
+  }
+}
+
 /* END OF FILE */
