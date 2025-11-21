@@ -793,4 +793,24 @@ footer {
   }
 }
 
+@media (max-width: 600px) {
+
+  /* Prevent column text from breaking vertically */
+  table th,
+  table td {
+    white-space: nowrap;
+  }
+
+  /* Allow horizontal scrolling of the table */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Make sure the table doesn't shrink columns too much */
+  table {
+    min-width: 650px;   /* αυτό λύνει το vertical text issue 100% */
+  }
+}
+
 /* END OF FILE */
