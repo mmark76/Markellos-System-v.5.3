@@ -824,4 +824,14 @@ table td {
   word-break: break-word;           /* αν χρειαστεί, σπάει λέξεις */
 }
 
+/* ============================================================
+   CMA v3.4 — Patch: Allow wrapping for table headers v.12
+   ============================================================ */
+
+table th {
+  white-space: normal !important;   /* επιτρέπει wrap */
+  word-break: break-word !important;
+  text-overflow: clip !important;
+}
+
 /* END OF FILE */
