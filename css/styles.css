@@ -62,7 +62,7 @@ header nav {
 }
 
 /* =============================================================
-   HEADER BUTTONS — FINAL OPTIMAL VERSION (YOUR REQUEST)
+   HEADER BUTTONS — FINAL OPTIMAL VERSION
    font-size: 16px
    background: #000 (blends into header)
    soft hover: #111
@@ -73,11 +73,11 @@ header nav {
   display: inline-block;
   font-family: Georgia, serif;
   color: #fff;
-  background: #000;          /* blends invisibly with header */
+  background: #000;
   text-decoration: none;
   padding: 9px 16px;
   border-radius: 8px;
-  font-size: 16px;           /* requested */
+  font-size: 16px;
   font-weight: 600;
   border: 1px solid #111;
   box-shadow: none;
@@ -87,7 +87,7 @@ header nav {
 
 .header-links a:hover,
 #howToBtn:hover {
-  background: #111;          /* soft hover */
+  background: #111;
   transform: translateY(-1px);
 }
 
@@ -622,7 +622,7 @@ footer {
   .header-links a,
   #howToBtn {
     padding: 4px 8px;
-    font-size: 16px;   /* keep your chosen font-size */
+    font-size: 16px;
   }
 }
 
@@ -685,41 +685,41 @@ footer {
 }
 
 /* ============================================================
-   CMA v3.4 — MOBILE OPTIMIZATION PACK (Markellos Edition)
+   CMA v3.4 — MOBILE OPTIMIZATION PACK (MERGED)
    ============================================================ */
 @media (max-width: 600px) {
 
-  /* 1) Fix για tables που ξεφεύγουν από την οθόνη */
+  /* 1) Tables: horizontal scroll, no vertical word-break */
   .table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   table {
-    max-width: 100%;
-    table-layout: fixed;
+    min-width: 650px;
+    table-layout: auto;
   }
 
-  table th, 
+  table th,
   table td {
     padding: 4px 6px;
     font-size: 0.75rem;
-    word-break: break-word;
+    white-space: nowrap;
   }
 
-  /* 2) Η “Move #” στήλη να είναι πιο στενή */
+  /* Move # column narrower */
   table th:nth-child(1),
   table td:nth-child(1) {
     width: 52px;
   }
 
-  /* 3) Οι στήλες SAN και Associations να χωράνε */
+  /* SAN / Associations */
   table th:nth-child(2),
   table td:nth-child(2) {
     max-width: 120px;
   }
 
-  /* 4) Anchor & Locus πιο μικρά */
+  /* Anchor & Locus */
   table th:nth-child(3),
   table td:nth-child(3),
   table th:nth-child(4),
@@ -727,13 +727,13 @@ footer {
     width: 60px;
   }
 
-  /* 5) Ζωντανή διαχείριση space στα πολύ μεγάλα tables */
+  /* PAO 00–99 dense text */
   #pao99Section table td:nth-child(6),
   #pao99Section table td:nth-child(7) {
     font-size: 0.7rem;
   }
 
-  /* 6) Panels — σωστό stacking & padding σε mobiles */
+  /* Panels — stacking & padding */
   .layout-container {
     grid-template-columns: 1fr;
     gap: 6px;
@@ -750,7 +750,7 @@ footer {
     height: 150px;
   }
 
-  /* 7) Header optimization για mobile */
+  /* Header refinement for mobile */
   header {
     padding: 6px !important;
   }
@@ -776,7 +776,7 @@ footer {
     padding: 6px 10px !important;
   }
 
-  /* 8) Dropdown group compact */
+  /* Dropdown compact */
   .dropdown-group label {
     font-size: 0.85em;
   }
@@ -786,30 +786,10 @@ footer {
     padding: 4px 6px;
   }
 
-  /* 9) Footers */
+  /* Footer */
   footer {
     font-size: 0.65em;
     padding: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-
-  /* Prevent column text from breaking vertically */
-  table th,
-  table td {
-    white-space: nowrap;
-  }
-
-  /* Allow horizontal scrolling of the table */
-  .table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Make sure the table doesn't shrink columns too much */
-  table {
-    min-width: 650px;   /* αυτό λύνει το vertical text issue 100% */
   }
 }
 
