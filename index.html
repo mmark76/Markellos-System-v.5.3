@@ -390,7 +390,7 @@
     <h3>The process to create an Epic Story</h3>
     <p>
     1️⃣ Go to the “Import PGN / SAN” option.
-    2️⃣ Select “Choose file” or Copy–Paste the PGN/SAN into the text area. To test the feature, click the ‘Demo Games’ button.
+    2️⃣ Select “Choose file” or Copy–Paste the PGN/SAN into the text area.
     3️⃣ If you used Copy–Paste, click “Parse PGN / SAN”.
     4️⃣ From the Table Selection drop-down, choose “Associations”.
     5️⃣ Click the “Show Epic Story” button to generate and display the game narrative.
@@ -408,35 +408,35 @@
   window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
 </script>
 
-<script> 
-// =======================================================
-//  AUTO-CLASS TRANSFER: <th class=""> → αντίστοιχα <td>
-//  Λειτουργεί για ΟΛΟΥΣ τους πίνακες, ανεξαρτήτως σειράς
-// =======================================================
+<script>
+  // =======================================================
+  //  AUTO-CLASS TRANSFER: <th class=""> → αντίστοιχα <td>
+  //  Λειτουργεί για ΟΛΟΥΣ τους πίνακες, ανεξαρτήτως σειράς
+  // =======================================================
 
-function applyColumnClasses() {
-  document.querySelectorAll("table").forEach(table => {
-    const ths = table.querySelectorAll("thead th");
-    const rows = table.querySelectorAll("tbody tr");
+  function applyColumnClasses() {
+    document.querySelectorAll("table").forEach(table => {
+      const ths  = table.querySelectorAll("thead th");
+      const rows = table.querySelectorAll("tbody tr");
 
-    rows.forEach(row => {
-      const cells = row.querySelectorAll("td");
-      cells.forEach((td, i) => {
-        const th = ths[i];
-        if (th && th.classList.length > 0) {
-          th.classList.forEach(cls => td.classList.add(cls));
-        }
+      rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        cells.forEach((td, i) => {
+          const th = ths[i];
+          if (th && th.classList.length > 0) {
+            th.classList.forEach(cls => td.classList.add(cls));
+          }
+        });
       });
     });
-  });
-}
+  }
 
-// Τρέχει ξανά μετά από κάθε γέμισμα πίνακα
-window.applyColumnClasses = applyColumnClasses;
+  window.applyColumnClasses = applyColumnClasses;
 </script>
-	
+
 </body>
 </html>
+
 
 
 
