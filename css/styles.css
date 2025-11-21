@@ -926,4 +926,31 @@ table td:nth-child(7) {
   max-width: 60px !important;
 }
 
+/* ============================================================
+   CMA v3.4 — Override Pack v7
+   Mobile Table Shrink (no forced 650px)
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+  /* Το wrapper δεν επιβάλλει πια οριζόντιο scroll */
+  .table-wrapper {
+    overflow-x: visible !important;
+  }
+
+  /* Το table δεν έχει min-width 650px πλέον */
+  table {
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+  }
+
+  /* Ακόμη πιο compact κελιά για να χωράνε όλες οι στήλες */
+  table th,
+  table td {
+    padding: 2px 3px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
 /* END OF FILE */
