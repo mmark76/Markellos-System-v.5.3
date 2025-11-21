@@ -755,17 +755,6 @@ table td:nth-child(3) {
   }
 }
 
-/* Compact Mnemonic Locus width (works on all screens) */
-table th:nth-child(4),
-table td:nth-child(4) {
-  min-width: 110px !important;   /* μικρό αλλά ασφαλές */
-  max-width: 150px !important;   /* δεν θα απλώνεται άλλο */
-  width: 18% !important;          /* λογικό ποσοστό */
-  white-space: nowrap;            /* δεν σπάει σε γραμμές */
-  overflow: hidden;
-  text-overflow: ellipsis;        /* ... αν ποτέ χρειαστεί */
-}
-
 /* ============================================================
    CMA v3.4 — PATCH: NATURAL AUTO-WIDTH TABLES
    Removes all forced column widths and restores natural sizing
