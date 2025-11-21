@@ -953,4 +953,29 @@ table td:nth-child(7) {
   }
 }
 
+/* ============================================================
+   CMA v3.4 — Override Pack v8
+   Desktop table reset (κρατάμε στενή μόνο την Anchor)
+   ============================================================ */
+
+@media (min-width: 769px) {
+
+  /* Ξεφορτωνόμαστε τα fixed widths του v6 στο desktop */
+  table th,
+  table td {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Κρατάμε μόνο την Anchor στενή στο desktop */
+  table th:nth-child(3),
+  table td:nth-child(3) {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    text-align: center;
+  }
+}
+
 /* END OF FILE */
