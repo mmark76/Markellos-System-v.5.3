@@ -765,17 +765,6 @@ table {
   table-layout: auto !important;
 }
 
-/* 2) Remove previous column width constraints */
-table th,
-table td {
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: none !important;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;  /* Keeps layout tidy */
-}
-
 /* 3) Mobile fix — keep horizontal scroll working */
 @media (max-width: 600px) {
   .table-wrapper {
