@@ -144,7 +144,6 @@ header nav {
   grid-template-columns: 40% 20% 39%;
   gap: 10px;
   margin-bottom: 5px;
-  position: sticky;
   top: 63px;
   background: #111;
   padding: 10px 0;
