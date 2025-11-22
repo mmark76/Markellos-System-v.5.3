@@ -59,33 +59,22 @@
       Chess Mnemonic Application and Epic Chess Stories Creator v.3.4
     </h1>
 
-    <h6>
-      <button id="viewTipBtn" style="margin-left:6px;">ℹ️</button>
-      <span id="importantNoteBtn" style="margin-left:4px; cursor:pointer;">❗</span>
-    </h6>
-
-    <div id="infoBox" style="
-      display:none;
-      font-size:10px;
-      margin-top:4px;
+    <div id="panelsBox" style="
+      margin-top:6px;
+      margin-bottom:6px;
+      padding:6px 10px;
       border:1px solid black;
-      padding:6px 8px;
       background:#151515;
       color:#f5f5f5;
-      max-width:420px;
+      font-size:12px;
+      line-height:1.55;
+      max-width:240px;
     ">
-      <div style="margin-bottom:4px;">
-        📺 Best viewing experience: 1920×1080
-      </div>
-
-      <div>
-        ❗ <strong>Important Note:</strong>
-        No tool or software acts as a “magic wand.” It cannot turn anyone into a
-        memorizer or a chess player overnight. Progress requires effort,
-        dedication, discipline, hard work, patience, and persistence.
-      </div>
+      <div>Info panel → ℹ️</div>
+      <div>Important panel → ❗</div>
     </div>
-  </div>
+
+  </div> <!-- 🔥 ΕΔΩ ΕΚΛΕΙΣΕ ΣΩΣΤΑ -->
 
   <nav class="header-links">
     <a href="https://markellos-chess-mnemonic-system.blogspot.com/">User Guide</a>
@@ -94,22 +83,6 @@
 
   <button id="howToBtn">📜 How to create the Epic Story</button>
 
-  <script>
-    const infoBox = document.getElementById("infoBox");
-    const viewTipBtn = document.getElementById("viewTipBtn");
-    const importantNoteBtn = document.getElementById("importantNoteBtn");
-
-    function toggleInfoBox() {
-      if (infoBox.style.display === "none" || infoBox.style.display === "") {
-        infoBox.style.display = "block";
-      } else {
-        infoBox.style.display = "none";
-      }
-    }
-
-    viewTipBtn.addEventListener("click", toggleInfoBox);
-    importantNoteBtn.addEventListener("click", toggleInfoBox);
-  </script>
 </header>
   
  <!-- 🔹 Layout με τρεις στήλες --->
@@ -400,6 +373,7 @@
 	
 </body>
 </html>
+
 
 
 
