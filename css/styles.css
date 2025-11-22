@@ -140,7 +140,7 @@ header nav {
 
 .layout-container {
   display: grid;
-  grid-template-columns: 40% 20% 40%;
+  grid-template-columns: 40% 20% 39%;
   gap: 10px;
   margin-bottom: 5px;
   position: sticky;
