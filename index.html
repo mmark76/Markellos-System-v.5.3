@@ -57,19 +57,47 @@
 
     <h1 class="main-title">
       Chess Mnemonic Application and Epic Chess Stories Creator v.3.4
-    </h1><br>
+    </h1>
 
     <h6>
       <button id="viewTipBtn" style="margin-left:6px;">ℹ️</button>
+      <span style="margin-left:4px; cursor:pointer;" id="importantNoteBtn">❗</span>
     </h6>
 
-    <div id="viewTip" style="display:none; font-size:10px; margin-top:4px; border:1px solid black;">
-      Best viewing experience 1920×1080
+    <div id="infoBox" style="
+      display:none;
+      font-size:10px;
+      margin-top:4px;
+      border:1px solid black;
+      padding:6px 8px;
+      background:#151515;
+      color:#f5f5f5;
+      max-width:420px;
+    ">
+      <div style="margin-bottom:4px;">
+        📺 Best viewing experience: 1920×1080
+      </div>
+
+      <div>
+        ❗ <strong>Important Note:</strong>
+        No tool or software acts as a “magic wand.” It cannot turn anyone into a
+        memorizer or a chess player overnight. Progress requires effort,
+        dedication, discipline, hard work, patience, and persistence.
+      </div>
     </div>
 
     <script>
-      viewTipBtn.onclick = () => viewTip.style.display =
-        (viewTip.style.display === "none" ? "block" : "none");
+      const infoBox = document.getElementById("infoBox");
+      const viewTipBtn = document.getElementById("viewTipBtn");
+      const importantNoteBtn = document.getElementById("importantNoteBtn");
+
+      viewTipBtn.onclick = () => {
+        infoBox.style.display = (infoBox.style.display === "none" ? "block" : "none");
+      };
+
+      importantNoteBtn.onclick = () => {
+        infoBox.style.display = (infoBox.style.display === "none" ? "block" : "none");
+      };
     </script>
 
   </div>
@@ -370,5 +398,6 @@
 	
 </body>
 </html>
+
 
 
