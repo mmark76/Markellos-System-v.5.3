@@ -61,7 +61,7 @@
 
     <h6>
       <button id="viewTipBtn" style="margin-left:6px;">ℹ️</button>
-      <span style="margin-left:4px; cursor:pointer;" id="importantNoteBtn">❗</span>
+      <span id="importantNoteBtn" style="margin-left:4px; cursor:pointer;">❗</span>
     </h6>
 
     <div id="infoBox" style="
@@ -85,21 +85,6 @@
         dedication, discipline, hard work, patience, and persistence.
       </div>
     </div>
-
-    <script>
-      const infoBox = document.getElementById("infoBox");
-      const viewTipBtn = document.getElementById("viewTipBtn");
-      const importantNoteBtn = document.getElementById("importantNoteBtn");
-
-      viewTipBtn.onclick = () => {
-        infoBox.style.display = (infoBox.style.display === "none" ? "block" : "none");
-      };
-
-      importantNoteBtn.onclick = () => {
-        infoBox.style.display = (infoBox.style.display === "none" ? "block" : "none");
-      };
-    </script>
-
   </div>
 
   <nav class="header-links">
@@ -108,6 +93,23 @@
   </nav>
 
   <button id="howToBtn">📜 How to create the Epic Story</button>
+
+  <script>
+    const infoBox = document.getElementById("infoBox");
+    const viewTipBtn = document.getElementById("viewTipBtn");
+    const importantNoteBtn = document.getElementById("importantNoteBtn");
+
+    function toggleInfoBox() {
+      if (infoBox.style.display === "none" || infoBox.style.display === "") {
+        infoBox.style.display = "block";
+      } else {
+        infoBox.style.display = "none";
+      }
+    }
+
+    viewTipBtn.addEventListener("click", toggleInfoBox);
+    importantNoteBtn.addEventListener("click", toggleInfoBox);
+  </script>
 </header>
   
  <!-- 🔹 Layout με τρεις στήλες --->
@@ -398,6 +400,7 @@
 	
 </body>
 </html>
+
 
 
 
