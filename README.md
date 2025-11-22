@@ -155,27 +155,35 @@ Each chess move becomes a cognitive “anchor” that fits into a larger interna
 ## **2. Δομή Φακέλων**
 
 ```
-Chess-Mnemonic-Application-and-Epic-Chess-Stories-Creator-v.3.3/
-│
-├── index.html
+Chess-Mnemonic-Application/
+├── index.html                     # Main Chess Mnemonic Application UI
+├── CNAME                          # Custom domain (chessmnemonics.net)
+├── favicon.ico
+├── assets/
+│   └── chess-and-mnemonics.png
 ├── css/
-│     ├── main.css
-│     └── flashcards.css
-│
+│   └── styles.css                 # Main layout & visual styling
 ├── js/
-│     ├── main.js
-│     ├── pgn.js
-│     ├── history.js
-│     └── libraries/
-│           ├── temporal.js
-│           ├── spatial.js
-│           ├── characters.js
-│           ├── pao.js
-│           ├── verses.js
-│           ├── foundations.js
-│           └── user_custom.js
-│
-└── assets/
+│   ├── cms.bundle.js              # Core engine (PGN/SAN parsing, libraries, rendering, user libs)
+│   ├── epic.js                    # Epic story generator (half-move narrative)
+│   ├── epic-ui-init.js            # UI wiring / styles for the epic story modal
+│   ├── san-to-text-popup.js       # SAN → plain-language popup explanation
+│   ├── download-tables.js         # Export tables (CSV / TXT / HTML / JSON)
+│   ├── structured-data.js         # JSON-LD structured data for SEO
+│   └── user-libraries-history.js  # Tracks recently imported user libraries
+├── json/
+│   └── libraries_v.3.3.json       # Core mnemonic libraries dataset
+├── flashcards/
+│   ├── index.html                 # Flashcards Trainer UI
+│   ├── script.js                  # Flashcards Trainer logic
+│   └── style.css                  # Styling for Flashcards Trainer
+├── user_libraries/
+│   ├── user_characters_template.json
+│   ├── user_memory_palaces_template.json
+│   ├── user_pao_00_99_template.json
+│   └── user_squares_template.json
+└── start_server.bat               # Helper to start a local HTTP server on Windows
+
 ```
 
 ---
