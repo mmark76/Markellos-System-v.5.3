@@ -822,4 +822,13 @@ table th {
   }
 }
 
+@media (max-width: 768px) {
+  #iconsRow {
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    transform:none !important;
+  }
+}
+
 /* END OF FILE */
