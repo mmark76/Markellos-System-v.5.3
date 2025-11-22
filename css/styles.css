@@ -553,7 +553,6 @@ footer {
 @media (max-width:768px) {
   .layout-container {
     grid-template-columns:1fr;
-    position:static;
   }
   .left-panel textarea {
     height:180px;
