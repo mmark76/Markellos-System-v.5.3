@@ -64,33 +64,51 @@
     <a href="https://markellos-chess-mnemonic-system.blogspot.com/">User Guide</a>
 	<a href="https://chessmnemonics.net/flashcards/">Flashcards Trainer</a>
   </nav>
+  
+  <!-- Instructions -->
+  <button id="howToBtn" class="instructions-btn">
+    📜 Instructions on "How to create the Epic Story"
+  </button>
 
-<!-- 🔹 PERSONAL LIBRARIES WARNING BOX -->
-<div style="
-  font-size:12px;
-  display:flex; 
-  justify-content:center;
-  margin-top:4px;
-  padding:8px 10px;
-  border:1px solid #000;
-  border-radius:6px;
-  background:#1b1b1b;
-  color:#b96650;
-  max-width:100%;
-  box-shadow:0 0 6px rgba(0,0,0,0.4);
-">
-⚠️ The Default Libraries are deeply personal, based on my own Memory Palace. Of course they can be used by anyone, BUT they will NOT effectively help anyone else. Each user SHOULD create their own personal libraries, using the feature below.
 </div>
   
 </header>
-	    
-<div style="display:flex; justify-content:center;">
-  <button id="howToBtn" style="margin:0 auto;">
-    📜 Instructions on "How to create the Epic Story"
-  </button>
+	
+<button id="goldBtn" class="gold-button">Disclaimer - Guidance on libraries - Notes</button>
+
+<div id="popupOverlay" class="popup-overlay">
+  <div class="popup-box">
+    <span id="closePopup" class="close-btn">&times;</span>
+    <h2>📜 Disclaimer – Educational Purpose & User Guidance</h2>
+    <pre id="popupContent" class="popup-text"></pre>
+  </div>
 </div>
-  
- <!-- 🔹 Layout με τρεις στήλες --->
+
+<script>
+const popup = document.getElementById("popupOverlay");
+const content = document.getElementById("popupContent");
+
+// Άνοιγμα popup
+document.getElementById("goldBtn").onclick = () => {
+  popup.style.display = "flex";
+
+  // Φόρτωμα του txt
+  fetch("Disclaimer.txt")
+    .then(response => response.text())
+    .then(text => {
+      content.textContent = text;
+    })
+    .catch(err => {
+      content.textContent = "⚠️ Σφάλμα φόρτωσης αρχείου.";
+    });
+};
+
+// Κλείσιμο popup
+document.getElementById("closePopup").onclick = () => popup.style.display = "none";
+window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
+</script>
+     
+<!-- 🔹 Layout με τρεις στήλες --->
   <div class="layout-container">
 
     <!-- Αριστερά: PGN textarea -->
@@ -160,23 +178,6 @@
  <!--  <button id="openLibrarySelectorBtn" class="epic-btn">Select Library</button>-->
   <button id="refreshLociBtn" class="epic-btn">🔄 Refresh to default</button><br><br>
     
-<div style="
-  font-size:12px;
-  display:flex; 
-  justify-content:center;
-  margin-top:4px;
-  padding:8px 10px;
-  border:1px solid #000;
-  border-radius:6px;
-  background:#1b1b1b;
-  color:#b96650;
-  max-width:100%;
-  box-shadow:0 0 6px rgba(0,0,0,0.4);
-">
-⚠️ To import or load a library, the file must follow the exact structure of the official Library Templates. You can download these templates using the Download Libraries Templates (zip) button before creating or importing your own libraries, or create a correctly structured file using the Create Library feature (button above).</div>
-
-</div>
-
 <div id="userLibraryStatus" style="display:none;"></div>
 	
 </div>
@@ -206,45 +207,7 @@
         <option value="half">Ply (half move)♟️</option>
         <option value="full">Full move ♞♟</option>
         </select>
-    
-<!-- 🔹 Icons -->
-<div id="iconsRow" style="margin-top:6px; transform: translateX(-100px);">
-  <span id="viewTipBtn" style="cursor:pointer; font-size:12px; color:#ffffff; margin-left:100px">ℹ️ Resolution info</span>
-  <span id="importantNoteBtn" style="cursor:pointer; color:#ffffff; font-size:12px;">⚠️ “Please be aware.”</span>
-</div>
-
-    <!-- 🔹 INFO BOX -->
-    <div id="infoBox" style="
-      display:none;
-      font-size:12px;
-      margin-top:4px;
-      padding:8px 10px;
-      border:1px solid #000;
-      border-radius:6px;
-      background:#1b1b1b;
-      color:#b96650;
-      max-width:250px;
-      box-shadow:0 0 6px rgba(0,0,0,0.4);
-    ">
-      📺 Best viewing experience: 1920×1080
-    </div>
-
-<!-- 🔹 IMPORTANT BOX -->
-    <div id="importantBox" style="
-      display:none;
-      font-size:12px;
-      margin-top:4px;
-      padding:8px 10px;
-      border:1px solid #000;
-      border-radius:6px;
-      background:#1b1b1b;
-      color:#b96650;
-      max-width:575px;
-      box-shadow:0 0 6px rgba(0,0,0,0.4);
-    ">
-      No tool or software acts as a “magic wand.” Nothing can turn someone into a good memorizer or a good chess player overnight. Effort, dedication, discipline, hard work, patience, and persistence are required.
-    </div>
-	
+    	
 <script>
   const infoBox = document.getElementById("infoBox");
   const importantBox = document.getElementById("importantBox");
