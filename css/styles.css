@@ -755,16 +755,15 @@ table td:nth-child(3) {
 }
 
 /* ============================================================
-   CMA v3.4 — PATCH: NATURAL AUTO-WIDTH TABLES
-   Removes all forced column widths and restores natural sizing
+   CMA v3.4 — PATCHES
    ============================================================ */
 
-/* 1) Allow tables to auto-size naturally */
+/* Allow tables to auto-size naturally */
 table {
   table-layout: auto !important;
 }
 
-/* 3) Mobile fix — keep horizontal scroll working */
+/* Mobile fix — keep horizontal scroll working */
 @media (max-width: 600px) {
   .table-wrapper {
     overflow-x: auto;
@@ -776,37 +775,16 @@ table {
   }
 }
 
-/* ============================================================
-   CMA v3.4 — Patch v10: Enable wrapping in table cells
-   ============================================================ */
-
 table th,
 table td {
-  white-space: normal !important;     /* επιτρέπουμε πολλές γραμμές */
-  overflow: visible !important;       /* μην κόβεις το περιεχόμενο */
-  text-overflow: clip !important;     /* χωρίς ... */
-  word-break: break-word;             /* αν χρειαστεί, σπάει λέξεις */
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-break: break-word;            
 }
-
-/* ============================================================
-   CMA v3.4 — TABLE WRAP PATCH v11
-   Επιτρέπει κανονικό wrapping στα κελιά των πινάκων
-   ============================================================ */
-
-table th,
-table td {
-  white-space: normal !important;   /* σπάει σε πολλές γραμμές */
-  overflow: visible !important;     /* δεν κρύβει περιεχόμενο */
-  text-overflow: clip !important;   /* χωρίς ... */
-  word-break: break-word;           /* αν χρειαστεί, σπάει λέξεις */
-}
-
-/* ============================================================
-   CMA v3.4 — Patch: Allow wrapping for table headers v.12
-   ============================================================ */
 
 table th {
-  white-space: normal !important;   /* επιτρέπει wrap */
+  white-space: normal !important;
   word-break: break-word !important;
   text-overflow: clip !important;
 }
@@ -829,4 +807,3 @@ table th {
   }
 }
 
-/* END OF FILE */
