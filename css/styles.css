@@ -920,3 +920,18 @@ table th {
 .modal {
   z-index: 6000 !important;
 }
+
+/* === Patch: Allow main title to wrap === */
+
+  header {
+    grid-template-columns: 38% 22% 40% !important;
+  }
+  
+  .main-title {
+    font-size: 1.5rem !important;  
+    white-space: normal !important;
+    line-height: 1.28 !important;
+    max-width: 440px !important; 
+    display: block !important;
+  }
+}
