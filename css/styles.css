@@ -923,15 +923,40 @@ table th {
 
 /* === Patch: Allow main title to wrap === */
 
-  header {
-    grid-template-columns: 38% 22% 40% !important;
+header {
+  grid-template-columns: 38% 22% 40% !important;
+}
+
+.main-title {
+  font-size: 1.2rem !important;  
+  white-space: normal !important;
+  line-height: 1.28 !important;
+  max-width: 440px !important; 
+  display: block !important;
+}
+
+/* Force larger text for User Guide & Flashcards Trainer */
+header nav .header-links a {
+  font-size: 25px !important;
+  padding: 10px 20px !important;
+}
+
+@media (max-width:600px){
+  header nav .header-links a {
+    font-size: 25px !important;
+    padding: 9px 18px !important;
   }
-  
-  .main-title {
-    font-size: 1.2rem !important;  
-    white-space: normal !important;
-    line-height: 1.28 !important;
-    max-width: 440px !important; 
-    display: block !important;
-  }
+}
+
+.header-links a {
+  font-size: 20px !important;
+}
+
+#howToBtn {
+  font-size: 20px !important;
+  padding: 10px 20px !important;
+}
+
+.right-panel h5 {
+  font-weight: normal !important;
 }
