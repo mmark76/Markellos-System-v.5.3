@@ -110,33 +110,22 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
         placeholder="For loading a file (chess game), go to the ‘Import PGN / SAN’ option and click the ‘Choose file’ button, or Copy-Paste a game (PGN / SAN) into the text area (here), and then click ‘Parse PGN / SAN’. To test the feature, click the ‘Demo Games’ button."></textarea>
     </section>
 
-    <!-- Μέση στήλη -->
+    <!-- Μέση στήλη: PGN κουμπιά, file input, dropdowns -->
     <section class="middle-panel">
       <h4>Import PGN / SAN</h4>
       <input type="file" id="pgnFileInput" accept=".pgn,.txt"/>
-
       <div class="button-group">
         <button id="parsePgnBtn">Parse PGN</button>
         <button id="clearBtn">Clear PGN</button>
-        <button id="openFenBuilderBtn">Use the FEN Builder</button><br><br>
-        <button id="demoGamesBtn" style="background-color:white;color:red;font-size:12px;font-weight:bold;border:1px solid blue;">Demo Games</button>
-      </div><br>
-
-      <!-- 🔹 ΚΟΥΜΠΙ ΠΟΥ ΖΗΤΗΣΕΣ (100% σίγουρο νέο παράθυρο) 
-      <a href="assets/memory_palace_image.png" target="_blank" style="text-decoration:none;">
-        <button style="margin-left:10px;">
-          Memory Palace Image
-        </button>
-      </a>
-      <br><br>
-
-      <img src="assets/memory_palace_image.png" alt="Memory Palace Chess Example">
-
-      <a href="https://just-merwan.medium.com/how-to-use-a-memory-palace-to-remember-anything-yes-anything" target="_blank">
-        Image source
-      </a> -->
-
-      <div id="google_translate_element"></div><br>
+        <button id="openFenBuilderBtn">Use the FEN Builder</button>
+        <button id="demoGamesBtn" style="background-color: white; margin-top:12px; color: red; font-size: 12px; font-weight: bold; border: 1px solid blue;">Demo Games</button>
+        <button id="openMemoryPalaceImgBtn" style="margin-top:12px;">Memory Palace in Chess - Example Image</button>
+	     <a style="color: red; font-size: 12px; font-weight: bold;" href="https://just-merwan.medium.com/how-to-use-a-memory-palace-to-remember-anything-yes-anything-84750fcc5feb" target="_blank">Image source</a>
+	  
+	  </div><br>
+		
+      <div id="google_translate_element"></div>
+      <br>
 
       <a class="copyrighted-badge"
          title="Copyrighted.com Registered &amp; Protected"
@@ -421,4 +410,5 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
 	
 </body>
 </html>
+
 
