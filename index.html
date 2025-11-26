@@ -91,18 +91,12 @@ const content = document.getElementById("popupContent");
 document.getElementById("goldBtn").onclick = () => {
   popup.style.display = "flex";
 
-  // Φόρτωμα του txt
   fetch("Disclaimer.txt")
     .then(response => response.text())
-    .then(text => {
-      content.textContent = text;
-    })
-    .catch(err => {
-      content.textContent = "⚠️ Σφάλμα φόρτωσης αρχείου.";
-    });
+    .then(text => { content.textContent = text; })
+    .catch(err => { content.textContent = "⚠️ Σφάλμα φόρτωσης αρχείου."; });
 };
 
-// Κλείσιμο popup
 document.getElementById("closePopup").onclick = () => popup.style.display = "none";
 window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
 </script>
@@ -116,21 +110,22 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
         placeholder="For loading a file (chess game), go to the ‘Import PGN / SAN’ option and click the ‘Choose file’ button, or Copy-Paste a game (PGN / SAN) into the text area (here), and then click ‘Parse PGN / SAN’. To test the feature, click the ‘Demo Games’ button."></textarea>
     </section>
 
-    <!-- Μέση στήλη: PGN κουμπιά, file input, dropdowns -->
+    <!-- Μέση στήλη -->
     <section class="middle-panel">
       <h4>Import PGN / SAN</h4>
       <input type="file" id="pgnFileInput" accept=".pgn,.txt"/>
+
       <div class="button-group">
         <button id="parsePgnBtn">Parse PGN</button>
         <button id="clearBtn">Clear PGN</button>
         <button id="openFenBuilderBtn">Use the FEN Builder</button><br><br>
-        <button id="demoGamesBtn" style="background-color: white; color: red; font-size: 12px; font-weight: bold; border: 1px solid blue;">Demo Games</button>
+        <button id="demoGamesBtn" style="background-color:white;color:red;font-size:12px;font-weight:bold;border:1px solid blue;">Demo Games</button>
       </div><br>
 
-	  <!-- 🔹 Memory Palace Image Button (δίπλα στο κουμπί SAN → Text το οποίο δημιουργείται απο το san-to-text-popup.js) -->
+      <!-- 🔹 ΚΟΥΜΠΙ ΠΟΥ ΖΗΤΗΣΕΣ (100% σίγουρο νέο παράθυρο) -->
       <a href="assets/memory_palace_image.png" target="_blank" style="text-decoration:none;">
         <button style="margin-left:10px;">
-          Memory Palace in Chess <br> Example Image
+          Memory Palace Image
         </button>
       </a>
       <br><br>
@@ -140,29 +135,30 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
       <a href="https://just-merwan.medium.com/how-to-use-a-memory-palace-to-remember-anything-yes-anything" target="_blank">
         Image source
       </a>
-		
-      <div id="google_translate_element"></div>
-      <br>
-    
-	  <!-- 🔹 Copyrighted-badge -->
-      <a class="copyrighted-badge" title="Copyrighted.com Registered &amp; Protected" target="_blank" href="https://app.copyrighted.com/work/RGtOgUdXWU6GZIGU/">
-	    <img alt="Copyrighted.com Registered &amp; Protected" border="0" width="125" height="25" 
-	         srcset="https://static.copyrighted.com/badges/125x25/03_1_2x.png 2x" 
-	         src="https://static.copyrighted.com/badges/125x25/03_1.png">
-      </a>
+
+      <div id="google_translate_element"></div><br>
+
+      <a class="copyrighted-badge"
+         title="Copyrighted.com Registered &amp; Protected"
+         target="_blank"
+         href="https://app.copyrighted.com/work/RGtOgUdXWU6GZIGU/">
+      <img alt="Copyrighted.com Registered &amp; Protected" border="0" width="125" height="25" 
+           srcset="https://static.copyrighted.com/badges/125x25/03_1_2x.png 2x" 
+           src="https://static.copyrighted.com/badges/125x25/03_1.png"></a>
       <script src="https://static.copyrighted.com/badges/helper.js"></script>
+
     </section>
-		
-	<!-- Δεξιά: Βιβλιοθήκες με κουμπιά -->
-    <section class="right-panel"><h5>Default libraries are locked and listed below for overview purposes only.
+
+    <!-- Δεξιά -->
+    <section class="right-panel">
+      <h5>Default libraries are locked and listed below for overview purposes only.
 		<br>They can be found and studied in the Flashcards Application.<br><br></h5>
       
 	<div class="libraries-group">
       <div class="library">
-    <!-- 1) Default Libraries -->
+
 <div class="row" style="display:flex; gap:20px; align-items:center;">
 
-  <!-- Default libraries -->
   <div class="epic-btn"><label for="librarySelect">Default libraries:</label>
 	<select id="librarySelect">
       <option value="Temporal/LibraryT1">Temporal Memory Palace T1</option>
@@ -185,25 +181,22 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
 <div><label class="epic-btn">User Libraries:</label><select id="userLibrarySelect"><option value="">— none —</option></select></div> -->
 
 </div>
+
 <br>
+
 <div class="user-lib-controls">
   <button id="createLibraryBtn" class="epic-btn">Create your own Libraries</button>
   <button id="downloadTemplatesBtn" class="epic-btn">Download Libraries Templates (zip)</button><br><br>
   <button id="importLibraryBtn" class="epic-btn">Import / Load Library</button>
- <!--  <button id="openLibrarySelectorBtn" class="epic-btn">Select Library</button>-->
   <button id="refreshLociBtn" class="epic-btn">🔄 Refresh to default</button><br><br>
     
 <div id="userLibraryStatus" style="display:none;"></div>
-	
+
 </div>
 		
-<div id="activePalaceInfo" style="
-  color:#CFAF4A;
-  text-align:center;
-  margin:10px 0 12px 0;
-  font-size:0.9em;
-  font-family:Georgia, 'Times New Roman', serif;
-"></div>
+<div id="activePalaceInfo"
+     style="color:#CFAF4A;text-align:center;margin:10px 0 12px 0;font-size:0.9em;font-family:Georgia,'Times New Roman',serif;">
+</div>
 
     </section>
   </div>
@@ -217,6 +210,7 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
           <option value="pao99Section">PAO 00–99</option>
           <option value="verseSection">Rhythm</option>
         </select>
+
 		<label for="locusMode">Memory Palace Mode:</label>
         <select id="locusMode">
         <option value="half">Ply (half move)♟️</option>
@@ -227,130 +221,149 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
   
 <span style="font-size:0.8em; color:#777;">Anchor column - Click to show / hide ⚓</span>
 
-  <!-- 🔹 SAN Table -->
-  <section id="sanSection">
-    <h4>SAN Table</h4>
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th style="min-width:6ch; white-space:nowrap;">Move #</th><th style="min-width:7ch; white-space:nowrap;">SAN</th><th style="min-width:2ch; white-space:nowrap;"><span style="font-size:0.8em; color:#777;">⚓</span></th><th style="min-width:9ch; white-space:normal;">Mnemonic Locus</th><th style="min-width:6ch; white-space:normal;">Color Turn</th><th>Piece</th><th style="min-width:7ch; white-space:nowrap;">Target Square</th> <!-- <th>FEN</th>-->
-          </tr>
-        </thead>
-        <tbody id="sanBody"></tbody>
-      </table>
-      <select class="download-select" data-table="sanSection">
-        <option value="">Download as…</option>
-        <option value="csv">CSV</option>
-        <option value="txt">TXT</option>
-        <option value="json">JSON</option>
-      </select>
-    </div>
-  </section>
+<section id="sanSection">
+  <h4>SAN Table</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="min-width:6ch;">Move #</th>
+          <th style="min-width:7ch;">SAN</th>
+          <th style="min-width:2ch;"><span style="font-size:0.8em;color:#777;">⚓</span></th>
+          <th style="min-width:9ch;">Mnemonic Locus</th>
+          <th style="min-width:6ch;">Color Turn</th>
+          <th>Piece</th>
+          <th style="min-width:7ch;">Target Square</th>
+        </tr>
+      </thead>
+      <tbody id="sanBody"></tbody>
+    </table>
+    <select class="download-select" data-table="sanSection">
+      <option value="">Download as…</option>
+      <option value="csv">CSV</option>
+      <option value="txt">TXT</option>
+      <option value="json">JSON</option>
+    </select>
+  </div>
+</section>
 
-  <!-- 🔹 Associations Table -->
-  <section id="assocSection">
-    <h4>Associations Table</h4>
-    <div class="table-wrapper">
-      <table>
+<section id="assocSection">
+  <h4>Associations Table</h4>
+  <div class="table-wrapper">
+    <table>
 <thead>
   <tr>
-    <th style="min-width:6ch; white-space:nowrap;">Move #</th><th style="min-width:7ch; white-space:nowrap;">SAN</th><th style="min-width:2ch; white-space:nowrap;"><span style="font-size:0.8em; color:#777;">⚓</span></th><th style="min-width:9ch; white-space:normal;">Mnemonic Locus</th><th>Target Square</th><th style="min-width:6ch; white-space:normal;">Color Turn</th><th>Piece Association</th><th style="min-width:7ch; white-space:nowrap;">Target Square</th>
+    <th style="min-width:6ch;">Move #</th>
+    <th style="min-width:7ch;">SAN</th>
+    <th style="min-width:2ch;"><span style="font-size:0.8em;color:#777;">⚓</span></th>
+    <th style="min-width:9ch;">Mnemonic Locus</th>
+    <th>Target Square</th>
+    <th style="min-width:6ch;">Color Turn</th>
+    <th>Piece Association</th>
+    <th style="min-width:7ch;">Target Square</th>
   </tr>
 </thead>
-    <tbody id="assocBody"></tbody>
-      </table>
-      <select class="download-select" data-table="assocSection">
-        <option value="">Download as…</option>
-        <option value="csv">CSV</option>
-        <option value="txt">TXT</option>
-        <option value="json">JSON</option>
-      </select>
-    </div>
-  </section>
+      <tbody id="assocBody"></tbody>
+    </table>
+    <select class="download-select" data-table="assocSection">
+      <option value="">Download as…</option>
+      <option value="csv">CSV</option>
+      <option value="txt">TXT</option>
+      <option value="json">JSON</option>
+    </select>
+  </div>
+</section>
 
-  <!-- 🔹 PAO 0–9 Table -->
-  <section id="paoSection">
-    <h4>PAO 0–9 Table</h4>
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th style="min-width:6ch; white-space:nowrap;">Move #</th><th style="min-width:7ch; white-space:nowrap;">SAN</th><th style="min-width:2ch; white-space:nowrap;"><span style="font-size:0.8em; color:#777;">⚓</span></th><th style="min-width:9ch; white-space:normal;">Mnemonic Locus</th><th style="min-width:6ch; white-space:normal;">Color Turn</th><th>PAO Code</th><th>Person / Action / Object</th>
-          </tr>
-        </thead>
-        <tbody id="paoBody"></tbody>
-      </table>
-      <select class="download-select" data-table="paoSection">
-        <option value="">Download as…</option>
-        <option value="csv">CSV</option>
-        <option value="txt">TXT</option>
-        <option value="json">JSON</option>
-      </select>
-    </div>
-  </section>
+<section id="paoSection">
+  <h4>PAO 0–9 Table</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="min-width:6ch;">Move #</th>
+          <th style="min-width:7ch;">SAN</th>
+          <th style="min-width:2ch;"><span style="font-size:0.8em;color:#777;">⚓</span></th>
+          <th style="min-width:9ch;">Mnemonic Locus</th>
+          <th style="min-width:6ch;">Color Turn</th>
+          <th>PAO Code</th>
+          <th>Person / Action / Object</th>
+        </tr>
+      </thead>
+      <tbody id="paoBody"></tbody>
+    </table>
+    <select class="download-select" data-table="paoSection">
+      <option value="">Download as…</option>
+      <option value="csv">CSV</option>
+      <option value="txt">TXT</option>
+      <option value="json">JSON</option>
+    </select>
+  </div>
+</section>
 
-  <!-- 🔹 PAO 00–99 Table -->
-  <section id="pao99Section">
-    <h4>PAO 00–99 Table</h4>
-    <!-- ✅ Dropdown επιλογής συλλογής PAO 00–99 -->
+<section id="pao99Section">
+  <h4>PAO 00–99 Table</h4>
 
-    <div class="dropdown-group">
-      <label for="pao99CollectionSelect">LIBRARIES PAO 00–99:</label>
-    </div>
+  <div class="dropdown-group">
+    <label for="pao99CollectionSelect">LIBRARIES PAO 00–99:</label>
+  </div>
 
-    <select id="pao99CollectionSelect">
-      	<option value="LibraryP5">LibraryP1</option>
-		<option value="LibraryP1">LibraryP2</option>
-     <!--  <option value="LibraryP2">LibraryP2</option>
-      <option value="LibraryP3">LibraryP3</option>
-      <option value="LibraryP4">LibraryP4</option> -->
+  <select id="pao99CollectionSelect">
+    <option value="LibraryP5">LibraryP1</option>
+    <option value="LibraryP1">LibraryP2</option>
+  </select>
 
-	</select>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="min-width:6ch;">Move #</th>
+          <th style="min-width:7ch;">SAN</th>
+          <th style="min-width:2ch;"><span style="font-size:0.8em;color:#777;">⚓</span></th>
+          <th style="min-width:9ch;">Mnemonic Locus</th>
+          <th style="min-width:6ch;">Color Turn</th>
+          <th>PAO Code (6-digit)</th>
+          <th>Person / Action / Object</th>
+        </tr>
+      </thead>
+      <tbody id="pao99Body"></tbody>
+    </table>
+    <select class="download-select" data-table="pao99Section">
+      <option value="">Download as…</option>
+      <option value="csv">CSV</option>
+      <option value="txt">TXT</option>
+      <option value="json">JSON</option>
+    </select>
+  </div>
+</section>
 
-	<div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th style="min-width:6ch; white-space:nowrap;">Move #</th><th style="min-width:7ch; white-space:nowrap;">SAN</th><th style="min-width:2ch; white-space:normal;"><span style="font-size:0.8em; color:#777;">⚓</span></th><th style="min-width:9ch; white-space:normal;">Mnemonic Locus</th><th style="min-width:6ch; white-space:normal;">Color Turn</th><th>PAO Code (6-digit)</th><th>Person / Action / Object</th>
-          </tr>
-        </thead>
-        <tbody id="pao99Body"></tbody>
-      </table>
-      <select class="download-select" data-table="pao99Section">
-        <option value="">Download as…</option>
-        <option value="csv">CSV</option>
-        <option value="txt">TXT</option>
-        <option value="json">JSON</option>
-      </select>
-    </div>
-  </section>
-
-  <!-- 🔹 Rhythm Table -->
-  <section id="verseSection">
-    <h4>Rhythm Table</h4>
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th style="min-width:6ch; white-space:nowrap;">Move #</th><th style="min-width:7ch; white-space:nowrap;">SAN</th><th style="min-width:2ch; white-space:nowrap;"><span style="font-size:0.8em; color:#777;">⚓</span></th><th style="min-width:9ch; white-space:normal;">Mnemonic Locus</th><th style="min-width:6ch; white-space:normal;">Color Turn</th><th>Rhythm (4 γραμμές)</th>
-          </tr>
-        </thead>
-        <tbody id="verseBody"></tbody>
-      </table>
-      <select class="download-select" data-table="verseSection">
-        <option value="">Download as…</option>
-        <option value="csv">CSV</option>
-        <option value="txt">TXT</option>
-        <option value="json">JSON</option>
-      </select>
-    </div>
-  </section>
+<section id="verseSection">
+  <h4>Rhythm Table</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="min-width:6ch;">Move #</th>
+          <th style="min-width:7ch;">SAN</th>
+          <th style="min-width:2ch;"><span style="font-size:0.8em;color:#777;">⚓</span></th>
+          <th style="min-width:9ch;">Mnemonic Locus</th>
+          <th style="min-width:6ch;">Color Turn</th>
+          <th>Rhythm (4 γραμμές)</th>
+        </tr>
+      </thead>
+      <tbody id="verseBody"></tbody>
+    </table>
+    <select class="download-select" data-table="verseSection">
+      <option value="">Download as…</option>
+      <option value="csv">CSV</option>
+      <option value="txt">TXT</option>
+      <option value="json">JSON</option>
+    </select>
+  </div>
+</section>
   
 <footer>
   <h4>© Markellos Markides 2025 - Chess Mnemonic Application and Epic Chess Stories Creator v.3.4</h4>
 
-<!-- 🔗 Featured on ArtOfMemory.com Badge -->
 <a href="https://artofmemory.com/blog/chess-memorization/" target="_blank" rel="noopener noreferrer"
    style="text-decoration:none; margin-left:10px;">
   <div style="
@@ -388,10 +401,10 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
     <h3>The process to create an Epic Story</h3>
     <p>
   <br>  1️⃣ Go to the “Import PGN / SAN” option.
-  <br>  2️⃣ Select “Choose file” or Copy–Paste the PGN/SAN into the text area. To test the feature, click the ‘Demo Games’ button.
+  <br>  2️⃣ Select “Choose file” or Copy–Paste the PGN/SAN into the text area.
   <br>  3️⃣ If you used Copy–Paste, click “Parse PGN / SAN”.
   <br>  4️⃣ From the Table Selection drop-down, choose “Associations”.
-  <br>  5️⃣ Click the “Show Epic Story” button to generate and display the game narrative.
+  <br>  5️⃣ Click the “Show Epic Story” button.
     </p>
   </div>
 </div>
@@ -408,5 +421,3 @@ window.onclick = e => { if (e.target === popup) popup.style.display = "none"; };
 	
 </body>
 </html>
-
-
