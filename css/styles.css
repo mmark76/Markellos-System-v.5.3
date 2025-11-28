@@ -121,7 +121,7 @@ header nav {
 
 .layout-container {
   display: grid;
-  grid-template-columns: 37% 25% 37%;
+  grid-template-columns: 36% 27% 36%;
   gap: 10px;
   margin-bottom: 5px;
   top: 63px;
