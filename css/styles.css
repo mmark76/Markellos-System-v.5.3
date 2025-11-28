@@ -77,21 +77,38 @@ header nav {
    BUTTONS IN TOP ROW AFTER HEADER
    ============================================================= */
 
+/* container των κουμπιών */
+.header-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* όλα τα κουμπιά του header (User Guide, Flashcards, HowTo) */
 .header-links a,
 #howToBtn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 14px;
   font-family: Georgia, serif;
-  color: #fff;
-  background: #222 !important;
-  text-decoration: none;
-  padding: 9px 16px;
-  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
+
+  color: #fff;
+  background: #222;
+  border-radius: 8px;
   border: 1px solid #111;
-  box-shadow: none;
+  text-decoration: none;
   cursor: pointer;
+
   transition: background 0.2s, transform 0.15s;
+
+  width: auto;          /* μόνο όσο το κείμενο */
+  white-space: nowrap;  /* να μην σπάει σε 2 γραμμές */
 }
 
 .header-links a:hover,
